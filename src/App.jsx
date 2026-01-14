@@ -106,17 +106,10 @@ const PlayerCard = ({ player, isStarter, onClick, delay = 0 }) => {
   const [hovered, setHovered] = useState(false);
   const ovr = player.ovr;
   const stars = player.isTransfer && player.transferStars ? player.transferStars : player.stars;
-  const lastName = player.name.split(' ').pop();
   const isRS = player.year.includes('RS');
   const classYear = player.year.replace('RS ', '');
 
-  const getOvrGradient = () => {
-    if (ovr >= 90) return 'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)';
-    if (ovr >= 85) return 'linear-gradient(135deg, #84cc16 0%, #4d7c0f 100%)';
-    if (ovr >= 80) return 'linear-gradient(135deg, #22c55e 0%, #15803d 100%)';
-    if (ovr >= 75) return 'linear-gradient(135deg, #14b8a6 0%, #0f766e 100%)';
-    return 'linear-gradient(135deg, #06b6d4 0%, #0e7490 100%)';
-  };
+  const getOvrColor = () => '#38bdf8';
 
   const getClassColor = () => ({ FR: '#4ade80', SO: '#60a5fa', JR: '#fbbf24', SR: '#f87171' }[classYear] || '#94a3b8');
 
@@ -133,46 +126,55 @@ const PlayerCard = ({ player, isStarter, onClick, delay = 0 }) => {
       }}
     >
       <div
-        className={`relative overflow-hidden ${isStarter ? 'w-14' : 'w-12'}`}
+        className={`relative overflow-hidden ${isStarter ? 'w-[96px]' : 'w-[88px]'}`}
         style={{
-          background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)',
-          borderRadius: '10px',
-          border: isStarter ? '2px solid rgba(251,191,36,0.6)' : '1px solid rgba(100,116,139,0.3)',
-          boxShadow: hovered ? '0 12px 30px rgba(0,0,0,0.5), 0 0 30px rgba(251,191,36,0.3)' : isStarter ? '0 6px 20px rgba(0,0,0,0.4)' : '0 3px 10px rgba(0,0,0,0.3)',
-          opacity: isStarter ? 1 : 0.75,
+          background: '#0f172a',
+          borderRadius: '12px',
+          border: isStarter ? '2px solid rgba(251,191,36,0.7)' : '1px solid rgba(100,116,139,0.35)',
+          boxShadow: hovered ? '0 10px 24px rgba(0,0,0,0.45), 0 0 18px rgba(251,191,36,0.25)' : isStarter ? '0 6px 16px rgba(0,0,0,0.35)' : '0 3px 10px rgba(0,0,0,0.25)',
+          opacity: isStarter ? 1 : 0.85,
         }}
       >
-        <div style={{ background: getOvrGradient(), padding: '4px 0' }}>
+        <div style={{ background: getOvrColor(), padding: '6px 0' }}>
           <div className="text-center">
-            <span className="font-black text-white text-sm" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.4)' }}>{ovr}</span>
+            <span
+              className="font-black text-white text-sm"
+              style={{ textShadow: '0 2px 4px rgba(0,0,0,0.4)', fontSize: 'clamp(0.65rem, 1.1vw, 0.85rem)' }}
+            >
+              {ovr}
+            </span>
           </div>
         </div>
 
-        <div className="px-1.5 py-1.5">
-          <div className="flex justify-between items-center">
-            <span className="text-[8px] font-bold text-slate-400">{player.pos}</span>
-            <span className="text-[8px] font-black" style={{ color: getClassColor() }}>{classYear}</span>
+        <div className="px-2 py-2">
+          <div className="flex items-start justify-between">
+            <span className="text-[9px] font-black text-emerald-300 uppercase tracking-wide" style={{ fontSize: 'clamp(0.5rem, 0.9vw, 0.7rem)' }}>
+              {player.pos}
+            </span>
+            <span className="text-[8px] font-black" style={{ color: getClassColor(), fontSize: 'clamp(0.45rem, 0.8vw, 0.6rem)' }}>{classYear}</span>
           </div>
 
-          <div className="text-center my-1">
-            <span className="font-black text-white text-xl leading-none" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.4)' }}>{player.number}</span>
+          <div className="mt-1">
+            <span className="font-black text-white leading-none" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.4)', fontSize: 'clamp(1rem, 2.4vw, 1.5rem)' }}>{player.number}</span>
           </div>
 
           <div className="flex justify-center gap-0.5 my-1">
             {[...Array(5)].map((_, i) => <Star key={i} filled={i < stars} />)}
           </div>
 
-          <div className="text-center">
-            <span className="text-[9px] font-bold text-white uppercase tracking-tight truncate block">{lastName}</span>
+          <div className="text-center min-h-[28px] flex items-center justify-center">
+            <span className="font-semibold text-white uppercase tracking-tight leading-tight break-words" style={{ fontSize: 'clamp(0.6rem, 1.1vw, 0.85rem)' }}>
+              {player.name.toUpperCase()}
+            </span>
           </div>
 
           <div className="flex justify-center gap-1 mt-1 min-h-[14px]">
-            {isRS && <span className="text-[7px] font-black text-white px-1.5 py-0.5 rounded-full" style={{ background: 'linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)' }}>RS</span>}
-            {player.isTransfer && <span className="text-[7px] font-black text-white px-1.5 py-0.5 rounded-full" style={{ background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' }}>PTL</span>}
+            {isRS && <span className="text-[7px] font-black text-white px-1.5 py-0.5 rounded-full" style={{ background: '#7c3aed' }}>RS</span>}
+            {player.isTransfer && <span className="text-[7px] font-black text-white px-1.5 py-0.5 rounded-full" style={{ background: '#f97316' }}>PTL</span>}
           </div>
         </div>
 
-        {hovered && <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at center, rgba(251,191,36,0.2) 0%, transparent 70%)' }} />}
+        {hovered && <div className="absolute inset-0 pointer-events-none" style={{ background: 'rgba(251,191,36,0.08)' }} />}
       </div>
 
       {!isStarter && <div className="text-center mt-1"><span className="text-[7px] font-bold text-slate-500 bg-slate-800/60 px-2 py-0.5 rounded-full">BACKUP</span></div>}
@@ -186,42 +188,43 @@ const PositionGroup = ({ players, onClick, baseDelay = 0 }) => (
   </div>
 );
 
-const OffenseFormation = ({ onPlayerClick }) => (
-  <div className="h-full flex flex-col justify-between py-3 px-3">
-    <div className="flex justify-between items-start">
-      <PositionGroup players={offensiveStarters.WRX} onClick={onPlayerClick} baseDelay={0} />
-      <PositionGroup players={offensiveStarters.SLOT} onClick={onPlayerClick} baseDelay={100} />
-      <PositionGroup players={offensiveStarters.TE} onClick={onPlayerClick} baseDelay={200} />
-      <PositionGroup players={offensiveStarters.WRZ} onClick={onPlayerClick} baseDelay={300} />
-    </div>
-    <div className="flex justify-center gap-1.5">
+const OffenseFormation = ({ onPlayerClick, showBackups }) => (
+  <div className="h-full grid grid-rows-[auto,1fr,auto] gap-1 py-0.5 px-5">
+    <div className="flex justify-center gap-2">
       {[offensiveStarters.LT, offensiveStarters.LG, offensiveStarters.C, offensiveStarters.RG, offensiveStarters.RT].map((pos, i) => (
-        <PositionGroup key={i} players={pos} onClick={onPlayerClick} baseDelay={400 + i * 80} />
+        <PositionGroup key={i} players={showBackups ? pos : pos.slice(0, 1)} onClick={onPlayerClick} baseDelay={i * 80} />
       ))}
     </div>
-    <div className="flex justify-center gap-10">
-      <PositionGroup players={offensiveStarters.QB} onClick={onPlayerClick} baseDelay={800} />
-      <PositionGroup players={offensiveStarters.RB} onClick={onPlayerClick} baseDelay={900} />
+    <div className="flex items-center justify-center gap-8">
+      <PositionGroup players={showBackups ? offensiveStarters.QB : offensiveStarters.QB.slice(0, 1)} onClick={onPlayerClick} baseDelay={500} />
+      <PositionGroup players={showBackups ? offensiveStarters.RB : offensiveStarters.RB.slice(0, 1)} onClick={onPlayerClick} baseDelay={600} />
+    </div>
+    <div className="flex justify-between items-start gap-3 px-2">
+      <PositionGroup players={showBackups ? offensiveStarters.WRX : offensiveStarters.WRX.slice(0, 1)} onClick={onPlayerClick} baseDelay={700} />
+      <PositionGroup players={showBackups ? offensiveStarters.SLOT : offensiveStarters.SLOT.slice(0, 1)} onClick={onPlayerClick} baseDelay={780} />
+      <PositionGroup players={showBackups ? offensiveStarters.TE : offensiveStarters.TE.slice(0, 1)} onClick={onPlayerClick} baseDelay={860} />
+      <PositionGroup players={showBackups ? offensiveStarters.WRZ : offensiveStarters.WRZ.slice(0, 1)} onClick={onPlayerClick} baseDelay={940} />
     </div>
   </div>
 );
 
-const DefenseFormation = ({ onPlayerClick }) => (
-  <div className="h-full flex flex-col justify-between py-3 px-3">
+const DefenseFormation = ({ onPlayerClick, showBackups }) => (
+  <div className="h-full grid grid-rows-[auto,1fr,auto] gap-1 py-0.5 px-5">
     <div className="flex justify-center gap-3">
       {[defensiveStarters.LDE, defensiveStarters.NT, defensiveStarters.DT, defensiveStarters.RDE].map((pos, i) => (
-        <PositionGroup key={i} players={pos} onClick={onPlayerClick} baseDelay={i * 80} />
+        <PositionGroup key={i} players={showBackups ? pos : pos.slice(0, 1)} onClick={onPlayerClick} baseDelay={i * 80} />
       ))}
     </div>
-    <div className="flex justify-center gap-12">
-      {[defensiveStarters.WLB, defensiveStarters.MLB].map((pos, i) => (
-        <PositionGroup key={i} players={pos} onClick={onPlayerClick} baseDelay={400 + i * 100} />
+    <div className="flex items-center justify-center gap-8">
+      {[defensiveStarters.WLB, defensiveStarters.MLB, defensiveStarters.NB].map((pos, i) => (
+        <PositionGroup key={i} players={showBackups ? pos : pos.slice(0, 1)} onClick={onPlayerClick} baseDelay={400 + i * 90} />
       ))}
     </div>
-    <div className="flex justify-between items-start">
-      {[defensiveStarters.LCB, defensiveStarters.SS, defensiveStarters.NB, defensiveStarters.FS, defensiveStarters.RCB].map((pos, i) => (
-        <PositionGroup key={i} players={pos} onClick={onPlayerClick} baseDelay={600 + i * 80} />
-      ))}
+    <div className="flex justify-between items-start gap-3 px-2">
+      <PositionGroup players={showBackups ? defensiveStarters.LCB : defensiveStarters.LCB.slice(0, 1)} onClick={onPlayerClick} baseDelay={700} />
+      <PositionGroup players={showBackups ? defensiveStarters.SS : defensiveStarters.SS.slice(0, 1)} onClick={onPlayerClick} baseDelay={780} />
+      <PositionGroup players={showBackups ? defensiveStarters.FS : defensiveStarters.FS.slice(0, 1)} onClick={onPlayerClick} baseDelay={860} />
+      <PositionGroup players={showBackups ? defensiveStarters.RCB : defensiveStarters.RCB.slice(0, 1)} onClick={onPlayerClick} baseDelay={940} />
     </div>
   </div>
 );
@@ -229,20 +232,20 @@ const DefenseFormation = ({ onPlayerClick }) => (
 const PlayerModal = ({ player, onClose }) => {
   if (!player) return null;
   const stars = player.isTransfer && player.transferStars ? player.transferStars : player.stars;
-  const getOvrColor = () => player.ovr >= 90 ? '#fbbf24' : player.ovr >= 85 ? '#84cc16' : player.ovr >= 80 ? '#22c55e' : '#14b8a6';
+  const getOvrColor = () => '#38bdf8';
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-black/85 backdrop-blur-md" style={{ animation: 'fadeIn 0.2s ease-out' }} />
       <div className="relative w-full max-w-sm rounded-2xl overflow-hidden" onClick={e => e.stopPropagation()}
-        style={{ background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)', border: '1px solid rgba(100,116,139,0.3)', boxShadow: '0 30px 60px rgba(0,0,0,0.6)', animation: 'modalSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
+        style={{ background: '#0f172a', border: '1px solid rgba(100,116,139,0.3)', boxShadow: '0 30px 60px rgba(0,0,0,0.6)', animation: 'modalSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
         
-        <div className="relative p-5" style={{ background: 'linear-gradient(135deg, #f97316 0%, #16a34a 100%)' }}>
+        <div className="relative p-5" style={{ background: '#1f2937' }}>
           <button onClick={onClose} className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/30 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/50 transition-all">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
           <div className="flex items-center gap-4">
-            <div className="w-18 h-18 rounded-2xl flex items-center justify-center font-black text-3xl text-white shadow-xl" style={{ background: `linear-gradient(135deg, ${getOvrColor()} 0%, ${getOvrColor()}cc 100%)`, width: '72px', height: '72px' }}>{player.ovr}</div>
+            <div className="w-[72px] h-[72px] rounded-2xl flex items-center justify-center font-black text-3xl text-white shadow-xl" style={{ background: getOvrColor() }}>{player.ovr}</div>
             <div>
               <h2 className="text-2xl font-black text-white tracking-tight">{player.name.toUpperCase()}</h2>
               <p className="text-white/80 text-sm font-semibold mt-1">#{player.number} • {player.pos} • {player.year}</p>
@@ -256,7 +259,7 @@ const PlayerModal = ({ player, onClose }) => {
               <div className="text-[11px] text-slate-400 uppercase font-semibold mb-2">Recruit Rating</div>
               <div className="flex items-center gap-2">
                 <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <svg key={i} viewBox="0 0 20 20" className={`w-5 h-5 ${i < stars ? 'text-amber-400' : 'text-slate-600'}`} fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}</div>
-                {player.isTransfer && <span className="text-[10px] font-black text-white px-2 py-1 rounded-full ml-1" style={{ background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' }}>PORTAL</span>}
+                {player.isTransfer && <span className="text-[10px] font-black text-white px-2 py-1 rounded-full ml-1" style={{ background: '#f97316' }}>PORTAL</span>}
               </div>
             </div>
             <div className="flex-1 bg-slate-800/60 rounded-xl p-3">
@@ -271,7 +274,7 @@ const PlayerModal = ({ player, onClose }) => {
               <span className="text-2xl font-black" style={{ color: getOvrColor() }}>{player.composite.toFixed(1)}</span>
             </div>
             <div className="h-3 bg-slate-700 rounded-full overflow-hidden">
-              <div className="h-full rounded-full" style={{ width: `${player.composite}%`, background: `linear-gradient(90deg, ${getOvrColor()}66 0%, ${getOvrColor()} 100%)`, transition: 'width 0.5s ease-out' }} />
+              <div className="h-full rounded-full" style={{ width: `${player.composite}%`, background: getOvrColor(), transition: 'width 0.5s ease-out' }} />
             </div>
           </div>
 
@@ -304,15 +307,15 @@ const RatingsView = ({ filters, setFilters, onPlayerClick }) => {
   }, [all, filters]);
 
   const positions = ['ALL', 'QB', 'RB', 'WR', 'TE', 'LT', 'LG', 'C', 'RG', 'RT', 'DE', 'DT', 'NT', 'LB', 'CB', 'SS', 'FS', 'NB'];
-  const getOvrColor = (ovr) => ovr >= 90 ? '#fbbf24' : ovr >= 85 ? '#84cc16' : ovr >= 80 ? '#22c55e' : '#14b8a6';
+  const getOvrColor = () => '#38bdf8';
 
   return (
-    <div className="h-full flex flex-col" style={{ background: 'linear-gradient(180deg, #0f172a 0%, #020617 100%)' }}>
-      <div className="flex-shrink-0 p-3 flex items-center gap-2 overflow-x-auto" style={{ background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)', borderBottom: '1px solid rgba(100,116,139,0.2)' }}>
+    <div className="h-full flex flex-col" style={{ background: '#0b1120' }}>
+      <div className="flex-shrink-0 p-3 flex items-center gap-2 overflow-x-auto" style={{ background: '#111827', borderBottom: '1px solid rgba(100,116,139,0.2)' }}>
         <div className="flex rounded-xl overflow-hidden" style={{ background: 'rgba(30,41,59,0.9)' }}>
           {['ALL', 'OFF', 'DEF'].map(s => (
             <button key={s} onClick={() => setFilters(f => ({ ...f, side: s }))} className="px-4 py-2 text-[11px] font-bold transition-all"
-              style={{ background: filters.side === s ? (s === 'OFF' ? 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' : s === 'DEF' ? 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)' : 'linear-gradient(135deg, #64748b 0%, #475569 100%)') : 'transparent', color: filters.side === s ? 'white' : '#94a3b8' }}>{s}</button>
+              style={{ background: filters.side === s ? (s === 'OFF' ? '#f97316' : s === 'DEF' ? '#22c55e' : '#475569') : 'transparent', color: filters.side === s ? 'white' : '#94a3b8' }}>{s}</button>
           ))}
         </div>
         <select value={filters.pos} onChange={e => setFilters(f => ({ ...f, pos: e.target.value }))} className="px-3 py-2 text-[11px] font-bold rounded-xl border-none outline-none text-white" style={{ background: 'rgba(30,41,59,0.9)' }}>
@@ -333,13 +336,13 @@ const RatingsView = ({ filters, setFilters, onPlayerClick }) => {
             <div key={p.id} onClick={() => onPlayerClick(p)} className="flex items-center gap-3 px-4 py-3 cursor-pointer transition-all hover:bg-slate-800/50 active:bg-slate-700/50"
               style={{ borderBottom: '1px solid rgba(100,116,139,0.1)', animation: `fadeSlideUp 0.3s ease-out ${i * 25}ms both` }}>
               <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-white text-lg shadow-lg flex-shrink-0"
-                style={{ background: `linear-gradient(135deg, ${getOvrColor(p.ovr)} 0%, ${getOvrColor(p.ovr)}cc 100%)` }}>{p.ovr}</div>
+                style={{ background: getOvrColor() }}>{p.ovr}</div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-base font-bold text-white">{p.name.split(' ').pop().toUpperCase()}</span>
                   <span className="text-[11px] text-slate-500 font-medium">#{p.number}</span>
-                  {p.year.includes('RS') && <span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full" style={{ background: 'linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)' }}>RS</span>}
-                  {p.isTransfer && <span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full" style={{ background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' }}>PTL</span>}
+                  {p.year.includes('RS') && <span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full" style={{ background: '#7c3aed' }}>RS</span>}
+                  {p.isTransfer && <span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full" style={{ background: '#f97316' }}>PTL</span>}
                 </div>
                 <div className="flex items-center gap-2 mt-1">
                   <span className={`text-[12px] font-bold ${p.side === 'OFF' ? 'text-orange-400' : 'text-green-400'}`}>{p.pos}</span>
@@ -348,7 +351,7 @@ const RatingsView = ({ filters, setFilters, onPlayerClick }) => {
                 </div>
               </div>
               <div className="text-right flex-shrink-0">
-                <div className="text-2xl font-black" style={{ color: getOvrColor(p.composite >= 90 ? 90 : p.composite >= 85 ? 85 : 80) }}>{p.composite.toFixed(1)}</div>
+                <div className="text-2xl font-black" style={{ color: '#38bdf8' }}>{p.composite.toFixed(1)}</div>
                 <div className="text-[10px] text-slate-500 uppercase font-semibold">COMPOSITE</div>
               </div>
               <svg className="w-5 h-5 text-slate-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -356,7 +359,7 @@ const RatingsView = ({ filters, setFilters, onPlayerClick }) => {
           );
         })}
       </div>
-      <div className="flex-shrink-0 py-2.5 px-4 text-[12px] text-slate-400 font-semibold" style={{ background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)', borderTop: '1px solid rgba(100,116,139,0.2)' }}>
+      <div className="flex-shrink-0 py-2.5 px-4 text-[12px] text-slate-400 font-semibold" style={{ background: '#111827', borderTop: '1px solid rgba(100,116,139,0.2)' }}>
         {filtered.length} players
       </div>
     </div>
@@ -385,6 +388,7 @@ export default function MiamiRosterCompare() {
   const [tab, setTab] = useState('offense');
   const [filters, setFilters] = useState({ side: 'ALL', pos: 'ALL', stars: 0, sort: 'composite' });
   const [selected, setSelected] = useState(null);
+  const [showBackups, setShowBackups] = useState(false);
 
   return (
     <>
@@ -394,8 +398,8 @@ export default function MiamiRosterCompare() {
         @keyframes modalSlideUp { from { opacity: 0; transform: translateY(24px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
       `}</style>
       
-      <div className="h-screen w-screen flex flex-col overflow-hidden select-none" style={{ background: 'linear-gradient(180deg, #0f172a 0%, #020617 100%)', fontFamily: "'Inter', -apple-system, sans-serif" }}>
-        <header className="flex-shrink-0 px-4 py-3" style={{ background: 'linear-gradient(135deg, #f97316 0%, #16a34a 100%)' }}>
+      <div className="h-screen w-screen flex flex-col overflow-hidden select-none" style={{ background: '#0b1120', fontFamily: "'Inter', -apple-system, sans-serif" }}>
+        <header className="flex-shrink-0 px-4 py-3" style={{ background: '#111827' }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-lg text-white shadow-lg" style={{ background: 'rgba(255,255,255,0.25)', backdropFilter: 'blur(10px)' }}>U</div>
@@ -408,35 +412,59 @@ export default function MiamiRosterCompare() {
           </div>
         </header>
 
-        <nav className="flex-shrink-0 flex" style={{ background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)', borderBottom: '1px solid rgba(100,116,139,0.2)' }}>
-          {[{ id: 'offense', label: 'OFFENSE', color: '#f97316' }, { id: 'defense', label: 'DEFENSE', color: '#22c55e' }, { id: 'ratings', label: 'RATINGS', color: '#fbbf24' }].map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)} className="flex-1 py-3.5 text-[12px] font-bold relative transition-all" style={{ color: tab === t.id ? t.color : '#64748b' }}>
-              {t.label}
-              {tab === t.id && <div className="absolute bottom-0 left-4 right-4 h-0.5 rounded-full" style={{ background: t.color }} />}
+        <nav className="flex-shrink-0 flex items-center justify-between gap-3 px-3" style={{ background: '#0f172a', borderBottom: '1px solid rgba(100,116,139,0.2)' }}>
+          <div className="flex flex-1">
+            {[{ id: 'offense', label: 'OFFENSE', color: '#f97316' }, { id: 'defense', label: 'DEFENSE', color: '#22c55e' }, { id: 'ratings', label: 'RATINGS', color: '#fbbf24' }].map(t => (
+              <button key={t.id} onClick={() => setTab(t.id)} className="flex-1 py-3.5 text-[12px] font-bold relative transition-all" style={{ color: tab === t.id ? t.color : '#64748b' }}>
+                {t.label}
+                {tab === t.id && <div className="absolute bottom-0 left-4 right-4 h-0.5 rounded-full" style={{ background: t.color }} />}
+              </button>
+            ))}
+          </div>
+          {tab !== 'ratings' && (
+            <button
+              onClick={() => setShowBackups(value => !value)}
+              className="px-3 py-2 text-[11px] font-bold rounded-lg border border-slate-700 text-slate-200"
+              style={{ background: showBackups ? '#1f2937' : 'transparent' }}
+            >
+              {showBackups ? 'Hide 2nd String' : 'Show 2nd String'}
             </button>
-          ))}
+          )}
         </nav>
 
         <main className="flex-1 overflow-hidden relative">
           {tab !== 'ratings' && (
             <div className="absolute inset-0">
-              <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, rgba(34,197,94,0.1) 0%, transparent 70%)' }} />
-              {[...Array(10)].map((_, i) => <div key={i} className="absolute w-full h-px" style={{ top: `${(i + 1) * 9}%`, background: 'rgba(255,255,255,0.04)' }} />)}
+              {[...Array(11)].map((_, i) => (
+                <div key={i} className="absolute w-full h-px" style={{ top: `${(i + 1) * 8}%`, background: 'rgba(148,163,184,0.12)' }} />
+              ))}
             </div>
           )}
           <div className="relative h-full">
-            {tab === 'offense' && <OffenseFormation onPlayerClick={setSelected} />}
-            {tab === 'defense' && <DefenseFormation onPlayerClick={setSelected} />}
+            {tab === 'offense' && (
+              <div className="h-full overflow-y-auto py-3">
+                <div className="mx-auto max-w-5xl h-full rounded-3xl border border-slate-800/70 bg-slate-900/40 px-3">
+                  <OffenseFormation onPlayerClick={setSelected} showBackups={showBackups} />
+                </div>
+              </div>
+            )}
+            {tab === 'defense' && (
+              <div className="h-full overflow-y-auto py-3">
+                <div className="mx-auto max-w-5xl h-full rounded-3xl border border-slate-800/70 bg-slate-900/40 px-3">
+                  <DefenseFormation onPlayerClick={setSelected} showBackups={showBackups} />
+                </div>
+              </div>
+            )}
             {tab === 'ratings' && <RatingsView filters={filters} setFilters={setFilters} onPlayerClick={setSelected} />}
           </div>
         </main>
 
         {tab !== 'ratings' && (
-          <footer className="flex-shrink-0 py-2.5 px-4" style={{ background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)', borderTop: '1px solid rgba(100,116,139,0.2)' }}>
+          <footer className="flex-shrink-0 py-2.5 px-4" style={{ background: '#0f172a', borderTop: '1px solid rgba(100,116,139,0.2)' }}>
             <div className="flex items-center justify-center gap-6 text-[10px] text-slate-400">
               <span className="flex items-center gap-1.5"><svg viewBox="0 0 20 20" className="w-3.5 h-3.5 text-amber-400" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>Recruit Stars</span>
-              <span className="flex items-center gap-1.5"><span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full" style={{ background: 'linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)' }}>RS</span>Redshirt</span>
-              <span className="flex items-center gap-1.5"><span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full" style={{ background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' }}>PTL</span>Portal</span>
+              <span className="flex items-center gap-1.5"><span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full" style={{ background: '#7c3aed' }}>RS</span>Redshirt</span>
+              <span className="flex items-center gap-1.5"><span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full" style={{ background: '#f97316' }}>PTL</span>Portal</span>
               <span><span className="text-green-400 font-bold">FR</span> <span className="text-blue-400 font-bold">SO</span> <span className="text-amber-400 font-bold">JR</span> <span className="text-red-400 font-bold">SR</span></span>
             </div>
           </footer>
