@@ -1,12 +1,14 @@
 import React from 'react';
 import PositionGroup from './PositionGroup.jsx';
 
+const offensiveLineSlots = ['LT', 'LG', 'C', 'RG', 'RT'];
+
 export default function OffenseFormation({ offensiveStarters, onPlayerClick }) {
   return (
     <div className="h-full flex flex-col justify-start gap-4 py-3 px-4">
       <div className="flex justify-center gap-2">
-        {[offensiveStarters.LT, offensiveStarters.LG, offensiveStarters.C, offensiveStarters.RG, offensiveStarters.RT].map((pos, i) => (
-          <PositionGroup key={i} players={pos} onClick={onPlayerClick} baseDelay={i * 80} />
+        {offensiveLineSlots.map((slot, i) => (
+          <PositionGroup key={slot} players={offensiveStarters[slot]} onClick={onPlayerClick} baseDelay={i * 80} />
         ))}
       </div>
 
