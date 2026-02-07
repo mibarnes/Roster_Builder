@@ -1,6 +1,6 @@
 const WR_SOURCE_PRIORITY = ['WRX', 'WRZ', 'SLOT'];
 
-const slotAliases = {
+const offenseSlotAliases = {
   WR1: 'WR1',
   WR2: 'WR2',
   WR3: 'WR3',
@@ -12,10 +12,25 @@ const slotAliases = {
   SL: 'WR3'
 };
 
+const defenseSlotAliases = {
+  DE1: 'LDE',
+  DE2: 'RDE',
+  DT1: 'NT',
+  DT2: 'DT',
+  DT: 'DT',
+  LB1: 'WLB',
+  LB2: 'MLB',
+  LB3: 'NB',
+  CB1: 'LCB',
+  CB2: 'RCB',
+  S1: 'SS',
+  S2: 'FS'
+};
+
 const normalizeOffenseSlots = (offense = {}) => {
   const normalized = { ...offense };
 
-  for (const [sourceSlot, canonicalSlot] of Object.entries(slotAliases)) {
+  for (const [sourceSlot, canonicalSlot] of Object.entries(offenseSlotAliases)) {
     if (offense[sourceSlot] && !normalized[canonicalSlot]) {
       normalized[canonicalSlot] = offense[sourceSlot];
     }
@@ -29,12 +44,32 @@ const normalizeOffenseSlots = (offense = {}) => {
   return normalized;
 };
 
+const normalizeDefenseSlots = (defense = {}) => {
+  const normalized = { ...defense };
+
+  for (const [slot, playerId] of Object.entries(defense ?? {})) {
+    const match = slot.match(/^([A-Z]+)(\d+)?$/);
+    if (!match) continue;
+
+    const canonicalBase = defenseSlotAliases[match[1]];
+    if (!canonicalBase) continue;
+
+    const canonicalSlot = `${canonicalBase}${match[2] ?? ''}`;
+    if (!normalized[canonicalSlot]) {
+      normalized[canonicalSlot] = playerId;
+    }
+  }
+
+  return normalized;
+};
+
 export const normalizeDepthChart = (depthChart = {}) => ({
   ...depthChart,
   offense: normalizeOffenseSlots(depthChart.offense),
-  defense: { ...(depthChart.defense ?? {}) },
+  defense: normalizeDefenseSlots(depthChart.defense),
   slotMetadata: {
     wrCanonical: ['WR1', 'WR2', 'WR3'],
-    sourcePriority: WR_SOURCE_PRIORITY
+    sourcePriority: WR_SOURCE_PRIORITY,
+    defenseCanonical: ['LDE', 'RDE', 'NT', 'DT', 'WLB', 'MLB', 'NB', 'LCB', 'RCB', 'SS', 'FS']
   }
 });

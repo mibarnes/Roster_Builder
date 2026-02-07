@@ -4,25 +4,264 @@ export const productionSource = {
   asOf: '2025-12-31',
   season: 2025,
   playerProduction: [
-    { playerId: 'QB-CBECK', games: 13, passingYards: 3072, passingTD: 25, interceptions: 10, qbr: 81.4 },
-    { playerId: 'QB-EWILLIAMS', games: 4, passingYards: 156, passingTD: 0, interceptions: 0, qbr: 61.2 },
-    { playerId: 'RB-MFLETCHER', games: 13, rushingYards: 685, rushingTD: 10, receptions: 14, receivingYards: 128 },
-    { playerId: 'WR-KMARION', games: 13, receptions: 41, receivingYards: 557, receivingTD: 1, returnYards: 322 },
-    { playerId: 'WR-CJDANIELS', games: 13, receptions: 35, receivingYards: 391, receivingTD: 7 },
-    { playerId: 'WR-MTONEY', games: 13, receptions: 84, receivingYards: 970, receivingTD: 7 },
-    { playerId: 'TE-ABAUMAN', games: 13, receptions: 13, receivingYards: 126, receivingTD: 1 },
-    { playerId: 'LT-MBELL', games: 13, starts: 12, sacksAllowed: 3, penalties: 4 },
-    { playerId: 'LG-MMCCOY', games: 13, starts: 12, sacksAllowed: 2, penalties: 5 },
-    { playerId: 'C-JBROCKER', games: 13, starts: 12, sacksAllowed: 1, penalties: 2 },
-    { playerId: 'RG-ACOOPER', games: 13, starts: 12, sacksAllowed: 2, penalties: 3 },
-    { playerId: 'RT-FMAUIGOA', games: 13, starts: 13, sacksAllowed: 1, penalties: 2 },
-    { playerId: 'DE-RBAIN', games: 13, tackles: 37, sacks: 8.5, tfl: 13, forcedFumbles: 1 },
-    { playerId: 'DT-DBLAY', games: 13, tackles: 25, sacks: 0.0, tfl: 4 },
-    { playerId: 'DT-AMOTEN', games: 13, tackles: 23, sacks: 4.5, tfl: 8 },
-    { playerId: 'DE-AMESIDOR', games: 13, tackles: 46, sacks: 7.0, tfl: 10, forcedFumbles: 4 },
-    { playerId: 'LB-MTOURE', games: 13, tackles: 54, sacks: 1.0, interceptions: 0 },
-    { playerId: 'LB-WBISSAINTHE', games: 13, tackles: 46, sacks: 0.0, interceptions: 1 },
-    { playerId: 'CB-DPORTER', games: 13, tackles: 32, interceptions: 2, passBreakups: 7 },
-    { playerId: 'S-JPOWELL', games: 13, tackles: 39, interceptions: 1, passBreakups: 4 }
+    {
+      playerId: 'QB-CARSONBECK',
+      games: 13,
+      PAS: 3072,
+      TD: 25,
+      INT: 10,
+      RTG: 165.8
+    },
+    {
+      playerId: 'QB-EMORYWILLI',
+      games: 13,
+      PAS: 156,
+      TD: 0
+    },
+    {
+      playerId: 'RB-MARKFLETCH',
+      games: 13,
+      YDS: 685,
+      TD: 10,
+      REC: 14
+    },
+    {
+      playerId: 'RB-CHARMARBRO',
+      games: 13,
+      YDS: 389,
+      TD: 5
+    },
+    {
+      playerId: 'WR-KEELANMARI',
+      games: 13,
+      REC: 41,
+      YDS: 557,
+      TD: 1
+    },
+    {
+      playerId: 'WR-JOSHUAMOOR',
+      games: 13,
+      REC: 14,
+      YDS: 194,
+      TD: 2
+    },
+    {
+      playerId: 'WR-CJDANIELS',
+      games: 13,
+      REC: 35,
+      YDS: 391,
+      TD: 7
+    },
+    {
+      playerId: 'WR-JOSHISATRA',
+      games: 13,
+      REC: 11,
+      YDS: 168,
+      TD: 1
+    },
+    {
+      playerId: 'WR-MALACHITON',
+      games: 13,
+      REC: 84,
+      YDS: 970,
+      TD: 7
+    },
+    {
+      playerId: 'WR-TONYJOHNSO',
+      games: 13,
+      REC: 7,
+      YDS: 162
+    },
+    {
+      playerId: 'LT-MARKELBELL',
+      games: 13,
+      GS: 12
+    },
+    {
+      playerId: 'LT-DERYCPLAZZ',
+      games: 13
+    },
+    {
+      playerId: 'LG-MATTHEWMCC',
+      games: 13,
+      GS: 12
+    },
+    {
+      playerId: 'OG-SAMSONOKUN',
+      games: 13,
+      GS: 8
+    },
+    {
+      playerId: 'C-JAMESBROCK',
+      games: 13,
+      GS: 12
+    },
+    {
+      playerId: 'C-RYANRODRIG',
+      games: 13
+    },
+    {
+      playerId: 'RG-ANEZCOOPER',
+      games: 13,
+      GS: 12
+    },
+    {
+      playerId: 'OG-MAXBUCHANA',
+      games: 13
+    },
+    {
+      playerId: 'RT-FRANCISMAU',
+      games: 13,
+      GS: 13
+    },
+    {
+      playerId: 'OT-TOMMYKINSL',
+      games: 13
+    },
+    {
+      playerId: 'TE-ALEXBAUMAN',
+      games: 13,
+      REC: 13,
+      YDS: 126,
+      TD: 1
+    },
+    {
+      playerId: 'TE-ELIJALOFTO',
+      games: 13,
+      REC: 21,
+      YDS: 195,
+      TD: 3
+    },
+    {
+      playerId: 'DE-RUEBENBAIN',
+      games: 13,
+      TKL: 37,
+      SCK: 8.5,
+      TFL: 13
+    },
+    {
+      playerId: 'DE-MARQUISELI',
+      games: 13,
+      TKL: 18,
+      SCK: 1.5
+    },
+    {
+      playerId: 'NT-DAVIDBLAYJ',
+      games: 13,
+      TKL: 25,
+      TFL: 4
+    },
+    {
+      playerId: 'DT-JUSTINSCOT',
+      games: 13,
+      TKL: 19,
+      SCK: 1
+    },
+    {
+      playerId: 'DT-AHMADMOTEN',
+      games: 13,
+      TKL: 23,
+      SCK: 4.5,
+      TFL: 8
+    },
+    {
+      playerId: 'DT-ARMONDOBLO',
+      games: 13,
+      TKL: 13,
+      SCK: 2.5
+    },
+    {
+      playerId: 'DE-AKHEEMMESI',
+      games: 13,
+      TKL: 46,
+      SCK: 7,
+      FF: 4
+    },
+    {
+      playerId: 'DE-HERBERTSCR',
+      games: 13,
+      TKL: 3
+    },
+    {
+      playerId: 'LB-MOHAMEDTOU',
+      games: 13,
+      TKL: 54,
+      SCK: 1
+    },
+    {
+      playerId: 'LB-CHASESMITH',
+      games: 13,
+      TKL: 24
+    },
+    {
+      playerId: 'LB-WESLEYBISS',
+      games: 13,
+      TKL: 46,
+      INT: 1
+    },
+    {
+      playerId: 'LB-RAULAGUIRR',
+      games: 13,
+      TKL: 33
+    },
+    {
+      playerId: 'CB-OJFREDERIQ',
+      games: 13,
+      TKL: 10,
+      PD: 5
+    },
+    {
+      playerId: 'CB-XAVIERLUCA',
+      games: 13,
+      TKL: 35,
+      INT: 1
+    },
+    {
+      playerId: 'SS-JAKOBETHOM',
+      games: 13,
+      TKL: 48,
+      INT: 4
+    },
+    {
+      playerId: 'SS-DYLANDAY',
+      games: 13,
+      TKL: 10,
+      SCK: 1
+    },
+    {
+      playerId: 'FS-ZECHARIAHP',
+      games: 13,
+      TKL: 47,
+      PD: 5
+    },
+    {
+      playerId: 'FS-BRYCEFITZG',
+      games: 13,
+      TKL: 15,
+      INT: 4
+    },
+    {
+      playerId: 'CB-ETHANOCONN',
+      games: 13,
+      TKL: 13,
+      PD: 2
+    },
+    {
+      playerId: 'CB-JABOREEANT',
+      games: 13,
+      TKL: 5
+    },
+    {
+      playerId: 'NB-KEIONTESCO',
+      games: 13,
+      TKL: 44,
+      INT: 1,
+      PD: 5
+    },
+    {
+      playerId: 'NB-ISAIAHTAYL',
+      games: 13,
+      TKL: 8
+    }
   ]
 };
