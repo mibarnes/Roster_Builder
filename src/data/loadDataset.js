@@ -14,6 +14,7 @@ const getDataMode = (mode) =>
 const readCache = (key) => {
   const cached = cache.get(key);
   if (!cached || cached.expiresAt < Date.now()) {
+    cache.delete(key);
     return null;
   }
 
