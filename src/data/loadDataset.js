@@ -8,9 +8,7 @@ const DEFAULT_TTL_MS = 30_000;
 
 const getDataMode = (mode) =>
   mode ??
-  process.env.DATA_MODE ??
   import.meta.env?.VITE_DATA_MODE ??
-  import.meta.env?.DATA_MODE ??
   'mock';
 
 const readCache = (key) => {

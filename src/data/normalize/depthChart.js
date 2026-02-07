@@ -27,8 +27,12 @@ const defenseSlotAliases = {
   S2: 'FS'
 };
 
+const withoutUndefinedValues = (slots = {}) => (
+  Object.fromEntries(Object.entries(slots).filter(([, value]) => value !== undefined))
+);
+
 const normalizeOffenseSlots = (offense = {}) => {
-  const normalized = { ...offense };
+  const normalized = withoutUndefinedValues(offense);
 
   for (const [sourceSlot, canonicalSlot] of Object.entries(offenseSlotAliases)) {
     if (offense[sourceSlot] && !normalized[canonicalSlot]) {
@@ -45,7 +49,7 @@ const normalizeOffenseSlots = (offense = {}) => {
 };
 
 const normalizeDefenseSlots = (defense = {}) => {
-  const normalized = { ...defense };
+  const normalized = withoutUndefinedValues(defense);
 
   for (const [slot, playerId] of Object.entries(defense ?? {})) {
     const match = slot.match(/^([A-Z]+)(\d+)?$/);

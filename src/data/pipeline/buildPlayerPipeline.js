@@ -126,10 +126,14 @@ export const buildPlayerPipeline = (datasetBySource) => {
   });
 
   const playerMap = new Map(players.map((player) => [player.playerId, player]));
-  const starters = collectStarterIds(datasetBySource?.roster?.depthChart).map((entry) => ({
-    ...entry,
-    side: entry.side === 'OFFENSE' ? 'OFFENSE' : 'DEFENSE'
-  }));
+  const validSides = new Set(['OFFENSE', 'DEFENSE']);
+  const starters = collectStarterIds(datasetBySource?.roster?.depthChart).map((entry) => {
+    if (!validSides.has(entry.side)) {
+      console.warn(`Unknown depth chart side: "${entry.side}" for slot ${entry.slot}`);
+    }
+
+    return { ...entry };
+  });
 
   const coverage = {
     rosterCount: rosterPlayers.length,
