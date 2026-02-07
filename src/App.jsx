@@ -7,6 +7,7 @@ import OffenseFormation from './components/OffenseFormation.jsx';
 import PlayerModal from './components/PlayerModal.jsx';
 import RatingsView from './components/RatingsView.jsx';
 import Star from './components/Star.jsx';
+import DemoWindow from './components/DemoWindow.jsx';
 
 const EMPTY_OFFENSE = { LT: [], LG: [], C: [], RG: [], RT: [], WRX: [], SLOT: [], QB: [], RB: [], TE: [], WRZ: [] };
 const EMPTY_DEFENSE = { LDE: [], NT: [], DT: [], RDE: [], LCB: [], SS: [], WLB: [], MLB: [], NB: [], FS: [], RCB: [] };
@@ -51,7 +52,8 @@ export default function MiamiRosterCompare() {
   const tabs = [{ id: 'offense', label: 'OFFENSE' }, { id: 'defense', label: 'DEFENSE' }, { id: 'ratings', label: 'RATINGS' }];
 
   return (
-    <div className="h-screen w-screen flex flex-col overflow-hidden select-none font-sans bg-card-bg">
+    <DemoWindow>
+      <div className="h-full w-full flex flex-col overflow-hidden select-none font-sans bg-card-bg">
       <header className="flex-shrink-0 px-4 py-3 bg-surface border-b border-surface-border">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -110,6 +112,7 @@ export default function MiamiRosterCompare() {
       )}
 
       <PlayerModal player={selected} onClose={() => setSelected(null)} returnFocusEl={returnFocusEl} />
-    </div>
+      </div>
+    </DemoWindow>
   );
 }
