@@ -201,3 +201,17 @@ Set one of:
 - `DATA_MODE=connected`
 
 The loader falls back to mock mode if connected mode fails.
+
+## Phase 3: Player Data Pipeline
+
+Phase 3 composes the Phase 2 source-partitioned dataset into a unified, player-centric pipeline for downstream app screens and analytics.
+
+### Pipeline Capabilities
+- Joins roster, recruiting, ratings, and production by `playerId`
+- Produces enriched depth chart slots and flattened starter lists
+- Computes starter-based team/offense/defense summary metrics
+- Reports join coverage and unmatched source IDs
+
+### Pipeline Validation Commands
+- `npm run check:pipeline` → validates pipeline output in mock mode
+- `npm run check:pipeline:connected` → validates pipeline output in connected mode
