@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:data": "node src/data/validateDataset.js",
+    "check:data:connected": "DATA_MODE=connected node src/data/validateDataset.js"
   },
   "dependencies": {
     "react": "^18.3.1",

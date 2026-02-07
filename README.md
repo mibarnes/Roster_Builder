@@ -179,3 +179,25 @@ This project is for demonstration and educational purposes.
 ---
 
 Built with ❤️ for college football fans everywhere. Go Canes! 🙌
+
+## Phase 2: Source Connections (Data Layer)
+
+Phase 2 introduces a source adapter architecture that supports both `mock` and `connected` data modes while preserving the existing source-partitioned schema.
+
+### New Data Layer Capabilities
+- Adapter contract per domain (`fetchRaw`, `mapToCanonical`, `validate`, `metadata`)
+- Canonical depth chart normalization (`WR1`, `WR2`, `WR3`)
+- Generic completeness validation for required components
+- Loader orchestration with runtime mode switching and fallback
+- Alias registry scaffold for ID reconciliation
+
+### Data Validation Commands
+- `npm run check:data` → validates required components in mock mode
+- `npm run check:data:connected` → validates connected adapter output
+
+### Runtime mode
+Set one of:
+- `DATA_MODE=mock`
+- `DATA_MODE=connected`
+
+The loader falls back to mock mode if connected mode fails.
