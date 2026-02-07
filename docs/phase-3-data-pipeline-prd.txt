@@ -1,0 +1,36 @@
+Phase 3 PRD — Player Data Pipeline
+
+Product Goal
+Build a unified player-centric data pipeline that composes the source-partitioned Phase 2 dataset into joined player records for app consumption and metric generation.
+
+In Scope
+- Merge roster, recruiting, ratings, and production by canonical playerId.
+- Preserve source-partitioned contracts from Phase 2 while adding a derived pipeline view.
+- Compute starter-level summary metrics for team, offense, and defense.
+- Provide depth chart views enriched with joined player records.
+- Add pipeline validation commands for mock and connected modes.
+
+Out of Scope
+- UI redesign or full replacement of existing static app views.
+- New scoring models beyond starter composite/overall rollups.
+- Data writeback and persistence.
+
+Pipeline Contract
+- Input: Phase 2 `datasetBySource` object.
+- Output:
+  - `players[]` joined roster-first records with nested `bio`, `recruiting`, `ratings`, `production`.
+  - `starters[]` flattened starter slots by side/slot/playerId.
+  - `depthChart` enriched slots with attached player objects.
+  - `metrics` with team/offense/defense starter summaries.
+  - `coverage` join completeness and unmatched IDs per source.
+
+Validation
+- `npm run check:pipeline` validates join completeness in mock mode.
+- `npm run check:pipeline:connected` validates connected-mode pipeline output.
+
+Acceptance Criteria
+1. Pipeline emits one joined record per roster player.
+2. Coverage reporting identifies both matched and unmatched IDs.
+3. Starter metrics are generated from depth chart starters.
+4. Pipeline works in mock and connected modes with no contract breaks.
+5. Existing Phase 2 dataset checks remain valid.
