@@ -37,18 +37,7 @@ export const rosterAdapter = {
         eligibility_remaining: p.eligibilityRemaining,
         is_transfer: p.isTransfer
       })),
-      depth_chart: {
-        offense: {
-          ...mockRosterSource.depthChart.offense,
-          WRX: mockRosterSource.depthChart.offense.WR1,
-          WRZ: mockRosterSource.depthChart.offense.WR2,
-          SLOT: mockRosterSource.depthChart.offense.WR3,
-          WR1: undefined,
-          WR2: undefined,
-          WR3: undefined
-        },
-        defense: mockRosterSource.depthChart.defense
-      }
+      depth_chart: mockRosterSource.depthChart
     };
   },
 

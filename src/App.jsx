@@ -1,100 +1,14 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { loadPlayerPipeline } from './data/index.js';
+import { mapPipelineToUI } from './data/mapPipelineToUI.js';
 
-const offensiveStarters = {
-  QB: [
-    { id: 1, name: 'Carson Beck', number: 11, pos: 'QB', year: 'RS SR', stars: 4, composite: 89.9, isTransfer: true, transferStars: 5, stats: { PAS: 3072, TD: 25, INT: 10, RTG: 165.8 }, ht: "6'4\"", wt: 220, ovr: 91 },
-    { id: 2, name: 'Emory Williams', number: 8, pos: 'QB', year: 'RS SO', stars: 3, composite: 82.0, stats: { PAS: 156, TD: 0 }, ht: "6'5\"", wt: 220, ovr: 74 }
-  ],
-  RB: [
-    { id: 3, name: 'Mark Fletcher Jr.', number: 4, pos: 'RB', year: 'JR', stars: 4, composite: 92.7, stats: { YDS: 685, TD: 10, REC: 14 }, ht: "6'2\"", wt: 225, ovr: 88 },
-    { id: 4, name: 'CharMar Brown', number: 6, pos: 'RB', year: 'RS SO', stars: 3, composite: 85.0, isTransfer: true, stats: { YDS: 389, TD: 5 }, ht: "5'11\"", wt: 214, ovr: 79 }
-  ],
-  WRX: [
-    { id: 5, name: 'Keelan Marion', number: 0, pos: 'WR', year: 'RS SR', stars: 3, composite: 84.0, isTransfer: true, stats: { REC: 41, YDS: 557, TD: 1 }, ht: "6'0\"", wt: 195, ovr: 82 },
-    { id: 6, name: 'Joshua Moore', number: 3, pos: 'WR', year: 'FR', stars: 4, composite: 92.0, stats: { REC: 14, YDS: 194, TD: 2 }, ht: "6'4\"", wt: 190, ovr: 80 }
-  ],
-  WRZ: [
-    { id: 7, name: 'CJ Daniels', number: 7, pos: 'WR', year: 'RS SR', stars: 3, composite: 82.0, isTransfer: true, stats: { REC: 35, YDS: 391, TD: 7 }, ht: "6'2\"", wt: 205, ovr: 83 },
-    { id: 8, name: 'Joshisa Trader', number: 1, pos: 'WR', year: 'SO', stars: 4, composite: 88.0, stats: { REC: 11, YDS: 168, TD: 1 }, ht: "6'1\"", wt: 180, ovr: 76 }
-  ],
-  SLOT: [
-    { id: 9, name: 'Malachi Toney', number: 10, pos: 'WR', year: 'FR', stars: 4, composite: 93.6, stats: { REC: 84, YDS: 970, TD: 7 }, ht: "5'11\"", wt: 185, ovr: 89 },
-    { id: 10, name: 'Tony Johnson', number: 17, pos: 'WR', year: 'RS SR', stars: 3, composite: 80.0, isTransfer: true, stats: { REC: 7, YDS: 162 }, ht: "5'10\"", wt: 187, ovr: 73 }
-  ],
-  LT: [
-    { id: 11, name: 'Markel Bell', number: 70, pos: 'LT', year: 'SR', stars: 3, composite: 84.0, isTransfer: true, stats: { GS: 12 }, ht: "6'9\"", wt: 340, ovr: 81 },
-    { id: 12, name: 'Deryc Plazz', number: 79, pos: 'LT', year: 'RS FR', stars: 3, composite: 82.0, stats: {}, ht: "6'4\"", wt: 275, ovr: 70 }
-  ],
-  LG: [
-    { id: 13, name: 'Matthew McCoy', number: 78, pos: 'LG', year: 'RS JR', stars: 3, composite: 86.0, stats: { GS: 12 }, ht: "6'6\"", wt: 290, ovr: 82 },
-    { id: 14, name: 'Samson Okunlola', number: 63, pos: 'OG', year: 'RS SO', stars: 5, composite: 97.1, stats: { GS: 8 }, ht: "6'6\"", wt: 300, ovr: 84 }
-  ],
-  C: [
-    { id: 15, name: 'James Brockermeyer', number: 52, pos: 'C', year: 'RS SR', stars: 4, composite: 91.6, isTransfer: true, stats: { GS: 12 }, ht: "6'3\"", wt: 295, ovr: 85 },
-    { id: 16, name: 'Ryan Rodriguez', number: 76, pos: 'C', year: 'RS SR', stars: 3, composite: 82.0, stats: {}, ht: "6'2\"", wt: 275, ovr: 74 }
-  ],
-  RG: [
-    { id: 17, name: 'Anez Cooper', number: 73, pos: 'RG', year: 'SR', stars: 3, composite: 83.0, stats: { GS: 12 }, ht: "6'6\"", wt: 350, ovr: 83 },
-    { id: 18, name: 'Max Buchanan', number: 66, pos: 'OG', year: 'FR', stars: 4, composite: 88.0, stats: {}, ht: "6'4\"", wt: 310, ovr: 72 }
-  ],
-  RT: [
-    { id: 19, name: 'Francis Mauigoa', number: 61, pos: 'RT', year: 'JR', stars: 5, composite: 98.9, stats: { GS: 13 }, ht: "6'6\"", wt: 315, ovr: 92 },
-    { id: 20, name: 'Tommy Kinsler IV', number: 62, pos: 'OT', year: 'RS SO', stars: 4, composite: 89.0, stats: {}, ht: "6'6\"", wt: 340, ovr: 77 }
-  ],
-  TE: [
-    { id: 21, name: 'Alex Bauman', number: 87, pos: 'TE', year: 'SR', stars: 3, composite: 82.0, isTransfer: true, stats: { REC: 13, YDS: 126, TD: 1 }, ht: "6'5\"", wt: 245, ovr: 79 },
-    { id: 22, name: 'Elija Lofton', number: 9, pos: 'TE', year: 'SO', stars: 4, composite: 91.0, stats: { REC: 21, YDS: 195, TD: 3 }, ht: "6'3\"", wt: 230, ovr: 81 }
-  ]
+const EMPTY_OFFENSE = {
+  LT: [], LG: [], C: [], RG: [], RT: [], WRX: [], SLOT: [], QB: [], RB: [], TE: [], WRZ: []
 };
 
-const defensiveStarters = {
-  LDE: [
-    { id: 23, name: 'Rueben Bain Jr.', number: 4, pos: 'DE', year: 'JR', stars: 4, composite: 95.6, stats: { TKL: 37, SCK: 8.5, TFL: 13 }, ht: "6'3\"", wt: 275, ovr: 94 },
-    { id: 24, name: 'Marquise Lightfoot', number: 12, pos: 'DE', year: 'SO', stars: 5, composite: 92.3, stats: { TKL: 18, SCK: 1.5 }, ht: "6'5\"", wt: 230, ovr: 80 }
-  ],
-  NT: [
-    { id: 25, name: 'David Blay Jr.', number: 11, pos: 'NT', year: 'RS SR', stars: 3, composite: 84.0, isTransfer: true, stats: { TKL: 25, TFL: 4 }, ht: "6'4\"", wt: 303, ovr: 80 },
-    { id: 26, name: 'Justin Scott', number: 5, pos: 'DT', year: 'SO', stars: 5, composite: 95.1, stats: { TKL: 19, SCK: 1 }, ht: "6'4\"", wt: 298, ovr: 82 }
-  ],
-  DT: [
-    { id: 27, name: 'Ahmad Moten Sr.', number: 99, pos: 'DT', year: 'RS JR', stars: 4, composite: 89.0, stats: { TKL: 23, SCK: 4.5, TFL: 8 }, ht: "6'3\"", wt: 325, ovr: 84 },
-    { id: 28, name: 'Armondo Blount', number: 18, pos: 'DT', year: 'SO', stars: 5, composite: 93.9, stats: { TKL: 13, SCK: 2.5 }, ht: "6'4\"", wt: 260, ovr: 79 }
-  ],
-  RDE: [
-    { id: 29, name: 'Akheem Mesidor', number: 3, pos: 'DE', year: 'RS SR', stars: 4, composite: 92.0, isTransfer: true, stats: { TKL: 46, SCK: 7, FF: 4 }, ht: "6'3\"", wt: 280, ovr: 88 },
-    { id: 30, name: 'Herbert Scroggins III', number: 35, pos: 'DE', year: 'FR', stars: 4, composite: 88.0, stats: { TKL: 3 }, ht: "6'3\"", wt: 250, ovr: 72 }
-  ],
-  WLB: [
-    { id: 31, name: 'Mohamed Toure', number: 1, pos: 'LB', year: 'RS SR', stars: 4, composite: 91.0, isTransfer: true, stats: { TKL: 54, SCK: 1 }, ht: "6'2\"", wt: 236, ovr: 85 },
-    { id: 32, name: 'Chase Smith', number: 41, pos: 'LB', year: 'RS SR', stars: 3, composite: 82.0, stats: { TKL: 24 }, ht: "6'2\"", wt: 210, ovr: 76 }
-  ],
-  MLB: [
-    { id: 33, name: 'Wesley Bissainthe', number: 31, pos: 'LB', year: 'SR', stars: 4, composite: 91.6, stats: { TKL: 46, INT: 1 }, ht: "6'1\"", wt: 205, ovr: 86 },
-    { id: 34, name: 'Raul Aguirre Jr.', number: 10, pos: 'LB', year: 'JR', stars: 4, composite: 88.0, stats: { TKL: 33 }, ht: "6'2\"", wt: 233, ovr: 80 }
-  ],
-  LCB: [
-    { id: 35, name: 'OJ Frederique Jr.', number: 29, pos: 'CB', year: 'SO', stars: 3, composite: 85.0, stats: { TKL: 10, PD: 5 }, ht: "6'0\"", wt: 180, ovr: 78 },
-    { id: 36, name: 'Xavier Lucas', number: 6, pos: 'CB', year: 'SO', stars: 3, composite: 84.0, isTransfer: true, stats: { TKL: 35, INT: 1 }, ht: "6'2\"", wt: 198, ovr: 80 }
-  ],
-  SS: [
-    { id: 37, name: 'Jakobe Thomas', number: 8, pos: 'SS', year: 'RS SR', stars: 3, composite: 86.0, isTransfer: true, stats: { TKL: 48, INT: 4 }, ht: "6'2\"", wt: 200, ovr: 87 },
-    { id: 38, name: 'Dylan Day', number: 23, pos: 'SS', year: 'SO', stars: 4, composite: 89.0, stats: { TKL: 10, SCK: 1 }, ht: "6'2\"", wt: 200, ovr: 77 }
-  ],
-  FS: [
-    { id: 39, name: 'Zechariah Poyser', number: 7, pos: 'FS', year: 'RS SO', stars: 3, composite: 84.0, isTransfer: true, stats: { TKL: 47, PD: 5 }, ht: "6'2\"", wt: 190, ovr: 82 },
-    { id: 40, name: 'Bryce Fitzgerald', number: 13, pos: 'FS', year: 'FR', stars: 4, composite: 90.0, stats: { TKL: 15, INT: 4 }, ht: "6'1\"", wt: 172, ovr: 79 }
-  ],
-  RCB: [
-    { id: 41, name: "Ethan O'Connor", number: 24, pos: 'CB', year: 'RS SO', stars: 3, composite: 84.0, isTransfer: true, stats: { TKL: 13, PD: 2 }, ht: "6'1\"", wt: 172, ovr: 77 },
-    { id: 42, name: "Ja'Boree Antoine", number: 16, pos: 'CB', year: 'FR', stars: 4, composite: 92.0, stats: { TKL: 5 }, ht: "6'1\"", wt: 185, ovr: 75 }
-  ],
-  NB: [
-    { id: 43, name: 'Keionte Scott', number: 0, pos: 'NB', year: 'SR', stars: 3, composite: 86.0, isTransfer: true, stats: { TKL: 44, INT: 1, PD: 5 }, ht: "6'0\"", wt: 192, ovr: 84 },
-    { id: 44, name: 'Isaiah Taylor', number: 28, pos: 'NB', year: 'RS SR', stars: 3, composite: 82.0, isTransfer: true, stats: { TKL: 8 }, ht: "5'11\"", wt: 200, ovr: 74 }
-  ]
+const EMPTY_DEFENSE = {
+  LDE: [], NT: [], DT: [], RDE: [], LCB: [], SS: [], WLB: [], MLB: [], NB: [], FS: [], RCB: []
 };
-
-const getAllPlayers = () => [...Object.values(offensiveStarters).flat().map(p => ({ ...p, side: 'OFF' })), ...Object.values(defensiveStarters).flat().map(p => ({ ...p, side: 'DEF' }))];
 
 const Star = ({ filled }) => (
   <svg viewBox="0 0 20 20" className={`w-2.5 h-2.5 ${filled ? 'text-amber-400' : 'text-slate-700'}`} fill="currentColor">
@@ -176,7 +90,7 @@ const PositionGroup = ({ players, onClick, baseDelay = 0 }) => (
   </div>
 );
 
-const OffenseFormation = ({ onPlayerClick }) => (
+const OffenseFormation = ({ offensiveStarters, onPlayerClick }) => (
   <div className="h-full flex flex-col justify-start gap-4 py-3 px-4">
     {/* Offensive Line - Front */}
     <div className="flex justify-center gap-2">
@@ -203,7 +117,7 @@ const OffenseFormation = ({ onPlayerClick }) => (
   </div>
 );
 
-const DefenseFormation = ({ onPlayerClick }) => (
+const DefenseFormation = ({ defensiveStarters, onPlayerClick }) => (
   <div className="h-full flex flex-col justify-start gap-4 py-3 px-4">
     {/* Defensive Line - 4 players */}
     <div className="flex justify-center gap-3">
@@ -296,8 +210,8 @@ const PlayerModal = ({ player, onClose }) => {
   );
 };
 
-const RatingsView = ({ filters, setFilters, onPlayerClick }) => {
-  const all = useMemo(() => getAllPlayers(), []);
+const RatingsView = ({ allPlayers, filters, setFilters, onPlayerClick }) => {
+  const all = useMemo(() => allPlayers, [allPlayers]);
   const filtered = useMemo(() => {
     let r = [...all];
     if (filters.side !== 'ALL') r = r.filter(p => p.side === filters.side);
@@ -367,8 +281,8 @@ const RatingsView = ({ filters, setFilters, onPlayerClick }) => {
   );
 };
 
-const CompositeHeader = () => {
-  const calc = (p, d) => { let t = 0, c = 0; Object.values(p).forEach(x => x.slice(0, d).forEach(y => { t += y.composite; c++; })); return (t / c).toFixed(1); };
+const CompositeHeader = ({ offensiveStarters, defensiveStarters }) => {
+  const calc = (p, d) => { let t = 0, c = 0; Object.values(p).forEach(x => x.slice(0, d).forEach(y => { t += y.composite; c++; })); return c ? (t / c).toFixed(1) : '0.0'; };
   return (
     <div className="flex items-center gap-2">
       {[
@@ -389,6 +303,26 @@ export default function MiamiRosterCompare() {
   const [tab, setTab] = useState('offense');
   const [filters, setFilters] = useState({ side: 'ALL', pos: 'ALL', stars: 0, sort: 'composite' });
   const [selected, setSelected] = useState(null);
+  const [rosterData, setRosterData] = useState({ offensiveStarters: EMPTY_OFFENSE, defensiveStarters: EMPTY_DEFENSE, allPlayers: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+
+  useEffect(() => {
+    const hydrateRoster = async () => {
+      try {
+        const summary = await loadPlayerPipeline({ mode: 'mock' });
+        setRosterData(mapPipelineToUI(summary.pipeline));
+      } catch (error) {
+        setLoadError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    hydrateRoster();
+  }, []);
+
+  const { offensiveStarters, defensiveStarters, allPlayers } = rosterData;
 
   return (
     <>
@@ -408,7 +342,7 @@ export default function MiamiRosterCompare() {
                 <p className="text-[11px] text-gray-400 font-semibold">2025 ROSTER DEPTH CHART</p>
               </div>
             </div>
-            <CompositeHeader />
+            <CompositeHeader offensiveStarters={offensiveStarters} defensiveStarters={defensiveStarters} />
           </div>
         </header>
 
@@ -420,6 +354,9 @@ export default function MiamiRosterCompare() {
             </button>
           ))}
         </nav>
+
+        {isLoading && <div className="px-4 py-2 text-xs font-semibold text-emerald-300" style={{ background: "#052e16" }}>Loading roster data…</div>}
+        {loadError && <div className="px-4 py-2 text-xs font-semibold text-red-300" style={{ background: "#3f0b0b" }}>Failed to load data: {loadError}</div>}
 
         <main className="flex-1 overflow-hidden relative">
           {tab !== 'ratings' && (
@@ -433,18 +370,18 @@ export default function MiamiRosterCompare() {
             {tab === 'offense' && (
               <div className="h-full overflow-y-auto py-3">
                 <div className="mx-auto max-w-6xl h-full rounded-2xl border border-gray-900 bg-black px-3">
-                  <OffenseFormation onPlayerClick={setSelected} />
+                  <OffenseFormation offensiveStarters={offensiveStarters} onPlayerClick={setSelected} />
                 </div>
               </div>
             )}
             {tab === 'defense' && (
               <div className="h-full overflow-y-auto py-3">
                 <div className="mx-auto max-w-6xl h-full rounded-2xl border border-gray-900 bg-black px-3">
-                  <DefenseFormation onPlayerClick={setSelected} />
+                  <DefenseFormation defensiveStarters={defensiveStarters} onPlayerClick={setSelected} />
                 </div>
               </div>
             )}
-            {tab === 'ratings' && <RatingsView filters={filters} setFilters={setFilters} onPlayerClick={setSelected} />}
+            {tab === 'ratings' && <RatingsView allPlayers={allPlayers} filters={filters} setFilters={setFilters} onPlayerClick={setSelected} />}
           </div>
         </main>
 
