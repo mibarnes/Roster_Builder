@@ -1,7 +1,8 @@
-import { mockDatasetBySource } from './mock/index.js';
+import { getMockDatasetByTeam } from './mock/index.js';
 import { sourceRegistry } from './sources/registry.js';
 import { verifyDatasetComponents } from './validation/verifyDatasetComponents.js';
 import { createAliasRegistry } from './identity/aliasRegistry.js';
+import { resolveTeam } from './teamConfig.js';
 
 const cache = new Map();
 const DEFAULT_TTL_MS = 30_000;
@@ -49,7 +50,8 @@ const buildConnectedDataset = async ({ season, team }) => {
 
 export const loadDataset = async ({ mode, season, team, ttlMs = DEFAULT_TTL_MS } = {}) => {
   const resolvedMode = getDataMode(mode);
-  const cacheKey = `${resolvedMode}:${season ?? 'default'}:${team ?? 'default'}`;
+  const resolvedTeam = resolveTeam(team);
+  const cacheKey = `${resolvedMode}:${season ?? 'default'}:${resolvedTeam.id}`;
 
   const fromCache = readCache(cacheKey);
   if (fromCache) {
@@ -57,10 +59,11 @@ export const loadDataset = async ({ mode, season, team, ttlMs = DEFAULT_TTL_MS }
   }
 
   if (resolvedMode === 'mock') {
-    const completenessReport = verifyDatasetComponents(mockDatasetBySource);
+    const datasetBySource = getMockDatasetByTeam(resolvedTeam.label);
+    const completenessReport = verifyDatasetComponents(datasetBySource);
     const payload = {
       mode: 'mock',
-      datasetBySource: mockDatasetBySource,
+      datasetBySource,
       completenessReport,
       warnings: []
     };
@@ -69,7 +72,7 @@ export const loadDataset = async ({ mode, season, team, ttlMs = DEFAULT_TTL_MS }
   }
 
   try {
-    const connected = await buildConnectedDataset({ season, team });
+    const connected = await buildConnectedDataset({ season, team: resolvedTeam.label });
     const completenessReport = verifyDatasetComponents(connected.datasetBySource);
     const payload = {
       mode: 'connected',
@@ -83,10 +86,11 @@ export const loadDataset = async ({ mode, season, team, ttlMs = DEFAULT_TTL_MS }
     writeCache(cacheKey, payload, ttlMs);
     return payload;
   } catch (error) {
+    const fallbackDataset = getMockDatasetByTeam(resolvedTeam.label);
     const fallback = {
       mode: 'mock-fallback',
-      datasetBySource: mockDatasetBySource,
-      completenessReport: verifyDatasetComponents(mockDatasetBySource),
+      datasetBySource: fallbackDataset,
+      completenessReport: verifyDatasetComponents(fallbackDataset),
       warnings: [`Connected mode failed, fell back to mock: ${error.message}`]
     };
 

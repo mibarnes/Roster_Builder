@@ -1,6 +1,83 @@
 const toMap = (items = []) =>
   new Map(items.filter((item) => item?.playerId).map((item) => [item.playerId, item]));
 
+const NAME_SUFFIXES = new Set(['jr', 'sr', 'ii', 'iii', 'iv', 'v']);
+
+const normalizeName = (value = '') =>
+  String(value)
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[.,'’`\-]/g, ' ')
+    .replace(/\([^)]*\)/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((token) => !NAME_SUFFIXES.has(token))
+    .join(' ');
+
+const levenshtein = (a, b) => {
+  const m = a.length;
+  const n = b.length;
+  if (!m) return n;
+  if (!n) return m;
+  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i += 1) dp[i][0] = i;
+  for (let j = 0; j <= n; j += 1) dp[0][j] = j;
+  for (let i = 1; i <= m; i += 1) {
+    for (let j = 1; j <= n; j += 1) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+    }
+  }
+  return dp[m][n];
+};
+
+const similarity = (a, b) => {
+  if (!a || !b) return 0;
+  return 1 - levenshtein(a, b) / Math.max(a.length, b.length);
+};
+
+const buildSourceLookup = (items = []) => {
+  const byId = toMap(items);
+  const byName = new Map();
+
+  for (const item of items) {
+    if (!item?.name) continue;
+    const key = normalizeName(item.name);
+    if (!key || byName.has(key)) continue;
+    byName.set(key, item);
+  }
+
+  return { byId, byName };
+};
+
+const resolveSourceRecord = (rosterPlayer, lookup) => {
+  const byId = lookup?.byId ?? new Map();
+  const byName = lookup?.byName ?? new Map();
+
+  const byIdMatch = byId.get(rosterPlayer.playerId);
+  if (byIdMatch) return { record: byIdMatch, matchedBy: 'id' };
+
+  const rosterName = normalizeName(rosterPlayer.name);
+  if (!rosterName || !byName.size) return { record: null, matchedBy: null };
+
+  const exact = byName.get(rosterName);
+  if (exact) return { record: exact, matchedBy: 'name-exact' };
+
+  let best = null;
+  const rosterLastToken = rosterName.split(' ').slice(-1)[0];
+
+  for (const [candidateName, candidate] of byName.entries()) {
+    if (candidateName.split(' ').slice(-1)[0] !== rosterLastToken) continue;
+    const score = similarity(rosterName, candidateName);
+    if (score < 0.82) continue;
+    if (!best || score > best.score) best = { candidate, score };
+  }
+
+  if (best) return { record: best.candidate, matchedBy: 'name-fuzzy' };
+  return { record: null, matchedBy: null };
+};
+
 const toPercent = (compositeRating) =>
   typeof compositeRating === 'number' ? Number((compositeRating * 100).toFixed(1)) : null;
 
@@ -11,8 +88,12 @@ const average = (values) => {
 
 const collectStarterIds = (depthChart = {}) => {
   const starterSlots = [];
+  const sideEntries = [
+    ['offense', depthChart?.offense],
+    ['defense', depthChart?.defense]
+  ];
 
-  for (const [side, slots] of Object.entries(depthChart)) {
+  for (const [side, slots] of sideEntries) {
     for (const [slot, playerId] of Object.entries(slots ?? {})) {
       if (!playerId) continue;
       starterSlots.push({ side: side.toUpperCase(), slot, playerId });
@@ -61,29 +142,38 @@ const buildStarterMetrics = (starters, playerMap) => {
 };
 
 const buildDepthChartView = (depthChart, playerMap) => {
-  const bySide = {};
-
-  for (const [side, slots] of Object.entries(depthChart ?? {})) {
-    bySide[side] = Object.entries(slots ?? {}).map(([slot, playerId]) => ({
+  return {
+    offense: Object.entries(depthChart?.offense ?? {}).map(([slot, playerId]) => ({
       slot,
       playerId,
       player: playerMap.get(playerId) ?? null
-    }));
-  }
-
-  return bySide;
+    })),
+    defense: Object.entries(depthChart?.defense ?? {}).map(([slot, playerId]) => ({
+      slot,
+      playerId,
+      player: playerMap.get(playerId) ?? null
+    }))
+  };
 };
 
 export const buildPlayerPipeline = (datasetBySource) => {
   const rosterPlayers = datasetBySource?.roster?.players ?? [];
-  const recruitingMap = toMap(datasetBySource?.recruiting?.playerRecruitProfiles);
-  const ratingsMap = toMap(datasetBySource?.ratings?.playerRatings);
-  const productionMap = toMap(datasetBySource?.production?.playerProduction);
+  const recruitingLookup = buildSourceLookup(datasetBySource?.recruiting?.playerRecruitProfiles);
+  const ratingsLookup = buildSourceLookup(datasetBySource?.ratings?.playerRatings);
+  const productionLookup = buildSourceLookup(datasetBySource?.production?.playerProduction);
+
+  const recruitingMap = recruitingLookup.byId;
+  const ratingsMap = ratingsLookup.byId;
+  const productionMap = productionLookup.byId;
 
   const players = rosterPlayers.map((rosterPlayer) => {
-    const recruiting = recruitingMap.get(rosterPlayer.playerId) ?? {};
-    const ratings = ratingsMap.get(rosterPlayer.playerId) ?? {};
-    const production = productionMap.get(rosterPlayer.playerId) ?? {};
+    const recruitingResolved = resolveSourceRecord(rosterPlayer, recruitingLookup);
+    const ratingsResolved = resolveSourceRecord(rosterPlayer, ratingsLookup);
+    const productionResolved = resolveSourceRecord(rosterPlayer, productionLookup);
+
+    const recruiting = recruitingResolved.record ?? {};
+    const ratings = ratingsResolved.record ?? {};
+    const production = productionResolved.record ?? {};
 
     return {
       playerId: rosterPlayer.playerId,
@@ -115,12 +205,15 @@ export const buildPlayerPipeline = (datasetBySource) => {
       },
       production: {
         season: datasetBySource?.production?.season ?? null,
-        stats: Object.fromEntries(Object.entries(production).filter(([key]) => key !== 'playerId'))
+        stats: Object.fromEntries(Object.entries(production).filter(([key]) => !['playerId', 'name'].includes(key)))
       },
       dataCompleteness: {
-        hasRecruiting: recruitingMap.has(rosterPlayer.playerId),
-        hasRatings: ratingsMap.has(rosterPlayer.playerId),
-        hasProduction: productionMap.has(rosterPlayer.playerId)
+        hasRecruiting: Boolean(recruitingResolved.record),
+        hasRatings: Boolean(ratingsResolved.record),
+        hasProduction: Boolean(productionResolved.record),
+        recruitingMatchedBy: recruitingResolved.matchedBy,
+        ratingsMatchedBy: ratingsResolved.matchedBy,
+        productionMatchedBy: productionResolved.matchedBy
       }
     };
   });

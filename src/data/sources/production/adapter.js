@@ -1,16 +1,36 @@
-import { productionSource as mockProductionSource } from '../../mock/productionSource.js';
+import { getMockDatasetByTeam } from '../../mock/index.js';
+import { getCollectedTeamSources } from '../../collected/index.js';
 
 export const productionAdapter = {
   sourceId: 'connected-production-adapter-v1',
   sourceType: 'production',
 
-  async fetchRaw({ season } = {}) {
+  async fetchRaw({ season, team } = {}) {
+    const collected = getCollectedTeamSources(team);
+    if (collected?.production) {
+      const productionSource = collected.production;
+      return {
+        provider: productionSource.sourceId ?? 'cfbd-collected-production',
+        version: productionSource.version ?? 'cfbd-scaffold-v1',
+        as_of: productionSource.asOf,
+        season: season ?? productionSource.season,
+        team,
+        production: productionSource.playerProduction.map((p) => ({
+          pid: p.playerId,
+          ...Object.fromEntries(Object.entries(p).filter(([k]) => k !== 'playerId'))
+        }))
+      };
+    }
+
+    const productionSource = getMockDatasetByTeam(team).production;
+
     return {
       provider: 'production-api',
       version: '2026.1',
-      as_of: mockProductionSource.asOf,
-      season: season ?? mockProductionSource.season,
-      production: mockProductionSource.playerProduction.map((p) => ({
+      as_of: productionSource.asOf,
+      season: season ?? productionSource.season,
+      team,
+      production: productionSource.playerProduction.map((p) => ({
         pid: p.playerId,
         ...Object.fromEntries(Object.entries(p).filter(([k]) => k !== 'playerId'))
       }))
@@ -24,6 +44,7 @@ export const productionAdapter = {
       asOf: raw.as_of,
       season: raw.season,
       version: raw.version,
+      team: raw.team,
       playerProduction: raw.production.map((p) => ({
         playerId: p.pid,
         ...Object.fromEntries(Object.entries(p).filter(([k]) => k !== 'pid'))
@@ -43,7 +64,8 @@ export const productionAdapter = {
       sourceId: mapped.sourceId,
       sourceType: mapped.sourceType,
       asOf: mapped.asOf,
-      version: mapped.version
+      version: mapped.version,
+      team: mapped.team
     };
   }
 };

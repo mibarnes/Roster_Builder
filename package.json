@@ -12,7 +12,9 @@
     "check:data:connected": "DATA_MODE=connected node src/data/validateDataset.js",
     "check:pipeline": "node src/data/validatePlayerPipeline.js",
     "check:pipeline:connected": "DATA_MODE=connected node src/data/validatePlayerPipeline.js",
-    "check:mock": "node src/data/mock/verifyMockDataset.js"
+    "check:mock": "node src/data/mock/verifyMockDataset.js",
+    "collect:teams:scaffold": "node scripts/collect-teams-scaffold.mjs",
+    "collect:cfbd:roster-stats": "node scripts/collect-cfbd-roster-stats.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

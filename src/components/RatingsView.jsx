@@ -31,7 +31,7 @@ export default function RatingsView({ allPlayers, filters, setFilters, onPlayerC
               role="tab"
               aria-selected={filters.side === s}
               onClick={() => setFilters((f) => ({ ...f, side: s }))}
-              className={`px-4 py-2 text-[11px] font-bold transition-all ${filters.side === s ? 'bg-miami-green text-white' : 'text-[#666666]'}`}
+              className={`px-4 py-2 text-[11px] font-bold transition-all ${filters.side === s ? 'team-accent-bg text-white' : 'text-[#666666]'}`}
             >
               {s}
             </button>
@@ -73,7 +73,7 @@ export default function RatingsView({ allPlayers, filters, setFilters, onPlayerC
               className="flex items-center gap-3 px-4 py-3 cursor-pointer transition-all hover:bg-gray-900/50 active:bg-gray-800/50 border-b border-surface-border"
               style={{ animation: `fadeSlideUp 0.3s ease-out ${i * 25}ms both` }}
             >
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-lg shadow-lg flex-shrink-0 bg-miami-green" style={{ color: getOvrColor(p.ovr) }}>{p.ovr}</div>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-lg shadow-lg flex-shrink-0 team-accent-bg" style={{ color: getOvrColor(p.ovr) }}>{p.ovr}</div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-base font-bold text-white">{p.name.toUpperCase()}</span>

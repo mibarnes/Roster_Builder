@@ -14,6 +14,26 @@ body {
   overflow: hidden;
 }
 
+.team-accent-bg {
+  background-color: var(--team-accent, #1a4d2e);
+}
+
+.team-accent-border {
+  border-color: var(--team-accent, #1a4d2e);
+}
+
+.team-accent-text {
+  color: var(--team-accent, #1a4d2e);
+}
+
+.team-accent-ring {
+  --tw-ring-color: var(--team-accent, #1a4d2e);
+}
+
+.team-accent-overlay {
+  background-color: rgba(var(--team-accent-rgb, 26, 77, 46), 0.15);
+}
+
 @keyframes fadeSlideUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
