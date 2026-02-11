@@ -1,5 +1,6 @@
-import { rosterSource as mockRosterSource } from '../../mock/rosterSource.js';
+import { getMockDatasetByTeam } from '../../mock/index.js';
 import { normalizeDepthChart } from '../../normalize/depthChart.js';
+import { getCollectedTeamSources } from '../../collected/index.js';
 
 const mapPlayer = (entry) => ({
   playerId: entry.pid,
@@ -19,13 +20,40 @@ export const rosterAdapter = {
   sourceType: 'roster',
 
   async fetchRaw({ season, team } = {}) {
+    const collected = getCollectedTeamSources(team);
+    if (collected?.roster) {
+      const rosterSource = collected.roster;
+      return {
+        provider: rosterSource.sourceId ?? 'cfbd-collected-roster',
+        version: rosterSource.version ?? 'cfbd-scaffold-v1',
+        as_of: rosterSource.asOf,
+        season: season ?? rosterSource.season,
+        team: team ?? rosterSource.team,
+        athletes: rosterSource.players.map((p) => ({
+          pid: p.playerId,
+          full_name: p.name,
+          jersey: p.number,
+          side_of_ball: p.side,
+          position: p.position,
+          class_year: p.classYear,
+          height: p.height,
+          weight: p.weight,
+          eligibility_remaining: p.eligibilityRemaining,
+          is_transfer: p.isTransfer
+        })),
+        depth_chart: rosterSource.depthChart
+      };
+    }
+
+    const rosterSource = getMockDatasetByTeam(team).roster;
+
     return {
       provider: 'internal-roster-api',
       version: '2026.2',
-      as_of: mockRosterSource.asOf,
-      season: season ?? mockRosterSource.season,
-      team: team ?? mockRosterSource.team,
-      athletes: mockRosterSource.players.map((p) => ({
+      as_of: rosterSource.asOf,
+      season: season ?? rosterSource.season,
+      team: team ?? rosterSource.team,
+      athletes: rosterSource.players.map((p) => ({
         pid: p.playerId,
         full_name: p.name,
         jersey: p.number,
@@ -37,7 +65,7 @@ export const rosterAdapter = {
         eligibility_remaining: p.eligibilityRemaining,
         is_transfer: p.isTransfer
       })),
-      depth_chart: mockRosterSource.depthChart
+      depth_chart: rosterSource.depthChart
     };
   },
 
@@ -66,7 +94,8 @@ export const rosterAdapter = {
       sourceId: mapped.sourceId,
       sourceType: mapped.sourceType,
       asOf: mapped.asOf,
-      version: mapped.version
+      version: mapped.version,
+      team: mapped.team
     };
   }
 };

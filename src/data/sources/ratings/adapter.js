@@ -1,15 +1,18 @@
-import { ratingsSource as mockRatingsSource } from '../../mock/ratingsSource.js';
+import { getMockDatasetByTeam } from '../../mock/index.js';
 
 export const ratingsAdapter = {
   sourceId: 'connected-ratings-adapter-v1',
   sourceType: 'ratings',
 
-  async fetchRaw() {
+  async fetchRaw({ team } = {}) {
+    const ratingsSource = getMockDatasetByTeam(team).ratings;
+
     return {
       provider: 'ratings-api',
       version: '2026.1',
-      as_of: mockRatingsSource.asOf,
-      ratings: mockRatingsSource.playerRatings.map((p) => ({
+      as_of: ratingsSource.asOf,
+      team,
+      ratings: ratingsSource.playerRatings.map((p) => ({
         pid: p.playerId,
         ...Object.fromEntries(Object.entries(p).filter(([k]) => k !== 'playerId'))
       }))
@@ -22,6 +25,7 @@ export const ratingsAdapter = {
       sourceType: 'ratings',
       asOf: raw.as_of,
       version: raw.version,
+      team: raw.team,
       playerRatings: raw.ratings.map((p) => ({
         playerId: p.pid,
         ...Object.fromEntries(Object.entries(p).filter(([k]) => k !== 'pid'))
@@ -41,7 +45,8 @@ export const ratingsAdapter = {
       sourceId: mapped.sourceId,
       sourceType: mapped.sourceType,
       asOf: mapped.asOf,
-      version: mapped.version
+      version: mapped.version,
+      team: mapped.team
     };
   }
 };

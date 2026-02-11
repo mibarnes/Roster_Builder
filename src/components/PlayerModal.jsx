@@ -66,7 +66,7 @@ export default function PlayerModal({ player, onClose, returnFocusEl }) {
         aria-modal="true"
         aria-labelledby="player-modal-title"
         tabIndex={-1}
-        className="relative w-full max-w-sm rounded-2xl overflow-hidden bg-card-bg border-2 border-miami-green shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-[modalSlideUp_0.3s_cubic-bezier(0.34,1.56,0.64,1)]"
+        className="relative w-full max-w-sm rounded-2xl overflow-hidden bg-card-bg border-2 team-accent-border shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-[modalSlideUp_0.3s_cubic-bezier(0.34,1.56,0.64,1)]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative p-5 bg-surface">
@@ -74,7 +74,7 @@ export default function PlayerModal({ player, onClose, returnFocusEl }) {
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
           <div className="flex items-center gap-4">
-            <div className="w-[72px] h-[72px] rounded-2xl flex items-center justify-center font-black text-3xl text-white shadow-xl bg-miami-green">{player.ovr}</div>
+            <div className="w-[72px] h-[72px] rounded-2xl flex items-center justify-center font-black text-3xl text-white shadow-xl team-accent-bg">{player.ovr}</div>
             <div>
               <h2 id="player-modal-title" className="text-2xl font-black text-white tracking-tight">{player.name.toUpperCase()}</h2>
               <p className="text-gray-400 text-sm font-semibold mt-1">#{player.number} • {player.pos} • {player.year}</p>
@@ -103,7 +103,7 @@ export default function PlayerModal({ player, onClose, returnFocusEl }) {
               <span className="text-2xl font-black text-white">{player.composite.toFixed(1)}</span>
             </div>
             <div className="h-3 bg-gray-800 rounded-full overflow-hidden">
-              <div className="h-full rounded-full bg-miami-green transition-[width] duration-500 ease-out" style={{ width: `${player.composite}%` }} />
+              <div className="h-full rounded-full team-accent-bg transition-[width] duration-500 ease-out" style={{ width: `${player.composite}%` }} />
             </div>
           </div>
 
