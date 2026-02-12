@@ -8,6 +8,11 @@ on:
 permissions:
   contents: write
   pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
@@ -15,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -28,33 +36,47 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
           clean: true
 
-      - name: Configure Pages to use gh-pages branch
+      - name: Merge to main for Pages activation
+        if: github.ref != 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin main
+          git checkout main
+          git merge ${{ github.sha }} --no-edit -m "Merge ${{ github.ref_name }} for Pages deployment" || true
+          git push origin main || true
+
+      - name: Configure Pages
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Delete workflow-type pages config if it exists
-          curl -s -X DELETE \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" 2>/dev/null || true
-          sleep 2
-
-          # Create pages with gh-pages branch source
-          curl -s -X POST \
+          # Try to update existing pages to use gh-pages branch
+          curl -s -X PUT \
             -H "Authorization: Bearer $GH_TOKEN" \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             "https://api.github.com/repos/${{ github.repository }}/pages" \
             -d '{"source":{"branch":"gh-pages","path":"/"}}'
 
-          echo ""
-          echo "Site should be live at: https://mibarnes.github.io/Roster_Builder/"
+          # If update fails, try delete and create
+          curl -s -X DELETE \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${{ github.repository }}/pages" 2>/dev/null || true
+          sleep 2
+          curl -s -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${{ github.repository }}/pages" \
+            -d '{"source":{"branch":"gh-pages","path":"/"}}'
