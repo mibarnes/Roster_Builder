@@ -1,18 +1,297 @@
-/**
- * Placeholder shell for the hardened TypeScript rebuild.
- *
- * This is intentionally minimal: Phase 0 (scaffold) establishes the toolchain only.
- * The real UI is ported from the recovered build in Phases 3–4 — see RESTORATION.md.
- * Recovered source to port: _recovered/backup_frontier/src/
- */
+import { useEffect, useState } from 'react'
+import { loadPlayerPipeline } from './data/pipeline/loadPlayerPipeline.ts'
+import { mapPipelineToUI } from './data/mapPipelineToUI.ts'
+import { DEFAULT_TEAM_ID, TEAMS, requireTeam, teamLogoUrl } from './data/teamRegistry.ts'
+import CompositeHeader from './components/CompositeHeader.tsx'
+import DefenseFormation from './components/DefenseFormation.tsx'
+import OffenseFormation from './components/OffenseFormation.tsx'
+import PlayerModal from './components/PlayerModal.tsx'
+import RatingsView, { type RatingsFilters } from './components/RatingsView.tsx'
+import Star from './components/Star.tsx'
+import type { PipelineMetrics } from './data/schema/pipeline.ts'
+import type { Formation, UIDataset, UIPlayer } from './data/schema/ui.ts'
+import type { DataMode } from './data/schema/dataset.ts'
+
+type Tab = 'offense' | 'defense' | 'ratings'
+type DepthMode = 'starters' | 'second-team' | 'all'
+
+const EMPTY_OFFENSE: Formation = { LT: [], LG: [], C: [], RG: [], RT: [], WRX: [], SLOT: [], QB: [], RB: [], TE: [], WRZ: [] }
+const EMPTY_DEFENSE: Formation = { LDE: [], NT: [], DT: [], RDE: [], LCB: [], SS: [], WLB: [], MLB: [], NB: [], FS: [], RCB: [] }
+const EMPTY_ROSTER: UIDataset = { offensiveStarters: EMPTY_OFFENSE, defensiveStarters: EMPTY_DEFENSE, allPlayers: [] }
+const EMPTY_METRICS: PipelineMetrics = {
+  offense: { avgStarterComposite: 0, starterCount: 0 },
+  defense: { avgStarterComposite: 0, starterCount: 0 },
+  team: { avgStarterComposite: 0, avgStarterOverall: 0, starterCount: 0 },
+}
+
+const hexToRgbString = (hex = '#1a4d2e'): string => {
+  const clean = String(hex).replace('#', '').trim()
+  if (!/^[0-9a-fA-F]{6}$/.test(clean)) return '26, 77, 46'
+  const r = Number.parseInt(clean.slice(0, 2), 16)
+  const g = Number.parseInt(clean.slice(2, 4), 16)
+  const b = Number.parseInt(clean.slice(4, 6), 16)
+  return `${r}, ${g}, ${b}`
+}
+
 export default function App() {
+  const [tab, setTab] = useState<Tab>('offense')
+  const [teamId, setTeamId] = useState<string>(DEFAULT_TEAM_ID)
+  const [depthTeam, setDepthTeam] = useState<DepthMode>('starters')
+  const [filters, setFilters] = useState<RatingsFilters>({ side: 'ALL', pos: 'ALL', stars: 0, sort: 'composite' })
+  const [selected, setSelected] = useState<UIPlayer | null>(null)
+  const [returnFocusEl, setReturnFocusEl] = useState<HTMLElement | null>(null)
+  const [rosterData, setRosterData] = useState<UIDataset>(EMPTY_ROSTER)
+  const [metrics, setMetrics] = useState<PipelineMetrics>(EMPTY_METRICS)
+  const [isLoading, setIsLoading] = useState(true)
+  const [loadError, setLoadError] = useState('')
+  const [warnings, setWarnings] = useState<string[]>([])
+
+  const selectedTeam = requireTeam(teamId)
+  const teamAccentColor = selectedTeam.accentColor
+  const dataMode = (import.meta.env?.VITE_DATA_MODE as DataMode | undefined) ?? 'bundled'
+  const logoSrc = teamLogoUrl(teamId)
+
+  useEffect(() => {
+    let cancelled = false
+    const hydrate = async () => {
+      setIsLoading(true)
+      setLoadError('')
+      try {
+        const loaded = await loadPlayerPipeline(teamId, dataMode)
+        if (cancelled) return
+        setRosterData(mapPipelineToUI(loaded.pipeline))
+        setMetrics(loaded.pipeline.metrics ?? EMPTY_METRICS)
+        setWarnings(loaded.warnings)
+      } catch (error) {
+        if (cancelled) return
+        setLoadError(error instanceof Error ? error.message : String(error))
+      } finally {
+        if (!cancelled) setIsLoading(false)
+      }
+    }
+    void hydrate()
+    return () => {
+      cancelled = true
+    }
+  }, [dataMode, teamId])
+
+  // Reset depth toggle to starters when team changes.
+  useEffect(() => {
+    setDepthTeam('starters')
+  }, [teamId])
+
+  // Reset depth toggle when navigating away from formation tabs.
+  useEffect(() => {
+    if (tab !== 'offense' && tab !== 'defense') setDepthTeam('starters')
+  }, [tab])
+
+  const onPlayerClick = (player: UIPlayer) => {
+    setReturnFocusEl(document.activeElement instanceof HTMLElement ? document.activeElement : null)
+    setSelected(player)
+  }
+
+  const { offensiveStarters, defensiveStarters, allPlayers } = rosterData
+
+  const tabs: Array<{ id: Tab; label: string }> = [
+    { id: 'offense', label: 'OFFENSE' },
+    { id: 'defense', label: 'DEFENSE' },
+    { id: 'ratings', label: 'RATINGS' },
+  ]
+
+  const isFormationTab = tab === 'offense' || tab === 'defense'
+
+  // 'all' is disabled this milestone (PositionDepthView lands in M5).
+  const depthModes: Array<{ id: DepthMode; label: string; disabled?: boolean }> = [
+    { id: 'starters', label: 'Starters' },
+    { id: 'second-team', label: '2nd Team' },
+    ...(isFormationTab
+      ? [{ id: 'all' as DepthMode, label: tab === 'offense' ? 'All Off' : 'All Def', disabled: true }]
+      : []),
+  ]
+  const depthIndex = depthTeam === 'second-team' ? 1 : 0
+  const filterFormationByDepth = (formation: Formation, index: number): Formation =>
+    Object.fromEntries(
+      Object.entries(formation).map(([slot, players]) => [slot, players[index] ? [players[index]!] : []]),
+    )
+  const visibleOffense = filterFormationByDepth(offensiveStarters, depthIndex)
+  const visibleDefense = filterFormationByDepth(defensiveStarters, depthIndex)
+
   return (
-    <main className="flex min-h-full flex-col items-center justify-center gap-4 p-8 text-center">
-      <h1 className="text-3xl font-extrabold text-miami-green">CFB Roster Portal</h1>
-      <p className="max-w-md text-sm text-white/70">
-        Hardened TypeScript rebuild — scaffold in place. UI port pending (see{' '}
-        <code className="text-portal-orange">RESTORATION.md</code>).
-      </p>
-    </main>
+    <div
+      className="h-screen w-screen flex flex-col overflow-hidden select-none font-sans bg-card-bg"
+      style={
+        {
+          '--team-accent': teamAccentColor,
+          '--team-accent-rgb': hexToRgbString(teamAccentColor),
+        } as React.CSSProperties
+      }
+    >
+      {/* ── Header ── */}
+      <header className="flex-shrink-0 px-4 py-3 bg-surface border-b border-surface-border">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center shadow-lg team-accent-bg overflow-hidden p-0.5">
+              {logoSrc ? (
+                <img
+                  src={logoSrc}
+                  alt={`${selectedTeam.label} logo`}
+                  className="w-full h-full object-contain"
+                  style={{ filter: 'brightness(0) invert(1) drop-shadow(0 0 2px rgba(0,0,0,0.5))' }}
+                />
+              ) : (
+                <span className="font-black text-lg text-white">{selectedTeam.label[0]}</span>
+              )}
+            </div>
+            <div>
+              <h1 className="text-base font-black text-white tracking-tight">{selectedTeam.label.toUpperCase()}</h1>
+              <p className="text-[11px] text-gray-400 font-semibold">2025 ROSTER DEPTH CHART</p>
+            </div>
+          </div>
+          <CompositeHeader metrics={metrics} />
+        </div>
+      </header>
+
+      {/* ── Team Selector ── */}
+      <div className="flex-shrink-0 px-4 py-2 bg-surface border-b border-surface-border">
+        <div className="mx-auto max-w-6xl flex items-center gap-2">
+          <button
+            type="button"
+            disabled
+            title="Team Comparison — coming in M5"
+            className="rounded-md px-3 py-1.5 text-xs font-bold text-white/50 whitespace-nowrap flex-shrink-0 cursor-not-allowed bg-gray-800"
+          >
+            Team Comparison
+          </button>
+          <span className="text-[10px] text-gray-500 font-semibold">coming soon</span>
+          <div className="flex-1" />
+          <label htmlFor="team-select" className="text-[11px] font-bold text-gray-300 uppercase tracking-wide">
+            Team
+          </label>
+          <select
+            id="team-select"
+            value={teamId}
+            onChange={(event) => setTeamId(event.target.value)}
+            className="rounded-md border border-surface-border bg-card-bg px-2.5 py-1.5 text-xs font-semibold text-white focus:outline-none focus:ring-2 team-accent-ring"
+          >
+            {TEAMS.map((team) => (
+              <option key={team.id} value={team.id}>
+                {team.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* ── Tab Bar ── */}
+      <nav className="flex-shrink-0 flex bg-surface border-b border-surface-border" role="tablist" aria-label="Roster views">
+        {tabs.map((t) => (
+          <button
+            key={t.id}
+            role="tab"
+            aria-selected={tab === t.id}
+            onClick={() => setTab(t.id)}
+            className={`flex-1 py-3 text-[11px] font-bold relative transition-all ${tab === t.id ? 'text-white' : 'text-[#666666]'}`}
+          >
+            {t.label}
+            {tab === t.id && <div className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full team-accent-bg" />}
+          </button>
+        ))}
+      </nav>
+
+      {/* ── Depth toggle (formation tabs only) ── */}
+      {isFormationTab && (
+        <div className="flex-shrink-0 px-4 py-2.5 bg-surface border-b border-surface-border">
+          <div className="mx-auto w-fit rounded-xl border border-surface-border bg-black/40 p-1">
+            <div className="flex items-center gap-1" role="group" aria-label="Depth chart team">
+              {depthModes.map((mode) => (
+                <button
+                  key={mode.id}
+                  type="button"
+                  disabled={mode.disabled}
+                  onClick={() => !mode.disabled && setDepthTeam(mode.id)}
+                  title={mode.disabled ? 'Full position depth — coming in M5' : undefined}
+                  className={`min-w-[92px] rounded-lg px-3 py-1.5 text-[11px] font-bold transition-colors ${
+                    mode.disabled
+                      ? 'text-gray-600 cursor-not-allowed'
+                      : depthTeam === mode.id
+                        ? 'team-accent-bg text-white'
+                        : 'text-gray-400 hover:text-white'
+                  }`}
+                  aria-pressed={depthTeam === mode.id}
+                >
+                  {mode.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isLoading && (
+        <div className="px-4 py-2 text-xs font-semibold text-emerald-300 bg-emerald-950">Loading roster data…</div>
+      )}
+      {loadError && (
+        <div className="px-4 py-2 text-xs font-semibold text-red-300 bg-red-950">Failed to load data: {loadError}</div>
+      )}
+      {warnings.length > 0 && (
+        <div className="px-4 py-2 text-xs font-semibold text-amber-300 bg-amber-950">{warnings.join(' · ')}</div>
+      )}
+
+      {/* ── Main Content ── */}
+      <main className="flex-1 overflow-hidden relative">
+        {isFormationTab && (
+          <div className="absolute inset-0">
+            {[...Array(11)].map((_, i) => (
+              <div key={i} className="absolute w-full h-px bg-white/5" style={{ top: `${(i + 1) * 8}%` }} />
+            ))}
+          </div>
+        )}
+        <div className="relative h-full">
+          {tab === 'offense' && (
+            <div className="h-full overflow-y-auto py-3">
+              <div className="mx-auto max-w-6xl h-full rounded-2xl border border-gray-900 bg-black px-3">
+                <OffenseFormation offensiveStarters={visibleOffense} onPlayerClick={onPlayerClick} />
+              </div>
+            </div>
+          )}
+          {tab === 'defense' && (
+            <div className="h-full overflow-y-auto py-3">
+              <div className="mx-auto max-w-6xl h-full rounded-2xl border border-gray-900 bg-black px-3">
+                <DefenseFormation defensiveStarters={visibleDefense} onPlayerClick={onPlayerClick} />
+              </div>
+            </div>
+          )}
+          {tab === 'ratings' && (
+            <RatingsView allPlayers={allPlayers} filters={filters} setFilters={setFilters} onPlayerClick={onPlayerClick} />
+          )}
+        </div>
+      </main>
+
+      {/* ── Footer legend (formation tabs) ── */}
+      {isFormationTab && (
+        <footer className="flex-shrink-0 py-2.5 px-4 bg-surface border-t border-surface-border">
+          <div className="flex items-center justify-center gap-6 text-[10px] text-gray-500">
+            <span className="flex items-center gap-1.5">
+              <Star filled size="w-3.5 h-3.5" />
+              Recruit Stars
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-rs-purple">RS</span>
+              Redshirt
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-portal-orange">PTL</span>
+              Portal
+            </span>
+            <span>
+              <span className="text-green-400 font-bold">FR</span> <span className="text-blue-400 font-bold">SO</span>{' '}
+              <span className="text-amber-400 font-bold">JR</span> <span className="text-red-400 font-bold">SR</span>
+            </span>
+          </div>
+        </footer>
+      )}
+
+      <PlayerModal player={selected} onClose={() => setSelected(null)} returnFocusEl={returnFocusEl} />
+    </div>
   )
 }

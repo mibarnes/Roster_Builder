@@ -1,42 +1,48 @@
-import type { ClassYear, Side } from './common.ts'
+/**
+ * Types describing the REAL output of mapPipelineToUI (ported faithfully from
+ * the recovered data/mapPipelineToUI.js). Components consume this flat UIPlayer
+ * shape; offensive/defensiveStarters are formation maps (slot → ordered players,
+ * starter first), and allPlayers is every rostered player.
+ */
 
-/** Player shape consumed by the React components (formations, cards, modal, ratings). */
+/** A player's UI side. allPlayers may include 'ST' (special teams / neither). */
+export type UISide = 'OFF' | 'DEF' | 'ST'
+
 export interface UIPlayer {
-  /** Sequential UI id (stable within a render). */
-  id: string
-  playerId: string
+  /** Sequential UI id (stable within a single map call). */
+  id: number
   name: string
-  lastName: string
   number: number | null
-  side: Side
-  /** Canonical UI slot/position (e.g. 'WR1', 'LCB', 'QB'). */
-  position: string
-  positionGroup: string
-  classYear: ClassYear
-  isRedshirt: boolean
+  /** Display position (slot-overridden for formation players). */
+  pos: string
+  /** Class year string as carried from the pipeline (e.g. 'SR'); may be null. */
+  year: string | null
+  side: UISide
+  stars: number
+  transferStars: number | undefined
   isTransfer: boolean
-  isStub: boolean
-  ovr: number | null
-  stars: number | null
+  fromSchool: string | null
+  /** Composite percent (0–100), one decimal. */
+  composite: number
   compositeRating: number | null
+  transferRating: number | null
   nationalRank: number | null
   positionRank: number | null
-  height: string | null
-  weight: number | null
-  /** Abbreviated season stat line for the modal/list. */
+  ht: string | null
+  wt: number | null
+  /** Derived OVR (recruiting composite × 100, unranked → 70 upstream). */
+  ovr: number
+  eligibilityRemaining: number | null
+  /** Abbreviated season stat line (PAS/YDS/TD/REC/TKL/…). */
   stats: Record<string, number>
 }
 
-export interface UIDataset {
-  teamId: string
-  mode: PlayerPipelineMode
-  offensiveStarters: UIPlayer[]
-  defensiveStarters: UIPlayer[]
-  allPlayers: UIPlayer[]
-  /** Formation slot → ordered players (starter first). */
-  offenseFormation: Record<string, UIPlayer[]>
-  defenseFormation: Record<string, UIPlayer[]>
-  warnings: string[]
-}
+/** Formation slot → ordered players (starter first, then backups). */
+export type Formation = Record<string, UIPlayer[]>
 
-export type PlayerPipelineMode = 'bundled' | 'mock' | 'mock-fallback'
+/** Output of mapPipelineToUI. */
+export interface UIDataset {
+  offensiveStarters: Formation
+  defensiveStarters: Formation
+  allPlayers: UIPlayer[]
+}

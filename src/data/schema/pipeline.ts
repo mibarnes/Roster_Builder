@@ -1,78 +1,126 @@
 import type { ClassYear, Side } from './common.ts'
 
 /**
- * Canonical joined player produced by buildPlayerPipeline — one record per
- * roster player, enriched from recruiting / ratings / production by playerId.
+ * Types describing the REAL output of buildPlayerPipeline (ported faithfully
+ * from the recovered data/pipeline/buildPlayerPipeline.js). The pipeline keeps
+ * a nested player shape — bio / recruiting / ratings / production /
+ * dataCompleteness — so these interfaces mirror that exactly (not a flattened
+ * guess). One PipelinePlayer per roster player, enriched by id→name→fuzzy join.
  */
-export interface PlayerRecord {
-  playerId: string
+
+export interface PlayerBio {
   name: string
   number: number | null
   side: Side
   position: string
+  /** Canonicalized to FR/SO/JR/SR | null in the pipeline (raw '0'/unknown → null). */
   classYear: ClassYear
   height: string | null
   weight: number | null
+  eligibilityRemaining: number | null
   isTransfer: boolean
-  /** Placeholder injected from an OurLads depth slot with no CFBD roster match. */
-  isStub: boolean
-  recruiting: {
-    stars: number | null
-    /** 0–1 composite. */
-    compositeRating: number | null
-    nationalRank: number | null
-    positionRank: number | null
-    isTransfer: boolean
-  }
-  ratings: {
-    /** Derived OVR (recruiting composite × 100, unranked → 70). */
-    overall: number | null
-    derived: boolean
-  }
-  production: Record<string, number>
-  /** 0–1 fraction of sources that contributed real data for this player. */
-  dataCompleteness: number
 }
 
-export interface SideMetrics {
+export interface PlayerRecruiting {
+  stars: number | null
+  transferPortalStars: number | null
+  /** 247 composite, 0–1 scale. */
+  compositeRating: number | null
+  /** compositeRating (or transferRating for transfers) × 100, one decimal. */
+  compositePercent: number | null
+  transferRating: number | null
+  fromSchool: string | null
+  isTransfer: boolean
+  nationalRank: number | null
+  positionRank: number | null
+}
+
+export interface PlayerRatings {
+  /** Derived OVR = round(compositeRating × 100), unranked → 70. Label: derived. */
+  overall: number | null
+  archetype: string | null
+  /** True — ratings have no independent provider; OVR is derived. */
+  derived: boolean
+  attributes: Record<string, unknown>
+}
+
+export interface PlayerProduction {
+  season: number | null
+  stats: Record<string, number>
+}
+
+export type MatchedBy = 'id' | 'name-exact' | 'name-fuzzy' | null
+
+export interface PlayerDataCompleteness {
+  hasRecruiting: boolean
+  hasRatings: boolean
+  hasProduction: boolean
+  recruitingMatchedBy: MatchedBy
+  ratingsMatchedBy: MatchedBy
+  productionMatchedBy: MatchedBy
+}
+
+export interface PipelinePlayer {
+  playerId: string
+  bio: PlayerBio
+  recruiting: PlayerRecruiting
+  ratings: PlayerRatings
+  production: PlayerProduction
+  dataCompleteness: PlayerDataCompleteness
+}
+
+export interface StarterEntry {
+  /** 'OFFENSE' | 'DEFENSE' — derived from the depth-chart section. */
+  side: string
+  slot: string
+  playerId: string
+}
+
+export interface TeamMetrics {
   avgStarterComposite: number | null
   avgStarterOverall: number | null
   starterCount: number
 }
 
+export interface SideMetrics {
+  avgStarterComposite: number | null
+  starterCount: number
+}
+
 export interface PipelineMetrics {
-  team: SideMetrics
+  team: TeamMetrics
   offense: SideMetrics
   defense: SideMetrics
 }
 
-export interface SourceCoverage {
-  matched: number
-  unmatched: number
+export interface DepthChartEntry {
+  slot: string
+  playerId: string
+  player: PipelinePlayer | null
+}
+
+export interface DepthChartView {
+  offense: DepthChartEntry[]
+  defense: DepthChartEntry[]
 }
 
 export interface PipelineCoverage {
-  recruiting: SourceCoverage
-  production: SourceCoverage
-  /** Players that exist only as OurLads depth-chart stubs. */
+  rosterCount: number
+  /** Players that exist only as OurLads depth-chart stubs (ourlads-stub-*). */
   stubCount: number
-  /** True when this team carries real CFBD data (vs mock fallback). */
-  isReal: boolean
+  recruitingMatched: number
+  ratingsMatched: number
+  productionMatched: number
+  unmatchedRecruitingIds: string[]
+  unmatchedRatingsIds: string[]
+  unmatchedProductionIds: string[]
 }
 
-export interface DepthSlot {
-  slot: string
-  playerId: string | null
-}
-
+/** Full pipeline product consumed by mapPipelineToUI. */
 export interface PlayerPipeline {
-  teamId: string
-  /** 'bundled' = pre-collected JSON, 'mock' = synthetic, 'mock-fallback' = bundled load failed. */
-  mode: 'bundled' | 'mock' | 'mock-fallback'
-  players: PlayerRecord[]
-  starters: { offense: PlayerRecord[]; defense: PlayerRecord[] }
-  depthChart: { offense: DepthSlot[]; defense: DepthSlot[] }
+  players: PipelinePlayer[]
+  starters: StarterEntry[]
+  depthChart: DepthChartView
   metrics: PipelineMetrics
   coverage: PipelineCoverage
-  warnings: string[]
 }
