@@ -1,11 +1,15 @@
 # PLAN.md — Roster_Builder
 
 ## Current state (2026-06-12)
-**Phase 0 (scaffold) complete.** Fresh hardened-TS project created at `~/.AI_APPS/ROSTER_BUILDER/`,
-reconnected to public repo `mibarnes/Roster_Builder` on branch `rebuild/hardened-ts`. The old
-npm/JSX build was cleared from this branch (recoverable from `main`). Toolchain skeleton + 32 real
-team datasets + 34 logos are in place. The app UI is **not yet ported** — that work is driven by
-[RESTORATION.md](RESTORATION.md), Phases 1–7.
+**M1 (foundation + first deploy) complete.** The hardened-TS scaffold is green on pnpm
+(typecheck/test/build/dev all pass; CI proven on a clean runner) and the placeholder is **live**
+at https://mibarnes.github.io/Roster_Builder/ via the modern official-Pages-actions workflow
+(env-driven `VITE_BASE`, no secret in the bundle). `main` still holds the old build (cutover is M6).
+Branch `rebuild/hardened-ts`. The app UI is **not yet ported** — next is M2 (typed contracts +
+team registry). Execution order is the M1–M6 milestone plan; tactical detail in [RESTORATION.md](RESTORATION.md).
+
+Phase 0 (scaffold): done — toolchain skeleton + 32 real team datasets + 34 logos seeded; old
+npm/JSX build cleared from the branch (recoverable from `main`).
 
 ## Recently completed
 - Reconnaissance across GitHub + D-drive backup + `.recovery` → [_recovery/RECOVERY_REPORT.md](_recovery/RECOVERY_REPORT.md).
@@ -16,16 +20,16 @@ team datasets + 34 logos are in place. The app UI is **not yet ported** — that
 - Hardened toolchain: pnpm (supply-chain config), TypeScript strict, env-driven Vite base,
   Tailwind/PostCSS/Vitest, vendored npm guard, gitignored `.env` + durable secret copy.
 
-## Active / next (next session)
-Execute **RESTORATION.md Phase 1 → onward**:
-1. **P1 Toolchain green** — `pnpm install`, verify dev/build/test run on the placeholder app.
-2. **P2 Typed contracts + `teamRegistry.ts`** — zod schemas; one canonical 34-team registry.
-3. **P3 Data layer port** — adapters → pipeline → mapToUI in TS; drop the 266K-line monolith for
-   lazy per-team JSON; honest `bundled`/`mock` modes.
-4. **P4 UI port + frontier features** — TSX components incl. TeamComparison / Radar / PositionDepth.
-5. **P5 Pilot re-collection** — Florida + Miami only, gold-standard captures.
-6. **P6 Testing + a11y hardening.**
-7. **P7 Deploy (pnpm CI) + push to replace old `main`** (with user confirmation).
+## Active / next
+- [x] **M1 Foundation + first deploy** — toolchain green on pnpm; CI proven; placeholder live.
+- [ ] **M2 Typed contracts + `teamRegistry.ts`** — zod schemas (all sources + pipeline + UI); one
+      canonical 34-team registry; data-QA gate validating the 32 seeded teams.  ← **next**
+- [ ] **M3 Harden collector + gold pilot data** — Florida + Miami only.
+- [ ] **M4 Pilot vertical slice** — data layer (lazy per-team JSON, drop monolith) + core UI; deploy.
+- [ ] **M5 Broaden** — all 34 teams (honest-partial) + frontier features (Comparison/Radar/Depth).
+- [ ] **M6 Harden + cutover** — tests/a11y; merge → `main`; replace old public build (confirmed).
+
+Authoritative sequencing: the M1–M6 milestone plan (`~/.claude/plans/...` and RESTORATION.md header).
 
 ## Longer-term direction
 README roadmap carried from the original: export depth chart as image, injury/portal tracking,
