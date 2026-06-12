@@ -48,15 +48,16 @@ jobs:
           VITE_BASE: /Roster_Builder/
 
       - name: Upload Pages artifact
-        if: github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
-  # Publishes ONLY from main (the M6 cutover, or a deliberate workflow_dispatch on main).
+  # Publishes on push-to-main and on manual workflow_dispatch (used to publish the
+  # placeholder from the rebuild branch at M1). PRs are build-only.
   # Requires repo Settings → Pages → Source = "GitHub Actions" (one-time).
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
