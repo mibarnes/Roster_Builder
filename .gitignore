@@ -1,29 +1,23 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
+# --- dependencies / build ---
+node_modules/
+dist/
+dist-ssr/
 *.local
+coverage/
+.vite/
 
-# Editor directories and files
+# --- env / secrets (NEVER commit) ---
+.env
+.env.*
+!.env.example
+
+# --- recovery staging (local reference only — large, contains the recovered .env) ---
+_recovered/
+
+# --- editor / OS ---
+.DS_Store
+*.log
+.idea/
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Environment files
-.env
-.env.local
-.env.production
+*.tsbuildinfo

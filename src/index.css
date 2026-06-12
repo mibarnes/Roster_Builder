@@ -2,49 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Per-team accent — overridden at runtime from teamRegistry.ts */
+  --team-accent: #1a4d2e;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.team-accent-bg {
-  background-color: var(--team-accent, #1a4d2e);
-}
-
-.team-accent-border {
-  border-color: var(--team-accent, #1a4d2e);
-}
-
-.team-accent-text {
-  color: var(--team-accent, #1a4d2e);
-}
-
-.team-accent-ring {
-  --tw-ring-color: var(--team-accent, #1a4d2e);
-}
-
-.team-accent-overlay {
-  background-color: rgba(var(--team-accent-rgb, 26, 77, 46), 0.15);
-}
-
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes modalSlideUp {
-  from { opacity: 0; transform: translateY(24px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  background: #0a0a0a;
+  color: #fff;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }

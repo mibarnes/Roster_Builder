@@ -1,217 +1,66 @@
-# Miami Hurricanes - CFB Roster Portal 🏈
+# CFB Roster Portal (Roster_Builder)
 
-An interactive, data-driven web application for exploring the Miami Hurricanes football roster, depth charts, and player statistics. Built with modern web technologies and inspired by EA Sports' depth chart management interface.
+An interactive, EA-Sports-style web app for exploring college-football rosters, depth charts,
+and player ratings across the **ACC + SEC (34 teams)** — team metrics, an interactive depth
+chart, a ratings/filter view, and a multi-team comparison view (radar + position-depth).
 
-![Miami Hurricanes](https://img.shields.io/badge/Team-Miami%20Hurricanes-orange?style=for-the-badge)
-![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react)
-![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?style=for-the-badge&logo=vite)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)
+> **This is the hardened v2 rebuild.** It recreates a build that was lost, recovered from a
+> public GitHub repo + a D-drive backup that held substantial uncommitted work. The rebuild is
+> **TypeScript + zod + pnpm**, on one clean team registry, with env-driven deploy paths. See
+> [RESTORATION.md](RESTORATION.md) for the full recovery story and the phased build plan, and
+> [_recovery/RECOVERY_REPORT.md](_recovery/RECOVERY_REPORT.md) for the reconnaissance detail.
 
-## Features
+## Status
 
-### Tab 1: Team Metrics 📊
-- **Overall Team Rating**: Composite score based on recruiting rankings of all starters
-- **Offensive Metrics**: Average position recruiting rankings for offensive starters
-- **Defensive Metrics**: Average position recruiting rankings for defensive starters
-- Real-time calculations displayed in the header
+**Phase 0 (scaffold) complete** — toolchain skeleton + recovered data seeded. The application
+itself is **not yet ported**; that is Phases 1–7, driven by [RESTORATION.md](RESTORATION.md).
+`src/App.tsx` is a placeholder shell.
 
-### Tab 2: Interactive Depth Chart 🎮
-- **Dynamic Formation View**: Toggle between Offense and Defense
-- **Visual Position Layout**: Players positioned like actual football formations
-- **Player Cards**: Compact design featuring:
-  - Position
-  - Last Name
-  - Overall Rating (OVR) with color-coded gradient
-  - Star Recruiting Ranking (⭐)
-  - Seniority badges (FR/SO/JR/SR with color coding)
-  - Redshirt indicator (RS)
-  - Portal transfer indicator (PTL)
-  - Jersey number
-- **Starter & Backup Display**: Clear visual hierarchy
-- **Smooth Animations**: Staggered fade-in effects for enhanced UX
+## Stack
 
-### Tab 3: Ratings & Filters 🔍
-- **Advanced Filtering**: By side (OFF/DEF), position, star rating
-- **Multiple Sort Options**: Composite score, overall rating, or star rating
-- **List View**: All players with detailed information
-- **Quick Search**: Find players by any attribute
+- React 18 + Vite 6 + Tailwind 3, **TypeScript** (strict), **zod** at data boundaries
+- **pnpm** (corepack-pinned) — this project does **not** use npm (see [AGENTS.md](AGENTS.md))
+- Vitest + React Testing Library
+- Data: CollegeFootballData API (CFBD) + OurLads / 247Sports scrapers (offline collection)
 
-### Player Details Modal 💾
-Click any player to view:
-- Full name, position, year, and jersey number
-- Recruiting star rating and composite score
-- Height and weight
-- 2025 season statistics
-- Portal transfer status
-- Visual indicators and color-coded metrics
+## Quick start (after Phase 1)
 
-## Data Sources
-
-This application uses authentic data from:
-- **Depth Charts**: Based on Ourlads roster information
-- **Player Stats**: 2025 season statistics from ESPN
-- **Recruiting Data**: 247Sports composite rankings and position ratings
-
-## Technology Stack
-
-- **React 18.3** - Modern UI library with hooks
-- **Vite 6.0** - Lightning-fast build tool and dev server
-- **Tailwind CSS 3.4** - Utility-first CSS framework
-- **JavaScript/JSX** - Component-based architecture
-
-## Getting Started
-
-### Prerequisites
-
-Make sure you have Node.js installed (v18 or higher recommended):
 ```bash
-node --version
-npm --version
+corepack enable
+pnpm install --frozen-lockfile
+pnpm approve-builds esbuild     # one-time
+pnpm dev                        # http://localhost:3000
+pnpm build                      # typecheck + production build
+pnpm test                       # vitest
 ```
 
-### Installation
+> Requires the Node version in [.node-version](.node-version) (fnm auto-switches on `cd`).
 
-1. **Clone or navigate to the repository:**
-```bash
-cd Claude_Test
-```
+## Data model (high level)
 
-2. **Install dependencies:**
-```bash
-npm install
-```
+`source adapters (roster / recruiting / ratings / production) → buildPlayerPipeline (join by
+playerId) → mapPipelineToUI → React`. A `bundled` vs `mock` data mode switch. Real per-team data
+is collected offline by `scripts/` and stored as per-team JSON under `src/data/collected/<team>/`.
 
-3. **Start the development server:**
-```bash
-npm run dev
-```
+- **32 teams** are seeded with real CFBD captures (carried from the recovered backup).
+- **Pilot teams = Florida Gators + Miami Hurricanes** — the two we actively build out; all
+  re-collection / data-hardening focuses on these. (Miami was a mock placeholder in the recovered
+  build and is re-collected fresh.) Other teams' uneven data is surfaced honestly in the UI.
 
-4. **Open your browser:**
-The application will automatically open at `http://localhost:3000`
+## Repo layout
 
-## Available Scripts
+| Path | What |
+|---|---|
+| `src/` | App (TSX) — ported in Phases 3–4 |
+| `src/data/collected/<team>/` | Seeded real per-team JSON (roster / recruiting / production) |
+| `src/assets/logos/` | 34 team logos |
+| `scripts/` | Data collectors (ported to TS in Phase 5) + `guard-no-npm.sh` |
+| `docs/` | Original PRD / phase docs (reference) |
+| `_recovered/` | **Gitignored.** Local read-only staging of the recovered build to port from |
+| `_recovery/` | Recovery reconnaissance report |
+| `RESTORATION.md` | The phased rebuild execution guide (start here next session) |
 
-- `npm run dev` - Starts the development server with hot reload
-- `npm run build` - Creates optimized production build
-- `npm run preview` - Preview the production build locally
+## Deployment
 
-## Project Structure
-
-```
-Claude_Test/
-├── src/
-│   ├── App.jsx          # Main application component (Miami roster)
-│   ├── main.jsx         # React entry point
-│   └── index.css        # Global styles with Tailwind
-├── index.html           # HTML entry point
-├── package.json         # Dependencies and scripts
-├── vite.config.js       # Vite configuration
-├── tailwind.config.js   # Tailwind CSS configuration
-├── postcss.config.js    # PostCSS configuration
-└── README.md            # This file
-```
-
-## Design Inspiration
-
-The interface is inspired by:
-- **EA Sports College Football** depth chart management
-- Modern data visualization principles
-- Mobile-first, responsive design
-- High-contrast, readable typography
-- Smooth animations and transitions
-
-## Color Coding System
-
-### Overall Ratings (OVR)
-- 🟡 **Gold** (90+): Elite players
-- 🟢 **Lime** (85-89): Excellent players
-- 🟢 **Green** (80-84): Very good players
-- 🔵 **Teal** (75-79): Good players
-- 🔵 **Cyan** (<75): Solid players
-
-### Class Year
-- 🟢 **Green**: Freshmen (FR)
-- 🔵 **Blue**: Sophomores (SO)
-- 🟡 **Yellow**: Juniors (JR)
-- 🔴 **Red**: Seniors (SR)
-
-### Special Indicators
-- 🟣 **Purple Badge (RS)**: Redshirt player
-- 🟠 **Orange Badge (PTL)**: Portal transfer
-
-## Features Roadmap
-
-Future enhancements could include:
-- [ ] Multi-team support (expand beyond Miami)
-- [ ] Historical roster comparisons
-- [ ] Player comparison tool
-- [ ] Export depth chart as image
-- [ ] Mobile app version
-- [ ] Live stats integration
-- [ ] Injury report tracking
-- [ ] Recruiting class analysis
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## Performance
-
-- Initial load: ~50ms
-- Smooth 60fps animations
-- Optimized React rendering
-- Minimal bundle size with Vite
-
-## License
-
-This project is for demonstration and educational purposes.
-
-## Acknowledgments
-
-- **Miami Hurricanes** - Official team
-- **Ourlads** - Depth chart information
-- **ESPN** - Player statistics
-- **247Sports** - Recruiting rankings
-
----
-
-Built with ❤️ for college football fans everywhere. Go Canes! 🙌
-
-## Phase 2: Source Connections (Data Layer)
-
-Phase 2 introduces a source adapter architecture that supports both `mock` and `connected` data modes while preserving the existing source-partitioned schema.
-
-### New Data Layer Capabilities
-- Adapter contract per domain (`fetchRaw`, `mapToCanonical`, `validate`, `metadata`)
-- Canonical depth chart normalization (`WR1`, `WR2`, `WR3`)
-- Generic completeness validation for required components
-- Loader orchestration with runtime mode switching and fallback
-- Alias registry scaffold for ID reconciliation
-
-### Data Validation Commands
-- `npm run check:data` → validates required components in mock mode
-- `npm run check:data:connected` → validates connected adapter output
-
-### Runtime mode
-Set one of:
-- `DATA_MODE=mock`
-- `DATA_MODE=connected`
-
-The loader falls back to mock mode if connected mode fails.
-
-## Phase 3: Player Data Pipeline
-
-Phase 3 composes the Phase 2 source-partitioned dataset into a unified, player-centric pipeline for downstream app screens and analytics.
-
-### Pipeline Capabilities
-- Joins roster, recruiting, ratings, and production by `playerId`
-- Produces enriched depth chart slots and flattened starter lists
-- Computes starter-based team/offense/defense summary metrics
-- Reports join coverage and unmatched source IDs
-
-### Pipeline Validation Commands
-- `npm run check:pipeline` → validates pipeline output in mock mode
-- `npm run check:pipeline:connected` → validates pipeline output in connected mode
+GitHub Pages (`VITE_BASE=/Roster_Builder/`) and Netlify (root) from the same build. Reconnected
+to the public repo **mibarnes/Roster_Builder**; the hardened build replaces the old `main` (Phase 7).

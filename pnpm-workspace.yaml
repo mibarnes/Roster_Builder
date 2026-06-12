@@ -1,0 +1,12 @@
+# Supply-chain hardened pnpm config — see ~/.AI_TOOLS/AGENTS.md §12 (Node).
+#   minimumReleaseAge   — refuse dependency versions younger than the cutoff (7 days).
+#   verifyDepsBeforeRun  — node_modules must match the lockfile before any script runs.
+#   onlyBuiltDependencies — explicit allowlist of packages permitted to run install scripts.
+# After `pnpm install`, run `pnpm approve-builds esbuild` (pnpm appends a managed allowBuilds: map).
+
+minimumReleaseAge: 10080          # 7 days (minutes)
+minimumReleaseAgeExclude: []      # escape hatch: vetted versions needed early
+verifyDepsBeforeRun: error
+
+onlyBuiltDependencies:
+  - esbuild                       # native binary pulled in by Vite
