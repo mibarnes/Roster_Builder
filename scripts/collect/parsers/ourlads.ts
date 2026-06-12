@@ -7,11 +7,27 @@ import {
   buildRosterNameIndex,
   canonicalizePositionGroup,
   normalizeOurladsPosition,
+  normalizePosition,
   resolveByStdName,
   stdName,
   stripTags,
   type RosterPlayerLike,
 } from '../normalize.ts'
+import { ourladsStubId } from '../playerId.ts'
+
+const POSITION_ALLOWLIST = new Set([
+  'QB', 'RB', 'FB', 'WR', 'TE', 'OL', 'OT', 'OG', 'C', 'T', 'G',
+  'DE', 'DT', 'NT', 'DL', 'LB', 'MLB', 'WLB', 'SLB', 'CB', 'NB', 'S', 'FS', 'SS', 'DB',
+  'PK', 'PT', 'LS', 'ATH',
+])
+
+/** Coerce any OurLads position into the schema allowlist (fallback 'ATH'). */
+const safeStubPosition = (rawPosition: string): string => {
+  const broad = normalizeOurladsPosition(rawPosition)
+  if (POSITION_ALLOWLIST.has(broad)) return broad
+  const norm = normalizePosition(rawPosition)
+  return POSITION_ALLOWLIST.has(norm) ? norm : 'ATH'
+}
 
 export const OURLADS_TBODY_IDS = {
   offense: 'ctl00_phContent_dcTBody',
@@ -133,10 +149,19 @@ interface MappedSide {
   stubs: OurladsStub[]
 }
 
+/**
+ * Optional secondary resolver: given an OurLads name + position, return an
+ * existing playerId (e.g. a CFBD recruit/247 record the primary roster index
+ * missed). Used for STUB REDUCTION — a depth name that matches a known recruit
+ * resolves to that player instead of minting an ourlads-stub-*.
+ */
+export type ExtraResolver = (name: string, position: string) => string | null
+
 const mapOurladsDepthToRoster = (
   rows: OurladsRow[],
   side: 'OFF' | 'DEF',
   index: ReturnType<typeof buildRosterNameIndex>,
+  extraResolve?: ExtraResolver,
 ): MappedSide => {
   const slots: Record<string, string> = {}
   const unmatched: UnmatchedOurlads[] = []
@@ -150,22 +175,25 @@ const mapOurladsDepthToRoster = (
 
     row.players.forEach((name, idx) => {
       if (!name) return
-      const resolved = resolveByStdName({
+      let resolvedId = resolveByStdName({
         ourladsName: name,
         ourladsPosition: row.position,
         ourladsEligibility: null,
         rosterByStdName: index.rosterByStdName,
         rosterNamePairs: index.rosterNamePairs,
-      })
+      })?.playerId ?? null
+      // Stub reduction: fall back to the recruit/247 name pool before stubbing.
+      if (!resolvedId && extraResolve) resolvedId = extraResolve(name, row.position)
+      const resolved = resolvedId ? { playerId: resolvedId } : null
       const key = idx === 0 ? canonicalSlot : `${canonicalSlot}${idx + 1}`
       if (!resolved) {
         unmatched.push({ slot: canonicalSlot, depth: idx + 1, name, cleanedName: stdName(name) })
         const stub: OurladsStub = {
-          playerId: `ourlads-stub-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+          playerId: ourladsStubId(name),
           name,
           number: null,
           side,
-          position: normalizeOurladsPosition(row.position) ?? row.position,
+          position: safeStubPosition(row.position),
           classYear: null,
           isTransfer: false,
           eligibilityRemaining: null,
@@ -191,13 +219,17 @@ export interface DepthChartResult {
 }
 
 /** Full pipeline: page HTML + roster players → resolved depth chart + stubs. */
-export const buildDepthChartFromOurlads = (html: string, rosterPlayers: RosterPlayerLike[]): DepthChartResult => {
+export const buildDepthChartFromOurlads = (
+  html: string,
+  rosterPlayers: RosterPlayerLike[],
+  extraResolve?: ExtraResolver,
+): DepthChartResult => {
   const index = buildRosterNameIndex(rosterPlayers)
   const offenseRows = extractOurladsSectionRows(html, OURLADS_TBODY_IDS.offense)
   const defenseRows = extractOurladsSectionRows(html, OURLADS_TBODY_IDS.defense)
 
-  const offenseMapped = mapOurladsDepthToRoster(offenseRows, 'OFF', index)
-  const defenseMapped = mapOurladsDepthToRoster(defenseRows, 'DEF', index)
+  const offenseMapped = mapOurladsDepthToRoster(offenseRows, 'OFF', index, extraResolve)
+  const defenseMapped = mapOurladsDepthToRoster(defenseRows, 'DEF', index, extraResolve)
 
   return {
     depthChart: { offense: offenseMapped.slots, defense: defenseMapped.slots },

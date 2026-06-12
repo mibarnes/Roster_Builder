@@ -5,7 +5,13 @@
  */
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { ProductionSourceSchema, RecruitingSourceSchema, RosterSourceSchema } from './schema/index.ts'
+import {
+  AdvancedSourceSchema,
+  ContextSourceSchema,
+  ProductionSourceSchema,
+  RecruitingSourceSchema,
+  RosterSourceSchema,
+} from './schema/index.ts'
 import { DEFAULT_TEAM_ID, TEAMS, getTeamById } from './teamRegistry.ts'
 
 const COLLECTED = join(process.cwd(), 'src/data/collected')
@@ -54,9 +60,24 @@ describe('seeded data conformance', () => {
     const read = (f: string) => JSON.parse(readFileSync(join(COLLECTED, team, f), 'utf8'))
     const roster = RosterSourceSchema.parse(read('roster.json'))
     expect(roster.players.length).toBeGreaterThan(0)
-    expect(roster.sourceId).toBe('cfbd-roster-v1') // seeded teams are REAL captures, not mock
+    // seeded teams are REAL captures (not mock): v1 = original M3, v2 = E1/E2 re-collect
+    expect(roster.sourceId).toMatch(/^cfbd-roster-v[12]$/)
     RecruitingSourceSchema.parse(read('recruiting.json'))
     ProductionSourceSchema.parse(read('production.json'))
+  })
+
+  // E1/E2 enriched files (advanced/context) exist only for re-collected pilots.
+  it.each(seeded)('%s: advanced/context parse when present (E1/E2)', (team) => {
+    const teamDir = join(COLLECTED, team)
+    if (existsSync(join(teamDir, 'advanced.json'))) {
+      const advanced = AdvancedSourceSchema.parse(JSON.parse(readFileSync(join(teamDir, 'advanced.json'), 'utf8')))
+      expect(advanced.sourceType).toBe('advanced')
+      expect(advanced.provenance?.dataSeason).toBeGreaterThan(0)
+    }
+    if (existsSync(join(teamDir, 'context.json'))) {
+      const context = ContextSourceSchema.parse(JSON.parse(readFileSync(join(teamDir, 'context.json'), 'utf8')))
+      expect(context.sourceType).toBe('context')
+    }
   })
 
   it('every seeded team is a known registry team', () => {

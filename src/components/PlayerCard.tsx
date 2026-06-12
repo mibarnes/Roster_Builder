@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Star from './Star.tsx'
-import { getEffectiveStars } from '../utils/playerHelpers.ts'
+import { getEffectiveStars, getOvrDisplay, NR_COLOR } from '../utils/playerHelpers.ts'
 import type { UIPlayer } from '../data/schema/ui.ts'
 
 const classTextColor: Record<string, string> = {
@@ -19,10 +19,11 @@ interface PlayerCardProps {
 
 export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: PlayerCardProps) {
   const [hovered, setHovered] = useState(false)
-  const ovr = player.ovr
+  const ovrText = getOvrDisplay(player)
   const stars = getEffectiveStars(player)
   const isRS = player.year?.includes('RS') ?? false
   const classYear = player.year?.replace('RS ', '') ?? ''
+  const isFuzzy = player.recruitMatchMethod === 'name-fuzzy'
 
   const handleActivate = () => onClick(player)
 
@@ -78,7 +79,14 @@ export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: Pl
           </div>
 
           <div className="flex justify-between items-center text-[8px] mb-1">
-            <span className="font-bold text-gray-400">OVR {ovr}</span>
+            <span
+              className="font-bold"
+              style={player.isRated ? { color: '#9ca3af' } : { color: NR_COLOR }}
+              aria-label={player.isRated ? `Overall ${ovrText}` : 'Not rated'}
+              title={player.isRated ? undefined : 'No recruiting or production signal'}
+            >
+              OVR {ovrText}
+            </span>
             <span
               className={`font-bold ${classTextColor[classYear] ?? 'text-slate-400'}`}
               aria-label={`Class ${classYear}`}
@@ -87,12 +95,28 @@ export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: Pl
             </span>
           </div>
 
-          <div className="flex justify-center gap-1 min-h-[12px]">
+          <div className="flex justify-center gap-1 min-h-[12px] flex-wrap">
             {isRS && (
               <span className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-rs-purple">RS</span>
             )}
             {player.isTransfer && (
               <span className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-portal-orange">PTL</span>
+            )}
+            {player.isStub && (
+              <span
+                className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-gray-600"
+                title="Depth-chart only — no roster/recruiting/production data"
+              >
+                DEPTH
+              </span>
+            )}
+            {!player.isStub && isFuzzy && (
+              <span
+                className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-yellow-700"
+                title="Recruiting matched by fuzzy name — review"
+              >
+                ~MATCH
+              </span>
             )}
           </div>
         </div>

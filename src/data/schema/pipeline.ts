@@ -1,4 +1,5 @@
-import type { ClassYear, Side } from './common.ts'
+import type { ClassYear, MatchMethod, Side } from './common.ts'
+import type { RatingMethod } from '../rating/overall.ts'
 
 /**
  * Types describing the REAL output of buildPlayerPipeline (ported faithfully
@@ -35,18 +36,46 @@ export interface PlayerRecruiting {
   positionRank: number | null
 }
 
+/** Per-player blended-rating sub-scores + weights (from computeTeamRatings). */
+export interface PlayerRatingBreakdown {
+  recruiting: number | null
+  production: number | null
+  class: number
+  weights: { recruiting: number; production: number; class: number }
+}
+
 export interface PlayerRatings {
-  /** Derived OVR = round(compositeRating × 100), unranked → 70. Label: derived. */
+  /** Blended OVR (recruiting/production/class). null === NR (render honestly). */
   overall: number | null
   archetype: string | null
-  /** True — ratings have no independent provider; OVR is derived. */
+  /** True — ratings have no independent provider; OVR is computed (blended). */
   derived: boolean
+  /** Which path produced this OVR ('blended' | 'recruiting-projection' | …). */
+  method: RatingMethod
+  /** Sub-score breakdown + weights for the modal. */
+  breakdown: PlayerRatingBreakdown
   attributes: Record<string, unknown>
 }
 
 export interface PlayerProduction {
   season: number | null
+  /** Distinct games the athlete appeared in (from production.games). */
+  games: number | null
+  /** Nested season counting-stat line (production.stats). */
   stats: Record<string, number>
+}
+
+/** Advanced (CFBD usage/PPA) summary carried per player when available. */
+export interface PlayerAdvancedSummary {
+  /** usage.overall (snap-share involvement, 0–1) — null when no advanced row. */
+  usageOverall: number | null
+  /** ppa.averagePPA.all (per-play efficiency) — null when no advanced row. */
+  ppaAll: number | null
+}
+
+export interface PlayerHometown {
+  city: string | null
+  state: string | null
 }
 
 export type MatchedBy = 'id' | 'name-exact' | 'name-fuzzy' | null
@@ -66,6 +95,13 @@ export interface PipelinePlayer {
   recruiting: PlayerRecruiting
   ratings: PlayerRatings
   production: PlayerProduction
+  advanced: PlayerAdvancedSummary
+  /** Hometown (city/state) from roster or recruiting; null fields when unknown. */
+  hometown: PlayerHometown
+  /** True when this player exists only as an OurLads depth-chart stub. */
+  isStub: boolean
+  /** How recruiting was matched to this player (cfbd-id/247-id/name-fuzzy/none). */
+  recruitMatchMethod: MatchMethod | null
   dataCompleteness: PlayerDataCompleteness
 }
 
@@ -111,9 +147,30 @@ export interface PipelineCoverage {
   recruitingMatched: number
   ratingsMatched: number
   productionMatched: number
+  /** Players with games > 0 (actual on-field contributors). */
+  productionWithGames: number
+  /** Players carrying advanced (usage/PPA) rows. */
+  advancedMatched: number
+  /** Players with a real (non-NR) computed OVR. */
+  rated: number
   unmatchedRecruitingIds: string[]
   unmatchedRatingsIds: string[]
   unmatchedProductionIds: string[]
+}
+
+/** A zeroed coverage block (for empty/placeholder UI datasets). */
+export const EMPTY_COVERAGE: PipelineCoverage = {
+  rosterCount: 0,
+  stubCount: 0,
+  recruitingMatched: 0,
+  ratingsMatched: 0,
+  productionMatched: 0,
+  productionWithGames: 0,
+  advancedMatched: 0,
+  rated: 0,
+  unmatchedRecruitingIds: [],
+  unmatchedRatingsIds: [],
+  unmatchedProductionIds: [],
 }
 
 /** Full pipeline product consumed by mapPipelineToUI. */

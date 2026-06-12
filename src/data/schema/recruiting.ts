@@ -1,22 +1,40 @@
 import { z } from 'zod'
-import { SourceMetaSchema } from './common.ts'
+import { MatchMethodSchema, SourceMetaSchema } from './common.ts'
 
-export const RecruitProfileSchema = z
-  .object({
-    playerId: z.string(),
-    name: z.string().optional(),
-    stars: z.number().nullable().optional(),
-    /** 247Sports composite, 0–1 scale. */
-    compositeRating: z.number().nullable().optional(),
-    nationalRank: z.number().nullable().optional(),
-    positionRank: z.number().nullable().optional(),
-    transferPortalStars: z.number().nullable().optional(),
-    transferRating: z.number().nullable().optional(),
-    fromSchool: z.string().nullable().optional(),
-    isTransfer: z.boolean().optional(),
-    years: z.array(z.number()).optional(),
-  })
-  .passthrough()
+/** A 0–1 composite rating (247/CFBD). Tightened from a bare number. */
+const Rating01 = z.number().min(0).max(1)
+
+/** One recruiting match record (per source year). */
+export const RecruitMatchSchema = z.object({
+  year: z.number().optional(),
+  method: z.string(),
+  similarity: z.number().optional(),
+  player247Id: z.string().nullable().optional(),
+  cfbdRecruitId: z.string().nullable().optional(),
+})
+
+export const RecruitProfileSchema = z.object({
+  playerId: z.string(),
+  name: z.string().optional(),
+  stars: z.number().int().min(0).max(5).nullable().optional(),
+  /** 247/CFBD composite, 0–1 scale (tightened). */
+  compositeRating: Rating01.nullable().optional(),
+  nationalRank: z.number().nullable().optional(),
+  positionRank: z.number().nullable().optional(),
+  transferPortalStars: z.number().int().min(0).max(5).nullable().optional(),
+  transferRating: z.number().nullable().optional(),
+  fromSchool: z.string().nullable().optional(),
+  isTransfer: z.boolean().optional(),
+  years: z.array(z.number()).optional(),
+  /** How this profile was joined to the roster player (precedence-ranked). */
+  matchMethod: MatchMethodSchema.optional(),
+  matches: z.array(RecruitMatchSchema).optional(),
+  // ── Hometown (CFBD /recruiting/players hometownInfo) ──────────────────────
+  homeCity: z.string().nullable().optional(),
+  homeState: z.string().nullable().optional(),
+  homeLat: z.number().nullable().optional(),
+  homeLon: z.number().nullable().optional(),
+})
 export type RecruitProfile = z.infer<typeof RecruitProfileSchema>
 
 export const TeamClassRankingSchema = z

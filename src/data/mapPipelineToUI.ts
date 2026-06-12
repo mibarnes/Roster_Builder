@@ -47,21 +47,40 @@ const SLOT_POS_OVERRIDE: Record<string, string> = {
 }
 
 const STAT_ABBREVIATIONS: Record<string, string> = {
+  // Legacy flattened keys (kept for backward-compat / mock data).
   passingYards: 'PAS',
-  passingTD: 'TD',
+  passingTD: 'PTD',
   interceptions: 'INT',
   qbr: 'RTG',
-  rushingYards: 'YDS',
-  rushingTD: 'TD',
+  rushingYards: 'RUSH',
+  rushingTD: 'RTD',
   receptions: 'REC',
-  receivingYards: 'YDS',
-  receivingTD: 'TD',
+  receivingYards: 'RECYD',
+  receivingTD: 'RECTD',
   tackles: 'TKL',
   sacks: 'SCK',
   tfl: 'TFL',
   forcedFumbles: 'FF',
   passBreakups: 'PD',
   starts: 'GS',
+  // Nested CFBD production.stats keys (the real per-phase line). Distinct
+  // abbreviations so passing/rushing/receiving phases never collapse.
+  passCmpAtt: 'C/A',
+  passYds: 'PYD',
+  passTD: 'PTD',
+  passINT: 'INT',
+  rushAtt: 'CAR',
+  rushYds: 'RYD',
+  rushTD: 'RTD',
+  rec: 'REC',
+  recYds: 'RECYD',
+  recTD: 'RECTD',
+  soloTackles: 'SOLO',
+  passDef: 'PD',
+  defTD: 'DTD',
+  fumbles: 'FUM',
+  fumblesLost: 'FL',
+  fumRec: 'FR',
 }
 
 const normalizeSlot = (slot: string): { slot: string; depth: number } => {
@@ -106,9 +125,28 @@ const toUiPlayer = (player: PipelinePlayer, id: number): UIPlayer => ({
   positionRank: player.recruiting.positionRank ?? null,
   ht: player.bio.height,
   wt: player.bio.weight,
+  // NR (overall === null) maps to 0 — the comparison stack's `ovr > 0`
+  // convention treats 0 as unrated; isRated keeps the distinction explicit.
   ovr: player.ratings.overall ?? 0,
+  isRated: player.ratings.overall != null,
+  ratingMethod: player.ratings.method,
+  ratingBreakdown: { ...player.ratings.breakdown },
   eligibilityRemaining: player.bio.eligibilityRemaining ?? null,
   stats: toUiStats(player.production.stats),
+  games: player.production.games,
+  usageOverall: player.advanced.usageOverall,
+  ppaAll: player.advanced.ppaAll,
+  hometown:
+    player.hometown.city || player.hometown.state
+      ? { city: player.hometown.city, state: player.hometown.state }
+      : null,
+  recruitMatchMethod: player.recruitMatchMethod,
+  isStub: player.isStub,
+  dataCompleteness: {
+    hasRecruiting: player.dataCompleteness.hasRecruiting,
+    hasProduction: player.dataCompleteness.hasProduction,
+    matchedBy: player.recruitMatchMethod,
+  },
 })
 
 const buildFormation = (
@@ -179,5 +217,10 @@ export const mapPipelineToUI = (pipeline: PlayerPipeline): UIDataset => {
     return { ...ui, side }
   })
 
-  return { offensiveStarters, defensiveStarters, allPlayers }
+  return {
+    offensiveStarters,
+    defensiveStarters,
+    allPlayers,
+    coverage: pipeline.coverage,
+  }
 }

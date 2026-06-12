@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react'
 import Star from './Star.tsx'
-import { getEffectiveStars, getOvrColor } from '../utils/playerHelpers.ts'
+import {
+  getEffectiveStars,
+  getOvrDisplay,
+  getOvrDisplayColor,
+  RATING_METHOD_LABEL,
+} from '../utils/playerHelpers.ts'
 import type { UIPlayer } from '../data/schema/ui.ts'
 
 const FOCUSABLE_SELECTOR = [
@@ -12,8 +17,12 @@ const FOCUSABLE_SELECTOR = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(',')
 
-// Stat labels shown per-game where applicable.
-const PER_GAME_STATS = new Set(['REC', 'YDS', 'PAS', 'TKL', 'SCK', 'TD', 'ATT', 'TFL', 'PD'])
+// Stat labels shown per-game where applicable (counting stats that scale with
+// availability). Covers both the new nested abbreviations and legacy keys.
+const PER_GAME_STATS = new Set([
+  'REC', 'YDS', 'PAS', 'TKL', 'SCK', 'TD', 'ATT', 'TFL', 'PD',
+  'PYD', 'RYD', 'RECYD', 'CAR', 'SOLO', 'PTD', 'RTD', 'RECTD',
+])
 
 interface StatCardProps {
   label: string
@@ -27,6 +36,23 @@ function StatCard({ label, value, perGame }: StatCardProps) {
       <div className="text-xl font-black text-white">{value ?? '—'}</div>
       {perGame != null && <div className="text-[9px] text-emerald-400 font-bold">{perGame}/G</div>}
       <div className="text-[9px] text-gray-400 uppercase font-semibold mt-0.5">{label}</div>
+    </div>
+  )
+}
+
+interface SubScoreProps {
+  label: string
+  value: number | null
+  weight: number
+}
+
+/** One recruiting/production/class sub-score chip in the rating breakdown. */
+function SubScore({ label, value, weight }: SubScoreProps) {
+  return (
+    <div className="text-center bg-black rounded-xl py-2 px-1">
+      <div className="text-lg font-black text-white">{value != null ? Math.round(value) : '—'}</div>
+      <div className="text-[8px] text-gray-400 uppercase font-semibold mt-0.5">{label}</div>
+      <div className="text-[8px] text-gray-600 font-semibold">{Math.round(weight * 100)}%</div>
     </div>
   )
 }
@@ -82,7 +108,8 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
 
   const stats = player.stats ?? {}
   const stars = getEffectiveStars(player)
-  const gamesPlayed = stats.GP ?? stats.GS ?? null
+  // Real games count drives the per-game (/G) path (previously dead — no games).
+  const gamesPlayed = player.games && player.games > 0 ? player.games : null
   const hasStats = Object.keys(stats).length > 0
 
   const statEntries = Object.entries(stats).filter(([k]) => k !== 'GP')
@@ -91,6 +118,14 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
     value: val,
     perGame: gamesPlayed && PER_GAME_STATS.has(key) ? (val / gamesPlayed).toFixed(1) : null,
   }))
+
+  const ovrText = getOvrDisplay(player)
+  const methodLabel = RATING_METHOD_LABEL[player.ratingMethod]
+  const bd = player.ratingBreakdown
+  const hometownLabel = player.hometown
+    ? [player.hometown.city, player.hometown.state].filter(Boolean).join(', ')
+    : null
+  const usagePct = player.usageOverall != null ? Math.round(player.usageOverall * 100) : null
 
   const classYear = player.year?.replace('RS ', '') ?? ''
   const isRS = player.year?.includes('RS') ?? false
@@ -119,10 +154,12 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
           </button>
           <div className="flex items-center gap-4">
             <div
-              className="w-[72px] h-[72px] rounded-2xl flex items-center justify-center font-black text-3xl text-white shadow-xl team-accent-bg flex-shrink-0"
-              style={{ color: getOvrColor(player.ovr) }}
+              className={`w-[72px] h-[72px] rounded-2xl flex flex-col items-center justify-center font-black text-white shadow-xl team-accent-bg flex-shrink-0 ${player.isRated ? 'text-3xl' : 'text-xl'}`}
+              style={{ color: getOvrDisplayColor(player) }}
+              title={player.isRated ? `Overall ${player.ovr} (${methodLabel})` : 'Not rated'}
             >
-              {player.ovr}
+              {ovrText}
+              {!player.isRated && <span className="text-[8px] font-bold tracking-wide mt-0.5 opacity-80">UNRATED</span>}
             </div>
             <div className="min-w-0">
               <h2 id="player-modal-title" className="text-xl font-black text-white tracking-tight leading-tight">
@@ -146,16 +183,94 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
                   </span>
                 )}
               </div>
-              <div className="flex items-center gap-2 mt-1 text-[11px] text-gray-400">
+              <div className="flex items-center gap-2 mt-1 text-[11px] text-gray-400 flex-wrap">
                 <span>{player.ht}</span>
                 <span>•</span>
                 <span>{player.wt ? `${player.wt} lbs` : '—'}</span>
+                {hometownLabel && (
+                  <>
+                    <span>•</span>
+                    <span title="Hometown">{hometownLabel}</span>
+                  </>
+                )}
               </div>
             </div>
           </div>
         </div>
 
         <div className="p-4 space-y-3">
+          {/* ── Rating breakdown (blended OVR provenance) ── */}
+          <div className="bg-gray-900 rounded-xl p-3 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] text-gray-400 uppercase font-semibold">Overall Rating</span>
+              <span
+                className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                style={{ backgroundColor: 'rgba(255,255,255,0.06)', color: getOvrDisplayColor(player) }}
+              >
+                {methodLabel}
+              </span>
+            </div>
+            {player.isRated ? (
+              <div className="grid grid-cols-3 gap-2">
+                <SubScore label="Recruiting" value={bd.recruiting} weight={bd.weights.recruiting} />
+                <SubScore label="Production" value={bd.production} weight={bd.weights.production} />
+                <SubScore label="Class" value={bd.class} weight={bd.weights.class} />
+              </div>
+            ) : (
+              <p className="text-[11px] text-gray-500 font-medium">
+                No recruiting or production signal — rated NR rather than a fabricated number.
+              </p>
+            )}
+          </div>
+
+          {/* ── Advanced usage / efficiency (CFBD) ── */}
+          {(usagePct != null || player.ppaAll != null) && (
+            <div className="bg-gray-900 rounded-xl p-3">
+              <div className="text-[11px] text-gray-400 uppercase font-semibold mb-2">Advanced (2025)</div>
+              <div className="grid grid-cols-2 gap-2">
+                {usagePct != null && (
+                  <div className="text-center bg-black rounded-xl py-2.5">
+                    <div className="text-xl font-black text-white">{usagePct}%</div>
+                    <div className="text-[9px] text-gray-400 uppercase font-semibold mt-0.5" title="Snap-share involvement">
+                      Usage
+                    </div>
+                  </div>
+                )}
+                {player.ppaAll != null && (
+                  <div className="text-center bg-black rounded-xl py-2.5">
+                    <div className={`text-xl font-black ${player.ppaAll >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                      {player.ppaAll.toFixed(2)}
+                    </div>
+                    <div className="text-[9px] text-gray-400 uppercase font-semibold mt-0.5" title="Predicted points added per play">
+                      PPA/Play
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* ── Provenance flags ── */}
+          {(player.isStub || player.recruitMatchMethod === 'name-fuzzy' || !player.dataCompleteness.hasProduction) && (
+            <div className="flex flex-wrap gap-2">
+              {player.isStub && (
+                <span className="text-[9px] font-bold text-gray-300 bg-gray-700/60 px-2 py-1 rounded-full">
+                  Depth-chart only
+                </span>
+              )}
+              {!player.isStub && player.recruitMatchMethod === 'name-fuzzy' && (
+                <span className="text-[9px] font-bold text-yellow-300 bg-yellow-900/40 px-2 py-1 rounded-full">
+                  Fuzzy-matched recruiting
+                </span>
+              )}
+              {!player.isStub && !player.dataCompleteness.hasProduction && (
+                <span className="text-[9px] font-bold text-gray-400 bg-gray-800/60 px-2 py-1 rounded-full">
+                  No production data
+                </span>
+              )}
+            </div>
+          )}
+
           {player.isTransfer && player.fromSchool && (
             <div className="bg-orange-950/40 border border-orange-700/40 rounded-xl px-3 py-2.5 flex items-center gap-2">
               <span className="text-[10px] font-black text-orange-400 uppercase tracking-widest">Transfer from</span>

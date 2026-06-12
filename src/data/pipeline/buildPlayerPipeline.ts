@@ -9,8 +9,9 @@
  *  - ratings.overall is DERIVED here (round(compositeRating × 100), unranked → 70)
  *    since real CFBD captures ship no ratings source; ratings.derived = true.
  */
-import type { ClassYear } from '../schema/common.ts'
+import type { ClassYear, MatchMethod } from '../schema/common.ts'
 import type { DatasetBySource } from '../schema/dataset.ts'
+import type { PlayerAdvanced } from '../schema/advanced.ts'
 import type {
   DepthChartEntry,
   MatchedBy,
@@ -21,6 +22,8 @@ import type {
   StarterEntry,
   TeamMetrics,
 } from '../schema/pipeline.ts'
+import { canonicalizePositionGroup } from '../normalize/positionMapping.ts'
+import { computeTeamRatings, type RatingInput } from '../rating/overall.ts'
 
 interface IdItem {
   playerId?: string
@@ -137,10 +140,6 @@ const canonicalizeClassYear = (raw: string | null | undefined): ClassYear => {
   return CLASS_YEARS.has(token) ? (token as ClassYear) : null
 }
 
-/** M4: derive OVR from recruiting composite (unranked → 70). */
-const deriveOverall = (compositeRating: number | null): number =>
-  typeof compositeRating === 'number' ? Math.round(compositeRating * 100) : 70
-
 interface StarterSlot {
   side: string
   slot: string
@@ -239,7 +238,34 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
   const ratingsMap = ratingsLookup.byId
   const productionMap = productionLookup.byId
 
-  const players: PipelinePlayer[] = rosterPlayers.map((rosterPlayer) => {
+  // Advanced (usage/PPA) is id-keyed by CFBD athlete id. Absent for partial teams.
+  const advancedById = new Map<string, PlayerAdvanced>(
+    (datasetBySource?.advanced?.playerAdvanced ?? []).map((a) => [a.playerId, a]),
+  )
+
+  // ── Phase 1: resolve each roster player's source records into a draft shape. ──
+  interface Draft {
+    rosterPlayer: (typeof rosterPlayers)[number]
+    recruiting: Record<string, unknown>
+    ratings: Record<string, unknown>
+    advanced: PlayerAdvanced | undefined
+    compositeRating: number | null
+    recruitingIsTransfer: boolean
+    transferRating: number | null
+    classYear: ClassYear
+    positionGroup: string
+    stats: Record<string, number>
+    games: number | null
+    usageOverall: number | null
+    ppaAll: number | null
+    isStub: boolean
+    recruitMatchMethod: MatchMethod | null
+    recruitingResolved: ReturnType<typeof resolveSourceRecord>
+    ratingsResolved: ReturnType<typeof resolveSourceRecord>
+    productionResolved: ReturnType<typeof resolveSourceRecord>
+  }
+
+  const drafts: Draft[] = rosterPlayers.map((rosterPlayer) => {
     const recruitingResolved = resolveSourceRecord(rosterPlayer, recruitingLookup)
     const ratingsResolved = resolveSourceRecord(rosterPlayer, ratingsLookup)
     const productionResolved = resolveSourceRecord(rosterPlayer, productionLookup)
@@ -247,16 +273,71 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
     const recruiting = (recruitingResolved.record ?? {}) as Record<string, unknown>
     const ratings = (ratingsResolved.record ?? {}) as Record<string, unknown>
     const production = (productionResolved.record ?? {}) as Record<string, unknown>
+    const advanced = advancedById.get(rosterPlayer.playerId)
 
     const compositeRating = (recruiting.compositeRating as number | null | undefined) ?? null
     const recruitingIsTransfer = Boolean(recruiting.isTransfer)
     const transferRating = (recruiting.transferRating as number | null | undefined) ?? null
 
-    // Ratings source absent for real captures → derive OVR from composite.
-    const overall =
-      typeof ratings.overall === 'number'
-        ? (ratings.overall as number)
-        : deriveOverall(compositeRating)
+    // Production stats are NESTED under production.stats now; games is a sibling.
+    const nestedStats = (production.stats as Record<string, number> | undefined) ?? null
+    const stats: Record<string, number> = nestedStats
+      ? Object.fromEntries(
+          Object.entries(nestedStats).filter(([, value]) => typeof value === 'number'),
+        )
+      : {}
+    const games =
+      typeof production.games === 'number' ? (production.games as number) : null
+
+    const usageOverall = advanced?.usage?.overall ?? null
+    const ppaAll = advanced?.ppa?.averagePPA?.all ?? null
+
+    return {
+      rosterPlayer,
+      recruiting,
+      ratings,
+      advanced,
+      compositeRating,
+      recruitingIsTransfer,
+      transferRating,
+      classYear: canonicalizeClassYear(rosterPlayer.classYear ?? null),
+      positionGroup: canonicalizePositionGroup(rosterPlayer.position),
+      stats,
+      games,
+      usageOverall,
+      ppaAll,
+      isStub: rosterPlayer.playerId?.startsWith('ourlads-stub-') ?? false,
+      recruitMatchMethod:
+        (recruiting.matchMethod as MatchMethod | null | undefined) ??
+        (recruitingResolved.record ? 'name-fuzzy' : null),
+      recruitingResolved,
+      ratingsResolved,
+      productionResolved,
+    }
+  })
+
+  // ── Phase 2: compute the blended OVR for the WHOLE team in one pass. ──
+  const ratingInputs: RatingInput[] = drafts.map((d) => {
+    const hasProduction =
+      (d.games ?? 0) > 0 || d.ppaAll != null || d.usageOverall != null || Object.keys(d.stats).length > 0
+    return {
+      positionGroup: d.positionGroup,
+      sideBucket: d.rosterPlayer.side === 'OFF' ? 'OFF' : d.rosterPlayer.side === 'DEF' ? 'DEF' : 'ST',
+      compositeRating: d.compositeRating,
+      classYear: d.classYear,
+      isRedshirt: Boolean(d.rosterPlayer.isRedshirt),
+      production: hasProduction
+        ? { games: d.games, ppaAll: d.ppaAll, usageOverall: d.usageOverall, stats: Object.keys(d.stats).length ? d.stats : null }
+        : null,
+      isStub: d.isStub,
+    }
+  })
+  const ratingResults = computeTeamRatings(ratingInputs)
+
+  // ── Phase 3: assemble the final PipelinePlayer list. ──
+  const players: PipelinePlayer[] = drafts.map((d, i) => {
+    const { recruiting, ratings, recruitingResolved, ratingsResolved, productionResolved } = d
+    const rating = ratingResults[i]!
 
     const attributes = Object.fromEntries(
       Object.entries(ratings).filter(
@@ -264,51 +345,65 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
       ),
     )
 
-    const stats = Object.fromEntries(
-      Object.entries(production)
-        .filter(([key]) => !['playerId', 'name'].includes(key))
-        .filter(([, value]) => typeof value === 'number'),
-    ) as Record<string, number>
+    const homeCity =
+      (d.rosterPlayer.homeCity as string | null | undefined) ??
+      (recruiting.homeCity as string | null | undefined) ??
+      null
+    const homeState =
+      (d.rosterPlayer.homeState as string | null | undefined) ??
+      (recruiting.homeState as string | null | undefined) ??
+      null
 
     return {
-      playerId: rosterPlayer.playerId,
+      playerId: d.rosterPlayer.playerId,
       bio: {
-        name: rosterPlayer.name,
-        number: rosterPlayer.number ?? null,
-        side: rosterPlayer.side,
-        position: rosterPlayer.position,
-        classYear: canonicalizeClassYear(rosterPlayer.classYear ?? null),
-        height: rosterPlayer.height ?? null,
-        weight: rosterPlayer.weight ?? null,
-        eligibilityRemaining: rosterPlayer.eligibilityRemaining ?? null,
+        name: d.rosterPlayer.name,
+        number: d.rosterPlayer.number ?? null,
+        side: d.rosterPlayer.side,
+        position: d.rosterPlayer.position,
+        classYear: d.classYear,
+        height: d.rosterPlayer.height ?? null,
+        weight: d.rosterPlayer.weight ?? null,
+        eligibilityRemaining: d.rosterPlayer.eligibilityRemaining ?? null,
         // Recruiting source is authoritative for isTransfer (247 portal match
         // beats the CFBD flag).
-        isTransfer: Boolean(recruiting.isTransfer || rosterPlayer.isTransfer),
+        isTransfer: Boolean(recruiting.isTransfer || d.rosterPlayer.isTransfer),
       },
       recruiting: {
         stars: (recruiting.stars as number | null | undefined) ?? null,
         transferPortalStars:
           (recruiting.transferPortalStars as number | null | undefined) ?? null,
-        compositeRating,
+        compositeRating: d.compositeRating,
         compositePercent: toPercent(
-          recruitingIsTransfer && transferRating ? transferRating : compositeRating,
+          d.recruitingIsTransfer && d.transferRating ? d.transferRating : d.compositeRating,
         ),
-        transferRating,
+        transferRating: d.transferRating,
         fromSchool: (recruiting.fromSchool as string | null | undefined) ?? null,
-        isTransfer: recruitingIsTransfer,
+        isTransfer: d.recruitingIsTransfer,
         nationalRank: (recruiting.nationalRank as number | null | undefined) ?? null,
         positionRank: (recruiting.positionRank as number | null | undefined) ?? null,
       },
       ratings: {
-        overall,
+        overall: rating.overall,
         archetype: (ratings.archetype as string | null | undefined) ?? null,
-        derived: typeof ratings.overall !== 'number',
+        // OVR has no independent provider — it's computed (blended) here.
+        derived: true,
+        method: rating.method,
+        breakdown: { ...rating.components, weights: rating.weights },
         attributes,
       },
       production: {
         season: datasetBySource?.production?.season ?? null,
-        stats,
+        games: d.games,
+        stats: d.stats,
       },
+      advanced: {
+        usageOverall: d.usageOverall,
+        ppaAll: d.ppaAll,
+      },
+      hometown: { city: homeCity, state: homeState },
+      isStub: d.isStub,
+      recruitMatchMethod: d.recruitMatchMethod,
       dataCompleteness: {
         hasRecruiting: Boolean(recruitingResolved.record),
         hasRatings: Boolean(ratingsResolved.record),
@@ -338,6 +433,9 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
     recruitingMatched: players.filter((p) => p.dataCompleteness.hasRecruiting).length,
     ratingsMatched: players.filter((p) => p.dataCompleteness.hasRatings).length,
     productionMatched: players.filter((p) => p.dataCompleteness.hasProduction).length,
+    productionWithGames: players.filter((p) => (p.production.games ?? 0) > 0).length,
+    advancedMatched: players.filter((p) => p.advanced.usageOverall != null || p.advanced.ppaAll != null).length,
+    rated: players.filter((p) => p.ratings.overall != null).length,
     unmatchedRecruitingIds: [...recruitingMap.keys()].filter((id) => !playerMap.has(id)),
     unmatchedRatingsIds: [...ratingsMap.keys()].filter((id) => !playerMap.has(id)),
     unmatchedProductionIds: [...productionMap.keys()].filter((id) => !playerMap.has(id)),

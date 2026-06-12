@@ -1,4 +1,6 @@
 import type {
+  AdvancedSource,
+  ContextSource,
   ProductionSource,
   RatingsSource,
   RecruitingSource,
@@ -8,12 +10,16 @@ import type {
 /**
  * The per-team dataset the pipeline consumes, keyed by source. Ratings is
  * optional/absent for real CFBD captures (OVR is derived downstream).
+ * `advanced` (usage/PPA) and `context` (team returning production) are present
+ * only for the enriched pilot captures — undefined for older partial teams.
  */
 export interface DatasetBySource {
   roster: RosterSource
   recruiting: RecruitingSource
   production: ProductionSource
   ratings: RatingsSource | undefined
+  advanced: AdvancedSource | undefined
+  context: ContextSource | undefined
 }
 
 /** Honest data mode for a loaded dataset. */

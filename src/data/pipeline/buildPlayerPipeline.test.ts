@@ -62,15 +62,22 @@ describe('buildPlayerPipeline', () => {
     expect(byId.get('CFBD-4')!.dataCompleteness.hasRecruiting).toBe(false)
   })
 
-  it('canonicalizes classYear ("0" → null) and derives OVR', () => {
+  it('canonicalizes classYear ("0" → null) and computes a blended OVR', () => {
     const byId = new Map(pipeline.players.map((p) => [p.playerId, p]))
     expect(byId.get('CFBD-2')!.bio.classYear).toBeNull()
     expect(byId.get('CFBD-1')!.bio.classYear).toBe('JR')
-    // derived: round(0.95 * 100) = 95, flagged derived.
-    expect(byId.get('CFBD-1')!.ratings.overall).toBe(95)
-    expect(byId.get('CFBD-1')!.ratings.derived).toBe(true)
-    // p4 unranked → 70.
-    expect(byId.get('CFBD-4')!.ratings.overall).toBe(70)
+    // CFBD-1 has recruiting (0.95) but its production stats are NOT nested under
+    // production.stats in this fixture → recruiting-projection, a real number.
+    const p1 = byId.get('CFBD-1')!
+    expect(p1.ratings.derived).toBe(true)
+    expect(typeof p1.ratings.overall).toBe('number')
+    expect(p1.ratings.overall).toBeGreaterThan(70)
+    expect(p1.ratings.method).toBe('recruiting-projection')
+    expect(p1.ratings.breakdown.recruiting).not.toBeNull()
+    // p4 has neither recruiting nor production → NR (honest null, never a number).
+    const p4 = byId.get('CFBD-4')!
+    expect(p4.ratings.overall).toBeNull()
+    expect(p4.ratings.method).toBe('nr')
   })
 
   it('uses transferRating for transfer compositePercent and computes starter metrics', () => {

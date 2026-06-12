@@ -105,6 +105,44 @@ export const normalizeClassYear = (value: unknown): string => {
   return text
 }
 
+/**
+ * Redshirt-aware class-year parse. Splits a raw value into the canonical year
+ * (FR/SO/JR/SR or null) and a separate isRedshirt flag, so the 'RS *' signal
+ * survives canonicalization instead of being flattened away.
+ */
+export const parseClassYear = (value: unknown): { classYear: string | null; isRedshirt: boolean } => {
+  if (value == null || value === '') return { classYear: null, isRedshirt: false }
+  const raw = normalizeClassYear(value)
+  const isRedshirt = raw.startsWith('RS ')
+  const base = isRedshirt ? raw.slice(3).trim() : raw
+  const classYear = ['FR', 'SO', 'JR', 'SR'].includes(base) ? base : null
+  return { classYear, isRedshirt }
+}
+
+/**
+ * Derive eligibility-remaining (years left including the current season) from a
+ * CFBD numeric class `year` (1=FR..4=SR, 5/6=super-senior). Returns null when
+ * undeterminable. FR=4, SO=3, JR=2, SR=1, super-senior=1.
+ */
+export const eligibilityFromYear = (value: unknown): number | null => {
+  if (value == null || value === '') return null
+  const n = Number(value)
+  if (Number.isFinite(n)) {
+    if (n === 1) return 4
+    if (n === 2) return 3
+    if (n === 3) return 2
+    if (n === 4) return 1
+    if (n >= 5) return 1
+    return null
+  }
+  const text = String(value).trim().toUpperCase().replace(/^RS\s+/, '')
+  if (text === 'FR') return 4
+  if (text === 'SO') return 3
+  if (text === 'JR') return 2
+  if (text === 'SR') return 1
+  return null
+}
+
 export const toHeight = (value: unknown): string => {
   if (!value) return '6\'0"'
   const text = String(value)

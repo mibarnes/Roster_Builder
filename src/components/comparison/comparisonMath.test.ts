@@ -8,6 +8,7 @@ import {
   overallDepthGrade,
 } from './comparisonMath.ts'
 import type { Formation, UIDataset, UIPlayer } from '../../data/schema/ui.ts'
+import { EMPTY_COVERAGE } from '../../data/schema/pipeline.ts'
 
 // Minimal UIPlayer factory — only the fields the math reads matter.
 let seq = 0
@@ -30,8 +31,18 @@ const mk = (over: Partial<UIPlayer>): UIPlayer => ({
   ht: null,
   wt: null,
   ovr: 0,
+  isRated: false,
+  ratingMethod: 'nr',
+  ratingBreakdown: { recruiting: null, production: null, class: 71, weights: { recruiting: 0.45, production: 0.45, class: 0.1 } },
   eligibilityRemaining: null,
   stats: {},
+  games: null,
+  usageOverall: null,
+  ppaAll: null,
+  hometown: null,
+  recruitMatchMethod: null,
+  isStub: false,
+  dataCompleteness: { hasRecruiting: false, hasProduction: false, matchedBy: null },
   ...over,
 })
 
@@ -41,6 +52,7 @@ const dataset = (off: Record<string, UIPlayer[]>, def: Record<string, UIPlayer[]
   offensiveStarters: { ...emptyOff, ...off } as Formation,
   defensiveStarters: { ...emptyDef, ...def } as Formation,
   allPlayers: [],
+  coverage: EMPTY_COVERAGE,
 })
 
 describe('computeDepthGrade', () => {

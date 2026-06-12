@@ -12,6 +12,16 @@ Phase 0 (scaffold): done — toolchain skeleton + 32 real team datasets + 34 log
 npm/JSX build cleared from the branch (recoverable from `main`).
 
 ## Recently completed
+- **E1+E2 data-enrichment round (2026-06-12)** — wired 5 new CFBD endpoints into the collector:
+  `/games/players` (real games-played count + 10-category aggregation, now PRIMARY production),
+  `/recruiting/players` (athleteId-keyed → PRIMARY recruiting, CFBD-id join precedence over 247),
+  `/player/usage` + `/ppa/players/season` (new `advanced.json`), `/player/returning` (new
+  `context.json`), and roster hometown. New schemas `advanced.ts`/`context.ts`; tightened
+  `roster`/`recruiting`/`production` (named position allowlist, 0–1 composite, `games` + flexible
+  stat record, `isRedshirt`, hometown). Canonical id module `scripts/collect/playerId.ts`
+  (CFBD > 247 > stub precedence). Provenance + vintage block per file; prior vintage preserved in
+  `_history.json`. Both pilots re-collected; tsc + 160 tests green. (Stub reduction wired but 0 on
+  pilots — the unresolved depth names are genuinely 2026 signees CFBD has no athlete record for.)
 - Reconnaissance across GitHub + D-drive backup + `.recovery` → [_recovery/RECOVERY_REPORT.md](_recovery/RECOVERY_REPORT.md).
 - Recovered the **uncommitted frontier** (3 components, 34 teams, logos, `.env`) from the D drive
   — it existed in no git history. Staged to `_recovered/` (gitignored, local).

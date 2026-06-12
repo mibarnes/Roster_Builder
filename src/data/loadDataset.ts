@@ -75,7 +75,7 @@ function buildMockDataset(teamId: string): DatasetBySource {
       { playerId: 'mock-cb', name: 'Mock Cornerback', TKL: 45, INT: 2 },
     ],
   }
-  return { roster, recruiting, production, ratings: undefined }
+  return { roster, recruiting, production, ratings: undefined, advanced: undefined, context: undefined }
 }
 
 export interface LoadDatasetOptions {

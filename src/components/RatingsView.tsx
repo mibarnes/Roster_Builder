@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import Star from './Star.tsx'
-import { getEffectiveStars, getOvrColor } from '../utils/playerHelpers.ts'
+import { getEffectiveStars, getOvrDisplay, getOvrDisplayColor } from '../utils/playerHelpers.ts'
 import type { UIPlayer } from '../data/schema/ui.ts'
 
 export interface RatingsFilters {
@@ -97,10 +97,11 @@ export default function RatingsView({ allPlayers, filters, setFilters, onPlayerC
               style={{ animation: `fadeSlideUp 0.3s ease-out ${i * 25}ms both` }}
             >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-lg shadow-lg flex-shrink-0 team-accent-bg"
-                style={{ color: getOvrColor(p.ovr) }}
+                className={`w-12 h-12 rounded-xl flex items-center justify-center font-black shadow-lg flex-shrink-0 team-accent-bg ${p.isRated ? 'text-lg' : 'text-sm'}`}
+                style={{ color: getOvrDisplayColor(p) }}
+                title={p.isRated ? `Overall ${p.ovr}` : 'Not rated — no recruiting or production signal'}
               >
-                {p.ovr}
+                {getOvrDisplay(p)}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">

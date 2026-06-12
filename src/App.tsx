@@ -10,7 +10,7 @@ import RatingsView, { type RatingsFilters } from './components/RatingsView.tsx'
 import Star from './components/Star.tsx'
 import TeamComparisonView from './components/comparison/TeamComparisonView.tsx'
 import PositionDepthView from './components/comparison/PositionDepthView.tsx'
-import type { PipelineMetrics } from './data/schema/pipeline.ts'
+import { EMPTY_COVERAGE, type PipelineMetrics } from './data/schema/pipeline.ts'
 import type { Formation, UIDataset, UIPlayer } from './data/schema/ui.ts'
 import type { DataMode } from './data/schema/dataset.ts'
 
@@ -19,7 +19,7 @@ type DepthMode = 'starters' | 'second-team' | 'all'
 
 const EMPTY_OFFENSE: Formation = { LT: [], LG: [], C: [], RG: [], RT: [], WRX: [], SLOT: [], QB: [], RB: [], TE: [], WRZ: [] }
 const EMPTY_DEFENSE: Formation = { LDE: [], NT: [], DT: [], RDE: [], LCB: [], SS: [], WLB: [], MLB: [], NB: [], FS: [], RCB: [] }
-const EMPTY_ROSTER: UIDataset = { offensiveStarters: EMPTY_OFFENSE, defensiveStarters: EMPTY_DEFENSE, allPlayers: [] }
+const EMPTY_ROSTER: UIDataset = { offensiveStarters: EMPTY_OFFENSE, defensiveStarters: EMPTY_DEFENSE, allPlayers: [], coverage: EMPTY_COVERAGE }
 const EMPTY_METRICS: PipelineMetrics = {
   offense: { avgStarterComposite: 0, starterCount: 0 },
   defense: { avgStarterComposite: 0, starterCount: 0 },
@@ -249,6 +249,33 @@ export default function App() {
       {warnings.length > 0 && (
         <div className="px-4 py-2 text-xs font-semibold text-amber-300 bg-amber-950">{warnings.join(' · ')}</div>
       )}
+
+      {/* ── Team data-coverage banner (honest provenance at a glance) ── */}
+      {!isLoading && !loadError && rosterData.coverage.rosterCount > 0 && (() => {
+        const c = rosterData.coverage
+        const nonStub = Math.max(c.rosterCount - c.stubCount, 1)
+        const pct = (n: number) => Math.round((n / nonStub) * 100)
+        return (
+          <div
+            className="flex-shrink-0 px-4 py-1.5 text-[11px] font-semibold text-gray-400 bg-black/40 border-b border-surface-border flex items-center gap-3 flex-wrap"
+            aria-label="Team data coverage"
+          >
+            <span className="text-white font-bold">{c.rosterCount} players</span>
+            <span>·</span>
+            <span>{pct(c.recruitingMatched)}% recruiting</span>
+            <span>·</span>
+            <span>{pct(c.productionWithGames)}% with snaps</span>
+            <span>·</span>
+            <span>{c.rated} rated</span>
+            {c.stubCount > 0 && (
+              <>
+                <span>·</span>
+                <span className="text-gray-500">{c.stubCount} depth-only</span>
+              </>
+            )}
+          </div>
+        )
+      })()}
 
       {/* ── Main Content ── */}
       <main className="flex-1 overflow-hidden relative">

@@ -1,19 +1,46 @@
 import { z } from 'zod'
 import { SideSchema, SourceMetaSchema } from './common.ts'
 
+/**
+ * Documented allowlist of broad positions the collector is permitted to emit.
+ * Kept PERMISSIVE-but-NAMED: it must cover every real football position the
+ * normalizer produces (incl. special teams 'PK'/'PT'/'LS' and 'ATH'). A
+ * position outside this set is a normalizer regression and should fail loud
+ * in validation rather than be silently accepted. Add new positions here
+ * deliberately, with intent.
+ */
+export const POSITION_ALLOWLIST = [
+  // offense
+  'QB', 'RB', 'FB', 'WR', 'TE', 'OL', 'OT', 'OG', 'C', 'T', 'G',
+  // defense
+  'DE', 'DT', 'NT', 'DL', 'LB', 'MLB', 'WLB', 'SLB', 'CB', 'NB', 'S', 'FS', 'SS', 'DB',
+  // special teams / flex
+  'PK', 'PT', 'LS', 'ATH',
+] as const
+export const PositionSchema = z.enum(POSITION_ALLOWLIST)
+export type Position = z.infer<typeof PositionSchema>
+
 export const RosterPlayerSchema = z.object({
   playerId: z.string(),
   name: z.string(),
   number: z.number().nullable().optional(),
   side: SideSchema,
-  position: z.string(),
-  /** Raw class year: usually FR/SO/JR/SR, but the CFBD captures also emit '0'/null.
+  /** Broad position — constrained to POSITION_ALLOWLIST (permissive-but-named). */
+  position: PositionSchema,
+  /** Raw class year: FR/SO/JR/SR or 'RS *' variants; null for unknowns.
    *  The pipeline canonicalizes to ClassYear (FR/SO/JR/SR | null). */
   classYear: z.string().nullable().optional(),
+  /** Redshirt status captured separately so the 'RS *' parse survives canonicalization. */
+  isRedshirt: z.boolean().nullable().optional(),
   height: z.string().nullable().optional(),
   weight: z.number().nullable().optional(),
   eligibilityRemaining: z.number().nullable().optional(),
   isTransfer: z.boolean().optional(),
+  // ── Hometown (from CFBD /roster; nullable — not every row has it) ──────────
+  homeCity: z.string().nullable().optional(),
+  homeState: z.string().nullable().optional(),
+  homeLat: z.number().nullable().optional(),
+  homeLon: z.number().nullable().optional(),
 })
 export type RosterPlayer = z.infer<typeof RosterPlayerSchema>
 

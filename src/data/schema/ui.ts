@@ -5,8 +5,27 @@
  * starter first), and allPlayers is every rostered player.
  */
 
+import type { MatchMethod } from './common.ts'
+import type { PipelineCoverage } from './pipeline.ts'
+import type { RatingMethod } from '../rating/overall.ts'
+
 /** A player's UI side. allPlayers may include 'ST' (special teams / neither). */
 export type UISide = 'OFF' | 'DEF' | 'ST'
+
+/** Rating sub-score breakdown surfaced in the modal. */
+export interface UIRatingBreakdown {
+  recruiting: number | null
+  production: number | null
+  class: number
+  weights: { recruiting: number; production: number; class: number }
+}
+
+/** Per-player data-provenance flags for the completeness badges. */
+export interface UIDataCompleteness {
+  hasRecruiting: boolean
+  hasProduction: boolean
+  matchedBy: MatchMethod | null
+}
 
 export interface UIPlayer {
   /** Sequential UI id (stable within a single map call). */
@@ -30,11 +49,35 @@ export interface UIPlayer {
   positionRank: number | null
   ht: string | null
   wt: number | null
-  /** Derived OVR (recruiting composite × 100, unranked → 70 upstream). */
+  /**
+   * Blended OVR as a number for sorting/math. **0 means NR** (unrated) — the
+   * existing `ovr > 0` convention across the comparison stack treats 0 as
+   * "no rating", and `isRated` makes the distinction explicit for rendering.
+   */
   ovr: number
+  /** False when the player is NR (overall === null upstream). Render "NR"/"—". */
+  isRated: boolean
+  /** Which model path produced the OVR ('blended' | 'recruiting-projection' | …). */
+  ratingMethod: RatingMethod
+  /** Sub-score breakdown for the modal. */
+  ratingBreakdown: UIRatingBreakdown
   eligibilityRemaining: number | null
   /** Abbreviated season stat line (PAS/YDS/TD/REC/TKL/…). */
   stats: Record<string, number>
+  /** Distinct games played (from production.games) — drives per-game (/G) stats. */
+  games: number | null
+  /** Snap-share involvement (usage.overall, 0–1) — null when no advanced row. */
+  usageOverall: number | null
+  /** Per-play efficiency (ppa.averagePPA.all) — null when no advanced row. */
+  ppaAll: number | null
+  /** Hometown for the modal; null when neither city nor state is known. */
+  hometown: { city: string | null; state: string | null } | null
+  /** How recruiting was matched (name-fuzzy is flagged in the UI). */
+  recruitMatchMethod: MatchMethod | null
+  /** Depth-chart-only stub player (no roster/recruiting/production data). */
+  isStub: boolean
+  /** Provenance flags for the completeness badges. */
+  dataCompleteness: UIDataCompleteness
 }
 
 /** Formation slot → ordered players (starter first, then backups). */
@@ -45,4 +88,6 @@ export interface UIDataset {
   offensiveStarters: Formation
   defensiveStarters: Formation
   allPlayers: UIPlayer[]
+  /** Team-level data coverage (threaded from pipeline.coverage) for the banner. */
+  coverage: PipelineCoverage
 }
