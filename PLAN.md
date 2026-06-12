@@ -39,8 +39,22 @@ npm/JSX build cleared from the branch (recoverable from `main`).
 - [~] **M6 Harden + cutover** — error boundary + 117 tests + secrets scrub DONE; **cutover to `main`
       pending user confirmation** (browser pixel-verify blocked: chromium missing system libs here).
 
-Live (rebuild branch): https://mibarnes.github.io/Roster_Builder/ — full app, Florida + Miami gold,
-other 31 teams honest-partial. `main` still holds the OLD build until cutover.
+M6 cutover DONE — `main` is the hardened build, live.
+
+## Round 2 — Pilot enrichment + blended rating (2026-06-12, COMPLETE, live on main)
+Florida + Miami enriched + hardened + deployed:
+- **Capture:** +5 CFBD endpoints (games/players, recruiting/players id-keyed via athleteId, usage,
+  ppa, returning) + hometown. Recruiting ~75–78% via clean id joins; production from real game logs
+  (games-played + 10-category phase-namespaced stats); usage/PPA; provenance + `_history.json` vintage.
+- **Rating:** blended OVR = 0.45 recruiting + 0.45 production + 0.10 class, position-group-normalized,
+  **NR** for no-data players (no more flat-70). Real spread — FL 62/73/90, MIA 58/72/90.
+- **UI:** NR honest; rating breakdown + usage/PPA + hometown + per-game stats in modal; stub/fuzzy/
+  no-production badges; team coverage banner. 171 tests; tsc strict clean.
+
+Deferred next: extend enrichment to the 31 non-pilot teams (still old-shape, honest-partial); tune
+`RATING_WEIGHTS`; visuals (headshots/hometown maps); DOM-based scrapers.
+
+Live: https://mibarnes.github.io/Roster_Builder/ (publishes from `main`).
 
 ## Longer-term direction
 README roadmap carried from the original: export depth chart as image, injury/portal tracking,
