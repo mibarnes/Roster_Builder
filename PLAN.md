@@ -22,14 +22,15 @@ npm/JSX build cleared from the branch (recoverable from `main`).
 
 ## Active / next
 - [x] **M1 Foundation + first deploy** — toolchain green on pnpm; CI proven; placeholder live.
-- [ ] **M2 Typed contracts + `teamRegistry.ts`** — zod schemas (all sources + pipeline + UI); one
-      canonical 34-team registry; data-QA gate validating the 32 seeded teams.  ← **next**
-- [ ] **M3 Harden collector + gold pilot data** — Florida + Miami only.
-- [ ] **M4 Pilot vertical slice** — data layer (lazy per-team JSON, drop monolith) + core UI; deploy.
-- [ ] **M5 Broaden** — all 34 teams (honest-partial) + frontier features (Comparison/Radar/Depth).
-- [ ] **M6 Harden + cutover** — tests/a11y; merge → `main`; replace old public build (confirmed).
+- [x] **M2 Typed contracts + `teamRegistry.ts`** — zod schemas; 33-team registry; data-QA gate.
+- [x] **M3 Harden collector + gold pilot data** — TS collector (pilots-only, fail-loud); Miami now real.
+- [x] **M4 Pilot vertical slice** — data layer (lazy per-team JSON, no monolith) + core UI; live.
+- [x] **M5 Broaden** — all 33 teams load; frontier features (Comparison/Radar/PositionDepth) wired.
+- [~] **M6 Harden + cutover** — error boundary + 117 tests + secrets scrub DONE; **cutover to `main`
+      pending user confirmation** (browser pixel-verify blocked: chromium missing system libs here).
 
-Authoritative sequencing: the M1–M6 milestone plan (`~/.claude/plans/...` and RESTORATION.md header).
+Live (rebuild branch): https://mibarnes.github.io/Roster_Builder/ — full app, Florida + Miami gold,
+other 31 teams honest-partial. `main` still holds the OLD build until cutover.
 
 ## Longer-term direction
 README roadmap carried from the original: export depth chart as image, injury/portal tracking,
