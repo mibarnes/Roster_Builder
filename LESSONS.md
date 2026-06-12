@@ -26,3 +26,12 @@ Project-scoped lessons. Cross-project lessons promote up to `~/.AI_TOOLS/lessons
 - Resolution: Classified by `sourceId` + player count + id format; seeded the 32 real teams,
   excluded Miami/Alabama. Miami becomes a re-collection pilot.
 - Prevention: Verify data provenance by source id / shape, not by which files look most complete.
+
+## 2026-06-12 — pnpm verifyDepsBeforeRun=error broke every script (set to warn)
+- Date: 2026-06-12
+- Area: tooling
+- Context: M1 toolchain bring-up; pnpm-workspace.yaml as a settings file (single package).
+- Symptom: every `pnpm <script>` → ERR_PNPM_VERIFY_DEPS_BEFORE_RUN even right after a clean install.
+- Root cause: pnpm 11.5.2 bug — install writes a workspace-state its own verify rejects for single-package roots.
+- Resolution: `verifyDepsBeforeRun: warn` in pnpm-workspace.yaml (documented inline). Supply-chain controls (minimumReleaseAge, onlyBuiltDependencies) kept at full strength.
+- Prevention: re-test `error` when pnpm is upgraded; don't reinstall-thrash on this symptom.

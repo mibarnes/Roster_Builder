@@ -4,9 +4,17 @@
 #   onlyBuiltDependencies — explicit allowlist of packages permitted to run install scripts.
 # After `pnpm install`, run `pnpm approve-builds esbuild` (pnpm appends a managed allowBuilds: map).
 
-minimumReleaseAge: 10080          # 7 days (minutes)
-minimumReleaseAgeExclude: []      # escape hatch: vetted versions needed early
-verifyDepsBeforeRun: error
+minimumReleaseAge: 10080 # 7 days (minutes)
+minimumReleaseAgeExclude: [] # escape hatch: vetted versions needed early
+# NOTE: 'warn' not 'error' — pnpm 11.5.2 has a bug where a clean install writes a
+# workspace-state that its own verifyDepsBeforeRun=error immediately rejects
+# (ERR_PNPM_VERIFY_DEPS_BEFORE_RUN) for single-package projects using pnpm-workspace.yaml
+# as a settings file. The real supply-chain controls (minimumReleaseAge,
+# onlyBuiltDependencies) stay at full strength. Revisit when bumping pnpm. See LESSONS.md.
+verifyDepsBeforeRun: warn
 
 onlyBuiltDependencies:
-  - esbuild                       # native binary pulled in by Vite
+  - esbuild # native binary pulled in by Vite
+
+allowBuilds:
+  esbuild: true

@@ -4,6 +4,12 @@
 hardened TypeScript app. Phase 0 (scaffold) is done; this doc drives Phases 1–7. Background:
 [_recovery/RECOVERY_REPORT.md](_recovery/RECOVERY_REPORT.md). Status: [PLAN.md](PLAN.md).
 
+> **Execution sequencing:** the Phases 1–7 below are the *tactical* reference (port maps, schema
+> specs, guardrails). The **authoritative build order is the milestone plan (M1–M6)** —
+> contracts-first, then a Florida+Miami vertical slice with early collection + continuous deploy,
+> then broaden, then cutover. Phase↔milestone map: P1→M1, P2→M2, P5(collector)→M3,
+> P3+P4(pilots)→M4, P4(breadth)→M5, P6+P7→M6.
+
 ---
 
 ## Decisions (locked with user, 2026-06-12)
