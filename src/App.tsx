@@ -8,6 +8,8 @@ import OffenseFormation from './components/OffenseFormation.tsx'
 import PlayerModal from './components/PlayerModal.tsx'
 import RatingsView, { type RatingsFilters } from './components/RatingsView.tsx'
 import Star from './components/Star.tsx'
+import TeamComparisonView from './components/comparison/TeamComparisonView.tsx'
+import PositionDepthView from './components/comparison/PositionDepthView.tsx'
 import type { PipelineMetrics } from './data/schema/pipeline.ts'
 import type { Formation, UIDataset, UIPlayer } from './data/schema/ui.ts'
 import type { DataMode } from './data/schema/dataset.ts'
@@ -38,6 +40,7 @@ export default function App() {
   const [teamId, setTeamId] = useState<string>(DEFAULT_TEAM_ID)
   const [depthTeam, setDepthTeam] = useState<DepthMode>('starters')
   const [filters, setFilters] = useState<RatingsFilters>({ side: 'ALL', pos: 'ALL', stars: 0, sort: 'composite' })
+  const [compareMode, setCompareMode] = useState(false)
   const [selected, setSelected] = useState<UIPlayer | null>(null)
   const [returnFocusEl, setReturnFocusEl] = useState<HTMLElement | null>(null)
   const [rosterData, setRosterData] = useState<UIDataset>(EMPTY_ROSTER)
@@ -100,13 +103,10 @@ export default function App() {
 
   const isFormationTab = tab === 'offense' || tab === 'defense'
 
-  // 'all' is disabled this milestone (PositionDepthView lands in M5).
   const depthModes: Array<{ id: DepthMode; label: string; disabled?: boolean }> = [
     { id: 'starters', label: 'Starters' },
     { id: 'second-team', label: '2nd Team' },
-    ...(isFormationTab
-      ? [{ id: 'all' as DepthMode, label: tab === 'offense' ? 'All Off' : 'All Def', disabled: true }]
-      : []),
+    ...(isFormationTab ? [{ id: 'all' as DepthMode, label: tab === 'offense' ? 'All Off' : 'All Def' }] : []),
   ]
   const depthIndex = depthTeam === 'second-team' ? 1 : 0
   const filterFormationByDepth = (formation: Formation, index: number): Formation =>
@@ -115,6 +115,19 @@ export default function App() {
     )
   const visibleOffense = filterFormationByDepth(offensiveStarters, depthIndex)
   const visibleDefense = filterFormationByDepth(defensiveStarters, depthIndex)
+
+  // ── Full-screen two-team comparison (M5) ──
+  if (compareMode) {
+    return (
+      <TeamComparisonView
+        leftTeamId={teamId}
+        leftUiData={rosterData}
+        leftMetrics={metrics}
+        dataMode={dataMode}
+        onBack={() => setCompareMode(false)}
+      />
+    )
+  }
 
   return (
     <div
@@ -156,13 +169,13 @@ export default function App() {
         <div className="mx-auto max-w-6xl flex items-center gap-2">
           <button
             type="button"
-            disabled
-            title="Team Comparison — coming in M5"
-            className="rounded-md px-3 py-1.5 text-xs font-bold text-white/50 whitespace-nowrap flex-shrink-0 cursor-not-allowed bg-gray-800"
+            onClick={() => setCompareMode(true)}
+            disabled={isLoading}
+            title="Compare this team against another"
+            className="rounded-md px-3 py-1.5 text-xs font-bold text-white whitespace-nowrap flex-shrink-0 team-accent-bg hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Team Comparison
           </button>
-          <span className="text-[10px] text-gray-500 font-semibold">coming soon</span>
           <div className="flex-1" />
           <label htmlFor="team-select" className="text-[11px] font-bold text-gray-300 uppercase tracking-wide">
             Team
@@ -209,7 +222,7 @@ export default function App() {
                   type="button"
                   disabled={mode.disabled}
                   onClick={() => !mode.disabled && setDepthTeam(mode.id)}
-                  title={mode.disabled ? 'Full position depth — coming in M5' : undefined}
+                  title={mode.id === 'all' ? 'Full position-group depth' : undefined}
                   className={`min-w-[92px] rounded-lg px-3 py-1.5 text-[11px] font-bold transition-colors ${
                     mode.disabled
                       ? 'text-gray-600 cursor-not-allowed'
@@ -247,14 +260,20 @@ export default function App() {
           </div>
         )}
         <div className="relative h-full">
-          {tab === 'offense' && (
+          {tab === 'offense' && depthTeam === 'all' && (
+            <PositionDepthView allPlayers={allPlayers} onPlayerClick={onPlayerClick} side="ALL_OFFENSE" />
+          )}
+          {tab === 'offense' && depthTeam !== 'all' && (
             <div className="h-full overflow-y-auto py-3">
               <div className="mx-auto max-w-6xl h-full rounded-2xl border border-gray-900 bg-black px-3">
                 <OffenseFormation offensiveStarters={visibleOffense} onPlayerClick={onPlayerClick} />
               </div>
             </div>
           )}
-          {tab === 'defense' && (
+          {tab === 'defense' && depthTeam === 'all' && (
+            <PositionDepthView allPlayers={allPlayers} onPlayerClick={onPlayerClick} side="ALL_DEFENSE" />
+          )}
+          {tab === 'defense' && depthTeam !== 'all' && (
             <div className="h-full overflow-y-auto py-3">
               <div className="mx-auto max-w-6xl h-full rounded-2xl border border-gray-900 bg-black px-3">
                 <DefenseFormation defensiveStarters={visibleDefense} onPlayerClick={onPlayerClick} />
