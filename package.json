@@ -15,7 +15,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "guard:npm": "bash scripts/guard-no-npm.sh ."
+    "guard:npm": "bash scripts/guard-no-npm.sh .",
+    "collect:pilots": "node --env-file=.env scripts/collect.ts"
   },
   "dependencies": {
     "react": "^18.3.1",
