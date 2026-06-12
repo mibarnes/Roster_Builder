@@ -12,6 +12,11 @@ permissions:
   pages: write
   id-token: write
 
+# Opt JS-based actions (checkout/setup-node/upload-artifact) into Node 24 ahead of
+# the June 2026 forced cutover — silences the Node 20 deprecation warnings.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 concurrency:
   group: pages
   cancel-in-progress: false
