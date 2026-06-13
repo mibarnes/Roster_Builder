@@ -56,6 +56,9 @@ import { buildRosterNameIndex, inferRedshirt, resolveByStdName, stdName } from '
 import { fetchEspnRoster } from './collect/sources/espn.ts'
 import { fetchOfficialRoster } from './collect/sources/officialSite.ts'
 import { fetchOn3 } from './collect/sources/on3.ts'
+import { fetchNationalRecruitingIndex, type NationalRecruitingIndex } from './collect/sources/cfbdRecruitingIndex.ts'
+import { fetchPortal, incomingTransfers, type PortalFetchResult, type PortalIncoming } from './collect/sources/cfbdPortal.ts'
+import { PortalSourceSchema } from '../src/data/schema/index.ts'
 import { buildMaster } from './collect/reconcile/buildMaster.ts'
 import {
   EspnRosterSourceSchema,
@@ -86,6 +89,21 @@ const RECRUITING_YEARS = ((): number[] => {
   for (let y = top; y >= bottom; y -= 1) years.push(y)
   return years
 })()
+
+/**
+ * C2 — national recruiting index years (CFBD `/recruiting/players?year=X`, no
+ * team). Spans 2019..ROSTER_SEASON: the cross-school index that rates spine
+ * players the team's OWN feed never recruited (transfers' HS rating, walk-ons
+ * recruited elsewhere, 2026 freshmen). Fetched ONCE per run, shared by pilots.
+ */
+const NATIONAL_RECRUITING_YEARS = ((): number[] => {
+  const years: number[] = []
+  for (let y = ROSTER_SEASON; y >= 2019; y -= 1) years.push(y)
+  return years
+})()
+
+/** C2 — CFBD transfer-portal years (`/player/portal?year=Y`). */
+const PORTAL_YEARS = [ROSTER_SEASON - 2, ROSTER_SEASON - 1, ROSTER_SEASON]
 
 /** git short SHA at runtime; 'dev' if unavailable. */
 const collectorVersion = ((): string => {
@@ -132,6 +150,14 @@ interface TeamResult {
       officialEngine: string
       officialCoverage: number
       on3Degraded: boolean
+      // ── C2 closure telemetry ──
+      transfersRated: number
+      transfersTotal: number
+      recruitSourceCounts: Record<string, number>
+      stubReductionMaster: { before: number; after: number }
+      natlIdMatches: number
+      natlNameMatches: number
+      portalIncomingCount: number
     }
   }
 }
@@ -208,7 +234,13 @@ async function recordHistory(teamDir: string, files: string[]): Promise<void> {
   await writeFile(historyPath, `${JSON.stringify(history, null, 2)}\n`, 'utf8')
 }
 
-async function collectTeam(team: Team): Promise<TeamResult> {
+/** Run-wide CFBD-native recruiting closure, fetched ONCE and shared by pilots. */
+interface RecruitingClosure {
+  nationalIndex: NationalRecruitingIndex | null
+  portal: PortalFetchResult | null
+}
+
+async function collectTeam(team: Team, closure: RecruitingClosure): Promise<TeamResult> {
   const apiKey = process.env.CFBD_API_KEY
   if (!apiKey) throw new Error('Missing CFBD_API_KEY (run with --env-file=.env)')
 
@@ -433,6 +465,43 @@ async function collectTeam(team: Team): Promise<TeamResult> {
   //  (recruiting/production/advanced) is keyed CFBD-<athleteId> === CFBD-<espnId>,
   //  so it joins DIRECTLY to the ESPN spine. Official/On3 are best-effort overlays.
   // ════════════════════════════════════════════════════════════════════════════
+  // ── C2: the team's incoming CFBD transfer-portal entries (cross-school) ──
+  // Filtered from the run-wide portal fetch by destination === team.cfbdQuery.
+  // Persisted small (provenance/audit) — the raw national portal is NOT.
+  const portalIncoming: PortalIncoming[] = closure.portal
+    ? incomingTransfers(closure.portal.rows, team.cfbdQuery)
+    : []
+  if (closure.portal) {
+    const sourcesDir = path.join(teamDir, 'sources')
+    await mkdir(sourcesDir, { recursive: true })
+    const portalSource = validate(
+      PortalSourceSchema,
+      {
+        sourceId: 'cfbd-portal-v1' as const,
+        sourceType: 'cfbd-portal' as const,
+        team: team.label,
+        years: closure.portal.years,
+        provenance: makeProvenance(
+          PORTAL_YEARS.map((y) => ({ name: `CFBD player/portal ${y}`, endpoint: `/player/portal?year=${y}` })),
+          ROSTER_SEASON,
+        ),
+        entries: portalIncoming.map((t) => ({
+          name: t.name,
+          position: t.position,
+          origin: t.origin,
+          destination: t.destination,
+          rating: t.rating,
+          stars: t.stars,
+          eligibility: t.eligibility,
+          transferDate: t.transferDate,
+          season: t.season,
+        })),
+      },
+      `${team.id}/sources/cfbd-portal.json`,
+    )
+    await writeFile(path.join(sourcesDir, 'cfbd-portal.json'), `${JSON.stringify(portalSource, null, 2)}\n`, 'utf8')
+  }
+
   let masterStats: NonNullable<TeamResult['stats']>['master']
   if (team.espnId) {
     masterStats = await buildAndWriteMaster({
@@ -442,6 +511,8 @@ async function collectTeam(team: Team): Promise<TeamResult> {
       recruitingProfiles: validRecruiting.playerRecruitProfiles,
       incomingRecruits,
       transferOverlay,
+      nationalIndex: closure.nationalIndex,
+      portalIncoming,
       productionEntries: validProduction.playerProduction,
       advancedEntries: validAdvanced.playerAdvanced,
       cfbdRosterIds: new Set(eligiblePlayers.map((p) => p.playerId)),
@@ -509,6 +580,8 @@ async function buildAndWriteMaster({
   recruitingProfiles,
   incomingRecruits,
   transferOverlay,
+  nationalIndex,
+  portalIncoming,
   productionEntries,
   advancedEntries,
   cfbdRosterIds,
@@ -521,6 +594,8 @@ async function buildAndWriteMaster({
   recruitingProfiles: { playerId: string; name?: string; matchMethod?: MatchMethod; years?: number[] }[]
   incomingRecruits: IncomingRecruit[]
   transferOverlay: TransferOverlayRecord[]
+  nationalIndex: NationalRecruitingIndex | null
+  portalIncoming: PortalIncoming[]
   productionEntries: { playerId: string }[]
   advancedEntries: { playerId: string }[]
   cfbdRosterIds: Set<string>
@@ -599,7 +674,7 @@ async function buildAndWriteMaster({
   await writeSource('on3.json', on3Source)
 
   // ── Reconcile → golden master ──
-  const { master, spineCount } = buildMaster({
+  const { master, spineCount, recruitSourceCounts, stubReduction } = buildMaster({
     teamLabel: team.label,
     rosterSeason: ROSTER_SEASON,
     productionSeason: SEASON,
@@ -611,6 +686,8 @@ async function buildAndWriteMaster({
     recruitingProfiles: recruitingProfiles as never,
     incomingRecruits,
     transferOverlay,
+    nationalIndex,
+    portalIncoming,
     productionEntries: productionEntries as never,
     advancedEntries: advancedEntries as never,
     cfbdRosterIds,
@@ -642,6 +719,13 @@ async function buildAndWriteMaster({
   await write('player-master.json', validMaster)
 
   const r = validMaster.reconciliation
+  // ── C2 closure telemetry (over the merged master) ──
+  const transfers = validMaster.players.filter((p) => p.flags.isTransfer)
+  const transfersRated = transfers.filter(
+    (p) => p.recruiting.stars != null || p.recruiting.transferRating != null || p.recruiting.compositeRating != null,
+  ).length
+  const natlIdMatches = validMaster.players.filter((p) => p.recruiting.recruitSource === 'cfbd-natl-id').length
+  const natlNameMatches = validMaster.players.filter((p) => p.recruiting.recruitSource === 'cfbd-natl-name').length
   return {
     spineCount: r.spineCount,
     masterCount: r.masterCount,
@@ -659,6 +743,13 @@ async function buildAndWriteMaster({
     officialEngine: official.engine,
     officialCoverage,
     on3Degraded: on3.degraded,
+    transfersRated,
+    transfersTotal: transfers.length,
+    recruitSourceCounts,
+    stubReductionMaster: stubReduction,
+    natlIdMatches,
+    natlNameMatches,
+    portalIncomingCount: portalIncoming.length,
   }
 }
 
@@ -691,11 +782,36 @@ async function main(): Promise<void> {
   console.log(`CFB collector — season ${SEASON}, recruiting years ${RECRUITING_YEARS.join(', ')}, collectorVersion ${collectorVersion}`)
   console.log(`Targets: ${targets.map((t) => t.id).join(', ')}\n`)
 
+  // ── C2: CFBD-native recruiting closure — fetched ONCE, shared by all pilots ──
+  // The national recruiting index + transfer portal are NOT persisted raw (the
+  // ~18k-row national index / portal are transient); they're held in memory and
+  // threaded into reconciliation so every spine player can receive recruiting.
+  const apiKey = process.env.CFBD_API_KEY
+  const closure: RecruitingClosure = { nationalIndex: null, portal: null }
+  if (apiKey) {
+    process.stdout.write(
+      `Fetching CFBD recruiting closure (national index ${NATIONAL_RECRUITING_YEARS.at(-1)}–${NATIONAL_RECRUITING_YEARS[0]}, portal ${PORTAL_YEARS.join('/')})... `,
+    )
+    try {
+      const [nationalIndex, portal] = await Promise.all([
+        fetchNationalRecruitingIndex(NATIONAL_RECRUITING_YEARS, apiKey),
+        fetchPortal(PORTAL_YEARS, apiKey),
+      ])
+      closure.nationalIndex = nationalIndex
+      closure.portal = portal
+      console.log(
+        `done (natl ${nationalIndex.stats.rows} rows, ${nationalIndex.stats.withAthleteId} w/ athleteId; portal ${portal.rows.length} rows)`,
+      )
+    } catch (error) {
+      console.log(`DEGRADED — ${(error as Error).message}`)
+    }
+  }
+
   const results: TeamResult[] = []
   for (const team of targets) {
     process.stdout.write(`Collecting ${team.label} (${team.id})... `)
     try {
-      const result = await collectTeam(team)
+      const result = await collectTeam(team, closure)
       results.push(result)
       console.log('done')
     } catch (error) {
@@ -736,6 +852,13 @@ async function main(): Promise<void> {
         console.log(`       conflicts:             ${conflicts.length ? conflicts.map(([f, n]) => `${f}:${n}`).join(' ') : 'none'}`)
         console.log(`       official overlay:      ${m.officialDegraded ? `DEGRADED (${m.officialEngine})` : `OK (${m.officialEngine}, ${m.officialCoverage} players w/ HS/prev/hometown)`}`)
         console.log(`       on3 overlay:           ${m.on3Degraded ? 'DEGRADED (expected)' : 'OK'}`)
+        console.log(`       ── C2 RECRUITING CLOSURE (CFBD-native) ──`)
+        const trPct = m.transfersTotal ? ((100 * m.transfersRated) / m.transfersTotal).toFixed(1) : '0.0'
+        console.log(`       transfers rated:       ${m.transfersRated}/${m.transfersTotal} (${trPct}%)`)
+        console.log(`       national index:        ${m.natlIdMatches} by-id + ${m.natlNameMatches} by-name`)
+        console.log(`       portal incoming:       ${m.portalIncomingCount}`)
+        console.log(`       master stub reduction: ${m.stubReductionMaster.before} → ${m.stubReductionMaster.after} (reduced ${m.stubReductionMaster.before - m.stubReductionMaster.after})`)
+        console.log(`       recruit source dist:   ${Object.entries(m.recruitSourceCounts).map(([k, v]) => `${k}:${v}`).join(' ')}`)
       }
     } else {
       console.log(`\n[FAIL] ${r.team.label} (${r.team.id})`)

@@ -301,5 +301,11 @@ function buildRecruiting(
     fromSchool: recruiting?.fromSchool ?? null,
     matchMethod: matchMethod as MasterRecruiting['matchMethod'],
     source,
+    // ── C2: full-spine precedence provenance carried through to the master ──
+    recruitSource: recruiting?.source ?? (recruiting && recruiting.matchMethod !== 'none' ? null : 'none'),
+    recruitedSchool: recruiting?.recruitedSchool ?? null,
+    recruitYear: recruiting?.recruitYear ?? null,
+    origin: recruiting?.origin ?? null,
+    eligibility: recruiting?.eligibility ?? null,
   }
 }

@@ -9,6 +9,8 @@ import type { OfficialPlayer } from '../../../src/data/schema/officialRoster.ts'
 import type { On3Player } from '../../../src/data/schema/on3.ts'
 import type { PlayerMaster, PlayerMasterSource } from '../../../src/data/schema/playerMaster.ts'
 import type { IncomingRecruit, RecruitProfile, TransferOverlayRecord } from '../recruiting.ts'
+import type { NationalRecruitingIndex } from '../sources/cfbdRecruitingIndex.ts'
+import type { PortalIncoming } from '../sources/cfbdPortal.ts'
 import type { ProductionEntry } from '../../../src/data/schema/production.ts'
 import type { PlayerAdvanced } from '../../../src/data/schema/advanced.ts'
 import type { Provenance } from '../../../src/data/schema/common.ts'
@@ -33,6 +35,10 @@ export interface BuildMasterInput {
   incomingRecruits?: IncomingRecruit[]
   /** 247 transfer-portal records (by name) — name-matched to the spine (GAP C). */
   transferOverlay?: TransferOverlayRecord[]
+  /** C2: national recruiting index (cross-school) — name/id-matched to the spine. */
+  nationalIndex?: NationalRecruitingIndex | null
+  /** C2: CFBD incoming transfer-portal entries (origin/eligibility/rating). */
+  portalIncoming?: PortalIncoming[]
   productionEntries: ProductionEntry[]
   advancedEntries: PlayerAdvanced[]
   /** CFBD 2025 roster ids (returning players) — drives newIn2026. */
@@ -47,6 +53,10 @@ export interface BuildMasterResult {
   master: PlayerMasterSource
   /** Players in the master = spine size (hard invariant for the orchestrator). */
   spineCount: number
+  /** Per-source recruiting-resolution counts (C2 — for the status report). */
+  recruitSourceCounts: Record<string, number>
+  /** OurLads stub count before/after national-index/full-spine reduction (C2). */
+  stubReduction: { before: number; after: number }
 }
 
 export const buildMaster = (input: BuildMasterInput): BuildMasterResult => {
@@ -67,7 +77,7 @@ export const buildMaster = (input: BuildMasterInput): BuildMasterResult => {
     cfbdRosterIds: input.cfbdRosterIds,
   }
 
-  // ── 2) Crosswalk (spine + overlays + incoming-class name match) ──
+  // ── 2) Crosswalk (spine + overlays + incoming-class + national/portal match) ──
   const crosswalk = buildCrosswalk({
     espnPlayers: input.espnPlayers,
     officialPlayers: input.officialPlayers,
@@ -75,6 +85,8 @@ export const buildMaster = (input: BuildMasterInput): BuildMasterResult => {
     enrichment,
     incomingRecruits: input.incomingRecruits ?? [],
     transferOverlay: input.transferOverlay ?? [],
+    nationalIndex: input.nationalIndex ?? null,
+    portalIncoming: input.portalIncoming ?? [],
   })
 
   // ── 3) earliest recruit year per player (for redshirt inference) ──
@@ -118,7 +130,29 @@ export const buildMaster = (input: BuildMasterInput): BuildMasterResult => {
       })?.playerId ?? null
     return pid && spineIdSet.has(pid) ? pid : null
   }
-  const depth = buildDepthChartFromOurlads(input.ourladsHtml, spineLike, extraResolve)
+  // STUB BEFORE: depth chart without any national/spine stub-reduction.
+  const stubBaseline = buildDepthChartFromOurlads(input.ourladsHtml, spineLike, extraResolve)
+  const stubBefore = stubBaseline.stubs.length
+
+  // ── 5a) STUB REDUCTION (C2): before minting an ourlads-stub-*, try matching the
+  // OurLads depth name against (a) the FULL spine name index and (b) the national
+  // recruiting index by name → resolve to a REAL CFBD-<athleteId>. A resolved
+  // depth-only player becomes a real-id master record (with national recruiting)
+  // instead of a synthetic stub. Only ids the national index actually knows are
+  // accepted (otherwise the stub stands), so we never invent a player. ──
+  const natl = input.nationalIndex ?? null
+  const reducedExtra: ExtraResolver = (name, position) => {
+    const spineHit = extraResolve(name, position) // existing spine/recruit resolution first
+    if (spineHit) return spineHit
+    if (!natl) return null
+    const sn = stdName(name)
+    if (!sn) return null
+    const bucket = natl.byStdName.get(sn)
+    const withId = bucket?.find((c) => c.athleteId)
+    return withId?.athleteId ? cfbdId(withId.athleteId) : null
+  }
+  const depth = buildDepthChartFromOurlads(input.ourladsHtml, spineLike, reducedExtra)
+  const stubAfter = depth.stubs.length
 
   // ── 5b) absorb OurLads stubs that the spine missed (depth-only players) ──
   // These become first-class master records so the depth chart resolves AND the
@@ -148,6 +182,71 @@ export const buildMaster = (input: BuildMasterInput): BuildMasterResult => {
     stubMaster.position = { value: stub.position, _meta: { source: 'derived', confidence: 'low' } }
     stubMaster.side = { value: stub.side, _meta: { source: 'derived', confidence: 'low' } }
     masters.push(stubMaster)
+  }
+
+  // ── 5c) reduced depth-only players that resolved to a REAL CFBD id (not a stub
+  // and not already on the spine) — give them a national-index recruiting record
+  // so they are rated, and a master record so the depth reference resolves. ──
+  const presentIds = new Set(masters.map((m) => m.playerId))
+  if (natl) {
+    const depthPlayerIds = new Set<string>([
+      ...Object.values(depth.depthChart.offense),
+      ...Object.values(depth.depthChart.defense),
+    ])
+    for (const pid of depthPlayerIds) {
+      if (!pid || presentIds.has(pid) || !pid.startsWith('CFBD-')) continue
+      const natlRec = natl.byAthleteId.get(pid)
+      if (!natlRec) continue // only real, index-known players (never invented)
+      presentIds.add(pid)
+      const resolvedMaster = mergePlayer(
+        {
+          playerId: pid,
+          espnId: null,
+          cfbdId: pid,
+          espn: null,
+          official: null,
+          on3: null,
+          recruiting: {
+            playerId: pid,
+            name: natlRec.name,
+            stars: natlRec.stars,
+            compositeRating: natlRec.compositeRating,
+            nationalRank: natlRec.nationalRank,
+            positionRank: null,
+            transferPortalStars: null,
+            transferRating: null,
+            fromSchool: null,
+            isTransfer: false,
+            years: [natlRec.recruitYear],
+            matchMethod: 'cfbd-id',
+            matches: [{ year: natlRec.recruitYear, method: 'cfbd-natl-id', player247Id: null, cfbdRecruitId: natlRec.athleteId }],
+            homeCity: natlRec.homeCity,
+            homeState: natlRec.homeState,
+            homeLat: null,
+            homeLon: null,
+            source: 'cfbd-natl-id',
+            recruitedSchool: natlRec.committedTo,
+            recruitYear: natlRec.recruitYear,
+            origin: null,
+            eligibility: null,
+          },
+          production: null,
+          advanced: null,
+          inCfbd2025: false,
+          officialName: null,
+        },
+        opts,
+        tally,
+      )
+      resolvedMaster.name = natlRec.name
+      if (natlRec.position) {
+        resolvedMaster.position = { value: natlRec.position, _meta: { source: 'cfbd', confidence: 'low' } }
+      }
+      // No longer a synthetic depth STUB — it resolved to a REAL CFBD id with a
+      // national recruiting record (the C2 stub reduction). Flag honestly.
+      resolvedMaster.flags.isStub = false
+      masters.push(resolvedMaster)
+    }
   }
 
   // ── 6) report ──
@@ -180,5 +279,10 @@ export const buildMaster = (input: BuildMasterInput): BuildMasterResult => {
     reconciliation: report,
   }
 
-  return { master, spineCount: input.espnPlayers.length }
+  return {
+    master,
+    spineCount: input.espnPlayers.length,
+    recruitSourceCounts: crosswalk.recruitSourceCounts,
+    stubReduction: { before: stubBefore, after: stubAfter },
+  }
 }

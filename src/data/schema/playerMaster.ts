@@ -4,6 +4,7 @@ import { PpaSchema, UsageSchema } from './advanced.ts'
 import { ReturningProductionSchema } from './context.ts'
 import { PerGameLogSchema } from './production.ts'
 import { DepthChartMetaSchema } from './roster.ts'
+import { RecruitSourceSchema } from './recruiting.ts'
 
 /**
  * GOLDEN player-master schema (pilot-deepening round).
@@ -92,6 +93,17 @@ export const MasterRecruitingSchema = z.object({
   /** Precedence-ranked join method for the winning recruiting record. */
   matchMethod: z.enum(['cfbd-id', '247-id', 'name-fuzzy', 'on3', 'none']),
   source: MasterSourceSchema.nullable(),
+  // ── C2: full-spine precedence provenance (the closure) ─────────────────────
+  /** Precedence tag for where the rating came from (UI source label). */
+  recruitSource: RecruitSourceSchema.nullable().optional(),
+  /** School that recruited this player out of HS (national-index committedTo). */
+  recruitedSchool: z.string().nullable().optional(),
+  /** Recruiting class year (national index / portal). */
+  recruitYear: z.number().nullable().optional(),
+  /** Transfer ORIGIN school (CFBD portal). */
+  origin: z.string().nullable().optional(),
+  /** Remaining eligibility string (CFBD portal). */
+  eligibility: z.string().nullable().optional(),
 })
 export type MasterRecruiting = z.infer<typeof MasterRecruitingSchema>
 

@@ -2,6 +2,7 @@ import type { ClassYear, MatchMethod, Side } from './common.ts'
 import type { RatingMethod } from '../rating/overall.ts'
 import type { Usage, Ppa } from './advanced.ts'
 import type { PerGameLog } from './production.ts'
+import type { RecruitSourceTag } from './recruiting.ts'
 
 /**
  * Types describing the REAL output of buildPlayerPipeline (ported faithfully
@@ -36,6 +37,17 @@ export interface PlayerRecruiting {
   isTransfer: boolean
   nationalRank: number | null
   positionRank: number | null
+  // ── C2: full-spine precedence provenance (drives the UI source label) ──
+  /** Where the rating came from (precedence-tagged); null for legacy teams. */
+  source: RecruitSourceTag | null
+  /** School that recruited this player out of HS (national-index committedTo). */
+  recruitedSchool: string | null
+  /** Recruiting class year (national index / portal). */
+  recruitYear: number | null
+  /** Transfer ORIGIN school (CFBD portal). */
+  origin: string | null
+  /** Remaining eligibility string (CFBD portal). */
+  eligibility: string | null
 }
 
 /** Per-player blended-rating sub-scores + weights (from computeTeamRatings). */

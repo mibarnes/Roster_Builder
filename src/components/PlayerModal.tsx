@@ -6,6 +6,7 @@ import {
   getEffectiveStars,
   getOvrDisplay,
   getOvrDisplayColor,
+  getRecruitSourceLabel,
   RATING_METHOD_LABEL,
 } from '../utils/playerHelpers.ts'
 import { STAT_ABBREVIATIONS } from '../data/mapPipelineToUI.ts'
@@ -114,6 +115,7 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
 
   const stats = player.stats ?? {}
   const stars = getEffectiveStars(player)
+  const recruitSourceLabel = getRecruitSourceLabel(player)
   // Real games count drives the per-game (/G) path (previously dead — no games).
   const gamesPlayed = player.games && player.games > 0 ? player.games : null
   const hasStats = Object.keys(stats).length > 0
@@ -243,14 +245,17 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
                 {isRS && (
                   <span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-rs-purple">RS</span>
                 )}
-                {player.isTransfer && (
-                  <span
-                    className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-portal-orange"
-                    title={player.previousSchool ?? player.fromSchool ?? 'Transfer'}
-                  >
-                    {player.fromSchool ? `TRANSFER · ${player.fromSchool}` : 'TRANSFER'}
-                  </span>
-                )}
+                {player.isTransfer && (() => {
+                  const origin = player.transferOrigin ?? player.previousSchool ?? player.fromSchool
+                  return (
+                    <span
+                      className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-portal-orange"
+                      title={[origin, player.transferEligibility].filter(Boolean).join(' · ') || 'Transfer'}
+                    >
+                      {origin ? `TRANSFER · ${origin}` : 'TRANSFER'}
+                    </span>
+                  )
+                })()}
                 {player.newIn2026 && (
                   <span
                     className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-sky-600"
@@ -420,15 +425,28 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
             </div>
           )}
 
-          {player.isTransfer && player.fromSchool && (
-            <div className="bg-orange-950/40 border border-orange-700/40 rounded-xl px-3 py-2.5 flex items-center gap-2">
+          {player.isTransfer && (player.transferOrigin ?? player.fromSchool) && (
+            <div className="bg-orange-950/40 border border-orange-700/40 rounded-xl px-3 py-2.5 flex items-center gap-2 flex-wrap">
               <span className="text-[10px] font-black text-orange-400 uppercase tracking-widest">Transfer from</span>
-              <span className="text-white font-bold text-sm">{player.fromSchool}</span>
+              <span className="text-white font-bold text-sm">{player.transferOrigin ?? player.fromSchool}</span>
+              {player.transferEligibility && (
+                <span className="text-[10px] text-orange-300/90 font-semibold">· {player.transferEligibility}</span>
+              )}
             </div>
           )}
 
           <div className="bg-gray-900 rounded-xl p-3 space-y-2">
-            <div className="text-[11px] text-gray-400 uppercase font-semibold">Recruiting</div>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[11px] text-gray-400 uppercase font-semibold">Recruiting</span>
+              {recruitSourceLabel && (
+                <span
+                  className="text-[9px] font-bold text-gray-300 bg-black/50 ring-1 ring-white/10 px-2 py-0.5 rounded-full text-right"
+                  title="Where this recruiting rating came from"
+                >
+                  {recruitSourceLabel}
+                </span>
+              )}
+            </div>
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex gap-0.5" aria-label={`${stars} out of 5 stars`}>
                 {[...Array(5)].map((_, i) => (

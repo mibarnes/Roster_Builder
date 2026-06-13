@@ -144,6 +144,12 @@ const toUiPlayer = (player: PipelinePlayer, id: number): UIPlayer => ({
       ? { city: player.hometown.city, state: player.hometown.state }
       : null,
   recruitMatchMethod: player.recruitMatchMethod,
+  // ── C2: recruiting-source provenance ──
+  recruitSource: player.recruiting.source ?? null,
+  recruitedSchool: player.recruiting.recruitedSchool ?? null,
+  recruitYear: player.recruiting.recruitYear ?? null,
+  transferOrigin: player.recruiting.origin ?? player.recruiting.fromSchool ?? null,
+  transferEligibility: player.recruiting.eligibility ?? null,
   isStub: player.isStub,
   // ── Golden-master overlay (null/false for legacy teams) ──
   headshotUrl: player.golden?.headshotUrl ?? null,

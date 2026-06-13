@@ -20,6 +20,7 @@ import type {
   PipelinePlayer,
   PlayerGolden,
   PlayerPipeline,
+  PlayerRecruiting,
   ReturningProductionSummary,
   SideMetrics,
   StarterEntry,
@@ -440,6 +441,12 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
         isTransfer: d.recruitingIsTransfer,
         nationalRank: (recruiting.nationalRank as number | null | undefined) ?? null,
         positionRank: (recruiting.positionRank as number | null | undefined) ?? null,
+        // ── C2: full-spine precedence provenance ──
+        source: (recruiting.source as PlayerRecruiting['source'] | undefined) ?? null,
+        recruitedSchool: (recruiting.recruitedSchool as string | null | undefined) ?? null,
+        recruitYear: (recruiting.recruitYear as number | null | undefined) ?? null,
+        origin: (recruiting.origin as string | null | undefined) ?? null,
+        eligibility: (recruiting.eligibility as string | null | undefined) ?? null,
       },
       ratings: {
         overall: rating.overall,

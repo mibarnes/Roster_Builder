@@ -4,6 +4,20 @@ import { MatchMethodSchema, SourceMetaSchema } from './common.ts'
 /** A 0–1 composite rating (247/CFBD). Tightened from a bare number. */
 const Rating01 = z.number().min(0).max(1)
 
+/**
+ * Precedence-tagged origin of a recruiting record (C2). Mirrors the
+ * `RecruitSource` union in scripts/collect/recruiting.ts.
+ */
+export const RecruitSourceSchema = z.enum([
+  'cfbd-team',
+  'cfbd-natl-id',
+  'cfbd-natl-name',
+  'cfbd-portal',
+  '247-portal',
+  'none',
+])
+export type RecruitSourceTag = z.infer<typeof RecruitSourceSchema>
+
 /** One recruiting match record (per source year). */
 export const RecruitMatchSchema = z.object({
   year: z.number().optional(),
@@ -34,6 +48,12 @@ export const RecruitProfileSchema = z.object({
   homeState: z.string().nullable().optional(),
   homeLat: z.number().nullable().optional(),
   homeLon: z.number().nullable().optional(),
+  // ── C2: full-spine precedence provenance ──────────────────────────────────
+  source: RecruitSourceSchema.nullable().optional(),
+  recruitedSchool: z.string().nullable().optional(),
+  recruitYear: z.number().nullable().optional(),
+  origin: z.string().nullable().optional(),
+  eligibility: z.string().nullable().optional(),
 })
 export type RecruitProfile = z.infer<typeof RecruitProfileSchema>
 

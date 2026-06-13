@@ -67,6 +67,34 @@ describe('pilot data quality', () => {
     const nonStubUi = ui.allPlayers.filter((p) => !p.isStub).length
     expect(nonStubWithHometown / nonStubUi).toBeGreaterThanOrEqual(0.95)
 
+    // ── C2 recruiting closure (CFBD-native) ──
+    // Incoming transfers carry a real recruiting/portal rating ≥80% of the time
+    // (the national index + CFBD portal close the cross-school gap; the residual
+    // are genuinely unrated in every CFBD feed — e.g. specialists).
+    const transfers = nonStub.filter((p) => p.bio.isTransfer)
+    if (transfers.length > 0) {
+      const transfersRated = transfers.filter(
+        (p) =>
+          (p.recruiting.stars ?? 0) > 0 ||
+          p.recruiting.transferRating != null ||
+          p.recruiting.compositeRating != null,
+      ).length
+      expect(transfersRated / transfers.length).toBeGreaterThanOrEqual(0.8)
+    }
+
+    // Every spine player is covered (golden teams: 100 ESPN-spine players survive
+    // to the master with no drops — asserted upstream; here we re-affirm the
+    // pipeline carried them all through, stubs + resolved-depth included).
+    expect(players.length).toBeGreaterThanOrEqual(100)
+
+    // Unrated is framed honestly: non-stub unrated players are (almost entirely)
+    // genuine walk-ons. The non-stub unrated count must not exceed the walk-on
+    // count by more than a small residual (genuinely-unrated transfers/specialists).
+    const golden = (p: (typeof nonStub)[number]) => p.golden
+    const nonStubUnrated = nonStub.filter((p) => golden(p)?.unrated ?? false).length
+    const walkOnCount = nonStub.filter((p) => golden(p)?.isWalkOn ?? false).length
+    expect(nonStubUnrated).toBeLessThanOrEqual(walkOnCount + 6)
+
     // ── OVR spread: NOT a flat constant. Real distinct values + a wide range. ──
     const ovrs = players.map((p) => p.ratings.overall).filter((o): o is number => o != null)
     const distinct = new Set(ovrs).size

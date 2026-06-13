@@ -327,6 +327,40 @@ export const recruitingPlayersUrl = (cfbdQuery: string, year: number): string =>
 export const fetchRecruitingPlayers = (cfbdQuery: string, year: number, apiKey: string): Promise<CfbdRecruitRow[]> =>
   fetchJson<CfbdRecruitRow[]>(recruitingPlayersUrl(cfbdQuery, year), apiKey)
 
+// ── National recruiting index (NO team) → the whole class for a year ──────────
+// `/recruiting/players?year=X` with no team filter returns ~2,300 rows/yr: every
+// rated recruit nationally, with athleteId present on ~71%. Fetched once per run
+// across many years to build a cross-school index (NOT persisted — held in memory
+// and shared by both pilots). Lets us rate transfers / walk-ons / 2026 freshmen
+// the team's own /recruiting/players?team=X feed (own recruits only) never sees.
+export const recruitingNationalUrl = (year: number): string =>
+  `${API_BASE}/recruiting/players?year=${year}`
+
+export const fetchRecruitingNational = (year: number, apiKey: string): Promise<CfbdRecruitRow[]> =>
+  fetchJson<CfbdRecruitRow[]>(recruitingNationalUrl(year), apiKey)
+
+// ── Transfer portal (NO team) → all portal entries for a year ─────────────────
+// `/player/portal?year=Y` returns every transfer-portal entry for the year, each
+// with origin/destination schools + a transfer rating/stars + eligibility. We
+// filter incoming = destination === team.cfbdQuery. Fetched once per run.
+export interface CfbdPortalRow {
+  season?: number
+  firstName?: string
+  lastName?: string
+  position?: string
+  origin?: string | null
+  destination?: string | null
+  transferDate?: string | null
+  rating?: number | null
+  stars?: number | null
+  eligibility?: string | null
+}
+
+export const portalUrl = (year: number): string => `${API_BASE}/player/portal?year=${year}`
+
+export const fetchPortalYear = (year: number, apiKey: string): Promise<CfbdPortalRow[]> =>
+  fetchJson<CfbdPortalRow[]>(portalUrl(year), apiKey)
+
 export interface CfbdUsageRow {
   season?: number
   id?: string | number

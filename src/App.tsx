@@ -157,7 +157,9 @@ export default function App() {
             </div>
             <div>
               <h1 className="text-base font-black text-white tracking-tight">{selectedTeam.label.toUpperCase()}</h1>
-              <p className="text-[11px] text-gray-400 font-semibold">2025 ROSTER DEPTH CHART</p>
+              <p className="text-[11px] text-gray-400 font-semibold">
+                {rosterData.allPlayers.some((p) => p.headshotUrl) ? '2026 ROSTER · 2025 STATS' : '2025 ROSTER DEPTH CHART'}
+              </p>
             </div>
           </div>
           <CompositeHeader metrics={metrics} />
@@ -255,12 +257,20 @@ export default function App() {
         const c = rosterData.coverage
         const nonStub = Math.max(c.rosterCount - c.stubCount, 1)
         const pct = (n: number) => Math.round((n / nonStub) * 100)
+        // "Recruited" = non-stub players carrying a real star rating (recruitingMatched
+        // also counts empty/unrated records, which over-counts past 100%).
+        const recruitedCount = allPlayers.filter((p) => !p.isStub && p.stars > 0).length
         // Golden-overlay counts: present only for pilot teams; derived from allPlayers
         // (coverage carries reconciliation counts but not these per-flag tallies).
         const walkOns = allPlayers.filter((p) => p.isWalkOn).length
         const newIn2026 = allPlayers.filter((p) => p.newIn2026).length
         const conflicts = allPlayers.filter((p) => p.conflictFields.length > 0).length
         const isGolden = walkOns > 0 || newIn2026 > 0 || conflicts > 0
+        // C2: transfer-rating closure — how many transfers carry a real rating.
+        const transfers = allPlayers.filter((p) => p.isTransfer && !p.isStub)
+        const transfersRated = transfers.filter(
+          (p) => p.isRated || p.stars > 0 || p.transferRating != null || p.compositeRating != null,
+        ).length
         return (
           <div
             className="flex-shrink-0 px-4 py-1.5 text-[11px] font-semibold text-gray-400 bg-black/40 border-b border-surface-border flex items-center gap-3 flex-wrap"
@@ -274,15 +284,28 @@ export default function App() {
               </>
             )}
             <span>·</span>
-            <span>{pct(c.recruitingMatched)}% recruited</span>
+            <span>{pct(recruitedCount)}% recruited</span>
             <span>·</span>
             <span>{pct(c.productionWithGames)}% with snaps</span>
             <span>·</span>
             <span>{c.rated} rated</span>
+            {transfers.length > 0 && (
+              <>
+                <span>·</span>
+                <span
+                  className={transfersRated === transfers.length ? 'text-emerald-300/80' : undefined}
+                  title="Incoming transfers carrying a recruiting/portal rating"
+                >
+                  {transfersRated}/{transfers.length} transfers rated
+                </span>
+              </>
+            )}
             {walkOns > 0 && (
               <>
                 <span>·</span>
-                <span title="On the roster, no recruiting record">{walkOns} walk-ons</span>
+                <span className="text-gray-500" title="On the roster, no recruiting signal in any source (genuine walk-on / unrated)">
+                  {walkOns} walk-on/unrated
+                </span>
               </>
             )}
             {newIn2026 > 0 && (

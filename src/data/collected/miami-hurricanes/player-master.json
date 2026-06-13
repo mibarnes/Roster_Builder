@@ -21,8 +21,8 @@
         "endpoint": "ourlads:miami"
       }
     ],
-    "collectedAt": "2026-06-13T05:32:27.670Z",
-    "collectorVersion": "bfb3020",
+    "collectedAt": "2026-06-13T13:05:46.740Z",
+    "collectorVersion": "2297c7f",
     "dataSeason": 2026,
     "dataCutoff": null,
     "rosterSeason": 2026,
@@ -144,7 +144,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -279,7 +284,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -414,7 +424,12 @@
         "transferRating": 0.88,
         "fromSchool": "Tulane",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Tulane",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -426,18 +441,18 @@
         },
         "perGame": [
           {
-            "gameId": "401754641",
-            "stats": {
-              "rec": 2,
-              "recYds": 12,
-              "recTD": 0
-            }
-          },
-          {
             "gameId": "401754553",
             "stats": {
               "rec": 3,
               "recYds": 18,
+              "recTD": 0
+            }
+          },
+          {
+            "gameId": "401754641",
+            "stats": {
+              "rec": 2,
+              "recYds": 12,
               "recTD": 0
             }
           },
@@ -640,7 +655,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -775,7 +795,12 @@
         "transferRating": 0.87,
         "fromSchool": "North Dakota State",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "North Dakota State",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -799,17 +824,6 @@
         },
         "perGame": [
           {
-            "gameId": "401754641",
-            "stats": {
-              "rushAtt": 7,
-              "rushYds": 35,
-              "rushTD": 1,
-              "rec": 1,
-              "recYds": 4,
-              "recTD": 0
-            }
-          },
-          {
             "gameId": "401754553",
             "stats": {
               "rushAtt": 8,
@@ -829,13 +843,13 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
-              "rushAtt": 3,
-              "rushYds": 9,
-              "rushTD": 0,
+              "rushAtt": 7,
+              "rushYds": 35,
+              "rushTD": 1,
               "rec": 1,
-              "recYds": 5,
+              "recYds": 4,
               "recTD": 0
             }
           },
@@ -847,6 +861,17 @@
               "rushTD": 1,
               "rec": 2,
               "recYds": 17,
+              "recTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "rushAtt": 3,
+              "rushYds": 9,
+              "rushTD": 0,
+              "rec": 1,
+              "recYds": 5,
               "recTD": 0
             }
           },
@@ -912,18 +937,18 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "rushAtt": 9,
-              "rushYds": 37,
-              "rushTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "rushAtt": 2,
               "rushYds": 9,
+              "rushTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "rushAtt": 9,
+              "rushYds": 37,
               "rushTD": 0
             }
           }
@@ -1089,7 +1114,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -1224,7 +1254,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -1362,7 +1397,12 @@
         "transferRating": 0.88,
         "fromSchool": "Louisiana-Monroe",
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Louisiana-Monroe",
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -1497,7 +1537,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -1683,7 +1728,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -1818,7 +1868,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -1953,7 +2008,12 @@
         "transferRating": 0.94,
         "fromSchool": "Alabama",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Alabama",
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -2088,7 +2148,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -2113,17 +2178,6 @@
         },
         "perGame": [
           {
-            "gameId": "401754641",
-            "stats": {
-              "rushAtt": 11,
-              "rushYds": 86,
-              "rushTD": 2,
-              "rec": 1,
-              "recYds": 12,
-              "recTD": 0
-            }
-          },
-          {
             "gameId": "401754553",
             "stats": {
               "rushAtt": 12,
@@ -2143,11 +2197,14 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
-              "rushAtt": 8,
-              "rushYds": 18,
-              "rushTD": 1
+              "rushAtt": 11,
+              "rushYds": 86,
+              "rushTD": 2,
+              "rec": 1,
+              "recYds": 12,
+              "recTD": 0
             }
           },
           {
@@ -2159,6 +2216,14 @@
               "rec": 1,
               "recYds": 8,
               "recTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "rushAtt": 8,
+              "rushYds": 18,
+              "rushTD": 1
             }
           },
           {
@@ -2196,6 +2261,17 @@
             }
           },
           {
+            "gameId": "401754603",
+            "stats": {
+              "rushAtt": 6,
+              "rushYds": 19,
+              "rushTD": 0,
+              "rec": 3,
+              "recYds": 22,
+              "recTD": 1
+            }
+          },
+          {
             "gameId": "401754581",
             "stats": {
               "rushAtt": 16,
@@ -2210,17 +2286,6 @@
               "tfl": 0,
               "passDef": 0,
               "defTD": 0
-            }
-          },
-          {
-            "gameId": "401754603",
-            "stats": {
-              "rushAtt": 6,
-              "rushYds": 19,
-              "rushTD": 0,
-              "rec": 3,
-              "recYds": 22,
-              "recTD": 1
             }
           }
         ],
@@ -2382,7 +2447,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -2520,7 +2590,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -2706,7 +2781,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -2841,7 +2921,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -2976,7 +3061,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -3111,7 +3201,12 @@
         "transferRating": 0.88,
         "fromSchool": "Cincinnati",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Cincinnati",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -3325,7 +3420,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -3509,7 +3609,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -3644,7 +3749,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -3658,14 +3768,6 @@
           "rushTD": 0
         },
         "perGame": [
-          {
-            "gameId": "401754641",
-            "stats": {
-              "rec": 3,
-              "recYds": 21,
-              "recTD": 0
-            }
-          },
           {
             "gameId": "401754553",
             "stats": {
@@ -3683,10 +3785,10 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
-              "rec": 1,
-              "recYds": 4,
+              "rec": 3,
+              "recYds": 21,
               "recTD": 0
             }
           },
@@ -3695,6 +3797,14 @@
             "stats": {
               "rec": 1,
               "recYds": 15,
+              "recTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "rec": 1,
+              "recYds": 4,
               "recTD": 0
             }
           },
@@ -3734,14 +3844,6 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "rec": 2,
-              "recYds": 14,
-              "recTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "rushAtt": 1,
@@ -3750,6 +3852,14 @@
               "rec": 2,
               "recYds": 22,
               "recTD": 1
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "rec": 2,
+              "recYds": 14,
+              "recTD": 0
             }
           }
         ],
@@ -3911,7 +4021,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -4049,7 +4164,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -4184,7 +4304,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -4210,6 +4335,14 @@
             }
           },
           {
+            "gameId": "401754522",
+            "stats": {
+              "rushAtt": 5,
+              "rushYds": 11,
+              "rushTD": 0
+            }
+          },
+          {
             "gameId": "401754564",
             "stats": {
               "rushAtt": 5,
@@ -4218,14 +4351,6 @@
               "rec": 1,
               "recYds": 6,
               "recTD": 0
-            }
-          },
-          {
-            "gameId": "401754522",
-            "stats": {
-              "rushAtt": 5,
-              "rushYds": 11,
-              "rushTD": 0
             }
           },
           {
@@ -4414,7 +4539,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -4549,7 +4679,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -4687,7 +4822,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -4913,7 +5053,12 @@
         "transferRating": 0.83,
         "fromSchool": "UAB",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "UAB",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -5048,7 +5193,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -5228,7 +5378,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -5363,7 +5518,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -5498,7 +5658,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -5636,7 +5801,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -5871,7 +6041,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -6006,7 +6181,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -6141,7 +6321,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -6276,7 +6461,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -6411,7 +6601,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -6589,7 +6784,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -6716,15 +6916,20 @@
         }
       },
       "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
+        "stars": 2,
+        "compositeRating": 0.75,
+        "nationalRank": 3886,
         "positionRank": null,
         "transferPortalStars": null,
         "transferRating": null,
         "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
+        "matchMethod": "name-fuzzy",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-name",
+        "recruitedSchool": null,
+        "recruitYear": 2019,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -6739,9 +6944,9 @@
         "ppa": null
       },
       "flags": {
-        "isWalkOn": true,
+        "isWalkOn": false,
         "newIn2026": false,
-        "unrated": true,
+        "unrated": false,
         "isTransfer": false,
         "isRedshirt": false,
         "isStub": false
@@ -6862,7 +7067,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -6890,17 +7100,6 @@
         },
         "perGame": [
           {
-            "gameId": "401754641",
-            "stats": {
-              "rec": 6,
-              "recYds": 80,
-              "recTD": 0,
-              "pr": 1,
-              "prYds": 2,
-              "prTD": 0
-            }
-          },
-          {
             "gameId": "401754553",
             "stats": {
               "rec": 7,
@@ -6920,6 +7119,28 @@
             }
           },
           {
+            "gameId": "401754641",
+            "stats": {
+              "rec": 6,
+              "recYds": 80,
+              "recTD": 0,
+              "pr": 1,
+              "prYds": 2,
+              "prTD": 0
+            }
+          },
+          {
+            "gameId": "401754522",
+            "stats": {
+              "rec": 6,
+              "recYds": 82,
+              "recTD": 1,
+              "pr": 1,
+              "prYds": 9,
+              "prTD": 0
+            }
+          },
+          {
             "gameId": "401754564",
             "stats": {
               "rushAtt": 2,
@@ -6934,17 +7155,6 @@
               "tfl": 0,
               "passDef": 0,
               "defTD": 0
-            }
-          },
-          {
-            "gameId": "401754522",
-            "stats": {
-              "rec": 6,
-              "recYds": 82,
-              "recTD": 1,
-              "pr": 1,
-              "prYds": 9,
-              "prTD": 0
             }
           },
           {
@@ -7027,20 +7237,6 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "rushAtt": 2,
-              "rushYds": -1,
-              "rushTD": 0,
-              "rec": 9,
-              "recYds": 70,
-              "recTD": 0,
-              "pr": 1,
-              "prYds": 47,
-              "prTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "passCmpAtt": 1,
@@ -7055,6 +7251,20 @@
               "recTD": 1,
               "pr": 1,
               "prYds": 7,
+              "prTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "rushAtt": 2,
+              "rushYds": -1,
+              "rushTD": 0,
+              "rec": 9,
+              "recYds": 70,
+              "recTD": 0,
+              "pr": 1,
+              "prYds": 47,
               "prTD": 0
             }
           }
@@ -7217,7 +7427,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -7253,19 +7468,19 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "rec": 5,
-              "recYds": 81,
-              "recTD": 1
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "rec": 1,
               "recYds": 14,
               "recTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "rec": 5,
+              "recYds": 81,
+              "recTD": 1
             }
           }
         ],
@@ -7430,7 +7645,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -7640,7 +7860,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -7775,7 +8000,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -7910,7 +8140,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -7924,17 +8159,6 @@
           "defTD": 0
         },
         "perGame": [
-          {
-            "gameId": "401754641",
-            "stats": {
-              "tackles": 2,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
           {
             "gameId": "401754553",
             "stats": {
@@ -7958,9 +8182,9 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
-              "tackles": 1,
+              "tackles": 2,
               "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
@@ -7973,6 +8197,17 @@
             "stats": {
               "tackles": 6,
               "soloTackles": 5,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "tackles": 1,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -8035,17 +8270,6 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "tackles": 3,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 1,
-              "passDef": 1,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "tackles": 2,
@@ -8053,6 +8277,17 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "tackles": 3,
+              "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 1,
+              "passDef": 1,
               "defTD": 0
             }
           }
@@ -8185,7 +8420,12 @@
         "transferRating": 0.87,
         "fromSchool": "Louisville",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Louisville",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -8375,15 +8615,20 @@
         }
       },
       "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
+        "stars": 3,
+        "compositeRating": 0.8899,
+        "nationalRank": 433,
         "positionRank": null,
         "transferPortalStars": null,
         "transferRating": null,
         "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "USC",
+        "recruitYear": 2019,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -8398,9 +8643,9 @@
         "ppa": null
       },
       "flags": {
-        "isWalkOn": true,
+        "isWalkOn": false,
         "newIn2026": false,
-        "unrated": true,
+        "unrated": false,
         "isTransfer": false,
         "isRedshirt": false,
         "isStub": false
@@ -8521,7 +8766,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -8697,7 +8947,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -8723,17 +8978,6 @@
             }
           },
           {
-            "gameId": "401754564",
-            "stats": {
-              "tackles": 2,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 1,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401754522",
             "stats": {
               "tackles": 1,
@@ -8741,6 +8985,17 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "tackles": 2,
+              "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 1,
               "defTD": 0
             }
           },
@@ -8800,23 +9055,23 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "tackles": 2,
-              "soloTackles": 1,
-              "sacks": 0.5,
-              "tfl": 0.5,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "tackles": 0,
               "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "tackles": 2,
+              "soloTackles": 1,
+              "sacks": 0.5,
+              "tfl": 0.5,
               "passDef": 0,
               "defTD": 0
             }
@@ -8950,7 +9205,12 @@
         "transferRating": 0.88,
         "fromSchool": "NC State",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "NC State",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -9115,7 +9375,12 @@
         "transferRating": 0.91,
         "fromSchool": "Michigan State",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Michigan State",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -9269,7 +9534,12 @@
         "transferRating": 0.91,
         "fromSchool": "UCF",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "UCF",
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -9283,17 +9553,6 @@
           "defTD": 0
         },
         "perGame": [
-          {
-            "gameId": "401754641",
-            "stats": {
-              "tackles": 1,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
           {
             "gameId": "401754553",
             "stats": {
@@ -9317,7 +9576,7 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
               "tackles": 1,
               "soloTackles": 1,
@@ -9332,6 +9591,17 @@
             "stats": {
               "tackles": 2,
               "soloTackles": 2,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "tackles": 1,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -9383,17 +9653,6 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "tackles": 1,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "tackles": 3,
@@ -9401,6 +9660,17 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 1,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "tackles": 1,
+              "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
               "defTD": 0
             }
           }
@@ -9533,7 +9803,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -9698,7 +9973,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -9833,7 +10113,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -9968,7 +10253,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -9983,10 +10273,10 @@
         },
         "perGame": [
           {
-            "gameId": "401754641",
+            "gameId": "401754553",
             "stats": {
               "tackles": 1,
-              "soloTackles": 0,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -9994,10 +10284,10 @@
             }
           },
           {
-            "gameId": "401754553",
+            "gameId": "401754641",
             "stats": {
               "tackles": 1,
-              "soloTackles": 1,
+              "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -10199,7 +10489,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -10337,31 +10632,28 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
         "games": 9,
         "stats": {
-          "interceptions": 4,
-          "intYds": 43,
-          "intTD": 0,
           "tackles": 15,
           "soloTackles": 10,
           "sacks": 1,
           "tfl": 1,
           "passDef": 2,
-          "defTD": 0
+          "defTD": 0,
+          "interceptions": 4,
+          "intYds": 43,
+          "intTD": 0
         },
         "perGame": [
-          {
-            "gameId": "401754641",
-            "stats": {
-              "interceptions": 1,
-              "intYds": 0,
-              "intTD": 0
-            }
-          },
           {
             "gameId": "401754553",
             "stats": {
@@ -10377,14 +10669,11 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
-              "tackles": 1,
-              "soloTackles": 0,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
+              "interceptions": 1,
+              "intYds": 0,
+              "intTD": 0
             }
           },
           {
@@ -10392,6 +10681,17 @@
             "stats": {
               "tackles": 1,
               "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "tackles": 1,
+              "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -10588,7 +10888,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -10602,17 +10907,6 @@
           "defTD": 0
         },
         "perGame": [
-          {
-            "gameId": "401754641",
-            "stats": {
-              "tackles": 1,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
           {
             "gameId": "401754553",
             "stats": {
@@ -10636,13 +10930,13 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
-              "tackles": 3,
-              "soloTackles": 3,
+              "tackles": 1,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
-              "passDef": 3,
+              "passDef": 0,
               "defTD": 0
             }
           },
@@ -10654,6 +10948,17 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "tackles": 3,
+              "soloTackles": 3,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 3,
               "defTD": 0
             }
           },
@@ -10808,7 +11113,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -10943,7 +11253,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -11078,7 +11393,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -11104,10 +11424,10 @@
             }
           },
           {
-            "gameId": "401754581",
+            "gameId": "401754603",
             "stats": {
               "tackles": 1,
-              "soloTackles": 1,
+              "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -11115,10 +11435,10 @@
             }
           },
           {
-            "gameId": "401754603",
+            "gameId": "401754581",
             "stats": {
               "tackles": 1,
-              "soloTackles": 0,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -11254,7 +11574,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -11389,7 +11714,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -11404,22 +11734,22 @@
         },
         "perGame": [
           {
-            "gameId": "401754641",
+            "gameId": "401752709",
             "stats": {
-              "tackles": 4,
-              "soloTackles": 2,
-              "sacks": 0,
+              "tackles": 2,
+              "soloTackles": 1,
+              "sacks": 1,
               "tfl": 1,
               "passDef": 0,
               "defTD": 0
             }
           },
           {
-            "gameId": "401752709",
+            "gameId": "401754641",
             "stats": {
-              "tackles": 2,
-              "soloTackles": 1,
-              "sacks": 1,
+              "tackles": 4,
+              "soloTackles": 2,
+              "sacks": 0,
               "tfl": 1,
               "passDef": 0,
               "defTD": 0
@@ -11620,7 +11950,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -11755,7 +12090,12 @@
         "transferRating": 0.93,
         "fromSchool": "Wisconsin",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Wisconsin",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -11773,17 +12113,6 @@
         },
         "perGame": [
           {
-            "gameId": "401754641",
-            "stats": {
-              "tackles": 3,
-              "soloTackles": 2,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "tackles": 2,
@@ -11795,9 +12124,9 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
-              "tackles": 2,
+              "tackles": 3,
               "soloTackles": 2,
               "sacks": 0,
               "tfl": 0,
@@ -11810,6 +12139,17 @@
             "stats": {
               "tackles": 5,
               "soloTackles": 3,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "tackles": 2,
+              "soloTackles": 2,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -11875,23 +12215,23 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "tackles": 6,
-              "soloTackles": 3,
-              "sacks": 0,
-              "tfl": 0.5,
-              "passDef": 1,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "tackles": 2,
               "soloTackles": 2,
               "sacks": 0,
               "tfl": 0,
+              "passDef": 1,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "tackles": 6,
+              "soloTackles": 3,
+              "sacks": 0,
+              "tfl": 0.5,
               "passDef": 1,
               "defTD": 0
             }
@@ -12025,7 +12365,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -12163,7 +12508,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -12320,7 +12670,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -12455,7 +12810,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -12590,7 +12950,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -12605,17 +12970,6 @@
         },
         "perGame": [
           {
-            "gameId": "401754641",
-            "stats": {
-              "tackles": 2,
-              "soloTackles": 2,
-              "sacks": 0,
-              "tfl": 1,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401754553",
             "stats": {
               "tackles": 1,
@@ -12627,9 +12981,9 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
-              "tackles": 3,
+              "tackles": 2,
               "soloTackles": 2,
               "sacks": 0,
               "tfl": 1,
@@ -12643,6 +12997,17 @@
               "tackles": 3,
               "soloTackles": 2,
               "sacks": 1,
+              "tfl": 1,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "tackles": 3,
+              "soloTackles": 2,
+              "sacks": 0,
               "tfl": 1,
               "passDef": 0,
               "defTD": 0
@@ -12832,7 +13197,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -12967,7 +13337,12 @@
         "transferRating": 0.92,
         "fromSchool": "Washington State",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Washington State",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -13048,9 +13423,9 @@
             }
           },
           {
-            "gameId": "401754581",
+            "gameId": "401754603",
             "stats": {
-              "tackles": 1,
+              "tackles": 3,
               "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
@@ -13059,9 +13434,9 @@
             }
           },
           {
-            "gameId": "401754603",
+            "gameId": "401754581",
             "stats": {
-              "tackles": 3,
+              "tackles": 1,
               "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
@@ -13198,7 +13573,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -13374,7 +13754,12 @@
         "transferRating": 0.92,
         "fromSchool": "Jacksonville State",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Jacksonville State",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -13391,17 +13776,6 @@
           "fumRec": 2
         },
         "perGame": [
-          {
-            "gameId": "401754641",
-            "stats": {
-              "tackles": 1,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
           {
             "gameId": "401754553",
             "stats": {
@@ -13425,15 +13799,12 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
-              "fumbles": 0,
-              "fumblesLost": 0,
-              "fumRec": 1,
-              "tackles": 6,
-              "soloTackles": 5,
+              "tackles": 1,
+              "soloTackles": 1,
               "sacks": 0,
-              "tfl": 1,
+              "tfl": 0,
               "passDef": 0,
               "defTD": 0
             }
@@ -13445,6 +13816,20 @@
               "soloTackles": 2,
               "sacks": 0,
               "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "fumbles": 0,
+              "fumblesLost": 0,
+              "fumRec": 1,
+              "tackles": 6,
+              "soloTackles": 5,
+              "sacks": 0,
+              "tfl": 1,
               "passDef": 0,
               "defTD": 0
             }
@@ -13505,17 +13890,6 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "tackles": 4,
-              "soloTackles": 2,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "fumbles": 0,
@@ -13526,6 +13900,17 @@
               "sacks": 1,
               "tfl": 1,
               "passDef": 1,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "tackles": 4,
+              "soloTackles": 2,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
               "defTD": 0
             }
           }
@@ -13658,7 +14043,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -13673,10 +14063,10 @@
         },
         "perGame": [
           {
-            "gameId": "401754641",
+            "gameId": "401752709",
             "stats": {
               "tackles": 1,
-              "soloTackles": 0,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -13684,10 +14074,10 @@
             }
           },
           {
-            "gameId": "401752709",
+            "gameId": "401754641",
             "stats": {
               "tackles": 1,
-              "soloTackles": 1,
+              "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -13856,7 +14246,12 @@
         "transferRating": 0.88,
         "fromSchool": "Vanderbilt",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Vanderbilt",
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -14021,7 +14416,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -14156,7 +14556,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -14291,7 +14696,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -14426,7 +14836,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -14613,7 +15028,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -14694,17 +15114,6 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "tackles": 1,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 1,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "tackles": 4,
@@ -14712,6 +15121,17 @@
               "sacks": 1,
               "tfl": 2.5,
               "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "tackles": 1,
+              "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 1,
               "defTD": 0
             }
           }
@@ -14847,7 +15267,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -15023,7 +15448,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -15188,7 +15618,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -15220,10 +15655,10 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754522",
             "stats": {
-              "tackles": 1,
-              "soloTackles": 1,
+              "tackles": 2,
+              "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -15231,10 +15666,10 @@
             }
           },
           {
-            "gameId": "401754522",
+            "gameId": "401754564",
             "stats": {
-              "tackles": 2,
-              "soloTackles": 0,
+              "tackles": 1,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -15289,17 +15724,6 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "tackles": 3,
-              "soloTackles": 2,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "tackles": 3,
@@ -15307,6 +15731,17 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 1,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "tackles": 3,
+              "soloTackles": 2,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
               "defTD": 0
             }
           }
@@ -15439,7 +15874,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -15574,7 +16014,12 @@
         "transferRating": 0.85,
         "fromSchool": "Arizona",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Arizona",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -15772,7 +16217,12 @@
         "transferRating": 0.86,
         "fromSchool": "Rutgers",
         "matchMethod": "247-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": "Rutgers",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": 2025,
@@ -15786,17 +16236,6 @@
           "defTD": 0
         },
         "perGame": [
-          {
-            "gameId": "401754641",
-            "stats": {
-              "tackles": 4,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
           {
             "gameId": "401754553",
             "stats": {
@@ -15820,10 +16259,10 @@
             }
           },
           {
-            "gameId": "401754564",
+            "gameId": "401754641",
             "stats": {
-              "tackles": 6,
-              "soloTackles": 3,
+              "tackles": 4,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -15835,6 +16274,17 @@
             "stats": {
               "tackles": 4,
               "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754564",
+            "stats": {
+              "tackles": 6,
+              "soloTackles": 3,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -15897,17 +16347,6 @@
             }
           },
           {
-            "gameId": "401754581",
-            "stats": {
-              "tackles": 8,
-              "soloTackles": 4,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 1,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401754603",
             "stats": {
               "tackles": 4,
@@ -15915,6 +16354,17 @@
               "sacks": 0,
               "tfl": 1,
               "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401754581",
+            "stats": {
+              "tackles": 8,
+              "soloTackles": 4,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 1,
               "defTD": 0
             }
           }
@@ -16047,7 +16497,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -16182,7 +16637,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "cfbd-id",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-team",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": 2025,
@@ -16315,9 +16775,14 @@
         "positionRank": null,
         "transferPortalStars": null,
         "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
+        "fromSchool": "Texas",
+        "matchMethod": "name-fuzzy",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-portal",
+        "recruitedSchool": null,
+        "recruitYear": 2025,
+        "origin": "Texas",
+        "eligibility": "Immediate"
       },
       "production": {
         "season": null,
@@ -16332,10 +16797,10 @@
         "ppa": null
       },
       "flags": {
-        "isWalkOn": true,
+        "isWalkOn": false,
         "newIn2026": true,
         "unrated": true,
-        "isTransfer": false,
+        "isTransfer": true,
         "isRedshirt": false,
         "isStub": false
       }
@@ -16452,7 +16917,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": null,
@@ -16587,7 +17057,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": null,
@@ -16717,15 +17192,20 @@
         }
       },
       "recruiting": {
-        "stars": 4,
-        "compositeRating": null,
-        "nationalRank": null,
+        "stars": 3,
+        "compositeRating": 0.8597,
+        "nationalRank": 1121,
         "positionRank": null,
         "transferPortalStars": 4,
         "transferRating": 0.93,
         "fromSchool": "Nebraska",
         "matchMethod": "name-fuzzy",
-        "source": "cfbd-2025"
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-name",
+        "recruitedSchool": null,
+        "recruitYear": 2023,
+        "origin": "Nebraska",
+        "eligibility": "TBD"
       },
       "production": {
         "season": null,
@@ -16860,7 +17340,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": null,
@@ -16995,7 +17480,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": null,
@@ -17130,7 +17620,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": null,
@@ -17265,7 +17760,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": null,
@@ -17286,276 +17786,6 @@
         "isTransfer": false,
         "isRedshirt": false,
         "isStub": false
-      }
-    },
-    {
-      "playerId": "ourlads-stub-vandrevius-jacobs",
-      "name": "Vandrevius Jacobs",
-      "crosswalk": {
-        "playerId": "ourlads-stub-vandrevius-jacobs",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "WR",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "OFF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
-      }
-    },
-    {
-      "playerId": "ourlads-stub-cooper-barkate",
-      "name": "Cooper Barkate",
-      "crosswalk": {
-        "playerId": "ourlads-stub-cooper-barkate",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "WR",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "OFF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
       }
     },
     {
@@ -17670,7 +17900,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": null,
@@ -17805,1087 +18040,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
-      }
-    },
-    {
-      "playerId": "ourlads-stub-johnathan-cline",
-      "name": "Johnathan Cline",
-      "crosswalk": {
-        "playerId": "ourlads-stub-johnathan-cline",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "OL",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "OFF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
-      }
-    },
-    {
-      "playerId": "ourlads-stub-jamal-meriweather",
-      "name": "Jamal Meriweather",
-      "crosswalk": {
-        "playerId": "ourlads-stub-jamal-meriweather",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "OL",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "OFF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
-      }
-    },
-    {
-      "playerId": "ourlads-stub-darian-mensah",
-      "name": "Darian Mensah",
-      "crosswalk": {
-        "playerId": "ourlads-stub-darian-mensah",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "QB",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "OFF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
-      }
-    },
-    {
-      "playerId": "ourlads-stub-keona-davis",
-      "name": "Keona Davis",
-      "crosswalk": {
-        "playerId": "ourlads-stub-keona-davis",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "DT",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "DEF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
-      }
-    },
-    {
-      "playerId": "ourlads-stub-jarquez-carter",
-      "name": "Jarquez Carter",
-      "crosswalk": {
-        "playerId": "ourlads-stub-jarquez-carter",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "DT",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "DEF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
-      }
-    },
-    {
-      "playerId": "ourlads-stub-damon-wilson-ii",
-      "name": "Damon Wilson II",
-      "crosswalk": {
-        "playerId": "ourlads-stub-damon-wilson-ii",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "DE",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "DEF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
-      }
-    },
-    {
-      "playerId": "ourlads-stub-kellen-wiley-jr",
-      "name": "Kellen Wiley Jr.",
-      "crosswalk": {
-        "playerId": "ourlads-stub-kellen-wiley-jr",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "LB",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "DEF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
-      }
-    },
-    {
-      "playerId": "ourlads-stub-conrad-hussey",
-      "name": "Conrad Hussey",
-      "crosswalk": {
-        "playerId": "ourlads-stub-conrad-hussey",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "S",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "DEF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": null,
@@ -19020,142 +18180,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
-      },
-      "production": {
-        "season": null,
-        "games": null,
-        "stats": {},
-        "perGame": null,
-        "usageOverall": null,
-        "ppaAll": null
-      },
-      "advanced": {
-        "usage": null,
-        "ppa": null
-      },
-      "flags": {
-        "isWalkOn": false,
-        "newIn2026": true,
-        "unrated": true,
-        "isTransfer": false,
-        "isRedshirt": false,
-        "isStub": true
-      }
-    },
-    {
-      "playerId": "ourlads-stub-omar-thornton",
-      "name": "Omar Thornton",
-      "crosswalk": {
-        "playerId": "ourlads-stub-omar-thornton",
-        "espnId": null,
-        "cfbdId": null,
-        "player247Id": null,
-        "on3Id": null,
-        "officialName": null,
-        "ourladsName": null
-      },
-      "jersey": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "position": {
-        "value": "LB",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "side": {
-        "value": "DEF",
-        "_meta": {
-          "source": "derived",
-          "confidence": "low"
-        }
-      },
-      "classYear": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "height": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "heightIn": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "weight": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "hometown": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "homeState": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "medium"
-        }
-      },
-      "highSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "previousSchool": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "headshotUrl": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "status": {
-        "value": null,
-        "_meta": {
-          "source": null,
-          "confidence": "high"
-        }
-      },
-      "recruiting": {
-        "stars": null,
-        "compositeRating": null,
-        "nationalRank": null,
-        "positionRank": null,
-        "transferPortalStars": null,
-        "transferRating": null,
-        "fromSchool": null,
-        "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": null,
@@ -19290,7 +18320,12 @@
         "transferRating": null,
         "fromSchool": null,
         "matchMethod": "none",
-        "source": null
+        "source": null,
+        "recruitSource": "none",
+        "recruitedSchool": null,
+        "recruitYear": null,
+        "origin": null,
+        "eligibility": null
       },
       "production": {
         "season": null,
@@ -19312,29 +18347,1569 @@
         "isRedshirt": false,
         "isStub": true
       }
+    },
+    {
+      "playerId": "CFBD-4870842",
+      "name": "Vandrevius Jacobs",
+      "crosswalk": {
+        "playerId": "CFBD-4870842",
+        "espnId": null,
+        "cfbdId": "CFBD-4870842",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "WR",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "Fort Pierce, FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 4,
+        "compositeRating": 0.9048,
+        "nationalRank": 300,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "Florida State",
+        "recruitYear": 2023,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
+    },
+    {
+      "playerId": "CFBD-4804878",
+      "name": "Cooper Barkate",
+      "crosswalk": {
+        "playerId": "CFBD-4804878",
+        "espnId": null,
+        "cfbdId": "CFBD-4804878",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "ATH",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "Santa Ana, CA",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "CA",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 3,
+        "compositeRating": 0.8889,
+        "nationalRank": 435,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "Harvard",
+        "recruitYear": 2022,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
+    },
+    {
+      "playerId": "CFBD-4923056",
+      "name": "Johnathan Cline",
+      "crosswalk": {
+        "playerId": "CFBD-4923056",
+        "espnId": null,
+        "cfbdId": "CFBD-4923056",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "IOL",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "Cartersville, GA",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "GA",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 3,
+        "compositeRating": 0.8664,
+        "nationalRank": 927,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "UCF",
+        "recruitYear": 2023,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
+    },
+    {
+      "playerId": "CFBD-4921440",
+      "name": "Jamal Meriweather",
+      "crosswalk": {
+        "playerId": "CFBD-4921440",
+        "espnId": null,
+        "cfbdId": "CFBD-4921440",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "OT",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "Brunswick, GA",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "GA",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 3,
+        "compositeRating": 0.8879,
+        "nationalRank": 481,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "Georgia",
+        "recruitYear": 2023,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
+    },
+    {
+      "playerId": "CFBD-5121169",
+      "name": "Darian Mensah",
+      "crosswalk": {
+        "playerId": "CFBD-5121169",
+        "espnId": null,
+        "cfbdId": "CFBD-5121169",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "QB",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "San Luis Obispo, CA",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "CA",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 2,
+        "compositeRating": 0.7933,
+        "nationalRank": 2289,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "Tulane",
+        "recruitYear": 2023,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
+    },
+    {
+      "playerId": "CFBD-5219069",
+      "name": "Keona Davis",
+      "crosswalk": {
+        "playerId": "CFBD-5219069",
+        "espnId": null,
+        "cfbdId": "CFBD-5219069",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "DL",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "Tucson, AZ",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "AZ",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 3,
+        "compositeRating": 0.8825,
+        "nationalRank": 610,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "Nebraska",
+        "recruitYear": 2024,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
+    },
+    {
+      "playerId": "CFBD-5167747",
+      "name": "Jarquez Carter",
+      "crosswalk": {
+        "playerId": "CFBD-5167747",
+        "espnId": null,
+        "cfbdId": "CFBD-5167747",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "DL",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "Newberry, FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 4,
+        "compositeRating": 0.9253,
+        "nationalRank": 198,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "Ohio State",
+        "recruitYear": 2025,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
+    },
+    {
+      "playerId": "CFBD-4871089",
+      "name": "Damon Wilson II",
+      "crosswalk": {
+        "playerId": "CFBD-4871089",
+        "espnId": null,
+        "cfbdId": "CFBD-4871089",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "EDGE",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "Venice, FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 5,
+        "compositeRating": 0.9869,
+        "nationalRank": 17,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "Georgia",
+        "recruitYear": 2023,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
+    },
+    {
+      "playerId": "CFBD-5236220",
+      "name": "Kellen Wiley Jr.",
+      "crosswalk": {
+        "playerId": "CFBD-5236220",
+        "espnId": null,
+        "cfbdId": "CFBD-5236220",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "LB",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "Seffner, FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 4,
+        "compositeRating": 0.9142,
+        "nationalRank": 247,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "Miami",
+        "recruitYear": 2025,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
+    },
+    {
+      "playerId": "CFBD-4870752",
+      "name": "Conrad Hussey",
+      "crosswalk": {
+        "playerId": "CFBD-4870752",
+        "espnId": null,
+        "cfbdId": "CFBD-4870752",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "S",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "Fort Lauderdale, FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 4,
+        "compositeRating": 0.9252,
+        "nationalRank": 193,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "Florida State",
+        "recruitYear": 2023,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
+    },
+    {
+      "playerId": "CFBD-5196025",
+      "name": "Omar Thornton",
+      "crosswalk": {
+        "playerId": "CFBD-5196025",
+        "espnId": null,
+        "cfbdId": "CFBD-5196025",
+        "player247Id": null,
+        "on3Id": null,
+        "officialName": null,
+        "ourladsName": null
+      },
+      "jersey": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "position": {
+        "value": "LB",
+        "_meta": {
+          "source": "cfbd",
+          "confidence": "low"
+        }
+      },
+      "side": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "classYear": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "height": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "heightIn": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "weight": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "hometown": {
+        "value": "Fort Lauderdale, FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "homeState": {
+        "value": "FL",
+        "_meta": {
+          "source": "cfbd-2025",
+          "confidence": "medium"
+        }
+      },
+      "highSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "previousSchool": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "headshotUrl": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "status": {
+        "value": null,
+        "_meta": {
+          "source": null,
+          "confidence": "high"
+        }
+      },
+      "recruiting": {
+        "stars": 3,
+        "compositeRating": 0.847,
+        "nationalRank": 1659,
+        "positionRank": null,
+        "transferPortalStars": null,
+        "transferRating": null,
+        "fromSchool": null,
+        "matchMethod": "cfbd-id",
+        "source": "cfbd-2025",
+        "recruitSource": "cfbd-natl-id",
+        "recruitedSchool": "Boston College",
+        "recruitYear": 2024,
+        "origin": null,
+        "eligibility": null
+      },
+      "production": {
+        "season": null,
+        "games": null,
+        "stats": {},
+        "perGame": null,
+        "usageOverall": null,
+        "ppaAll": null
+      },
+      "advanced": {
+        "usage": null,
+        "ppa": null
+      },
+      "flags": {
+        "isWalkOn": false,
+        "newIn2026": true,
+        "unrated": false,
+        "isTransfer": false,
+        "isRedshirt": false,
+        "isStub": false
+      }
     }
   ],
   "depthChart": {
     "offense": {
-      "WRX": "ourlads-stub-vandrevius-jacobs",
+      "WRX": "CFBD-4870842",
       "WRX2": "CFBD-5141593",
-      "WRZ": "ourlads-stub-cooper-barkate",
+      "WRZ": "CFBD-4804878",
       "WRZ2": "ourlads-stub-cam-vaughn",
       "SLOT": "CFBD-5159175",
       "SLOT2": "CFBD-5164365",
       "LT": "ourlads-stub-jackson-cantwell",
       "LT2": "CFBD-5142325",
       "LG": "CFBD-4870875",
-      "LG2": "ourlads-stub-johnathan-cline",
+      "LG2": "CFBD-4923056",
       "C": "CFBD-4682510",
       "C2": "CFBD-5141356",
       "RG": "CFBD-5141389",
-      "RG2": "ourlads-stub-jamal-meriweather",
+      "RG2": "CFBD-4921440",
       "RT": "CFBD-4896339",
       "TE": "CFBD-5079503",
       "TE2": "CFBD-5141467",
       "TE3": "CFBD-5168292",
-      "QB": "ourlads-stub-darian-mensah",
+      "QB": "CFBD-5121169",
       "QB2": "CFBD-5141605",
       "QB3": "CFBD-5110100",
       "RB": "CFBD-4870736",
@@ -19346,29 +19921,29 @@
       "LDE2": "CFBD-5141370",
       "LDE3": "CFBD-5149474",
       "NT": "CFBD-5079678",
-      "NT2": "ourlads-stub-keona-davis",
+      "NT2": "CFBD-5219069",
       "DT": "CFBD-4916996",
-      "DT2": "ourlads-stub-jarquez-carter",
-      "RDE": "ourlads-stub-damon-wilson-ii",
+      "DT2": "CFBD-5167747",
+      "RDE": "CFBD-4871089",
       "RDE2": "CFBD-5214513",
       "RDE3": "CFBD-5079565",
       "WLB": "CFBD-4430604",
       "WLB2": "CFBD-5132631",
       "MLB": "CFBD-4682490",
       "MLB2": "CFBD-5078098",
-      "MLB3": "ourlads-stub-kellen-wiley-jr",
+      "MLB3": "CFBD-5236220",
       "LCB": "CFBD-5226976",
       "LCB2": "CFBD-4870650",
       "LCB3": "CFBD-5295127",
       "SS": "CFBD-5298737",
-      "SS2": "ourlads-stub-conrad-hussey",
+      "SS2": "CFBD-4870752",
       "SS3": "CFBD-5142262",
       "FS": "CFBD-5150903",
       "FS2": "ourlads-stub-jj-dunnigan",
       "RCB": "CFBD-4919038",
       "RCB2": "CFBD-5127735",
       "RCB3": "CFBD-5141368",
-      "NB": "ourlads-stub-omar-thornton",
+      "NB": "CFBD-5196025",
       "NB2": "CFBD-4712326",
       "NB3": "ourlads-stub-camdin-portis"
     }
@@ -19380,18 +19955,6 @@
       "defense": 11
     },
     "unmatchedOurladsPlayers": [
-      {
-        "slot": "WRX",
-        "depth": 1,
-        "name": "Vandrevius Jacobs",
-        "cleanedName": "vandrevius jacobs"
-      },
-      {
-        "slot": "WRZ",
-        "depth": 1,
-        "name": "Cooper Barkate",
-        "cleanedName": "cooper barkate"
-      },
       {
         "slot": "WRZ",
         "depth": 2,
@@ -19405,64 +19968,10 @@
         "cleanedName": "jackson cantwell"
       },
       {
-        "slot": "LG",
-        "depth": 2,
-        "name": "Johnathan Cline",
-        "cleanedName": "johnathan cline"
-      },
-      {
-        "slot": "RG",
-        "depth": 2,
-        "name": "Jamal Meriweather",
-        "cleanedName": "jamal meriweather"
-      },
-      {
-        "slot": "QB",
-        "depth": 1,
-        "name": "Darian Mensah",
-        "cleanedName": "darian mensah"
-      },
-      {
-        "slot": "NT",
-        "depth": 2,
-        "name": "Keona Davis",
-        "cleanedName": "keona davis"
-      },
-      {
-        "slot": "DT",
-        "depth": 2,
-        "name": "Jarquez Carter",
-        "cleanedName": "jarquez carter"
-      },
-      {
-        "slot": "RDE",
-        "depth": 1,
-        "name": "Damon Wilson II",
-        "cleanedName": "damon wilson"
-      },
-      {
-        "slot": "MLB",
-        "depth": 3,
-        "name": "Kellen Wiley Jr.",
-        "cleanedName": "kellen wiley"
-      },
-      {
-        "slot": "SS",
-        "depth": 2,
-        "name": "Conrad Hussey",
-        "cleanedName": "conrad hussey"
-      },
-      {
         "slot": "FS",
         "depth": 2,
         "name": "JJ Dunnigan",
         "cleanedName": "jj dunnigan"
-      },
-      {
-        "slot": "NB",
-        "depth": 1,
-        "name": "Omar Thornton",
-        "cleanedName": "omar thornton"
       },
       {
         "slot": "NB",
@@ -19472,30 +19981,6 @@
       }
     ],
     "stubPlayers": [
-      {
-        "playerId": "ourlads-stub-vandrevius-jacobs",
-        "name": "Vandrevius Jacobs",
-        "number": null,
-        "side": "OFF",
-        "position": "WR",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-cooper-barkate",
-        "name": "Cooper Barkate",
-        "number": null,
-        "side": "OFF",
-        "position": "WR",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
       {
         "playerId": "ourlads-stub-cam-vaughn",
         "name": "Cam Vaughn",
@@ -19521,119 +20006,11 @@
         "weight": null
       },
       {
-        "playerId": "ourlads-stub-johnathan-cline",
-        "name": "Johnathan Cline",
-        "number": null,
-        "side": "OFF",
-        "position": "OL",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-jamal-meriweather",
-        "name": "Jamal Meriweather",
-        "number": null,
-        "side": "OFF",
-        "position": "OL",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-darian-mensah",
-        "name": "Darian Mensah",
-        "number": null,
-        "side": "OFF",
-        "position": "QB",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-keona-davis",
-        "name": "Keona Davis",
-        "number": null,
-        "side": "DEF",
-        "position": "DT",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-jarquez-carter",
-        "name": "Jarquez Carter",
-        "number": null,
-        "side": "DEF",
-        "position": "DT",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-damon-wilson-ii",
-        "name": "Damon Wilson II",
-        "number": null,
-        "side": "DEF",
-        "position": "DE",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-kellen-wiley-jr",
-        "name": "Kellen Wiley Jr.",
-        "number": null,
-        "side": "DEF",
-        "position": "LB",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-conrad-hussey",
-        "name": "Conrad Hussey",
-        "number": null,
-        "side": "DEF",
-        "position": "S",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
         "playerId": "ourlads-stub-jj-dunnigan",
         "name": "JJ Dunnigan",
         "number": null,
         "side": "DEF",
         "position": "S",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-omar-thornton",
-        "name": "Omar Thornton",
-        "number": null,
-        "side": "DEF",
-        "position": "LB",
         "classYear": null,
         "isTransfer": false,
         "eligibilityRemaining": null,
@@ -19671,16 +20048,16 @@
   "reconciliation": {
     "spineCount": 100,
     "masterCount": 115,
-    "matchedByIdPct": 92,
+    "matchedByIdPct": 82.9,
     "fuzzyCount": 67,
-    "walkOns": 30,
+    "walkOns": 27,
     "newIn2026": 23,
-    "unrated": 46,
-    "isTransfer": 20,
+    "unrated": 33,
+    "isTransfer": 21,
     "headshotPct": 85.2,
     "highSchoolPct": 57.4,
     "previousSchoolPct": 10.4,
-    "hometownPct": 87,
+    "hometownPct": 96.5,
     "productionReturningPct": 38.3,
     "perFieldConflictCounts": {
       "classYear": 11,

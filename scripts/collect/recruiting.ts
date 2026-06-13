@@ -18,6 +18,24 @@ import { parse247ClassSummary, parse247Commits, parse247Transfers } from './pars
 
 export type MatchMethod = 'cfbd-id' | '247-id' | 'name-fuzzy' | 'none'
 
+/**
+ * Precedence-tagged origin of a recruiting record (C2). Records HOW the rating
+ * was resolved so the UI can label it honestly:
+ *  - cfbd-team:      the team's own CFBD /recruiting/players?team=X (id-keyed)
+ *  - cfbd-natl-id:   national index matched by athleteId (CFBD-<id> === playerId)
+ *  - cfbd-natl-name: national index matched by stdName (cross-school HS rating)
+ *  - cfbd-portal:    CFBD /player/portal incoming transfer (rating + origin)
+ *  - 247-portal:     247Sports transfer-portal scrape overlay
+ *  - none:           no recruiting record (genuine walk-on)
+ */
+export type RecruitSource =
+  | 'cfbd-team'
+  | 'cfbd-natl-id'
+  | 'cfbd-natl-name'
+  | 'cfbd-portal'
+  | '247-portal'
+  | 'none'
+
 export interface RecruitMatch {
   year?: number
   method: string
@@ -44,6 +62,17 @@ export interface RecruitProfile {
   homeState: string | null
   homeLat: number | null
   homeLon: number | null
+  // ── C2: full-spine precedence provenance ──────────────────────────────────
+  /** Where the rating came from (precedence-tagged). null === legacy/unset. */
+  source?: RecruitSource | null
+  /** School that recruited this player out of HS (national index committedTo). */
+  recruitedSchool?: string | null
+  /** Recruiting class year (national index / portal). */
+  recruitYear?: number | null
+  /** Transfer ORIGIN school (CFBD portal `origin`). */
+  origin?: string | null
+  /** Remaining eligibility string (CFBD portal `eligibility`). */
+  eligibility?: string | null
 }
 
 export interface RecruitingSource {
@@ -154,6 +183,11 @@ const emptyProfile = (playerId: string, name: string): RecruitProfile => ({
   homeState: null,
   homeLat: null,
   homeLon: null,
+  source: null,
+  recruitedSchool: null,
+  recruitYear: null,
+  origin: null,
+  eligibility: null,
 })
 
 /** clamp a 0–1 composite (guard against stray out-of-range source values). */

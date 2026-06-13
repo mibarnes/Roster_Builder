@@ -10,6 +10,7 @@ import type { PipelineCoverage, ReturningProductionSummary } from './pipeline.ts
 import type { RatingMethod } from '../rating/overall.ts'
 import type { Usage, Ppa } from './advanced.ts'
 import type { PerGameLog } from './production.ts'
+import type { RecruitSourceTag } from './recruiting.ts'
 
 /** A player's UI side. allPlayers may include 'ST' (special teams / neither). */
 export type UISide = 'OFF' | 'DEF' | 'ST'
@@ -82,6 +83,17 @@ export interface UIPlayer {
   hometown: { city: string | null; state: string | null } | null
   /** How recruiting was matched (name-fuzzy is flagged in the UI). */
   recruitMatchMethod: MatchMethod | null
+  // ── C2: recruiting-source provenance (drives the modal source label) ──
+  /** Where the rating came from (precedence-tagged); null for legacy teams. */
+  recruitSource: RecruitSourceTag | null
+  /** School that recruited this player out of HS (national-index committedTo). */
+  recruitedSchool: string | null
+  /** Recruiting class year (national index / portal). */
+  recruitYear: number | null
+  /** Transfer ORIGIN school (CFBD portal). */
+  transferOrigin: string | null
+  /** Remaining eligibility string (CFBD portal). */
+  transferEligibility: string | null
   /** Depth-chart-only stub player (no roster/recruiting/production data). */
   isStub: boolean
   // ── Golden-master overlay (pilot-deepening round); null/false for legacy teams ──

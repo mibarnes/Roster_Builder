@@ -106,6 +106,12 @@ export function masterToDatasetBySource(master: PlayerMasterSource): MasterDatas
       isTransfer: m.flags.isTransfer,
       matchMethod:
         m.recruiting.matchMethod === 'on3' ? 'name-fuzzy' : m.recruiting.matchMethod,
+      // ── C2: full-spine precedence provenance (for the UI source label) ──
+      source: m.recruiting.recruitSource ?? null,
+      recruitedSchool: m.recruiting.recruitedSchool ?? null,
+      recruitYear: m.recruiting.recruitYear ?? null,
+      origin: m.recruiting.origin ?? null,
+      eligibility: m.recruiting.eligibility ?? null,
     })),
   }
 
