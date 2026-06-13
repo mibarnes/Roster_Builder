@@ -45,6 +45,13 @@ const mk = (over: Partial<UIPlayer>): UIPlayer => ({
   hometown: null,
   recruitMatchMethod: null,
   isStub: false,
+  headshotUrl: null,
+  highSchool: null,
+  previousSchool: null,
+  isWalkOn: false,
+  newIn2026: false,
+  unrated: false,
+  conflictFields: [],
   dataCompleteness: { hasRecruiting: false, hasProduction: false, matchedBy: null },
   ...over,
 })

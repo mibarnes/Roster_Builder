@@ -255,18 +255,50 @@ export default function App() {
         const c = rosterData.coverage
         const nonStub = Math.max(c.rosterCount - c.stubCount, 1)
         const pct = (n: number) => Math.round((n / nonStub) * 100)
+        // Golden-overlay counts: present only for pilot teams; derived from allPlayers
+        // (coverage carries reconciliation counts but not these per-flag tallies).
+        const walkOns = allPlayers.filter((p) => p.isWalkOn).length
+        const newIn2026 = allPlayers.filter((p) => p.newIn2026).length
+        const conflicts = allPlayers.filter((p) => p.conflictFields.length > 0).length
+        const isGolden = walkOns > 0 || newIn2026 > 0 || conflicts > 0
         return (
           <div
             className="flex-shrink-0 px-4 py-1.5 text-[11px] font-semibold text-gray-400 bg-black/40 border-b border-surface-border flex items-center gap-3 flex-wrap"
             aria-label="Team data coverage"
           >
             <span className="text-white font-bold">{c.rosterCount} players</span>
+            {isGolden && (
+              <>
+                <span>·</span>
+                <span className="uppercase tracking-wide text-gray-300">2026 roster</span>
+              </>
+            )}
             <span>·</span>
-            <span>{pct(c.recruitingMatched)}% recruiting</span>
+            <span>{pct(c.recruitingMatched)}% recruited</span>
             <span>·</span>
             <span>{pct(c.productionWithGames)}% with snaps</span>
             <span>·</span>
             <span>{c.rated} rated</span>
+            {walkOns > 0 && (
+              <>
+                <span>·</span>
+                <span title="On the roster, no recruiting record">{walkOns} walk-ons</span>
+              </>
+            )}
+            {newIn2026 > 0 && (
+              <>
+                <span>·</span>
+                <span title="New on the 2026 roster — no 2025 production">{newIn2026} new</span>
+              </>
+            )}
+            {conflicts > 0 && (
+              <>
+                <span>·</span>
+                <span className="text-amber-300/80" title="Players where sources disagreed on a field">
+                  {conflicts} conflicts
+                </span>
+              </>
+            )}
             {c.stubCount > 0 && (
               <>
                 <span>·</span>

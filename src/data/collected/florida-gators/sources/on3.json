@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Florida Gators",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/florida/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:florida"
+      }
+    ],
+    "collectedAt": "2026-06-13T05:32:01.200Z",
+    "collectorVersion": "bfb3020",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

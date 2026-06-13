@@ -8,6 +8,10 @@ import { join } from 'node:path'
 import {
   AdvancedSourceSchema,
   ContextSourceSchema,
+  EspnRosterSourceSchema,
+  OfficialRosterSourceSchema,
+  On3SourceSchema,
+  PlayerMasterSourceSchema,
   ProductionSourceSchema,
   RecruitingSourceSchema,
   RosterSourceSchema,
@@ -84,5 +88,24 @@ describe('seeded data conformance', () => {
     for (const team of seeded) {
       expect(getTeamById(team), `seeded team ${team} not in registry`).toBeDefined()
     }
+  })
+
+  // Pilot-deepening: the golden player-master.json + sources/* (pilots only).
+  it.each(seeded)('%s: player-master.json + sources validate when present (pilot round)', (team) => {
+    const teamDir = join(COLLECTED, team)
+    const masterPath = join(teamDir, 'player-master.json')
+    if (!existsSync(masterPath)) return // non-pilot: no master yet
+    const master = PlayerMasterSourceSchema.parse(JSON.parse(readFileSync(masterPath, 'utf8')))
+    // 100% spine coverage: every spine player → a master record (stubs may add more).
+    expect(master.players.length).toBe(master.reconciliation.masterCount)
+    expect(master.players.length).toBeGreaterThanOrEqual(master.reconciliation.spineCount)
+    expect(master.provenance.rosterSeason).toBe(2026)
+    // No secret leakage in the golden file.
+    expect(JSON.stringify(master)).not.toMatch(/Bearer |CFBD_API_KEY/)
+
+    const sourcesDir = join(teamDir, 'sources')
+    EspnRosterSourceSchema.parse(JSON.parse(readFileSync(join(sourcesDir, 'espn-roster.json'), 'utf8')))
+    OfficialRosterSourceSchema.parse(JSON.parse(readFileSync(join(sourcesDir, 'official-roster.json'), 'utf8')))
+    On3SourceSchema.parse(JSON.parse(readFileSync(join(sourcesDir, 'on3.json'), 'utf8')))
   })
 })

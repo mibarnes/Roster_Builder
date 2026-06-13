@@ -66,8 +66,23 @@ export const canonicalizePositionGroup = (value = ''): string => {
 }
 
 /** CFBD/247 position string → the broad roster position we store. */
+/**
+ * Full-word position vocabulary → code. Some official athletics sites (e.g.
+ * Miami's Presto SPA) emit "QUARTERBACK"/"OFFENSIVELINE" instead of QB/OL;
+ * mapping them to codes keeps positions comparable across sources (so they
+ * don't false-flag as conflicts) and keeps the displayed value clean.
+ */
+const WORD_POSITION_TO_CODE: Record<string, string> = {
+  QUARTERBACK: 'QB', RUNNINGBACK: 'RB', FULLBACK: 'RB', WIDERECEIVER: 'WR', TIGHTEND: 'TE',
+  OFFENSIVELINE: 'OL', OFFENSIVELINEMAN: 'OL', OFFENSIVETACKLE: 'OT', OFFENSIVEGUARD: 'OG',
+  CENTER: 'C', DEFENSIVELINE: 'DL', DEFENSIVEEND: 'DE', DEFENSIVETACKLE: 'DT', NOSETACKLE: 'DT',
+  LINEBACKER: 'LB', DEFENSIVEBACK: 'DB', CORNERBACK: 'CB', SAFETY: 'S', PLACEKICKER: 'PK',
+  KICKER: 'PK', PUNTER: 'P', LONGSNAPPER: 'LS', ATHLETE: 'ATH', SPECIALIST: 'ATH',
+}
+
 export const normalizePosition = (value = ''): string => {
-  const pos = String(value).trim().toUpperCase()
+  const pos0 = String(value).trim().toUpperCase()
+  const pos = WORD_POSITION_TO_CODE[pos0.replace(/[^A-Z]/g, '')] ?? pos0
   if (pos === 'SAF') return 'S'
   if (pos === 'OLB' || pos === 'ILB') return 'LB'
   if (pos === 'EDGE') return 'DE'

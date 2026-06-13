@@ -145,6 +145,14 @@ const toUiPlayer = (player: PipelinePlayer, id: number): UIPlayer => ({
       : null,
   recruitMatchMethod: player.recruitMatchMethod,
   isStub: player.isStub,
+  // ── Golden-master overlay (null/false for legacy teams) ──
+  headshotUrl: player.golden?.headshotUrl ?? null,
+  highSchool: player.golden?.highSchool ?? null,
+  previousSchool: player.golden?.previousSchool ?? null,
+  isWalkOn: player.golden?.isWalkOn ?? false,
+  newIn2026: player.golden?.newIn2026 ?? false,
+  unrated: player.golden?.unrated ?? false,
+  conflictFields: player.golden?.conflictFields ?? [],
   dataCompleteness: {
     hasRecruiting: player.dataCompleteness.hasRecruiting,
     hasProduction: player.dataCompleteness.hasProduction,

@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Miami Hurricanes",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/miami/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:miami"
+      }
+    ],
+    "collectedAt": "2026-06-13T05:32:27.670Z",
+    "collectorVersion": "bfb3020",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

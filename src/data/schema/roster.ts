@@ -41,6 +41,23 @@ export const RosterPlayerSchema = z.object({
   homeState: z.string().nullable().optional(),
   homeLat: z.number().nullable().optional(),
   homeLon: z.number().nullable().optional(),
+  // ── Golden-master overlay fields (pilot-deepening round; optional so the 31
+  //    legacy teams still parse). Populated by the master→dataset adapter. ─────
+  /** ESPN headshot URL (master headshot field). */
+  headshotUrl: z.string().nullable().optional(),
+  /** High school (official-site overlay only). */
+  highSchool: z.string().nullable().optional(),
+  /** Previous school (official-site overlay / transfer). */
+  previousSchool: z.string().nullable().optional(),
+  hometownText: z.string().nullable().optional(),
+  /** On the roster but no recruiting record (walk-on signal). */
+  isWalkOn: z.boolean().optional(),
+  /** No 2025 CFBD data (transfer-in / true freshman new in 2026). */
+  newIn2026: z.boolean().optional(),
+  /** No stars from any recruiting source. */
+  unrated: z.boolean().optional(),
+  /** Fields where two present sources disagreed (value + alt kept in master). */
+  conflictFields: z.array(z.string()).optional(),
 })
 export type RosterPlayer = z.infer<typeof RosterPlayerSchema>
 

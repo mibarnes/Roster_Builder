@@ -86,6 +86,28 @@ export interface PlayerHometown {
   state: string | null
 }
 
+/**
+ * Golden-master overlay fields (pilot-deepening round). All optional — absent for
+ * the 31 legacy teams that ship the old roster.json. Populated when a team has a
+ * reconciled player-master.json.
+ */
+export interface PlayerGolden {
+  /** ESPN headshot URL. */
+  headshotUrl: string | null
+  /** High school (official-site overlay only). */
+  highSchool: string | null
+  /** Previous school (official-site overlay / transfer). */
+  previousSchool: string | null
+  /** On the roster, no recruiting record (walk-on signal). */
+  isWalkOn: boolean
+  /** No 2025 CFBD data (transfer-in / true freshman new in 2026). */
+  newIn2026: boolean
+  /** No stars from any recruiting source. */
+  unrated: boolean
+  /** Fields where two present sources disagreed (value + alt kept in master). */
+  conflictFields: string[]
+}
+
 export type MatchedBy = 'id' | 'name-exact' | 'name-fuzzy' | null
 
 export interface PlayerDataCompleteness {
@@ -110,6 +132,8 @@ export interface PipelinePlayer {
   isStub: boolean
   /** How recruiting was matched to this player (cfbd-id/247-id/name-fuzzy/none). */
   recruitMatchMethod: MatchMethod | null
+  /** Golden-master overlay (headshot/HS/prev-school + flags); null for legacy teams. */
+  golden: PlayerGolden | null
   dataCompleteness: PlayerDataCompleteness
 }
 

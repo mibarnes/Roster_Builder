@@ -33,3 +33,25 @@ export const RATING_METHOD_LABEL: Record<UIPlayer['ratingMethod'], string> = {
   'production-only': 'Production only',
   nr: 'Not rated',
 }
+
+/** Up-to-2-char initials for the headshot fallback (e.g. "DJ Lagway" → "DL"). */
+export const getInitials = (name: string | null | undefined): string => {
+  const parts = (name ?? '').trim().split(/\s+/).filter(Boolean)
+  if (parts.length === 0) return '?'
+  if (parts.length === 1) return parts[0]!.slice(0, 2).toUpperCase()
+  return (parts[0]![0]! + parts[parts.length - 1]![0]!).toUpperCase()
+}
+
+/** Human labels for conflict field keys surfaced in the "sources disagree" affordance. */
+const CONFLICT_FIELD_LABEL: Record<string, string> = {
+  classYear: 'class year',
+  position: 'position',
+  jersey: 'jersey number',
+  height: 'height',
+  weight: 'weight',
+  hometown: 'hometown',
+}
+
+/** Tooltip text for the conflict badge, e.g. "Sources disagree: class year, position". */
+export const getConflictTitle = (conflictFields: string[]): string =>
+  'Sources disagree: ' + conflictFields.map((f) => CONFLICT_FIELD_LABEL[f] ?? f).join(', ')

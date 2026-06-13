@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
 import Star from './Star.tsx'
+import Headshot from './Headshot.tsx'
 import {
+  getConflictTitle,
   getEffectiveStars,
   getOvrDisplay,
   getOvrDisplayColor,
@@ -129,6 +131,17 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
   const hometownLabel = player.hometown
     ? [player.hometown.city, player.hometown.state].filter(Boolean).join(', ')
     : null
+  const hasConflict = player.conflictFields.length > 0
+  // New-in-2026 players carry no 2025 CFBD production — surface an honest empty state.
+  const noProductionNew = player.newIn2026 && !hasStats
+  // Bio rows surfaced from the golden-master overlay (only when present).
+  const bioRows: Array<[string, string]> = [
+    ...(player.highSchool ? ([['High School', player.highSchool]] as Array<[string, string]>) : []),
+    ...(player.isTransfer && player.previousSchool
+      ? ([['Previous School', player.previousSchool]] as Array<[string, string]>)
+      : []),
+    ...(hometownLabel ? ([['Hometown', hometownLabel]] as Array<[string, string]>) : []),
+  ]
   const usagePct = player.usageOverall != null ? Math.round(player.usageOverall * 100) : null
 
   // ── H1.2: full usage / PPA detail (only present for players with an advanced row) ──
@@ -205,6 +218,7 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
             </svg>
           </button>
           <div className="flex items-center gap-4">
+            <Headshot url={player.headshotUrl} name={player.name} fallback={player.pos} size={72} className="flex-shrink-0" />
             <div
               className={`w-[72px] h-[72px] rounded-2xl flex flex-col items-center justify-center font-black text-white shadow-xl team-accent-bg flex-shrink-0 ${player.isRated ? 'text-3xl' : 'text-xl'}`}
               style={{ color: getOvrDisplayColor(player) }}
@@ -230,8 +244,35 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
                   <span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-rs-purple">RS</span>
                 )}
                 {player.isTransfer && (
-                  <span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-portal-orange">
-                    PORTAL
+                  <span
+                    className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-portal-orange"
+                    title={player.previousSchool ?? player.fromSchool ?? 'Transfer'}
+                  >
+                    {player.fromSchool ? `TRANSFER · ${player.fromSchool}` : 'TRANSFER'}
+                  </span>
+                )}
+                {player.newIn2026 && (
+                  <span
+                    className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-sky-600"
+                    title="New on the 2026 roster — no 2025 production"
+                  >
+                    NEW 2026
+                  </span>
+                )}
+                {player.isWalkOn && (
+                  <span
+                    className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-gray-500"
+                    title="Walk-on — on the roster, no recruiting record"
+                  >
+                    WALK-ON
+                  </span>
+                )}
+                {hasConflict && (
+                  <span
+                    className="text-[9px] font-bold text-amber-200 bg-amber-900/50 ring-1 ring-amber-400/30 px-2 py-0.5 rounded-full"
+                    title={getConflictTitle(player.conflictFields)}
+                  >
+                    ⚑ conflict
                   </span>
                 )}
               </div>
@@ -274,6 +315,21 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
               </p>
             )}
           </div>
+
+          {/* ── Bio (golden-master overlay: HS / previous school / hometown) ── */}
+          {bioRows.length > 0 && (
+            <div className="bg-gray-900 rounded-xl p-3 space-y-1.5">
+              <div className="text-[11px] text-gray-400 uppercase font-semibold mb-1">Bio</div>
+              {bioRows.map(([label, value]) => (
+                <div key={label} className="flex items-baseline justify-between gap-3">
+                  <span className="text-[10px] text-gray-500 uppercase font-semibold tracking-wide flex-shrink-0">
+                    {label}
+                  </span>
+                  <span className="text-[12px] text-white font-semibold text-right">{value}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* ── Advanced usage / efficiency (CFBD) ── */}
           {(usagePct != null || player.ppaAll != null) && (
@@ -439,7 +495,7 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
 
           {!hasStats && (
             <div className="bg-gray-900/40 rounded-xl px-3 py-4 text-center text-[11px] text-gray-600 font-medium">
-              No 2025 season stats recorded
+              {noProductionNew ? 'No 2025 data (new in 2026)' : 'No 2025 season stats recorded'}
             </div>
           )}
 

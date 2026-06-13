@@ -1,6 +1,7 @@
 import type {
   AdvancedSource,
   ContextSource,
+  PlayerMasterSource,
   ProductionSource,
   RatingsSource,
   RecruitingSource,
@@ -20,6 +21,8 @@ export interface DatasetBySource {
   ratings: RatingsSource | undefined
   advanced: AdvancedSource | undefined
   context: ContextSource | undefined
+  /** Golden player-master (pilot-deepening round); present only for pilots. */
+  master?: PlayerMasterSource
 }
 
 /** Honest data mode for a loaded dataset. */

@@ -18,12 +18,14 @@ import type {
   MatchedBy,
   PipelineMetrics,
   PipelinePlayer,
+  PlayerGolden,
   PlayerPipeline,
   ReturningProductionSummary,
   SideMetrics,
   StarterEntry,
   TeamMetrics,
 } from '../schema/pipeline.ts'
+import type { RosterPlayer } from '../schema/roster.ts'
 import { canonicalizePositionGroup } from '../normalize/positionMapping.ts'
 import { computeTeamRatings, type RatingInput } from '../rating/overall.ts'
 
@@ -249,6 +251,31 @@ const buildReturningProduction = (
   }
 }
 
+/**
+ * Build the golden-master overlay for a roster player. Returns null for legacy
+ * teams (whose roster rows carry none of the overlay fields), and a populated
+ * PlayerGolden for pilots loaded from player-master.json.
+ */
+const buildGolden = (rp: RosterPlayer): PlayerGolden | null => {
+  const hasGolden =
+    rp.headshotUrl !== undefined ||
+    rp.highSchool !== undefined ||
+    rp.previousSchool !== undefined ||
+    rp.isWalkOn !== undefined ||
+    rp.newIn2026 !== undefined ||
+    rp.unrated !== undefined
+  if (!hasGolden) return null
+  return {
+    headshotUrl: rp.headshotUrl ?? null,
+    highSchool: rp.highSchool ?? null,
+    previousSchool: rp.previousSchool ?? null,
+    isWalkOn: rp.isWalkOn ?? false,
+    newIn2026: rp.newIn2026 ?? false,
+    unrated: rp.unrated ?? false,
+    conflictFields: rp.conflictFields ?? [],
+  }
+}
+
 export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPipeline => {
   const rosterPlayers = datasetBySource?.roster?.players ?? []
   const recruitingLookup = buildSourceLookup(
@@ -438,6 +465,7 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
       hometown: { city: homeCity, state: homeState },
       isStub: d.isStub,
       recruitMatchMethod: d.recruitMatchMethod,
+      golden: buildGolden(d.rosterPlayer),
       dataCompleteness: {
         hasRecruiting: Boolean(recruitingResolved.record),
         hasRatings: Boolean(ratingsResolved.record),

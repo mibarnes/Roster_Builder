@@ -16,8 +16,8 @@
         "endpoint": "/stats/player/season?year=2025&team=Florida"
       }
     ],
-    "collectedAt": "2026-06-13T02:35:36.931Z",
-    "collectorVersion": "070f1cd",
+    "collectedAt": "2026-06-13T05:31:41.433Z",
+    "collectorVersion": "bfb3020",
     "dataSeason": 2025,
     "dataCutoff": null
   },
@@ -46,18 +46,6 @@
       },
       "perGame": [
         {
-          "gameId": "401752699",
-          "stats": {
-            "passCmpAtt": 33,
-            "passYds": 287,
-            "passTD": 1,
-            "passINT": 5,
-            "rushAtt": 9,
-            "rushYds": 19,
-            "rushTD": 0
-          }
-        },
-        {
           "gameId": "401752709",
           "stats": {
             "passCmpAtt": 12,
@@ -66,6 +54,18 @@
             "passINT": 0,
             "rushAtt": 8,
             "rushYds": -8,
+            "rushTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "passCmpAtt": 33,
+            "passYds": 287,
+            "passTD": 1,
+            "passINT": 5,
+            "rushAtt": 9,
+            "rushYds": 19,
             "rushTD": 0
           }
         },
@@ -244,6 +244,17 @@
       },
       "perGame": [
         {
+          "gameId": "401752709",
+          "stats": {
+            "rushAtt": 12,
+            "rushYds": 46,
+            "rushTD": 1,
+            "rec": 3,
+            "recYds": 9,
+            "recTD": 0
+          }
+        },
+        {
           "gameId": "401752699",
           "stats": {
             "rushAtt": 10,
@@ -258,17 +269,6 @@
             "tfl": 0,
             "passDef": 0,
             "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "rushAtt": 12,
-            "rushYds": 46,
-            "rushTD": 1,
-            "rec": 3,
-            "recYds": 9,
-            "recTD": 0
           }
         },
         {
@@ -408,14 +408,6 @@
       },
       "perGame": [
         {
-          "gameId": "401752699",
-          "stats": {
-            "rushAtt": 7,
-            "rushYds": 13,
-            "rushTD": 0
-          }
-        },
-        {
           "gameId": "401752709",
           "stats": {
             "rushAtt": 7,
@@ -424,6 +416,14 @@
             "rec": 1,
             "recYds": 4,
             "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "rushAtt": 7,
+            "rushYds": 13,
+            "rushTD": 0
           }
         },
         {
@@ -456,56 +456,75 @@
       "REC": 4
     },
     {
-      "playerId": "CFBD-5295815",
-      "name": "Duke Clark",
-      "games": 4,
+      "playerId": "CFBD-4921154",
+      "name": "Eugene Wilson III",
+      "games": 6,
       "stats": {
-        "rushAtt": 15,
-        "rushYds": 58,
+        "rushAtt": 3,
+        "rushYds": 12,
         "rushTD": 0,
-        "rec": 2,
-        "recYds": 14,
-        "recTD": 0
+        "rec": 27,
+        "recYds": 239,
+        "recTD": 3
       },
       "perGame": [
         {
-          "gameId": "401752699",
+          "gameId": "401752709",
           "stats": {
-            "rushAtt": 1,
-            "rushYds": 1,
-            "rushTD": 0
+            "rushAtt": 2,
+            "rushYds": 3,
+            "rushTD": 0,
+            "rec": 1,
+            "recYds": 7,
+            "recTD": 0
           }
         },
         {
-          "gameId": "401752727",
+          "gameId": "401752699",
           "stats": {
-            "rushAtt": 9,
-            "rushYds": 38,
-            "rushTD": 0
+            "rec": 2,
+            "recYds": 10,
+            "recTD": 0
           }
         },
         {
           "gameId": "401752668",
           "stats": {
-            "rushAtt": 5,
-            "rushYds": 19,
-            "rushTD": 0,
-            "rec": 1,
-            "recYds": 3,
+            "rec": 5,
+            "recYds": -4,
+            "recTD": 1
+          }
+        },
+        {
+          "gameId": "401752737",
+          "stats": {
+            "rec": 3,
+            "recYds": 45,
             "recTD": 0
           }
         },
         {
-          "gameId": "401752785",
+          "gameId": "401752684",
           "stats": {
-            "rec": 1,
-            "recYds": 11,
-            "recTD": 0
+            "rushAtt": 1,
+            "rushYds": 9,
+            "rushTD": 0,
+            "rec": 7,
+            "recYds": 60,
+            "recTD": 1
+          }
+        },
+        {
+          "gameId": "401752755",
+          "stats": {
+            "rec": 9,
+            "recYds": 121,
+            "recTD": 1
           }
         }
       ],
-      "YDS": 58,
-      "REC": 2
+      "YDS": 12,
+      "REC": 27
     },
     {
       "playerId": "CFBD-5295811",
@@ -515,12 +534,12 @@
         "rec": 40,
         "recYds": 524,
         "recTD": 0,
-        "pr": 12,
-        "prYds": 140,
-        "prTD": 0,
         "kr": 7,
         "krYds": 122,
         "krTD": 0,
+        "pr": 12,
+        "prYds": 140,
+        "prTD": 0,
         "rushAtt": 1,
         "rushYds": 14,
         "rushTD": 0,
@@ -536,17 +555,6 @@
       },
       "perGame": [
         {
-          "gameId": "401752699",
-          "stats": {
-            "rec": 8,
-            "recYds": 62,
-            "recTD": 0,
-            "pr": 3,
-            "prYds": 43,
-            "prTD": 0
-          }
-        },
-        {
           "gameId": "401752709",
           "stats": {
             "rec": 2,
@@ -555,6 +563,17 @@
             "kr": 1,
             "krYds": 19,
             "krTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "rec": 8,
+            "recYds": 62,
+            "recTD": 0,
+            "pr": 3,
+            "prYds": 43,
+            "prTD": 0
           }
         },
         {
@@ -671,116 +690,68 @@
       "TKL": 1
     },
     {
-      "playerId": "CFBD-4878109",
-      "name": "Hayden Hansen",
-      "games": 11,
+      "playerId": "CFBD-5121893",
+      "name": "Tony Livingston",
+      "games": 8,
       "stats": {
-        "rec": 30,
-        "recYds": 254,
-        "recTD": 2,
-        "tackles": 2,
-        "soloTackles": 1,
-        "sacks": 0,
-        "tfl": 0,
-        "passDef": 0,
-        "defTD": 0,
-        "fumbles": 1,
-        "fumblesLost": 1,
-        "fumRec": 0
+        "rec": 11,
+        "recYds": 119,
+        "recTD": 2
       },
       "perGame": [
         {
-          "gameId": "401752699",
+          "gameId": "401752709",
           "stats": {
-            "rec": 7,
-            "recYds": 50,
-            "recTD": 0,
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
+            "rec": 1,
+            "recYds": 8,
+            "recTD": 0
           }
         },
         {
-          "gameId": "401752709",
+          "gameId": "401752699",
           "stats": {
             "rec": 2,
-            "recYds": 4,
+            "recYds": 14,
             "recTD": 0
           }
         },
         {
           "gameId": "401752769",
           "stats": {
-            "rec": 2,
-            "recYds": 5,
+            "rec": 1,
+            "recYds": 38,
             "recTD": 0
           }
         },
         {
           "gameId": "401752727",
           "stats": {
-            "rec": 2,
-            "recYds": 30,
-            "recTD": 0,
-            "fumbles": 1,
-            "fumblesLost": 1,
-            "fumRec": 0,
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
+            "rec": 1,
+            "recYds": 9,
+            "recTD": 0
           }
         },
         {
           "gameId": "401752668",
           "stats": {
-            "rec": 3,
-            "recYds": 27,
+            "rec": 2,
+            "recYds": 16,
             "recTD": 1
-          }
-        },
-        {
-          "gameId": "401752741",
-          "stats": {
-            "rec": 4,
-            "recYds": 23,
-            "recTD": 0
-          }
-        },
-        {
-          "gameId": "401752737",
-          "stats": {
-            "rec": 1,
-            "recYds": 24,
-            "recTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
-          "stats": {
-            "rec": 3,
-            "recYds": 40,
-            "recTD": 0
           }
         },
         {
           "gameId": "401752760",
           "stats": {
-            "rec": 2,
-            "recYds": 10,
+            "rec": 1,
+            "recYds": 3,
             "recTD": 0
           }
         },
         {
           "gameId": "401752785",
           "stats": {
-            "rec": 2,
-            "recYds": 18,
+            "rec": 1,
+            "recYds": 9,
             "recTD": 1
           }
         },
@@ -788,16 +759,13 @@
           "gameId": "401752775",
           "stats": {
             "rec": 2,
-            "recYds": 23,
+            "recYds": 22,
             "recTD": 0
           }
         }
       ],
-      "YDS": 254,
-      "REC": 30,
-      "SCK": 0,
-      "TFL": 0,
-      "TKL": 2
+      "YDS": 119,
+      "REC": 11
     },
     {
       "playerId": "CFBD-4635009",
@@ -822,18 +790,18 @@
       },
       "perGame": [
         {
-          "gameId": "401752699",
-          "stats": {
-            "rec": 3,
-            "recYds": 43,
-            "recTD": 0
-          }
-        },
-        {
           "gameId": "401752709",
           "stats": {
             "rec": 1,
             "recYds": 5,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "rec": 3,
+            "recYds": 43,
             "recTD": 0
           }
         },
@@ -937,74 +905,37 @@
       "TKL": 0
     },
     {
-      "playerId": "CFBD-4917945",
-      "name": "Aidan Mizell",
-      "games": 7,
+      "playerId": "CFBD-4878109",
+      "name": "Hayden Hansen",
+      "games": 11,
       "stats": {
-        "rec": 19,
-        "recYds": 177,
-        "recTD": 1,
-        "tackles": 1,
+        "rec": 30,
+        "recYds": 254,
+        "recTD": 2,
+        "tackles": 2,
         "soloTackles": 1,
         "sacks": 0,
         "tfl": 0,
         "passDef": 0,
-        "defTD": 0
+        "defTD": 0,
+        "fumbles": 1,
+        "fumblesLost": 1,
+        "fumRec": 0
       },
       "perGame": [
         {
+          "gameId": "401752709",
+          "stats": {
+            "rec": 2,
+            "recYds": 4,
+            "recTD": 0
+          }
+        },
+        {
           "gameId": "401752699",
           "stats": {
-            "rec": 3,
-            "recYds": 41,
-            "recTD": 1
-          }
-        },
-        {
-          "gameId": "401752769",
-          "stats": {
-            "rec": 3,
-            "recYds": 14,
-            "recTD": 0
-          }
-        },
-        {
-          "gameId": "401752727",
-          "stats": {
-            "rec": 4,
-            "recYds": 18,
-            "recTD": 0
-          }
-        },
-        {
-          "gameId": "401752741",
-          "stats": {
-            "rec": 2,
-            "recYds": 30,
-            "recTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
-          "stats": {
-            "rec": 2,
-            "recYds": 18,
-            "recTD": 0
-          }
-        },
-        {
-          "gameId": "401752760",
-          "stats": {
-            "rec": 2,
-            "recYds": 10,
-            "recTD": 0
-          }
-        },
-        {
-          "gameId": "401752785",
-          "stats": {
-            "rec": 3,
-            "recYds": 46,
+            "rec": 7,
+            "recYds": 50,
             "recTD": 0,
             "tackles": 1,
             "soloTackles": 1,
@@ -1013,107 +944,66 @@
             "passDef": 0,
             "defTD": 0
           }
-        }
-      ],
-      "YDS": 177,
-      "REC": 19,
-      "SCK": 0,
-      "TFL": 0,
-      "TKL": 1
-    },
-    {
-      "playerId": "CFBD-5121893",
-      "name": "Tony Livingston",
-      "games": 8,
-      "stats": {
-        "rec": 11,
-        "recYds": 119,
-        "recTD": 2
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "rec": 2,
-            "recYds": 14,
-            "recTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "rec": 1,
-            "recYds": 8,
-            "recTD": 0
-          }
         },
         {
           "gameId": "401752769",
           "stats": {
-            "rec": 1,
-            "recYds": 38,
+            "rec": 2,
+            "recYds": 5,
             "recTD": 0
           }
         },
         {
           "gameId": "401752727",
           "stats": {
-            "rec": 1,
-            "recYds": 9,
-            "recTD": 0
+            "rec": 2,
+            "recYds": 30,
+            "recTD": 0,
+            "fumbles": 1,
+            "fumblesLost": 1,
+            "fumRec": 0,
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
           }
         },
         {
           "gameId": "401752668",
           "stats": {
-            "rec": 2,
-            "recYds": 16,
+            "rec": 3,
+            "recYds": 27,
             "recTD": 1
+          }
+        },
+        {
+          "gameId": "401752741",
+          "stats": {
+            "rec": 4,
+            "recYds": 23,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752737",
+          "stats": {
+            "rec": 1,
+            "recYds": 24,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752684",
+          "stats": {
+            "rec": 3,
+            "recYds": 40,
+            "recTD": 0
           }
         },
         {
           "gameId": "401752760",
-          "stats": {
-            "rec": 1,
-            "recYds": 3,
-            "recTD": 0
-          }
-        },
-        {
-          "gameId": "401752785",
-          "stats": {
-            "rec": 1,
-            "recYds": 9,
-            "recTD": 1
-          }
-        },
-        {
-          "gameId": "401752775",
-          "stats": {
-            "rec": 2,
-            "recYds": 22,
-            "recTD": 0
-          }
-        }
-      ],
-      "YDS": 119,
-      "REC": 11
-    },
-    {
-      "playerId": "CFBD-4921154",
-      "name": "Eugene Wilson III",
-      "games": 6,
-      "stats": {
-        "rec": 27,
-        "recYds": 239,
-        "recTD": 3,
-        "rushAtt": 3,
-        "rushYds": 12,
-        "rushTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
           "stats": {
             "rec": 2,
             "recYds": 10,
@@ -1121,108 +1011,140 @@
           }
         },
         {
+          "gameId": "401752785",
+          "stats": {
+            "rec": 2,
+            "recYds": 18,
+            "recTD": 1
+          }
+        },
+        {
+          "gameId": "401752775",
+          "stats": {
+            "rec": 2,
+            "recYds": 23,
+            "recTD": 0
+          }
+        }
+      ],
+      "YDS": 254,
+      "REC": 30,
+      "SCK": 0,
+      "TFL": 0,
+      "TKL": 2
+    },
+    {
+      "playerId": "CFBD-5079289",
+      "name": "TJ Abrams",
+      "games": 8,
+      "stats": {
+        "rec": 14,
+        "recYds": 202,
+        "recTD": 0
+      },
+      "perGame": [
+        {
           "gameId": "401752709",
           "stats": {
-            "rushAtt": 2,
-            "rushYds": 3,
-            "rushTD": 0,
             "rec": 1,
-            "recYds": 7,
+            "recYds": 2,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752769",
+          "stats": {
+            "rec": 3,
+            "recYds": 76,
             "recTD": 0
           }
         },
         {
           "gameId": "401752668",
           "stats": {
-            "rec": 5,
-            "recYds": -4,
-            "recTD": 1
+            "rec": 2,
+            "recYds": 53,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752741",
+          "stats": {
+            "rec": 1,
+            "recYds": 26,
+            "recTD": 0
           }
         },
         {
           "gameId": "401752737",
           "stats": {
-            "rec": 3,
-            "recYds": 45,
+            "rec": 1,
+            "recYds": 15,
             "recTD": 0
           }
         },
         {
           "gameId": "401752684",
           "stats": {
-            "rushAtt": 1,
-            "rushYds": 9,
-            "rushTD": 0,
-            "rec": 7,
-            "recYds": 60,
-            "recTD": 1
-          }
-        },
-        {
-          "gameId": "401752755",
-          "stats": {
-            "rec": 9,
-            "recYds": 121,
-            "recTD": 1
-          }
-        }
-      ],
-      "YDS": 12,
-      "REC": 27
-    },
-    {
-      "playerId": "CFBD-5207662",
-      "name": "Muizz Tounkara",
-      "games": 2,
-      "stats": {
-        "rec": 2,
-        "recYds": 12,
-        "recTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
             "rec": 1,
-            "recYds": 8,
+            "recYds": 1,
             "recTD": 0
           }
         },
         {
-          "gameId": "401752668",
+          "gameId": "401752760",
+          "stats": {
+            "rec": 4,
+            "recYds": 28,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752785",
           "stats": {
             "rec": 1,
-            "recYds": 4,
+            "recYds": 1,
             "recTD": 0
           }
         }
       ],
-      "YDS": 12,
-      "REC": 2
+      "YDS": 202,
+      "REC": 14
     },
     {
-      "playerId": "CFBD-4708238",
-      "name": "George Gumbs Jr.",
-      "games": 9,
+      "playerId": "CFBD-4870660",
+      "name": "Jordan Castell",
+      "games": 10,
       "stats": {
-        "tackles": 31,
-        "soloTackles": 14,
-        "sacks": 2,
-        "tfl": 6.5,
+        "tackles": 54,
+        "soloTackles": 28,
+        "sacks": 0,
+        "tfl": 0,
         "passDef": 0,
         "defTD": 0,
-        "fumbles": 0,
-        "fumblesLost": 0,
-        "fumRec": 1
+        "interceptions": 2,
+        "intYds": 18,
+        "intTD": 0
       },
       "perGame": [
         {
+          "gameId": "401752709",
+          "stats": {
+            "tackles": 10,
+            "soloTackles": 5,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
           "gameId": "401752699",
           "stats": {
-            "tackles": 5,
-            "soloTackles": 2,
+            "tackles": 2,
+            "soloTackles": 1,
             "sacks": 0,
-            "tfl": 1,
+            "tfl": 0,
             "passDef": 0,
             "defTD": 0
           }
@@ -1230,10 +1152,10 @@
         {
           "gameId": "401752769",
           "stats": {
-            "tackles": 3,
-            "soloTackles": 2,
+            "tackles": 10,
+            "soloTackles": 8,
             "sacks": 0,
-            "tfl": 1,
+            "tfl": 0,
             "passDef": 0,
             "defTD": 0
           }
@@ -1241,29 +1163,21 @@
         {
           "gameId": "401752727",
           "stats": {
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 1,
-            "tfl": 1,
+            "tackles": 2,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
             "passDef": 0,
-            "defTD": 0
+            "defTD": 0,
+            "interceptions": 1,
+            "intYds": 18,
+            "intTD": 0
           }
         },
         {
           "gameId": "401752668",
           "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 1.5,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752741",
-          "stats": {
-            "tackles": 1,
+            "tackles": 0,
             "soloTackles": 0,
             "sacks": 0,
             "tfl": 0,
@@ -1274,19 +1188,22 @@
         {
           "gameId": "401752737",
           "stats": {
-            "tackles": 2,
-            "soloTackles": 0,
+            "tackles": 3,
+            "soloTackles": 2,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
-            "defTD": 0
+            "defTD": 0,
+            "interceptions": 1,
+            "intYds": 0,
+            "intTD": 0
           }
         },
         {
           "gameId": "401752684",
           "stats": {
-            "tackles": 3,
-            "soloTackles": 1,
+            "tackles": 5,
+            "soloTackles": 3,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -1296,10 +1213,10 @@
         {
           "gameId": "401752755",
           "stats": {
-            "tackles": 9,
-            "soloTackles": 4,
-            "sacks": 1,
-            "tfl": 1,
+            "tackles": 11,
+            "soloTackles": 5,
+            "sacks": 0,
+            "tfl": 0,
             "passDef": 0,
             "defTD": 0
           }
@@ -1307,21 +1224,30 @@
         {
           "gameId": "401752760",
           "stats": {
-            "fumbles": 0,
-            "fumblesLost": 0,
-            "fumRec": 1,
-            "tackles": 5,
+            "tackles": 7,
             "soloTackles": 3,
             "sacks": 0,
-            "tfl": 1,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752775",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
             "passDef": 0,
             "defTD": 0
           }
         }
       ],
-      "SCK": 2,
-      "TFL": 6.5,
-      "TKL": 31
+      "INT": 2,
+      "SCK": 0,
+      "TFL": 0,
+      "TKL": 54
     },
     {
       "playerId": "CFBD-5079480",
@@ -1337,17 +1263,6 @@
       },
       "perGame": [
         {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 2,
-            "defTD": 0
-          }
-        },
-        {
           "gameId": "401752709",
           "stats": {
             "tackles": 7,
@@ -1355,6 +1270,17 @@
             "sacks": 0,
             "tfl": 0.5,
             "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 2,
             "defTD": 0
           }
         },
@@ -1474,26 +1400,26 @@
       "TKL": 76
     },
     {
-      "playerId": "CFBD-5079340",
-      "name": "Aaron Chiles",
+      "playerId": "CFBD-4702577",
+      "name": "Devin Moore",
       "games": 11,
       "stats": {
-        "tackles": 52,
-        "soloTackles": 22,
-        "sacks": 0.5,
-        "tfl": 2.5,
-        "passDef": 1,
+        "tackles": 35,
+        "soloTackles": 23,
+        "sacks": 1,
+        "tfl": 2,
+        "passDef": 3,
         "defTD": 0,
-        "fumbles": 0,
-        "fumblesLost": 0,
-        "fumRec": 1
+        "interceptions": 2,
+        "intYds": 7,
+        "intTD": 0
       },
       "perGame": [
         {
-          "gameId": "401752699",
+          "gameId": "401752709",
           "stats": {
-            "tackles": 4,
-            "soloTackles": 2,
+            "tackles": 6,
+            "soloTackles": 4,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -1501,9 +1427,9 @@
           }
         },
         {
-          "gameId": "401752709",
+          "gameId": "401752699",
           "stats": {
-            "tackles": 2,
+            "tackles": 1,
             "soloTackles": 0,
             "sacks": 0,
             "tfl": 0,
@@ -1514,10 +1440,10 @@
         {
           "gameId": "401752769",
           "stats": {
-            "tackles": 3,
-            "soloTackles": 1,
-            "sacks": 0.5,
-            "tfl": 0.5,
+            "tackles": 4,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 0,
             "passDef": 0,
             "defTD": 0
           }
@@ -1525,8 +1451,22 @@
         {
           "gameId": "401752727",
           "stats": {
-            "tackles": 3,
-            "soloTackles": 0,
+            "tackles": 4,
+            "soloTackles": 3,
+            "sacks": 1,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0,
+            "interceptions": 1,
+            "intYds": 0,
+            "intTD": 0
+          }
+        },
+        {
+          "gameId": "401752668",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 1,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -1536,19 +1476,19 @@
         {
           "gameId": "401752741",
           "stats": {
-            "tackles": 5,
-            "soloTackles": 3,
+            "tackles": 0,
+            "soloTackles": 0,
             "sacks": 0,
             "tfl": 0,
-            "passDef": 0,
+            "passDef": 1,
             "defTD": 0
           }
         },
         {
           "gameId": "401752737",
           "stats": {
-            "tackles": 9,
-            "soloTackles": 4,
+            "tackles": 4,
+            "soloTackles": 2,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -1558,44 +1498,33 @@
         {
           "gameId": "401752684",
           "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
+            "tackles": 3,
+            "soloTackles": 2,
             "sacks": 0,
             "tfl": 0,
-            "passDef": 1,
+            "passDef": 2,
             "defTD": 0
           }
         },
         {
           "gameId": "401752755",
           "stats": {
-            "tackles": 5,
+            "tackles": 2,
             "soloTackles": 1,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
-            "defTD": 0
+            "defTD": 0,
+            "interceptions": 1,
+            "intYds": 7,
+            "intTD": 0
           }
         },
         {
           "gameId": "401752760",
           "stats": {
-            "fumbles": 0,
-            "fumblesLost": 0,
-            "fumRec": 1,
-            "tackles": 4,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752785",
-          "stats": {
             "tackles": 6,
-            "soloTackles": 4,
+            "soloTackles": 5,
             "sacks": 0,
             "tfl": 1,
             "passDef": 0,
@@ -1605,8 +1534,8 @@
         {
           "gameId": "401752775",
           "stats": {
-            "tackles": 9,
-            "soloTackles": 3,
+            "tackles": 3,
+            "soloTackles": 2,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -1614,9 +1543,105 @@
           }
         }
       ],
-      "SCK": 0.5,
+      "INT": 2,
+      "SCK": 1,
+      "TFL": 2,
+      "TKL": 35
+    },
+    {
+      "playerId": "CFBD-4912316",
+      "name": "Kofi Asare",
+      "games": 7,
+      "stats": {
+        "tackles": 18,
+        "soloTackles": 10,
+        "sacks": 1,
+        "tfl": 2.5,
+        "passDef": 0,
+        "defTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752709",
+          "stats": {
+            "tackles": 5,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 0.5,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752668",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752741",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 1,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752755",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752785",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752775",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "SCK": 1,
       "TFL": 2.5,
-      "TKL": 52
+      "TKL": 18
     },
     {
       "playerId": "CFBD-5086808",
@@ -1632,10 +1657,10 @@
       },
       "perGame": [
         {
-          "gameId": "401752699",
+          "gameId": "401752709",
           "stats": {
-            "tackles": 4,
-            "soloTackles": 1,
+            "tackles": 5,
+            "soloTackles": 3,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -1643,10 +1668,10 @@
           }
         },
         {
-          "gameId": "401752709",
+          "gameId": "401752699",
           "stats": {
-            "tackles": 5,
-            "soloTackles": 3,
+            "tackles": 4,
+            "soloTackles": 1,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -1758,1131 +1783,6 @@
       "TKL": 40
     },
     {
-      "playerId": "CFBD-4870700",
-      "name": "Sharif Denson",
-      "games": 10,
-      "stats": {
-        "tackles": 52,
-        "soloTackles": 39,
-        "sacks": 0,
-        "tfl": 2,
-        "passDef": 1,
-        "defTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 4,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752769",
-          "stats": {
-            "tackles": 8,
-            "soloTackles": 4,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752727",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752737",
-          "stats": {
-            "tackles": 6,
-            "soloTackles": 6,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752755",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752760",
-          "stats": {
-            "tackles": 11,
-            "soloTackles": 9,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 1,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752785",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752775",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 4,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "SCK": 0,
-      "TFL": 2,
-      "TKL": 52
-    },
-    {
-      "playerId": "CFBD-4870995",
-      "name": "Bryce Thornton",
-      "games": 11,
-      "stats": {
-        "tackles": 56,
-        "soloTackles": 31,
-        "sacks": 1,
-        "tfl": 3,
-        "passDef": 6,
-        "defTD": 1,
-        "fumbles": 0,
-        "fumblesLost": 0,
-        "fumRec": 2,
-        "interceptions": 1,
-        "intYds": 0,
-        "intTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 1,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752769",
-          "stats": {
-            "tackles": 6,
-            "soloTackles": 4,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752727",
-          "stats": {
-            "tackles": 5,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752668",
-          "stats": {
-            "fumbles": 0,
-            "fumblesLost": 0,
-            "fumRec": 2,
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 1
-          }
-        },
-        {
-          "gameId": "401752741",
-          "stats": {
-            "tackles": 7,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 1,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752737",
-          "stats": {
-            "tackles": 6,
-            "soloTackles": 5,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
-          "stats": {
-            "tackles": 5,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 2,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752755",
-          "stats": {
-            "tackles": 6,
-            "soloTackles": 4,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 1,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752760",
-          "stats": {
-            "tackles": 5,
-            "soloTackles": 4,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0,
-            "interceptions": 1,
-            "intYds": 0,
-            "intTD": 0
-          }
-        },
-        {
-          "gameId": "401752785",
-          "stats": {
-            "tackles": 8,
-            "soloTackles": 2,
-            "sacks": 1,
-            "tfl": 1,
-            "passDef": 1,
-            "defTD": 0
-          }
-        }
-      ],
-      "INT": 1,
-      "SCK": 1,
-      "TFL": 3,
-      "TKL": 56
-    },
-    {
-      "playerId": "CFBD-4899671",
-      "name": "Dijon Johnson",
-      "games": 3,
-      "stats": {
-        "tackles": 8,
-        "soloTackles": 7,
-        "sacks": 0,
-        "tfl": 0,
-        "passDef": 1,
-        "defTD": 0,
-        "interceptions": 1,
-        "intYds": 7,
-        "intTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0,
-            "interceptions": 1,
-            "intYds": 7,
-            "intTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 1,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752668",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "INT": 1,
-      "SCK": 0,
-      "TFL": 0,
-      "TKL": 8
-    },
-    {
-      "playerId": "CFBD-4870698",
-      "name": "Aaron Gates",
-      "games": 3,
-      "stats": {
-        "tackles": 7,
-        "soloTackles": 4,
-        "sacks": 0,
-        "tfl": 0,
-        "passDef": 0,
-        "defTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752668",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "SCK": 0,
-      "TFL": 0,
-      "TKL": 7
-    },
-    {
-      "playerId": "CFBD-5222226",
-      "name": "Brien Taylor Jr.",
-      "games": 10,
-      "stats": {
-        "tackles": 24,
-        "soloTackles": 9,
-        "sacks": 2,
-        "tfl": 3,
-        "passDef": 0,
-        "defTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752769",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752727",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 2,
-            "sacks": 1.5,
-            "tfl": 1.5,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752668",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752741",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 1,
-            "sacks": 0.5,
-            "tfl": 1.5,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752737",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752755",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752785",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "SCK": 2,
-      "TFL": 3,
-      "TKL": 24
-    },
-    {
-      "playerId": "CFBD-4870920",
-      "name": "Cormani McClain",
-      "games": 9,
-      "stats": {
-        "tackles": 17,
-        "soloTackles": 10,
-        "sacks": 0,
-        "tfl": 1,
-        "passDef": 1,
-        "defTD": 0,
-        "interceptions": 1,
-        "intYds": 0,
-        "intTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0,
-            "interceptions": 1,
-            "intYds": 0,
-            "intTD": 0
-          }
-        },
-        {
-          "gameId": "401752769",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752727",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 1,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752737",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752755",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752760",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752775",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "INT": 1,
-      "SCK": 0,
-      "TFL": 1,
-      "TKL": 17
-    },
-    {
-      "playerId": "CFBD-4685452",
-      "name": "Jamari Lyons",
-      "games": 7,
-      "stats": {
-        "tackles": 18,
-        "soloTackles": 6,
-        "sacks": 0,
-        "tfl": 1,
-        "passDef": 0,
-        "defTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752769",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752741",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752737",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752775",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "SCK": 0,
-      "TFL": 1,
-      "TKL": 18
-    },
-    {
-      "playerId": "CFBD-4870660",
-      "name": "Jordan Castell",
-      "games": 10,
-      "stats": {
-        "tackles": 54,
-        "soloTackles": 28,
-        "sacks": 0,
-        "tfl": 0,
-        "passDef": 0,
-        "defTD": 0,
-        "interceptions": 2,
-        "intYds": 18,
-        "intTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 10,
-            "soloTackles": 5,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752769",
-          "stats": {
-            "tackles": 10,
-            "soloTackles": 8,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752727",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0,
-            "interceptions": 1,
-            "intYds": 18,
-            "intTD": 0
-          }
-        },
-        {
-          "gameId": "401752668",
-          "stats": {
-            "tackles": 0,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752737",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0,
-            "interceptions": 1,
-            "intYds": 0,
-            "intTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
-          "stats": {
-            "tackles": 5,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752755",
-          "stats": {
-            "tackles": 11,
-            "soloTackles": 5,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752760",
-          "stats": {
-            "tackles": 7,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752775",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "INT": 2,
-      "SCK": 0,
-      "TFL": 0,
-      "TKL": 54
-    },
-    {
-      "playerId": "CFBD-4889957",
-      "name": "Tyreak Sapp",
-      "games": 12,
-      "stats": {
-        "tackles": 34,
-        "soloTackles": 12,
-        "sacks": 1,
-        "tfl": 3.5,
-        "passDef": 0,
-        "defTD": 0,
-        "kr": 1,
-        "krYds": 0,
-        "krTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752769",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752727",
-          "stats": {
-            "tackles": 6,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752668",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752741",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752737",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
-          "stats": {
-            "tackles": 5,
-            "soloTackles": 3,
-            "sacks": 1,
-            "tfl": 2,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752755",
-          "stats": {
-            "tackles": 5,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0,
-            "kr": 1,
-            "krYds": 0,
-            "krTD": 0
-          }
-        },
-        {
-          "gameId": "401752760",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752785",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752775",
-          "stats": {
-            "tackles": 5,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0.5,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "SCK": 1,
-      "TFL": 3.5,
-      "TKL": 34
-    },
-    {
-      "playerId": "CFBD-4912316",
-      "name": "Kofi Asare",
-      "games": 7,
-      "stats": {
-        "tackles": 18,
-        "soloTackles": 10,
-        "sacks": 1,
-        "tfl": 2.5,
-        "passDef": 0,
-        "defTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 5,
-            "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 0.5,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752668",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752741",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 1,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752755",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752785",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752775",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "SCK": 1,
-      "TFL": 2.5,
-      "TKL": 18
-    },
-    {
       "playerId": "CFBD-5083314",
       "name": "Kamran James",
       "games": 12,
@@ -2896,17 +1796,6 @@
       },
       "perGame": [
         {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 1,
-            "defTD": 0
-          }
-        },
-        {
           "gameId": "401752709",
           "stats": {
             "tackles": 5,
@@ -2914,6 +1803,17 @@
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 1,
             "defTD": 0
           }
         },
@@ -3033,23 +1933,23 @@
       "TKL": 44
     },
     {
-      "playerId": "CFBD-5195951",
-      "name": "Jeramiah McCloud",
+      "playerId": "CFBD-4870700",
+      "name": "Sharif Denson",
       "games": 10,
       "stats": {
-        "tackles": 13,
-        "soloTackles": 5,
+        "tackles": 52,
+        "soloTackles": 39,
         "sacks": 0,
-        "tfl": 0.5,
-        "passDef": 2,
+        "tfl": 2,
+        "passDef": 1,
         "defTD": 0
       },
       "perGame": [
         {
-          "gameId": "401752699",
+          "gameId": "401752709",
           "stats": {
-            "tackles": 1,
-            "soloTackles": 1,
+            "tackles": 4,
+            "soloTackles": 4,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -3057,21 +1957,21 @@
           }
         },
         {
-          "gameId": "401752709",
+          "gameId": "401752699",
           "stats": {
-            "tackles": 0,
-            "soloTackles": 0,
+            "tackles": 3,
+            "soloTackles": 3,
             "sacks": 0,
-            "tfl": 0,
-            "passDef": 1,
+            "tfl": 1,
+            "passDef": 0,
             "defTD": 0
           }
         },
         {
           "gameId": "401752769",
           "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
+            "tackles": 8,
+            "soloTackles": 4,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -3081,29 +1981,7 @@
         {
           "gameId": "401752727",
           "stats": {
-            "tackles": 1,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752668",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752741",
-          "stats": {
-            "tackles": 1,
+            "tackles": 4,
             "soloTackles": 1,
             "sacks": 0,
             "tfl": 0,
@@ -3114,19 +1992,8 @@
         {
           "gameId": "401752737",
           "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 1,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752755",
-          "stats": {
-            "tackles": 0,
-            "soloTackles": 0,
+            "tackles": 6,
+            "soloTackles": 6,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -3134,10 +2001,43 @@
           }
         },
         {
+          "gameId": "401752684",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752755",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
           "gameId": "401752760",
           "stats": {
-            "tackles": 2,
-            "soloTackles": 0,
+            "tackles": 11,
+            "soloTackles": 9,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 1,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752785",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 2,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -3148,97 +2048,39 @@
           "gameId": "401752775",
           "stats": {
             "tackles": 4,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0.5,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "SCK": 0,
-      "TFL": 0.5,
-      "TKL": 13
-    },
-    {
-      "playerId": "CFBD-4702577",
-      "name": "Devin Moore",
-      "games": 11,
-      "stats": {
-        "tackles": 35,
-        "soloTackles": 23,
-        "sacks": 1,
-        "tfl": 2,
-        "passDef": 3,
-        "defTD": 0,
-        "interceptions": 2,
-        "intYds": 7,
-        "intTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 6,
             "soloTackles": 4,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
             "defTD": 0
           }
-        },
+        }
+      ],
+      "SCK": 0,
+      "TFL": 2,
+      "TKL": 52
+    },
+    {
+      "playerId": "CFBD-4899671",
+      "name": "Dijon Johnson",
+      "games": 3,
+      "stats": {
+        "tackles": 8,
+        "soloTackles": 7,
+        "sacks": 0,
+        "tfl": 0,
+        "passDef": 1,
+        "defTD": 0,
+        "interceptions": 1,
+        "intYds": 7,
+        "intTD": 0
+      },
+      "perGame": [
         {
-          "gameId": "401752769",
+          "gameId": "401752709",
           "stats": {
             "tackles": 4,
             "soloTackles": 3,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752727",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 3,
-            "sacks": 1,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0,
-            "interceptions": 1,
-            "intYds": 0,
-            "intTD": 0
-          }
-        },
-        {
-          "gameId": "401752668",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752741",
-          "stats": {
-            "tackles": 0,
-            "soloTackles": 0,
             "sacks": 0,
             "tfl": 0,
             "passDef": 1,
@@ -3246,32 +2088,10 @@
           }
         },
         {
-          "gameId": "401752737",
-          "stats": {
-            "tackles": 4,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
+          "gameId": "401752699",
           "stats": {
             "tackles": 3,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 2,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752755",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 1,
+            "soloTackles": 3,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -3282,70 +2102,7 @@
           }
         },
         {
-          "gameId": "401752760",
-          "stats": {
-            "tackles": 6,
-            "soloTackles": 5,
-            "sacks": 0,
-            "tfl": 1,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752775",
-          "stats": {
-            "tackles": 3,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        }
-      ],
-      "INT": 2,
-      "SCK": 1,
-      "TFL": 2,
-      "TKL": 35
-    },
-    {
-      "playerId": "CFBD-4870828",
-      "name": "Grayson Howard",
-      "games": 3,
-      "stats": {
-        "tackles": 4,
-        "soloTackles": 3,
-        "sacks": 0,
-        "tfl": 0,
-        "passDef": 0,
-        "defTD": 0
-      },
-      "perGame": [
-        {
-          "gameId": "401752699",
-          "stats": {
-            "tackles": 1,
-            "soloTackles": 0,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752709",
-          "stats": {
-            "tackles": 2,
-            "soloTackles": 2,
-            "sacks": 0,
-            "tfl": 0,
-            "passDef": 0,
-            "defTD": 0
-          }
-        },
-        {
-          "gameId": "401752684",
+          "gameId": "401752668",
           "stats": {
             "tackles": 1,
             "soloTackles": 1,
@@ -3356,28 +2113,73 @@
           }
         }
       ],
+      "INT": 1,
       "SCK": 0,
       "TFL": 0,
-      "TKL": 4
+      "TKL": 8
     },
     {
-      "playerId": "CFBD-5081634",
-      "name": "Javion Toombs",
-      "games": 2,
+      "playerId": "CFBD-4685452",
+      "name": "Jamari Lyons",
+      "games": 7,
       "stats": {
-        "tackles": 2,
-        "soloTackles": 0,
+        "tackles": 18,
+        "soloTackles": 6,
         "sacks": 0,
-        "tfl": 0,
+        "tfl": 1,
         "passDef": 0,
         "defTD": 0
       },
       "perGame": [
         {
+          "gameId": "401752709",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
           "gameId": "401752699",
           "stats": {
-            "tackles": 1,
+            "tackles": 2,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752769",
+          "stats": {
+            "tackles": 2,
             "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752741",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752737",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 1,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -3389,6 +2191,17 @@
           "stats": {
             "tackles": 1,
             "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752775",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 2,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,
@@ -3397,86 +2210,160 @@
         }
       ],
       "SCK": 0,
-      "TFL": 0,
-      "TKL": 2
+      "TFL": 1,
+      "TKL": 18
     },
     {
-      "playerId": "CFBD-5079289",
-      "name": "TJ Abrams",
-      "games": 8,
+      "playerId": "CFBD-4870995",
+      "name": "Bryce Thornton",
+      "games": 11,
       "stats": {
-        "rec": 14,
-        "recYds": 202,
-        "recTD": 0
+        "tackles": 56,
+        "soloTackles": 31,
+        "sacks": 1,
+        "tfl": 3,
+        "passDef": 6,
+        "defTD": 1,
+        "fumbles": 0,
+        "fumblesLost": 0,
+        "fumRec": 2,
+        "interceptions": 1,
+        "intYds": 0,
+        "intTD": 0
       },
       "perGame": [
         {
           "gameId": "401752709",
           "stats": {
-            "rec": 1,
-            "recYds": 2,
-            "recTD": 0
+            "tackles": 4,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 1,
+            "defTD": 0
           }
         },
         {
           "gameId": "401752769",
           "stats": {
-            "rec": 3,
-            "recYds": 76,
-            "recTD": 0
+            "tackles": 6,
+            "soloTackles": 4,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752727",
+          "stats": {
+            "tackles": 5,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
           }
         },
         {
           "gameId": "401752668",
           "stats": {
-            "rec": 2,
-            "recYds": 53,
-            "recTD": 0
+            "fumbles": 0,
+            "fumblesLost": 0,
+            "fumRec": 2,
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 1
           }
         },
         {
           "gameId": "401752741",
           "stats": {
-            "rec": 1,
-            "recYds": 26,
-            "recTD": 0
+            "tackles": 7,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 1,
+            "defTD": 0
           }
         },
         {
           "gameId": "401752737",
           "stats": {
-            "rec": 1,
-            "recYds": 15,
-            "recTD": 0
+            "tackles": 6,
+            "soloTackles": 5,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
           }
         },
         {
           "gameId": "401752684",
           "stats": {
-            "rec": 1,
-            "recYds": 1,
-            "recTD": 0
+            "tackles": 5,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 2,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752755",
+          "stats": {
+            "tackles": 6,
+            "soloTackles": 4,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 1,
+            "defTD": 0
           }
         },
         {
           "gameId": "401752760",
           "stats": {
-            "rec": 4,
-            "recYds": 28,
-            "recTD": 0
+            "tackles": 5,
+            "soloTackles": 4,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0,
+            "interceptions": 1,
+            "intYds": 0,
+            "intTD": 0
           }
         },
         {
           "gameId": "401752785",
           "stats": {
-            "rec": 1,
-            "recYds": 1,
-            "recTD": 0
+            "tackles": 8,
+            "soloTackles": 2,
+            "sacks": 1,
+            "tfl": 1,
+            "passDef": 1,
+            "defTD": 0
           }
         }
       ],
-      "YDS": 202,
-      "REC": 14
+      "INT": 1,
+      "SCK": 1,
+      "TFL": 3,
+      "TKL": 56
     },
     {
       "playerId": "CFBD-5141766",
@@ -3609,6 +2496,465 @@
       "TKL": 27
     },
     {
+      "playerId": "CFBD-4870920",
+      "name": "Cormani McClain",
+      "games": 9,
+      "stats": {
+        "tackles": 17,
+        "soloTackles": 10,
+        "sacks": 0,
+        "tfl": 1,
+        "passDef": 1,
+        "defTD": 0,
+        "interceptions": 1,
+        "intYds": 0,
+        "intTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752709",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0,
+            "interceptions": 1,
+            "intYds": 0,
+            "intTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752769",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752727",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 1,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752737",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752684",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752755",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752760",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752775",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "INT": 1,
+      "SCK": 0,
+      "TFL": 1,
+      "TKL": 17
+    },
+    {
+      "playerId": "CFBD-4889957",
+      "name": "Tyreak Sapp",
+      "games": 12,
+      "stats": {
+        "tackles": 34,
+        "soloTackles": 12,
+        "sacks": 1,
+        "tfl": 3.5,
+        "passDef": 0,
+        "defTD": 0,
+        "kr": 1,
+        "krYds": 0,
+        "krTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752709",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752769",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752727",
+          "stats": {
+            "tackles": 6,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752668",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752741",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752737",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752684",
+          "stats": {
+            "tackles": 5,
+            "soloTackles": 3,
+            "sacks": 1,
+            "tfl": 2,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752755",
+          "stats": {
+            "tackles": 5,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0,
+            "kr": 1,
+            "krYds": 0,
+            "krTD": 0
+          }
+        },
+        {
+          "gameId": "401752760",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752785",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752775",
+          "stats": {
+            "tackles": 5,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0.5,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "SCK": 1,
+      "TFL": 3.5,
+      "TKL": 34
+    },
+    {
+      "playerId": "CFBD-5222226",
+      "name": "Brien Taylor Jr.",
+      "games": 10,
+      "stats": {
+        "tackles": 24,
+        "soloTackles": 9,
+        "sacks": 2,
+        "tfl": 3,
+        "passDef": 0,
+        "defTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752709",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752769",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752727",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 2,
+            "sacks": 1.5,
+            "tfl": 1.5,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752668",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752741",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 1,
+            "sacks": 0.5,
+            "tfl": 1.5,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752737",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752684",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752755",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752785",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "SCK": 2,
+      "TFL": 3,
+      "TKL": 24
+    },
+    {
+      "playerId": "CFBD-4870828",
+      "name": "Grayson Howard",
+      "games": 3,
+      "stats": {
+        "tackles": 4,
+        "soloTackles": 3,
+        "sacks": 0,
+        "tfl": 0,
+        "passDef": 0,
+        "defTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752709",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752684",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "SCK": 0,
+      "TFL": 0,
+      "TKL": 4
+    },
+    {
       "playerId": "CFBD-5221980",
       "name": "Joseph Mbatchou",
       "games": 5,
@@ -3680,6 +3026,151 @@
       "SCK": 0,
       "TFL": 1,
       "TKL": 11
+    },
+    {
+      "playerId": "CFBD-5079340",
+      "name": "Aaron Chiles",
+      "games": 11,
+      "stats": {
+        "tackles": 52,
+        "soloTackles": 22,
+        "sacks": 0.5,
+        "tfl": 2.5,
+        "passDef": 1,
+        "defTD": 0,
+        "fumbles": 0,
+        "fumblesLost": 0,
+        "fumRec": 1
+      },
+      "perGame": [
+        {
+          "gameId": "401752709",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752769",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 1,
+            "sacks": 0.5,
+            "tfl": 0.5,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752727",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752741",
+          "stats": {
+            "tackles": 5,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752737",
+          "stats": {
+            "tackles": 9,
+            "soloTackles": 4,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752684",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 1,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752755",
+          "stats": {
+            "tackles": 5,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752760",
+          "stats": {
+            "fumbles": 0,
+            "fumblesLost": 0,
+            "fumRec": 1,
+            "tackles": 4,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752785",
+          "stats": {
+            "tackles": 6,
+            "soloTackles": 4,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752775",
+          "stats": {
+            "tackles": 9,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "SCK": 0.5,
+      "TFL": 2.5,
+      "TKL": 52
     },
     {
       "playerId": "CFBD-4870978",
@@ -3849,6 +3340,515 @@
           "stats": {
             "tackles": 1,
             "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "SCK": 0,
+      "TFL": 0,
+      "TKL": 2
+    },
+    {
+      "playerId": "CFBD-5195951",
+      "name": "Jeramiah McCloud",
+      "games": 10,
+      "stats": {
+        "tackles": 13,
+        "soloTackles": 5,
+        "sacks": 0,
+        "tfl": 0.5,
+        "passDef": 2,
+        "defTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752709",
+          "stats": {
+            "tackles": 0,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 1,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752769",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752727",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752668",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752741",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752737",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 1,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752755",
+          "stats": {
+            "tackles": 0,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752760",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752775",
+          "stats": {
+            "tackles": 4,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0.5,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "SCK": 0,
+      "TFL": 0.5,
+      "TKL": 13
+    },
+    {
+      "playerId": "CFBD-5295815",
+      "name": "Duke Clark",
+      "games": 4,
+      "stats": {
+        "rushAtt": 15,
+        "rushYds": 58,
+        "rushTD": 0,
+        "rec": 2,
+        "recYds": 14,
+        "recTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752699",
+          "stats": {
+            "rushAtt": 1,
+            "rushYds": 1,
+            "rushTD": 0
+          }
+        },
+        {
+          "gameId": "401752727",
+          "stats": {
+            "rushAtt": 9,
+            "rushYds": 38,
+            "rushTD": 0
+          }
+        },
+        {
+          "gameId": "401752668",
+          "stats": {
+            "rushAtt": 5,
+            "rushYds": 19,
+            "rushTD": 0,
+            "rec": 1,
+            "recYds": 3,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752785",
+          "stats": {
+            "rec": 1,
+            "recYds": 11,
+            "recTD": 0
+          }
+        }
+      ],
+      "YDS": 58,
+      "REC": 2
+    },
+    {
+      "playerId": "CFBD-4917945",
+      "name": "Aidan Mizell",
+      "games": 7,
+      "stats": {
+        "rec": 19,
+        "recYds": 177,
+        "recTD": 1,
+        "tackles": 1,
+        "soloTackles": 1,
+        "sacks": 0,
+        "tfl": 0,
+        "passDef": 0,
+        "defTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752699",
+          "stats": {
+            "rec": 3,
+            "recYds": 41,
+            "recTD": 1
+          }
+        },
+        {
+          "gameId": "401752769",
+          "stats": {
+            "rec": 3,
+            "recYds": 14,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752727",
+          "stats": {
+            "rec": 4,
+            "recYds": 18,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752741",
+          "stats": {
+            "rec": 2,
+            "recYds": 30,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752684",
+          "stats": {
+            "rec": 2,
+            "recYds": 18,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752760",
+          "stats": {
+            "rec": 2,
+            "recYds": 10,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752785",
+          "stats": {
+            "rec": 3,
+            "recYds": 46,
+            "recTD": 0,
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "YDS": 177,
+      "REC": 19,
+      "SCK": 0,
+      "TFL": 0,
+      "TKL": 1
+    },
+    {
+      "playerId": "CFBD-5207662",
+      "name": "Muizz Tounkara",
+      "games": 2,
+      "stats": {
+        "rec": 2,
+        "recYds": 12,
+        "recTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752699",
+          "stats": {
+            "rec": 1,
+            "recYds": 8,
+            "recTD": 0
+          }
+        },
+        {
+          "gameId": "401752668",
+          "stats": {
+            "rec": 1,
+            "recYds": 4,
+            "recTD": 0
+          }
+        }
+      ],
+      "YDS": 12,
+      "REC": 2
+    },
+    {
+      "playerId": "CFBD-4708238",
+      "name": "George Gumbs Jr.",
+      "games": 9,
+      "stats": {
+        "tackles": 31,
+        "soloTackles": 14,
+        "sacks": 2,
+        "tfl": 6.5,
+        "passDef": 0,
+        "defTD": 0,
+        "fumbles": 0,
+        "fumblesLost": 0,
+        "fumRec": 1
+      },
+      "perGame": [
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 5,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752769",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752727",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 1,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752668",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 1.5,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752741",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752737",
+          "stats": {
+            "tackles": 2,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752684",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752755",
+          "stats": {
+            "tackles": 9,
+            "soloTackles": 4,
+            "sacks": 1,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752760",
+          "stats": {
+            "fumbles": 0,
+            "fumblesLost": 0,
+            "fumRec": 1,
+            "tackles": 5,
+            "soloTackles": 3,
+            "sacks": 0,
+            "tfl": 1,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "SCK": 2,
+      "TFL": 6.5,
+      "TKL": 31
+    },
+    {
+      "playerId": "CFBD-4870698",
+      "name": "Aaron Gates",
+      "games": 3,
+      "stats": {
+        "tackles": 7,
+        "soloTackles": 4,
+        "sacks": 0,
+        "tfl": 0,
+        "passDef": 0,
+        "defTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 2,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752668",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752684",
+          "stats": {
+            "tackles": 3,
+            "soloTackles": 1,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        }
+      ],
+      "SCK": 0,
+      "TFL": 0,
+      "TKL": 7
+    },
+    {
+      "playerId": "CFBD-5081634",
+      "name": "Javion Toombs",
+      "games": 2,
+      "stats": {
+        "tackles": 2,
+        "soloTackles": 0,
+        "sacks": 0,
+        "tfl": 0,
+        "passDef": 0,
+        "defTD": 0
+      },
+      "perGame": [
+        {
+          "gameId": "401752699",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
+            "sacks": 0,
+            "tfl": 0,
+            "passDef": 0,
+            "defTD": 0
+          }
+        },
+        {
+          "gameId": "401752684",
+          "stats": {
+            "tackles": 1,
+            "soloTackles": 0,
             "sacks": 0,
             "tfl": 0,
             "passDef": 0,

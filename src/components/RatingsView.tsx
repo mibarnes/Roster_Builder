@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import Star from './Star.tsx'
-import { getEffectiveStars, getOvrDisplay, getOvrDisplayColor } from '../utils/playerHelpers.ts'
+import Headshot from './Headshot.tsx'
+import { getConflictTitle, getEffectiveStars, getOvrDisplay, getOvrDisplayColor } from '../utils/playerHelpers.ts'
 import type { UIPlayer } from '../data/schema/ui.ts'
 
 export interface RatingsFilters {
@@ -96,6 +97,7 @@ export default function RatingsView({ allPlayers, filters, setFilters, onPlayerC
               className="flex items-center gap-3 px-4 py-3 cursor-pointer transition-all hover:bg-gray-900/50 active:bg-gray-800/50 border-b border-surface-border"
               style={{ animation: `fadeSlideUp 0.3s ease-out ${i * 25}ms both` }}
             >
+              <Headshot url={p.headshotUrl} name={p.name} fallback={p.pos} size={40} className="flex-shrink-0" />
               <div
                 className={`w-12 h-12 rounded-xl flex items-center justify-center font-black shadow-lg flex-shrink-0 team-accent-bg ${p.isRated ? 'text-lg' : 'text-sm'}`}
                 style={{ color: getOvrDisplayColor(p) }}
@@ -112,6 +114,30 @@ export default function RatingsView({ allPlayers, filters, setFilters, onPlayerC
                   )}
                   {p.isTransfer && (
                     <span className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-portal-orange">PTL</span>
+                  )}
+                  {p.newIn2026 && (
+                    <span
+                      className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-sky-600"
+                      title="New on the 2026 roster — no 2025 production"
+                    >
+                      NEW
+                    </span>
+                  )}
+                  {p.isWalkOn && (
+                    <span
+                      className="text-[9px] font-black text-white px-2 py-0.5 rounded-full bg-gray-500"
+                      title="Walk-on — on the roster, no recruiting record"
+                    >
+                      WO
+                    </span>
+                  )}
+                  {p.conflictFields.length > 0 && (
+                    <span
+                      className="text-[9px] font-bold text-amber-200 bg-amber-900/50 ring-1 ring-amber-400/30 px-2 py-0.5 rounded-full"
+                      title={getConflictTitle(p.conflictFields)}
+                    >
+                      ⚑
+                    </span>
                   )}
                 </div>
                 <div className="flex items-center gap-2 mt-1">

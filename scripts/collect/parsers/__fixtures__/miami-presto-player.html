@@ -1,0 +1,21 @@
+<!doctype html>
+<!--
+  Minimal WMT/Presto (Miami) player PROFILE fixture. Faithfully reproduces the
+  load-bearing markup the real ~177KB page server-renders: the <title> (carrying
+  a &#8211; en-dash site suffix that must be decoded + stripped) and the
+  <div class="item"><span>Label</span><p>Value</p></div> bio blocks that
+  parsePrestoPlayerPage reads (Hometown / High School / Class / position).
+-->
+<html>
+  <head><title>Mark Fletcher Jr. &#8211; University of Miami Athletics</title></head>
+  <body>
+    <section class="bio">
+      <div class="item"> <span>position</span> <p>Running Back</p> </div>
+      <div class="item"> <span>Height</span> <p>6-2</p> </div>
+      <div class="item"> <span>Weight</span> <p>225 lbs.</p> </div>
+      <div class="item"> <span>Class</span> <p>Senior</p> </div>
+      <div class="item"> <span>Hometown</span> <p>Fort Lauderdale, Fla.</p> </div>
+      <div class="item"> <span>High School</span> <p>American Heritage</p> </div>
+    </section>
+  </body>
+</html>

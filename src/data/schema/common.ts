@@ -1,7 +1,11 @@
 import { z } from 'zod'
 
-/** Roster side as stored by the CFBD collector. */
-export const SideSchema = z.enum(['OFF', 'DEF'])
+/**
+ * Roster side as stored by the collector. 'ST' covers special teams
+ * (kickers/punters/long-snappers) carried on the ESPN 2026 spine; the rating
+ * model + UI buckets treat it gracefully (ST players are typically projection).
+ */
+export const SideSchema = z.enum(['OFF', 'DEF', 'ST'])
 export type Side = z.infer<typeof SideSchema>
 
 /** Class year; collector emits null for unknowns. */

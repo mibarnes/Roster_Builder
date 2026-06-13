@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Star from './Star.tsx'
-import { getEffectiveStars, getOvrDisplay, NR_COLOR } from '../utils/playerHelpers.ts'
+import Headshot from './Headshot.tsx'
+import { getConflictTitle, getEffectiveStars, getOvrDisplay, NR_COLOR } from '../utils/playerHelpers.ts'
 import type { UIPlayer } from '../data/schema/ui.ts'
 
 const classTextColor: Record<string, string> = {
@@ -24,6 +25,7 @@ export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: Pl
   const isRS = player.year?.includes('RS') ?? false
   const classYear = player.year?.replace('RS ', '') ?? ''
   const isFuzzy = player.recruitMatchMethod === 'name-fuzzy'
+  const hasConflict = player.conflictFields.length > 0
 
   const handleActivate = () => onClick(player)
 
@@ -60,12 +62,22 @@ export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: Pl
           <div className="absolute top-1 left-1.5">
             <span className="font-bold text-white text-[9px]">#{player.number}</span>
           </div>
+          {hasConflict && (
+            <span
+              className="absolute top-1 right-1.5 w-2 h-2 rounded-full bg-amber-300/90 ring-1 ring-black/30"
+              aria-label="Data conflict"
+              title={getConflictTitle(player.conflictFields)}
+            />
+          )}
           <div className="text-center pt-1">
             <span className="font-black text-white text-xs uppercase tracking-wide">{player.pos}</span>
           </div>
         </div>
 
         <div className="px-2.5 py-2">
+          <div className="flex justify-center mb-1.5">
+            <Headshot url={player.headshotUrl} name={player.name} fallback={player.pos} size={40} />
+          </div>
           <div className="flex justify-center gap-0.5 mb-1.5" aria-label={`${stars} out of 5 stars`}>
             {[...Array(5)].map((_, i) => (
               <Star key={i} filled={i < stars} />
@@ -101,6 +113,22 @@ export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: Pl
             )}
             {player.isTransfer && (
               <span className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-portal-orange">PTL</span>
+            )}
+            {player.newIn2026 && (
+              <span
+                className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-sky-600"
+                title="New on the 2026 roster — no 2025 production"
+              >
+                NEW
+              </span>
+            )}
+            {player.isWalkOn && (
+              <span
+                className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-gray-500"
+                title="Walk-on — on the roster, no recruiting record"
+              >
+                WO
+              </span>
             )}
             {player.isStub && (
               <span

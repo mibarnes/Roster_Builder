@@ -51,15 +51,41 @@ import {
 } from './collect/cfbd.ts'
 import { buildAdvancedSource, buildContextSource } from './collect/advanced.ts'
 import { buildDepthChartFromOurlads, type ExtraResolver } from './collect/parsers/ourlads.ts'
-import { buildRecruitingSource, type MatchMethod } from './collect/recruiting.ts'
+import { buildIncomingRecruits, buildRecruitingSource, type IncomingRecruit, type MatchMethod, type TransferOverlayRecord } from './collect/recruiting.ts'
 import { buildRosterNameIndex, inferRedshirt, resolveByStdName, stdName } from './collect/normalize.ts'
+import { fetchEspnRoster } from './collect/sources/espn.ts'
+import { fetchOfficialRoster } from './collect/sources/officialSite.ts'
+import { fetchOn3 } from './collect/sources/on3.ts'
+import { buildMaster } from './collect/reconcile/buildMaster.ts'
+import {
+  EspnRosterSourceSchema,
+  OfficialRosterSourceSchema,
+  On3SourceSchema,
+  PlayerMasterSourceSchema,
+  type EspnPlayer,
+} from '../src/data/schema/index.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const COLLECTED = path.join(ROOT, 'src', 'data', 'collected')
 
 const SEASON = Number(process.env.CFBD_SEASON ?? 2025)
-const RECRUITING_YEARS = [SEASON, SEASON - 1, SEASON - 2, SEASON - 3, SEASON - 4, SEASON - 5, SEASON - 6]
+/** The CURRENT roster season — the ESPN spine. CFBD 2025 (SEASON) is enrichment. */
+const ROSTER_SEASON = Number(process.env.ROSTER_SEASON ?? 2026)
+/**
+ * Recruiting classes to fetch from CFBD. Anchored to the ROSTER season so the
+ * INCOMING classes (ROSTER_SEASON+1 … the 2026/2027 HS signees) are included —
+ * those recruits carry athleteId:null (not yet on a college roster) and are
+ * name-matched to the ESPN spine downstream. Spans down to SEASON-5 to keep the
+ * returning-player recruiting history (5th-years recruited ~2020).
+ */
+const RECRUITING_YEARS = ((): number[] => {
+  const top = ROSTER_SEASON + 1
+  const bottom = SEASON - 5
+  const years: number[] = []
+  for (let y = top; y >= bottom; y -= 1) years.push(y)
+  return years
+})()
 
 /** git short SHA at runtime; 'dev' if unavailable. */
 const collectorVersion = ((): string => {
@@ -88,6 +114,25 @@ interface TeamResult {
     usagePct: number
     ppaPct: number
     has247Degraded: number[]
+    /** Master reconciliation summary (ESPN-spine pilot round). */
+    master?: {
+      spineCount: number
+      masterCount: number
+      matchedByIdPct: number
+      walkOns: number
+      newIn2026: number
+      unrated: number
+      isTransfer: number
+      headshotPct: number
+      highSchoolPct: number
+      hometownPct: number
+      productionReturningPct: number
+      conflicts: Record<string, number>
+      officialDegraded: boolean
+      officialEngine: string
+      officialCoverage: number
+      on3Degraded: boolean
+    }
   }
 }
 
@@ -115,12 +160,12 @@ function validate<T>(schema: z.ZodType<T>, value: unknown, label: string): T {
 
 const nowIso = (): string => new Date().toISOString()
 
-function makeProvenance(sources: { name: string; endpoint: string }[]): Provenance {
+function makeProvenance(sources: { name: string; endpoint: string }[], dataSeason: number = SEASON): Provenance {
   return {
     sources,
     collectedAt: nowIso(),
     collectorVersion,
-    dataSeason: SEASON,
+    dataSeason,
     dataCutoff: null,
   }
 }
@@ -221,6 +266,11 @@ async function collectTeam(team: Team): Promise<TeamResult> {
       }
     }
   }
+  // Incoming-class recruits (athleteId null = 2026/2027 HS signees) — these are
+  // NOT on the CFBD-2025 roster, so they're name-matched to the ESPN spine in
+  // the reconciler (GAP A) so new-2026 players get rated instead of UNRATED.
+  const incomingRecruits = buildIncomingRecruits(cfbdRecruitsByYear)
+
   const recruitIndex = buildRosterNameIndex(recruitNamePool)
   const extraResolve: ExtraResolver = (name, position) => {
     if (!stdName(name)) return null
@@ -305,16 +355,22 @@ async function collectTeam(team: Team): Promise<TeamResult> {
   }
 
   // ── Recruiting (CFBD-primary id-keyed + 247 supplement) ─────────────────────
+  // `transferOverlay` (247 transfer-portal records by name) is captured here and
+  // kept OUT of the persisted recruiting.json — it's threaded to the reconciler
+  // to name-match the team's incoming transfers onto the ESPN spine (GAP C).
   let recruiting
+  let transferOverlay: TransferOverlayRecord[] = []
   try {
+    const { transferOverlay: overlay, ...recruitingSource } = await buildRecruitingSource({
+      teamLabel: team.label,
+      teamSlug: team.slug247,
+      rosterPlayers: eligiblePlayers,
+      years: RECRUITING_YEARS,
+      cfbdRecruitsByYear,
+    })
+    transferOverlay = overlay
     recruiting = {
-      ...(await buildRecruitingSource({
-        teamLabel: team.label,
-        teamSlug: team.slug247,
-        rosterPlayers: eligiblePlayers,
-        years: RECRUITING_YEARS,
-        cfbdRecruitsByYear,
-      })),
+      ...recruitingSource,
       provenance: makeProvenance([
         ...RECRUITING_YEARS.map((y) => ({ name: `CFBD recruiting/players ${y}`, endpoint: recruitingPlayersUrl(team.cfbdQuery, y) })),
         { name: '247Sports commits scrape', endpoint: `https://247sports.com/college/${team.slug247}/season/<year>-football/commits/` },
@@ -371,6 +427,29 @@ async function collectTeam(team: Team): Promise<TeamResult> {
   await write('advanced.json', validAdvanced)
   await write('context.json', validContext)
 
+  // ════════════════════════════════════════════════════════════════════════════
+  //  PILOT-DEEPENING: ESPN 2026 spine → reconciled golden player-master.json
+  //  Only wired for pilots that carry an espnId. The CFBD-2025 enrichment above
+  //  (recruiting/production/advanced) is keyed CFBD-<athleteId> === CFBD-<espnId>,
+  //  so it joins DIRECTLY to the ESPN spine. Official/On3 are best-effort overlays.
+  // ════════════════════════════════════════════════════════════════════════════
+  let masterStats: NonNullable<TeamResult['stats']>['master']
+  if (team.espnId) {
+    masterStats = await buildAndWriteMaster({
+      team,
+      teamDir,
+      write,
+      recruitingProfiles: validRecruiting.playerRecruitProfiles,
+      incomingRecruits,
+      transferOverlay,
+      productionEntries: validProduction.playerProduction,
+      advancedEntries: validAdvanced.playerAdvanced,
+      cfbdRosterIds: new Set(eligiblePlayers.map((p) => p.playerId)),
+      ourladsHtml: ourlads.html,
+      returningProduction: validContext.returningProduction,
+    })
+  }
+
   // ── Compute status stats ────────────────────────────────────────────────────
   const rosterN = eligiblePlayers.length
   const recruitingMatched = recruiting.playerRecruitProfiles.filter(
@@ -410,7 +489,176 @@ async function collectTeam(team: Team): Promise<TeamResult> {
       usagePct: rosterN ? (usageN / rosterN) * 100 : 0,
       ppaPct: rosterN ? (ppaN / rosterN) * 100 : 0,
       has247Degraded: recruiting.failedYears,
+      master: masterStats,
     },
+  }
+}
+
+/**
+ * Fetch the ESPN 2026 spine + best-effort official/On3 overlays, reconcile them
+ * with the CFBD-2025 enrichment (DIRECT id join), write sources/*.json + the
+ * golden player-master.json, and return the report summary for the status print.
+ *
+ * ESPN is HARD (throws on failure → hard team fail). Official/On3 DEGRADE (flagged,
+ * never throw). Asserts the coverage guarantee: masterCount ≥ spineCount.
+ */
+async function buildAndWriteMaster({
+  team,
+  teamDir,
+  write,
+  recruitingProfiles,
+  incomingRecruits,
+  transferOverlay,
+  productionEntries,
+  advancedEntries,
+  cfbdRosterIds,
+  ourladsHtml,
+  returningProduction,
+}: {
+  team: Team
+  teamDir: string
+  write: (file: string, data: unknown) => Promise<void>
+  recruitingProfiles: { playerId: string; name?: string; matchMethod?: MatchMethod; years?: number[] }[]
+  incomingRecruits: IncomingRecruit[]
+  transferOverlay: TransferOverlayRecord[]
+  productionEntries: { playerId: string }[]
+  advancedEntries: { playerId: string }[]
+  cfbdRosterIds: Set<string>
+  ourladsHtml: string
+  returningProduction: Record<string, number | null> | null
+}): Promise<NonNullable<TeamResult['stats']>['master']> {
+  const sourcesDir = path.join(teamDir, 'sources')
+  await mkdir(sourcesDir, { recursive: true })
+  const writeSource = (file: string, data: unknown) =>
+    writeFile(path.join(sourcesDir, file), `${JSON.stringify(data, null, 2)}\n`, 'utf8')
+
+  // ── ESPN spine (HARD) ──
+  // Include OFF + DEF + ST (kickers/punters/long-snappers). ST players are
+  // typically unrated/projection — they flow through crosswalk → merge → master
+  // and the rating model treats 'ST' gracefully (sideBucket 'ST').
+  const espn = await fetchEspnRoster(team.espnId!)
+  const espnSpine: EspnPlayer[] = espn.players.filter(
+    (p) => p.side === 'OFF' || p.side === 'DEF' || p.side === 'ST',
+  )
+  const espnSource = validate(
+    EspnRosterSourceSchema,
+    {
+      sourceId: 'espn-roster-v1',
+      sourceType: 'espn-roster',
+      team: team.label,
+      season: espn.season || ROSTER_SEASON,
+      espnTeamId: team.espnId!,
+      provenance: makeProvenance([{ name: 'ESPN site API roster', endpoint: espn.url }], ROSTER_SEASON),
+      players: espnSpine,
+    },
+    `${team.id}/sources/espn-roster.json`,
+  )
+  await writeSource('espn-roster.json', espnSource)
+
+  // ── Official site overlay (BEST-EFFORT, degrade) ──
+  const officialUrl = team.officialRosterUrl ?? ''
+  const official = officialUrl
+    ? await fetchOfficialRoster(officialUrl)
+    : { engine: 'unknown', degraded: true, degradeReason: 'no officialRosterUrl in registry', players: [] }
+  const officialCoverage = official.players.filter(
+    (p) => p.highSchool || p.previousSchool || p.hometown,
+  ).length
+  const officialSource = validate(
+    OfficialRosterSourceSchema,
+    {
+      sourceId: 'official-roster-v1',
+      sourceType: 'official-roster',
+      team: team.label,
+      sourceUrl: officialUrl,
+      engine: official.engine,
+      degraded: official.degraded,
+      degradeReason: official.degradeReason ?? null,
+      coverage: officialCoverage,
+      provenance: makeProvenance([{ name: 'Official team roster page', endpoint: officialUrl }], ROSTER_SEASON),
+      players: official.players,
+    },
+    `${team.id}/sources/official-roster.json`,
+  )
+  await writeSource('official-roster.json', officialSource)
+
+  // ── On3 / Rivals fact-check (BEST-EFFORT, degrade) ──
+  const on3 = await fetchOn3(team.slug247)
+  const on3Source = validate(
+    On3SourceSchema,
+    {
+      sourceId: 'on3-v1',
+      sourceType: 'on3',
+      team: team.label,
+      degraded: on3.degraded,
+      degradeReason: on3.degradeReason ?? null,
+      provenance: makeProvenance([{ name: 'On3/Rivals roster', endpoint: `on3:${team.slug247}` }], ROSTER_SEASON),
+      players: on3.players,
+    },
+    `${team.id}/sources/on3.json`,
+  )
+  await writeSource('on3.json', on3Source)
+
+  // ── Reconcile → golden master ──
+  const { master, spineCount } = buildMaster({
+    teamLabel: team.label,
+    rosterSeason: ROSTER_SEASON,
+    productionSeason: SEASON,
+    espnPlayers: espnSpine,
+    officialPlayers: official.players,
+    officialDegraded: official.degraded,
+    on3Players: on3.players,
+    on3Degraded: on3.degraded,
+    recruitingProfiles: recruitingProfiles as never,
+    incomingRecruits,
+    transferOverlay,
+    productionEntries: productionEntries as never,
+    advancedEntries: advancedEntries as never,
+    cfbdRosterIds,
+    ourladsHtml,
+    returningProduction,
+    provenance: {
+      ...makeProvenance(
+        [
+          { name: 'ESPN site API roster (spine)', endpoint: espn.url },
+          { name: 'CFBD 2025 enrichment', endpoint: `/recruiting,games,usage,ppa year=${SEASON}` },
+          { name: 'Official team roster page', endpoint: officialUrl },
+          { name: 'OurLads depth chart', endpoint: `ourlads:${team.ourlads.slug}` },
+        ],
+        ROSTER_SEASON,
+      ),
+      rosterSeason: ROSTER_SEASON,
+      productionSeason: SEASON,
+    },
+  })
+
+  // Coverage guarantee: every spine player → a master record (≥, stubs may add more).
+  if (master.players.length < spineCount) {
+    throw new Error(
+      `Coverage guarantee FAILED for ${team.label}: masterCount ${master.players.length} < spineCount ${spineCount}`,
+    )
+  }
+
+  const validMaster = validate(PlayerMasterSourceSchema, master, `${team.id}/player-master.json`)
+  await write('player-master.json', validMaster)
+
+  const r = validMaster.reconciliation
+  return {
+    spineCount: r.spineCount,
+    masterCount: r.masterCount,
+    matchedByIdPct: r.matchedByIdPct,
+    walkOns: r.walkOns,
+    newIn2026: r.newIn2026,
+    unrated: r.unrated,
+    isTransfer: r.isTransfer,
+    headshotPct: r.headshotPct,
+    highSchoolPct: r.highSchoolPct,
+    hometownPct: r.hometownPct,
+    productionReturningPct: r.productionReturningPct,
+    conflicts: r.perFieldConflictCounts,
+    officialDegraded: official.degraded,
+    officialEngine: official.engine,
+    officialCoverage,
+    on3Degraded: on3.degraded,
   }
 }
 
@@ -474,6 +722,20 @@ async function main(): Promise<void> {
       console.log(`       ppa coverage:          ${pct(s.ppaPct)}`)
       if (s.has247Degraded.length) {
         console.log(`       247 DEGRADED years:    ${s.has247Degraded.join(', ')}`)
+      }
+      if (s.master) {
+        const m = s.master
+        const conflicts = Object.entries(m.conflicts)
+        console.log(`       ── RECONCILED MASTER (2026 ESPN spine) ──`)
+        console.log(`       spine → master:        ${m.spineCount} → ${m.masterCount} (coverage 100%${m.masterCount > m.spineCount ? `, +${m.masterCount - m.spineCount} depth stubs` : ''})`)
+        console.log(`       matched by id:         ${pct(m.matchedByIdPct)}`)
+        console.log(`       flags:                 walkOns ${m.walkOns} / new-2026 ${m.newIn2026} / unrated ${m.unrated} / transfers ${m.isTransfer}`)
+        console.log(`       headshot / hometown:   ${pct(m.headshotPct)} / ${pct(m.hometownPct)}`)
+        console.log(`       highSchool coverage:   ${pct(m.highSchoolPct)}`)
+        console.log(`       production returning:  ${pct(m.productionReturningPct)}`)
+        console.log(`       conflicts:             ${conflicts.length ? conflicts.map(([f, n]) => `${f}:${n}`).join(' ') : 'none'}`)
+        console.log(`       official overlay:      ${m.officialDegraded ? `DEGRADED (${m.officialEngine})` : `OK (${m.officialEngine}, ${m.officialCoverage} players w/ HS/prev/hometown)`}`)
+        console.log(`       on3 overlay:           ${m.on3Degraded ? 'DEGRADED (expected)' : 'OK'}`)
       }
     } else {
       console.log(`\n[FAIL] ${r.team.label} (${r.team.id})`)

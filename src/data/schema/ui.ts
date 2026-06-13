@@ -84,6 +84,21 @@ export interface UIPlayer {
   recruitMatchMethod: MatchMethod | null
   /** Depth-chart-only stub player (no roster/recruiting/production data). */
   isStub: boolean
+  // ── Golden-master overlay (pilot-deepening round); null/false for legacy teams ──
+  /** ESPN headshot URL — render a player photo when present. */
+  headshotUrl: string | null
+  /** High school (official-site overlay). */
+  highSchool: string | null
+  /** Previous school (official-site overlay / transfer). */
+  previousSchool: string | null
+  /** On the roster, no recruiting record (walk-on badge). */
+  isWalkOn: boolean
+  /** No 2025 CFBD data — new in 2026 (transfer/freshman badge). */
+  newIn2026: boolean
+  /** No stars from any recruiting source (unrated badge). */
+  unrated: boolean
+  /** Fields where sources disagreed (value + alt kept in master) — conflict badge. */
+  conflictFields: string[]
   /** Provenance flags for the completeness badges. */
   dataCompleteness: UIDataCompleteness
 }

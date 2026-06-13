@@ -10,10 +10,12 @@
 import {
   AdvancedSourceSchema,
   ContextSourceSchema,
+  PlayerMasterSourceSchema,
   ProductionSourceSchema,
   RecruitingSourceSchema,
   RosterSourceSchema,
 } from './schema/index.ts'
+import { masterToDatasetBySource } from './masterToDataset.ts'
 import type { DatasetBySource } from './schema/dataset.ts'
 
 // Vite resolves these globs at build time; the dynamic import picks one per team
@@ -25,6 +27,9 @@ const productionModules = import.meta.glob('./collected/*/production.json')
 // so these loads are OPTIONAL (a missing file yields undefined, not a throw).
 const advancedModules = import.meta.glob('./collected/*/advanced.json')
 const contextModules = import.meta.glob('./collected/*/context.json')
+// player-master is the pilot-deepening golden record — present only for pilots.
+// When present it is the PREFERRED source (ESPN 2026 spine + reconciliation).
+const masterModules = import.meta.glob('./collected/*/player-master.json')
 
 type JsonModule = { default: unknown }
 
@@ -54,6 +59,14 @@ async function loadJsonOptional(
 }
 
 export async function loadTeamData(teamId: string): Promise<DatasetBySource> {
+  // ── Pilots: prefer the golden player-master.json (ESPN 2026 spine) ──
+  const masterRaw = await loadJsonOptional(masterModules, teamId, 'player-master.json')
+  if (masterRaw != null) {
+    const master = PlayerMasterSourceSchema.parse(masterRaw)
+    return masterToDatasetBySource(master)
+  }
+
+  // ── Legacy path (the 31 non-pilot teams still ship the old roster.json shape) ──
   const [rosterRaw, recruitingRaw, productionRaw, advancedRaw, contextRaw] = await Promise.all([
     loadJson(rosterModules, teamId, 'roster.json'),
     loadJson(recruitingModules, teamId, 'recruiting.json'),

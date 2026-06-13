@@ -7,6 +7,14 @@
   "provenance": {
     "sources": [
       {
+        "name": "CFBD recruiting/players 2027",
+        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2027&team=Florida"
+      },
+      {
+        "name": "CFBD recruiting/players 2026",
+        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2026&team=Florida"
+      },
+      {
         "name": "CFBD recruiting/players 2025",
         "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2025&team=Florida"
       },
@@ -31,16 +39,12 @@
         "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2020&team=Florida"
       },
       {
-        "name": "CFBD recruiting/players 2019",
-        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2019&team=Florida"
-      },
-      {
         "name": "247Sports commits scrape",
         "endpoint": "https://247sports.com/college/florida/season/<year>-football/commits/"
       }
     ],
-    "collectedAt": "2026-06-13T02:35:49.083Z",
-    "collectorVersion": "070f1cd",
+    "collectedAt": "2026-06-13T05:31:57.853Z",
+    "collectorVersion": "bfb3020",
     "dataSeason": 2025,
     "dataCutoff": null
   },
@@ -1420,10 +1424,10 @@
       "compositeRating": 0.9103,
       "nationalRank": 251,
       "positionRank": 24,
-      "transferPortalStars": null,
-      "transferRating": null,
-      "fromSchool": null,
-      "isTransfer": false,
+      "transferPortalStars": 3,
+      "transferRating": 0.87,
+      "fromSchool": "Georgia Tech",
+      "isTransfer": true,
       "years": [
         2022
       ],
@@ -3075,6 +3079,21 @@
   ],
   "teamClassRankings": [
     {
+      "year": 2027,
+      "team": "Florida Gators",
+      "source": "247sports",
+      "overallRank": 5,
+      "transferRank": 0
+    },
+    {
+      "year": 2026,
+      "team": "Florida Gators",
+      "source": "247sports",
+      "overallRank": 18,
+      "compositeRank": 17,
+      "transferRank": 30
+    },
+    {
       "year": 2025,
       "team": "Florida Gators",
       "source": "247sports",
@@ -3121,26 +3140,138 @@
       "overallRank": 7,
       "compositeRank": 8,
       "transferRank": 3
-    },
-    {
-      "year": 2019,
-      "team": "Florida Gators",
-      "source": "247sports",
-      "overallRank": 9,
-      "compositeRank": 9,
-      "transferRank": 17
     }
   ],
   "years": [
+    2027,
+    2026,
     2025,
     2024,
     2023,
     2022,
     2021,
-    2020,
-    2019
+    2020
   ],
   "unmatchedRecruits": [
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Davian Groce",
+      "athleteId": null,
+      "cfbdRecruitId": "103872"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "CJ Bronaugh",
+      "athleteId": null,
+      "cfbdRecruitId": "103934"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "KJ Ford",
+      "athleteId": null,
+      "cfbdRecruitId": "103951"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Justin Williams",
+      "athleteId": null,
+      "cfbdRecruitId": "104069"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "JaReylan McCoy",
+      "athleteId": null,
+      "cfbdRecruitId": "103956"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Dylan Purter",
+      "athleteId": null,
+      "cfbdRecruitId": "104033"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Will Griffin",
+      "athleteId": null,
+      "cfbdRecruitId": "104051"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Kendall Guervil",
+      "athleteId": null,
+      "cfbdRecruitId": "103981"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Tyler Chukuyem",
+      "athleteId": null,
+      "cfbdRecruitId": "104371"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Kaiden Hall",
+      "athleteId": null,
+      "cfbdRecruitId": "104005"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Heze Kent",
+      "athleteId": null,
+      "cfbdRecruitId": "103984"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Malik Morris",
+      "athleteId": null,
+      "cfbdRecruitId": "104037"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Marquez Daniel",
+      "athleteId": null,
+      "cfbdRecruitId": "104013"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "CJ Hester",
+      "athleteId": null,
+      "cfbdRecruitId": "104068"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Chancellor Campbell",
+      "athleteId": null,
+      "cfbdRecruitId": "104454"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "G'Nivre Carr",
+      "athleteId": null,
+      "cfbdRecruitId": "104282"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Javarii Luckas",
+      "athleteId": null,
+      "cfbdRecruitId": "105082"
+    },
     {
       "year": 2025,
       "source": "cfbd",
@@ -3583,116 +3714,490 @@
       "cfbdRecruitId": "121353"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Chris Steele",
-      "athleteId": "2027901",
-      "cfbdRecruitId": "122319"
+      "year": 2027,
+      "source": "247",
+      "name": "Maxwell Hiller",
+      "cleanedName": "maxwell hiller",
+      "player247Id": "46148811"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Kaiir Elam",
-      "athleteId": "4567399",
-      "cfbdRecruitId": "122325"
+      "year": 2027,
+      "source": "247",
+      "name": "Kennedee Jackson",
+      "cleanedName": "kennedee jackson",
+      "player247Id": "46163810"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Khris Bogle",
-      "athleteId": "4567417",
-      "cfbdRecruitId": "122348"
+      "year": 2027,
+      "source": "247",
+      "name": "Elias Pearl",
+      "cleanedName": "elias pearl",
+      "player247Id": "46159350"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Ty'Ron Hopper",
-      "athleteId": "4567406",
-      "cfbdRecruitId": "122365"
+      "year": 2027,
+      "source": "247",
+      "name": "Cahron Wheeler",
+      "cleanedName": "cahron wheeler",
+      "player247Id": "46163134"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Keon Zipperer",
-      "athleteId": "4567402",
-      "cfbdRecruitId": "122382"
+      "year": 2027,
+      "source": "247",
+      "name": "Peyton Miller",
+      "cleanedName": "peyton miller",
+      "player247Id": "46144299"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Mohamoud Diabate",
-      "athleteId": "4567403",
-      "cfbdRecruitId": "122386"
+      "year": 2027,
+      "source": "247",
+      "name": "Elijah Hutcheson",
+      "cleanedName": "elijah hutcheson",
+      "player247Id": "46149785"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Diwun Black",
-      "athleteId": null,
-      "cfbdRecruitId": "122417"
+      "year": 2027,
+      "source": "247",
+      "name": "Tramond Collins",
+      "cleanedName": "tramond collins",
+      "player247Id": "46156157"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Deyavie Hammond",
-      "athleteId": null,
-      "cfbdRecruitId": "122528"
+      "year": 2027,
+      "source": "247",
+      "name": "Davin Davidson",
+      "cleanedName": "davin davidson",
+      "player247Id": "46151041"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Nay'Quan Wright",
-      "athleteId": "4567400",
-      "cfbdRecruitId": "122529"
+      "year": 2027,
+      "source": "247",
+      "name": "Amare Nugent",
+      "cleanedName": "amare nugent",
+      "player247Id": "46154654"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Lloyd Summerall",
-      "athleteId": "4711649",
-      "cfbdRecruitId": "122530"
+      "year": 2027,
+      "source": "247",
+      "name": "Andrew Beard",
+      "cleanedName": "andrew beard",
+      "player247Id": "46142377"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Jaelin Humphries",
-      "athleteId": "4567411",
-      "cfbdRecruitId": "122554"
+      "year": 2027,
+      "source": "247",
+      "name": "Ja'Bios Smith",
+      "cleanedName": "ja bios smith",
+      "player247Id": "46150625"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Michael Tarquin",
-      "athleteId": "4567412",
-      "cfbdRecruitId": "122567"
+      "year": 2027,
+      "source": "247",
+      "name": "Stive-Bentley Keumajou Yondui",
+      "cleanedName": "stive bentley keumajou yondui",
+      "player247Id": "46164398"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Jaydon Hill",
-      "athleteId": "4567404",
-      "cfbdRecruitId": "122591"
+      "year": 2027,
+      "source": "247",
+      "name": "Tommy Douglas",
+      "cleanedName": "tommy douglas",
+      "player247Id": "46161374"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Jalon Jones",
-      "athleteId": null,
-      "cfbdRecruitId": "122598"
+      "year": 2027,
+      "source": "247",
+      "name": "Jackson Ballinger",
+      "cleanedName": "jackson ballinger",
+      "player247Id": "46150696"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "William Harrod",
-      "athleteId": "4567413",
-      "cfbdRecruitId": "122693"
+      "year": 2027,
+      "source": "247",
+      "name": "Kamarion Johnson",
+      "cleanedName": "kamarion johnson",
+      "player247Id": "46165002"
     },
     {
-      "year": 2019,
-      "source": "cfbd",
-      "name": "Justin Pelic",
-      "athleteId": "4430299",
-      "cfbdRecruitId": "125107"
+      "year": 2027,
+      "source": "247",
+      "name": "Aamaury Fountain",
+      "cleanedName": "aamaury fountain",
+      "player247Id": "46161679"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Zahmar Tookes",
+      "cleanedName": "zahmar tookes",
+      "player247Id": "46150317"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Kailib Dillard",
+      "cleanedName": "kailib dillard",
+      "player247Id": "46159825"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Anthony Jennings",
+      "cleanedName": "anthony jennings",
+      "player247Id": "46155223"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "De'Voun Kendrick",
+      "cleanedName": "de voun kendrick",
+      "player247Id": "46158317"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Ellis McGaskin",
+      "cleanedName": "ellis mcgaskin",
+      "player247Id": "46144257"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Cain Van Norden",
+      "cleanedName": "cain van norden",
+      "player247Id": "46161949"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Jaydee Lane",
+      "cleanedName": "jaydee lane",
+      "player247Id": "46159391"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Davian Groce",
+      "cleanedName": "davian groce",
+      "player247Id": "46137967"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "CJ Bronaugh",
+      "cleanedName": "cj bronaugh",
+      "player247Id": "46148691"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Justin Williams",
+      "cleanedName": "justin williams",
+      "player247Id": "46150297"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "KJ Ford",
+      "cleanedName": "kj ford",
+      "player247Id": "46138582"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Dylan Purter",
+      "cleanedName": "dylan purter",
+      "player247Id": "46150613"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Kendall Guervil",
+      "cleanedName": "kendall guervil",
+      "player247Id": "46142750"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Marquez Daniel",
+      "cleanedName": "marquez daniel",
+      "player247Id": "46141659"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Will Griffin",
+      "cleanedName": "will griffin",
+      "player247Id": "46134943"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Heze Kent",
+      "cleanedName": "heze kent",
+      "player247Id": "46136920"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Malik Morris",
+      "cleanedName": "malik morris",
+      "player247Id": "46144579"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "JaReylan McCoy",
+      "cleanedName": "jareylan mccoy",
+      "player247Id": "46116464"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Tyler Chukuyem",
+      "cleanedName": "tyler chukuyem",
+      "player247Id": "46150193"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Chancellor Campbell",
+      "cleanedName": "chancellor campbell",
+      "player247Id": "46149337"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "G'Nivre Carr",
+      "cleanedName": "g nivre carr",
+      "player247Id": "46141665"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "CJ Hester",
+      "cleanedName": "cj hester",
+      "player247Id": "46147307"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Kaiden Hall",
+      "cleanedName": "kaiden hall",
+      "player247Id": "46142326"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Desmond Green",
+      "cleanedName": "desmond green",
+      "player247Id": "46142640"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Javarii Luckas",
+      "cleanedName": "javarii luckas",
+      "player247Id": "46150320"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Elijah Owens",
+      "cleanedName": "elijah owens",
+      "player247Id": "46162732"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Ace Ciongoli",
+      "cleanedName": "ace ciongoli",
+      "player247Id": "46155852",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Jordy Lowery",
+      "cleanedName": "jordy lowery",
+      "player247Id": "46113995",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Evan Chieca",
+      "cleanedName": "evan chieca",
+      "player247Id": "46163478",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Mason Clinton",
+      "cleanedName": "mason clinton",
+      "player247Id": "46152590",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Jaylen Lloyd",
+      "cleanedName": "jaylen lloyd",
+      "player247Id": "46133699",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Hunter Solwold",
+      "cleanedName": "hunter solwold",
+      "player247Id": "46147456",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Kanye Clark",
+      "cleanedName": "kanye clark",
+      "player247Id": "46127828",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "TJ Bullard",
+      "cleanedName": "tj bullard",
+      "player247Id": "46084738",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Luke Harpring",
+      "cleanedName": "luke harpring",
+      "player247Id": "46142088",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Eric Singleton Jr.",
+      "cleanedName": "eric singleton",
+      "player247Id": "46134398",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Emeka Ugorji",
+      "cleanedName": "emeka ugorji",
+      "player247Id": "46146151",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "London Montgomery",
+      "cleanedName": "london montgomery",
+      "player247Id": "46128292",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Cam Dooley",
+      "cleanedName": "cam dooley",
+      "player247Id": "46140200",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Micah Mays Jr.",
+      "cleanedName": "micah mays",
+      "player247Id": "46114159",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Eagan Boyer",
+      "cleanedName": "eagan boyer",
+      "player247Id": "46132249",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Emmanuel Oyebadejo",
+      "cleanedName": "emmanuel oyebadejo",
+      "player247Id": "46146172",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Evan Pryor",
+      "cleanedName": "evan pryor",
+      "player247Id": "46052299",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Patrick Durkin",
+      "cleanedName": "patrick durkin",
+      "player247Id": "46163519",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Aaron Philo",
+      "cleanedName": "aaron philo",
+      "player247Id": "46131230",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "TJ Shanahan Jr.",
+      "cleanedName": "tj shanahan",
+      "player247Id": "46101254",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "DK Kalu",
+      "cleanedName": "dk kalu",
+      "player247Id": "46097277",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Bailey Stockton",
+      "cleanedName": "bailey stockton",
+      "player247Id": "46133386",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Lacota Dippre",
+      "cleanedName": "lacota dippre",
+      "player247Id": "46132185",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "DJ Coleman",
+      "cleanedName": "dj coleman",
+      "player247Id": "46117053",
+      "isTransfer": true
     },
     {
       "year": 2025,
@@ -4424,196 +4929,6 @@
       "name": "Brenton Cox",
       "cleanedName": "brenton cox",
       "player247Id": "92547",
-      "isTransfer": true
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Khris Bogle",
-      "cleanedName": "khris bogle",
-      "player247Id": "46038472"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Chris Steele",
-      "cleanedName": "chris steele",
-      "player247Id": "90375"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Kaiir Elam",
-      "cleanedName": "kaiir elam",
-      "player247Id": "90484"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Ty'Ron Hopper",
-      "cleanedName": "ty ron hopper",
-      "player247Id": "46039146"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Mohamoud Diabate",
-      "cleanedName": "mohamoud diabate",
-      "player247Id": "46039650"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Keon Zipperer",
-      "cleanedName": "keon zipperer",
-      "player247Id": "45573302"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Jaydon Hill",
-      "cleanedName": "jaydon hill",
-      "player247Id": "46042612"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Arjei Henderson",
-      "cleanedName": "arjei henderson",
-      "player247Id": "46035324"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Nay'Quan Wright",
-      "cleanedName": "nay quan wright",
-      "player247Id": "82027"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Riley Simonds",
-      "cleanedName": "riley simonds",
-      "player247Id": "46039499"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Jaelin Humphries",
-      "cleanedName": "jaelin humphries",
-      "player247Id": "46040471"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Jalon Jones",
-      "cleanedName": "jalon jones",
-      "player247Id": "91994"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Chester Kimbrough",
-      "cleanedName": "chester kimbrough",
-      "player247Id": "86455"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Lloyd Summerall",
-      "cleanedName": "lloyd summerall",
-      "player247Id": "46050017"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Dionte Marks",
-      "cleanedName": "dionte marks",
-      "player247Id": "46051777"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Ja'markis Weston",
-      "cleanedName": "ja markis weston",
-      "player247Id": "46041787"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Kingsley Eguakun",
-      "cleanedName": "kingsley eguakun",
-      "player247Id": "46039614"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Michael Tarquin",
-      "cleanedName": "michael tarquin",
-      "player247Id": "91104"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Jesiah Pierre",
-      "cleanedName": "jesiah pierre",
-      "player247Id": "94345"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "William Harrod",
-      "cleanedName": "william harrod",
-      "player247Id": "46041295"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Trent Whittemore",
-      "cleanedName": "trent whittemore",
-      "player247Id": "46042441"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Ethan White",
-      "cleanedName": "ethan white",
-      "player247Id": "46043164"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Zack Sessa",
-      "cleanedName": "zack sessa",
-      "player247Id": "94033"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Diwun Black",
-      "cleanedName": "diwun black",
-      "player247Id": "46038752"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Wardrick Wilson",
-      "cleanedName": "wardrick wilson",
-      "player247Id": "46039986"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Deyavie Hammond",
-      "cleanedName": "deyavie hammond",
-      "player247Id": "45573301"
-    },
-    {
-      "year": 2019,
-      "source": "247",
-      "name": "Jonathan Greenard",
-      "cleanedName": "jonathan greenard",
-      "player247Id": "56955",
       "isTransfer": true
     }
   ],
