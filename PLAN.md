@@ -51,8 +51,17 @@ Florida + Miami enriched + hardened + deployed:
 - **UI:** NR honest; rating breakdown + usage/PPA + hometown + per-game stats in modal; stub/fuzzy/
   no-production badges; team coverage banner. 171 tests; tsc strict clean.
 
-Deferred next: extend enrichment to the 31 non-pilot teams (still old-shape, honest-partial); tune
-`RATING_WEIGHTS`; visuals (headshots/hometown maps); DOM-based scrapers.
+## Hardening pass H1–H3 (2026-06-13, COMPLETE, live on main)
+- **H1 surfaced already-captured data:** team returning-production banner (context.json), full usage
+  situational splits + complete PPA (avg+total) in the modal, per-game log table (perGame).
+- **H2 integrity:** derived `isRedshirt` from roster tenure (27 FL / 24 MIA; was always-false dead
+  field) — re-collected pilots; rating tune — class-scaled "no playing time" penalty on g=0
+  recruiting-projections so proven starters top the board (DJ Lagway / Mohamed Toure #1).
+- **H3 verify:** + projection-penalty & inferRedshirt unit tests; jsdom modal render test covers the
+  new sections (headless pixel-check blocked by sandbox chromium — eyeball recommended). 181 tests.
+
+Deferred (H4 + later): extend enrichment to the 31 non-pilot teams; injury/NIL/measurables sources;
+visuals (headshots/hometown maps via captured lat/lon); DOM-based scrapers.
 
 Live: https://mibarnes.github.io/Roster_Builder/ (publishes from `main`).
 
