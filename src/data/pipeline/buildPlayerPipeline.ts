@@ -12,12 +12,14 @@
 import type { ClassYear, MatchMethod } from '../schema/common.ts'
 import type { DatasetBySource } from '../schema/dataset.ts'
 import type { PlayerAdvanced } from '../schema/advanced.ts'
+import type { PerGameLog } from '../schema/production.ts'
 import type {
   DepthChartEntry,
   MatchedBy,
   PipelineMetrics,
   PipelinePlayer,
   PlayerPipeline,
+  ReturningProductionSummary,
   SideMetrics,
   StarterEntry,
   TeamMetrics,
@@ -222,6 +224,31 @@ const buildDepthChartView = (
   })),
 })
 
+/**
+ * Build the team returning-production strip from the context source. Returns
+ * null when no context/returningProduction row is present (non-pilot teams).
+ * Tolerates the `percentReceivingPpa` vs `percentReceivingPPA` casing variants.
+ */
+const buildReturningProduction = (
+  datasetBySource: DatasetBySource,
+): ReturningProductionSummary | null => {
+  const rp = datasetBySource?.context?.returningProduction
+  if (!rp) return null
+  const num = (value: unknown): number | null =>
+    typeof value === 'number' ? value : null
+  const r = rp as Record<string, unknown>
+  return {
+    percentPPA: num(r.percentPPA),
+    percentPassingPPA: num(r.percentPassingPPA),
+    percentReceivingPPA: num(r.percentReceivingPPA ?? r.percentReceivingPpa),
+    percentRushingPPA: num(r.percentRushingPPA),
+    usage: num(r.usage),
+    passingUsage: num(r.passingUsage),
+    receivingUsage: num(r.receivingUsage),
+    rushingUsage: num(r.rushingUsage),
+  }
+}
+
 export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPipeline => {
   const rosterPlayers = datasetBySource?.roster?.players ?? []
   const recruitingLookup = buildSourceLookup(
@@ -255,6 +282,7 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
     classYear: ClassYear
     positionGroup: string
     stats: Record<string, number>
+    perGame: PerGameLog[] | null
     games: number | null
     usageOverall: number | null
     ppaAll: number | null
@@ -288,6 +316,8 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
       : {}
     const games =
       typeof production.games === 'number' ? (production.games as number) : null
+    const rawPerGame = production.perGame as PerGameLog[] | undefined
+    const perGame = Array.isArray(rawPerGame) && rawPerGame.length ? rawPerGame : null
 
     const usageOverall = advanced?.usage?.overall ?? null
     const ppaAll = advanced?.ppa?.averagePPA?.all ?? null
@@ -303,6 +333,7 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
       classYear: canonicalizeClassYear(rosterPlayer.classYear ?? null),
       positionGroup: canonicalizePositionGroup(rosterPlayer.position),
       stats,
+      perGame,
       games,
       usageOverall,
       ppaAll,
@@ -396,10 +427,13 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
         season: datasetBySource?.production?.season ?? null,
         games: d.games,
         stats: d.stats,
+        perGame: d.perGame,
       },
       advanced: {
         usageOverall: d.usageOverall,
         ppaAll: d.ppaAll,
+        usage: d.advanced?.usage ?? null,
+        ppa: d.advanced?.ppa ?? null,
       },
       hometown: { city: homeCity, state: homeState },
       isStub: d.isStub,
@@ -447,5 +481,6 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
     metrics: buildStarterMetrics(starters, playerMap),
     depthChart: buildDepthChartView(datasetBySource?.roster?.depthChart, playerMap),
     coverage,
+    returningProduction: buildReturningProduction(datasetBySource),
   }
 }

@@ -119,6 +119,29 @@ export const parseClassYear = (value: unknown): { classYear: string | null; isRe
   return { classYear, isRedshirt }
 }
 
+const CLASS_NUM: Record<string, number> = { FR: 1, SO: 2, JR: 3, SR: 4 }
+
+/**
+ * Infer redshirt status from roster TENURE, since CFBD's roster `year` (1–4)
+ * carries no redshirt flag. A non-transfer whose years-on-team (season − first
+ * recruiting year) meet or exceed their eligibility class has burned a year:
+ * e.g. a 2025 SR (class 4) first recruited in 2021 → 2025−2021 = 4 ≥ 4 → RS.
+ * Transfers are excluded (their prior-school years make tenure unreliable);
+ * players with no recruiting year can't be derived → false.
+ */
+export const inferRedshirt = (
+  classYear: string | null,
+  earliestRecruitYear: number | null,
+  season: number,
+  isTransfer: boolean,
+): boolean => {
+  if (isTransfer || !classYear || earliestRecruitYear == null) return false
+  const classNum = CLASS_NUM[classYear]
+  if (!classNum) return false
+  const yearsOnTeam = season - earliestRecruitYear
+  return yearsOnTeam >= classNum
+}
+
 /**
  * Derive eligibility-remaining (years left including the current season) from a
  * CFBD numeric class `year` (1=FR..4=SR, 5/6=super-senior). Returns null when

@@ -19,7 +19,7 @@ type DepthMode = 'starters' | 'second-team' | 'all'
 
 const EMPTY_OFFENSE: Formation = { LT: [], LG: [], C: [], RG: [], RT: [], WRX: [], SLOT: [], QB: [], RB: [], TE: [], WRZ: [] }
 const EMPTY_DEFENSE: Formation = { LDE: [], NT: [], DT: [], RDE: [], LCB: [], SS: [], WLB: [], MLB: [], NB: [], FS: [], RCB: [] }
-const EMPTY_ROSTER: UIDataset = { offensiveStarters: EMPTY_OFFENSE, defensiveStarters: EMPTY_DEFENSE, allPlayers: [], coverage: EMPTY_COVERAGE }
+const EMPTY_ROSTER: UIDataset = { offensiveStarters: EMPTY_OFFENSE, defensiveStarters: EMPTY_DEFENSE, allPlayers: [], coverage: EMPTY_COVERAGE, returningProduction: null }
 const EMPTY_METRICS: PipelineMetrics = {
   offense: { avgStarterComposite: 0, starterCount: 0 },
   defense: { avgStarterComposite: 0, starterCount: 0 },
@@ -273,6 +273,37 @@ export default function App() {
                 <span className="text-gray-500">{c.stubCount} depth-only</span>
               </>
             )}
+          </div>
+        )
+      })()}
+
+      {/* ── Team returning-production strip (CFBD /player/returning) ── */}
+      {!isLoading && !loadError && rosterData.returningProduction && (() => {
+        const rp = rosterData.returningProduction!
+        const pct = (n: number | null) => (n != null ? `${Math.round(n * 100)}%` : null)
+        const parts: Array<[string, string | null]> = [
+          ['overall', pct(rp.percentPPA)],
+          ['passing', pct(rp.percentPassingPPA)],
+          ['receiving', pct(rp.percentReceivingPPA)],
+          ['rushing', pct(rp.percentRushingPPA)],
+        ]
+        const shown = parts.filter(([, v]) => v != null)
+        if (shown.length === 0) return null
+        return (
+          <div
+            className="flex-shrink-0 px-4 py-1.5 text-[11px] font-semibold text-gray-400 bg-black/40 border-b border-surface-border flex items-center gap-3 flex-wrap"
+            aria-label="Team returning production"
+            title="Share of last season's predicted-points-added (PPA) production returning this year"
+          >
+            <span className="text-white font-bold uppercase tracking-wide">Returning production</span>
+            {shown.map(([label, value], i) => (
+              <span key={label} className="flex items-center gap-3">
+                {i > 0 && <span>·</span>}
+                <span>
+                  <span className="text-white font-bold">{value}</span> {label}
+                </span>
+              </span>
+            ))}
           </div>
         )
       })()}

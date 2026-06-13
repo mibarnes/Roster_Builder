@@ -6,7 +6,11 @@ import {
   getOvrDisplayColor,
   RATING_METHOD_LABEL,
 } from '../utils/playerHelpers.ts'
+import { STAT_ABBREVIATIONS } from '../data/mapPipelineToUI.ts'
 import type { UIPlayer } from '../data/schema/ui.ts'
+
+/** Per-game column header label — reuse the season abbreviation map, else upper-case. */
+const perGameColLabel = (key: string): string => STAT_ABBREVIATIONS[key] ?? key.toUpperCase()
 
 const FOCUSABLE_SELECTOR = [
   'a[href]',
@@ -126,6 +130,54 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
     ? [player.hometown.city, player.hometown.state].filter(Boolean).join(', ')
     : null
   const usagePct = player.usageOverall != null ? Math.round(player.usageOverall * 100) : null
+
+  // ── H1.2: full usage / PPA detail (only present for players with an advanced row) ──
+  const usage = player.usage
+  const ppaAvg = player.ppa?.averagePPA ?? null
+  const ppaTotal = player.ppa?.totalPPA ?? null
+  const fmtPct = (n: number | null | undefined): string | null =>
+    n != null ? `${Math.round(n * 100)}%` : null
+  const fmtPpa = (n: number | null | undefined): string | null =>
+    n != null ? n.toFixed(2) : null
+  const usageSplits: Array<[string, string | null]> = (
+    usage
+      ? ([
+          ['Pass', fmtPct(usage.pass)],
+          ['Rush', fmtPct(usage.rush)],
+          ['1st Dn', fmtPct(usage.firstDown)],
+          ['2nd Dn', fmtPct(usage.secondDown)],
+          ['3rd Dn', fmtPct(usage.thirdDown)],
+          ['Std Dn', fmtPct(usage.standardDowns)],
+          ['Pass Dn', fmtPct(usage.passingDowns)],
+        ] as Array<[string, string | null]>)
+      : []
+  ).filter(([, v]) => v != null)
+  const ppaSplits: Array<[string, string | null, string | null]> = (
+    ppaAvg || ppaTotal
+      ? ([
+          ['All', fmtPpa(ppaAvg?.all), fmtPpa(ppaTotal?.all)],
+          ['Pass', fmtPpa(ppaAvg?.pass), fmtPpa(ppaTotal?.pass)],
+          ['Rush', fmtPpa(ppaAvg?.rush), fmtPpa(ppaTotal?.rush)],
+        ] as Array<[string, string | null, string | null]>)
+      : []
+  ).filter(([, avg, total]) => avg != null || total != null)
+  const hasUsageDetail = usageSplits.length > 0
+  const hasPpaDetail = ppaSplits.length > 0
+
+  // ── H1.3: per-game log table. Columns = the union of stat keys this player
+  // actually recorded, in first-seen order; one row per game (ordered as stored). ──
+  const perGame = player.perGame ?? null
+  const perGameColumns: string[] = perGame
+    ? (() => {
+        const seen: string[] = []
+        for (const g of perGame) {
+          for (const k of Object.keys(g.stats)) if (!seen.includes(k)) seen.push(k)
+        }
+        return seen
+      })()
+    : []
+  const hasPerGame = perGame != null && perGame.length > 0 && perGameColumns.length > 0
+  const ppaTone = (v: number) => (v >= 0 ? 'text-emerald-400' : 'text-red-400')
 
   const classYear = player.year?.replace('RS ', '') ?? ''
   const isRS = player.year?.includes('RS') ?? false
@@ -247,6 +299,47 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
                   </div>
                 )}
               </div>
+
+              {/* ── H1.2: usage by situation ── */}
+              {hasUsageDetail && (
+                <div className="mt-3">
+                  <div className="text-[9px] text-gray-500 uppercase font-bold mb-1.5 tracking-wide">
+                    Usage by situation
+                  </div>
+                  <div className="grid grid-cols-4 gap-1.5">
+                    {usageSplits.map(([label, value]) => (
+                      <div key={label} className="text-center bg-black rounded-lg py-1.5">
+                        <div className="text-sm font-black text-white">{value}</div>
+                        <div className="text-[8px] text-gray-400 uppercase font-semibold mt-0.5">{label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── H1.2: PPA splits (avg + total, all/pass/rush) ── */}
+              {hasPpaDetail && (
+                <div className="mt-3">
+                  <div className="grid grid-cols-3 gap-1.5 text-[8px] text-gray-500 uppercase font-bold mb-1 tracking-wide">
+                    <span>PPA</span>
+                    <span className="text-right">Avg</span>
+                    <span className="text-right">Total</span>
+                  </div>
+                  <div className="space-y-1">
+                    {ppaSplits.map(([label, avg, total]) => (
+                      <div key={label} className="grid grid-cols-3 gap-1.5 items-center bg-black rounded-lg px-2 py-1.5">
+                        <span className="text-[10px] text-gray-300 font-semibold">{label}</span>
+                        <span className={`text-right text-[11px] font-black ${avg != null ? ppaTone(Number(avg)) : 'text-gray-600'}`}>
+                          {avg ?? '—'}
+                        </span>
+                        <span className={`text-right text-[11px] font-black ${total != null ? ppaTone(Number(total)) : 'text-gray-600'}`}>
+                          {total ?? '—'}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -347,6 +440,45 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
           {!hasStats && (
             <div className="bg-gray-900/40 rounded-xl px-3 py-4 text-center text-[11px] text-gray-600 font-medium">
               No 2025 season stats recorded
+            </div>
+          )}
+
+          {/* ── H1.3: per-game log table ── */}
+          {hasPerGame && (
+            <div className="bg-gray-900 rounded-xl p-3">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[11px] text-gray-400 uppercase font-semibold">Game Log</span>
+                <span className="text-[10px] text-gray-500">{perGame!.length} games</span>
+              </div>
+              <div className="max-h-48 overflow-auto rounded-lg border border-surface-border">
+                <table className="w-full text-[10px] border-collapse">
+                  <thead className="sticky top-0 z-10 bg-surface">
+                    <tr>
+                      <th className="text-left font-bold text-gray-400 uppercase px-2 py-1.5 whitespace-nowrap">Gm</th>
+                      {perGameColumns.map((col) => (
+                        <th key={col} className="text-right font-bold text-gray-400 uppercase px-2 py-1.5 whitespace-nowrap" title={col}>
+                          {perGameColLabel(col)}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {perGame!.map((g, i) => (
+                      <tr key={String(g.gameId)} className={i % 2 === 0 ? 'bg-black/40' : 'bg-black/20'}>
+                        <td className="text-left text-gray-400 font-semibold px-2 py-1 whitespace-nowrap">{i + 1}</td>
+                        {perGameColumns.map((col) => {
+                          const v = g.stats[col]
+                          return (
+                            <td key={col} className="text-right text-white font-semibold px-2 py-1 whitespace-nowrap">
+                              {v != null ? v : '·'}
+                            </td>
+                          )
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           )}
         </div>

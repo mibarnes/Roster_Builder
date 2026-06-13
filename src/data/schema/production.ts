@@ -15,6 +15,7 @@ export const PerGameLogSchema = z.object({
   gameId: z.union([z.string(), z.number()]),
   stats: z.record(z.string(), z.number()),
 })
+export type PerGameLog = z.infer<typeof PerGameLogSchema>
 
 export const ProductionEntrySchema = z
   .object({

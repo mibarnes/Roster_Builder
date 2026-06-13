@@ -46,7 +46,7 @@ const SLOT_POS_OVERRIDE: Record<string, string> = {
   MLB: 'LB',
 }
 
-const STAT_ABBREVIATIONS: Record<string, string> = {
+export const STAT_ABBREVIATIONS: Record<string, string> = {
   // Legacy flattened keys (kept for backward-compat / mock data).
   passingYards: 'PAS',
   passingTD: 'PTD',
@@ -136,6 +136,9 @@ const toUiPlayer = (player: PipelinePlayer, id: number): UIPlayer => ({
   games: player.production.games,
   usageOverall: player.advanced.usageOverall,
   ppaAll: player.advanced.ppaAll,
+  usage: player.advanced.usage,
+  ppa: player.advanced.ppa,
+  perGame: player.production.perGame,
   hometown:
     player.hometown.city || player.hometown.state
       ? { city: player.hometown.city, state: player.hometown.state }
@@ -222,5 +225,6 @@ export const mapPipelineToUI = (pipeline: PlayerPipeline): UIDataset => {
     defensiveStarters,
     allPlayers,
     coverage: pipeline.coverage,
+    returningProduction: pipeline.returningProduction ?? null,
   }
 }

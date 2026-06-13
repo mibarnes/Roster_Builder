@@ -6,8 +6,10 @@
  */
 
 import type { MatchMethod } from './common.ts'
-import type { PipelineCoverage } from './pipeline.ts'
+import type { PipelineCoverage, ReturningProductionSummary } from './pipeline.ts'
 import type { RatingMethod } from '../rating/overall.ts'
+import type { Usage, Ppa } from './advanced.ts'
+import type { PerGameLog } from './production.ts'
 
 /** A player's UI side. allPlayers may include 'ST' (special teams / neither). */
 export type UISide = 'OFF' | 'DEF' | 'ST'
@@ -70,6 +72,12 @@ export interface UIPlayer {
   usageOverall: number | null
   /** Per-play efficiency (ppa.averagePPA.all) — null when no advanced row. */
   ppaAll: number | null
+  /** Full usage splits (overall/pass/rush + down situations); null when no advanced row. */
+  usage: Usage | null
+  /** Full PPA (averagePPA + totalPPA, each with all/pass/rush/down splits); null when no advanced row. */
+  ppa: Ppa | null
+  /** Per-game stat log for the modal game-by-game table; null when absent. */
+  perGame: PerGameLog[] | null
   /** Hometown for the modal; null when neither city nor state is known. */
   hometown: { city: string | null; state: string | null } | null
   /** How recruiting was matched (name-fuzzy is flagged in the UI). */
@@ -90,4 +98,6 @@ export interface UIDataset {
   allPlayers: UIPlayer[]
   /** Team-level data coverage (threaded from pipeline.coverage) for the banner. */
   coverage: PipelineCoverage
+  /** Team returning-production strip; null when the team ships no context. */
+  returningProduction: ReturningProductionSummary | null
 }

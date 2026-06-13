@@ -12,7 +12,7 @@ import {
 } from '../../scripts/collect/cfbd.ts'
 import { buildAdvancedSource, buildContextSource } from '../../scripts/collect/advanced.ts'
 import { cfbdId, id247, ourladsStubId, reconcile } from '../../scripts/collect/playerId.ts'
-import { eligibilityFromYear, parseClassYear } from '../../scripts/collect/normalize.ts'
+import { eligibilityFromYear, inferRedshirt, parseClassYear } from '../../scripts/collect/normalize.ts'
 import {
   AdvancedSourceSchema,
   ContextSourceSchema,
@@ -53,6 +53,19 @@ describe('redshirt-aware class year + eligibility', () => {
     expect(eligibilityFromYear(4)).toBe(1)
     expect(eligibilityFromYear(5)).toBe(1)
     expect(eligibilityFromYear(null)).toBeNull()
+  })
+
+  it('infers redshirt from roster tenure (season − first recruit year ≥ class)', () => {
+    // 2025 SR recruited 2021 → 4 years ≥ 4 → redshirt; recruited 2022 → 3 < 4 → no.
+    expect(inferRedshirt('SR', 2021, 2025, false)).toBe(true)
+    expect(inferRedshirt('SR', 2022, 2025, false)).toBe(false)
+    // 2025 JR recruited 2022 → 3 ≥ 3 → redshirt.
+    expect(inferRedshirt('JR', 2022, 2025, false)).toBe(true)
+    // True FR recruited 2025 → 0 < 1 → no.
+    expect(inferRedshirt('FR', 2025, 2025, false)).toBe(false)
+    // Transfers + missing data are never inferred (tenure unreliable).
+    expect(inferRedshirt('SR', 2021, 2025, true)).toBe(false)
+    expect(inferRedshirt('SR', null, 2025, false)).toBe(false)
   })
 })
 

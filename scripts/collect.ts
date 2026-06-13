@@ -52,7 +52,7 @@ import {
 import { buildAdvancedSource, buildContextSource } from './collect/advanced.ts'
 import { buildDepthChartFromOurlads, type ExtraResolver } from './collect/parsers/ourlads.ts'
 import { buildRecruitingSource, type MatchMethod } from './collect/recruiting.ts'
-import { buildRosterNameIndex, resolveByStdName, stdName } from './collect/normalize.ts'
+import { buildRosterNameIndex, inferRedshirt, resolveByStdName, stdName } from './collect/normalize.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
@@ -337,6 +337,17 @@ async function collectTeam(team: Team): Promise<TeamResult> {
       partial: true,
       matchSummary: { 'cfbd-id': 0, '247-id': 0, 'name-fuzzy': 0, none: eligiblePlayers.length } as Record<MatchMethod, number>,
     }
+  }
+
+  // ── Derive redshirt from recruiting tenure (CFBD roster carries no RS flag) ──
+  // Mutates players in place; `roster.players` is the same array reference.
+  const earliestYearByPid = new Map<string, number>()
+  for (const prof of recruiting.playerRecruitProfiles) {
+    const yrs = (prof as { years?: number[] }).years
+    if (yrs && yrs.length > 0) earliestYearByPid.set(prof.playerId, Math.min(...yrs))
+  }
+  for (const p of playersWithStubs) {
+    p.isRedshirt = inferRedshirt(p.classYear ?? null, earliestYearByPid.get(p.playerId) ?? null, SEASON, Boolean(p.isTransfer))
   }
 
   // ── Validate against schemas BEFORE writing (fail loud, no garbage) ─────────

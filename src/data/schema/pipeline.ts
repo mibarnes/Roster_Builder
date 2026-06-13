@@ -1,5 +1,7 @@
 import type { ClassYear, MatchMethod, Side } from './common.ts'
 import type { RatingMethod } from '../rating/overall.ts'
+import type { Usage, Ppa } from './advanced.ts'
+import type { PerGameLog } from './production.ts'
 
 /**
  * Types describing the REAL output of buildPlayerPipeline (ported faithfully
@@ -63,6 +65,8 @@ export interface PlayerProduction {
   games: number | null
   /** Nested season counting-stat line (production.stats). */
   stats: Record<string, number>
+  /** Optional per-game stat log (one entry per appearance); null when absent. */
+  perGame: PerGameLog[] | null
 }
 
 /** Advanced (CFBD usage/PPA) summary carried per player when available. */
@@ -71,6 +75,10 @@ export interface PlayerAdvancedSummary {
   usageOverall: number | null
   /** ppa.averagePPA.all (per-play efficiency) — null when no advanced row. */
   ppaAll: number | null
+  /** Full usage splits (overall/pass/rush + down situations); null when no row. */
+  usage: Usage | null
+  /** Full PPA (averagePPA + totalPPA, each with all/pass/rush/down splits); null when no row. */
+  ppa: Ppa | null
 }
 
 export interface PlayerHometown {
@@ -173,6 +181,24 @@ export const EMPTY_COVERAGE: PipelineCoverage = {
   unmatchedProductionIds: [],
 }
 
+/**
+ * Team-level returning-production summary (from context.json's
+ * returningProduction), threaded to the UI for a one-line banner. null for the
+ * non-pilot teams that ship no context source.
+ */
+export interface ReturningProductionSummary {
+  /** Share of last season's total PPA that returns (0–1). */
+  percentPPA: number | null
+  percentPassingPPA: number | null
+  percentReceivingPPA: number | null
+  percentRushingPPA: number | null
+  /** Share of returning usage (snaps) overall + by phase (0–1). */
+  usage: number | null
+  passingUsage: number | null
+  receivingUsage: number | null
+  rushingUsage: number | null
+}
+
 /** Full pipeline product consumed by mapPipelineToUI. */
 export interface PlayerPipeline {
   players: PipelinePlayer[]
@@ -180,4 +206,6 @@ export interface PlayerPipeline {
   depthChart: DepthChartView
   metrics: PipelineMetrics
   coverage: PipelineCoverage
+  /** Team returning-production strip; null when the team ships no context. */
+  returningProduction: ReturningProductionSummary | null
 }

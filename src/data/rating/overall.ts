@@ -16,6 +16,14 @@
 
 export const RATING_WEIGHTS = { recruiting: 0.45, production: 0.45, class: 0.1 } as const
 
+/**
+ * "No playing time" penalty applied to recruiting-projection players (zero
+ * production), scaled by class: a true freshman who hasn't played yet keeps the
+ * full projection; an upperclassman who never took a snap is a career backup and
+ * is pushed below proven starters.
+ */
+export const PROJECTION_CLASS_PENALTY: Record<string, number> = { FR: 0, SO: 4, JR: 9, SR: 14 }
+
 export type RatingMethod = 'blended' | 'recruiting-projection' | 'production-only' | 'nr'
 
 export interface RatingProductionInput {
@@ -193,9 +201,14 @@ export function computeTeamRatings(players: RatingInput[]): RatingResult[] {
       return { overall: clamp(overall, 40, 99), method: 'blended', components: { recruiting, production, class: cls }, weights: { ...W } }
     }
     if (recruiting != null) {
+      // No production at all → a "projection". A true FR who hasn't had a chance
+      // legitimately projects on recruiting alone; but an upperclassman who never
+      // took a snap is a career backup, not a star — penalize by class so a g=0
+      // recruit can't outrank proven starters. (Redshirt FR keep the FR grace.)
       const w = { recruiting: 0.82, production: 0, class: 0.18 }
-      const overall = Math.round(w.recruiting * recruiting + w.class * cls)
-      return { overall: clamp(overall, 40, 99), method: 'recruiting-projection', components: { recruiting, production: null, class: cls }, weights: w }
+      const penalty = PROJECTION_CLASS_PENALTY[p.classYear ?? 'FR'] ?? 0
+      const overall = clamp(Math.round(w.recruiting * recruiting + w.class * cls) - penalty, 40, 99)
+      return { overall, method: 'recruiting-projection', components: { recruiting, production: null, class: cls }, weights: w }
     }
     if (production != null) {
       const w = { recruiting: 0, production: 0.82, class: 0.18 }

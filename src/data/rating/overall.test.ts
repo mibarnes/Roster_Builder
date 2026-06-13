@@ -95,6 +95,30 @@ describe('computeTeamRatings', () => {
     expect(highWr.overall!).toBeGreaterThan(lowWr.overall!)
   })
 
+  it('applies the no-playing-time penalty to upperclass projections (g=0)', () => {
+    // Same recruiting group, all zero production → recruiting-projection. A SR who
+    // never played must rank below an identical FR (career backup vs unproven recruit).
+    const team: RatingInput[] = [
+      mk({ positionGroup: 'OL', sideBucket: 'OFF', classYear: 'FR', compositeRating: 0.92 }),
+      mk({ positionGroup: 'OL', sideBucket: 'OFF', classYear: 'SR', compositeRating: 0.92 }),
+      mk({ positionGroup: 'OL', sideBucket: 'OFF', classYear: 'SO', compositeRating: 0.92 }),
+    ]
+    const [fr, sr, so] = computeTeamRatings(team)
+    expect(fr!.method).toBe('recruiting-projection')
+    expect(sr!.method).toBe('recruiting-projection')
+    expect(fr!.overall!).toBeGreaterThan(sr!.overall!) // SR penalized
+    expect(fr!.overall!).toBeGreaterThanOrEqual(so!.overall!) // monotone by class
+  })
+
+  it('ranks a proven starter above a same-class zero-snap recruit', () => {
+    const team: RatingInput[] = [
+      mk({ positionGroup: 'WR', sideBucket: 'OFF', classYear: 'JR', compositeRating: 0.9, production: { games: 12, ppaAll: 0.4, usageOverall: 0.7, stats: { recYds: 1000, recTD: 9, rec: 70 } } }),
+      mk({ positionGroup: 'WR', sideBucket: 'OFF', classYear: 'JR', compositeRating: 0.9, production: null }), // never played
+    ]
+    const [starter, benchRecruit] = computeTeamRatings(team)
+    expect(starter!.overall!).toBeGreaterThan(benchRecruit!.overall!)
+  })
+
   it('produces a spread, not a flat constant, across a varied team', () => {
     const team: RatingInput[] = [
       mk({ positionGroup: 'QB', sideBucket: 'OFF', compositeRating: 0.95, production: { games: 12, ppaAll: 0.5, usageOverall: 0.9, stats: { passYds: 3000, passTD: 28 } } }),

@@ -28,18 +28,36 @@ const dataset = {
     sourceType: 'production',
     season: 2025,
     playerProduction: [
-      // Nested stats line (real CFBD shape) + games → exercises the production path.
-      { playerId: 'CFBD-1', name: 'Quint Back', games: 12, stats: { passYds: 3200, passTD: 30 } },
+      // Nested stats line (real CFBD shape) + games + perGame → production path.
+      {
+        playerId: 'CFBD-1',
+        name: 'Quint Back',
+        games: 12,
+        stats: { passYds: 3200, passTD: 30 },
+        perGame: [
+          { gameId: '111', stats: { passYds: 280, passTD: 3 } },
+          { gameId: '222', stats: { passYds: 310, passTD: 2 } },
+        ],
+      },
     ],
   },
   advanced: {
     sourceId: 'cfbd-adv-v1',
     sourceType: 'advanced',
     playerAdvanced: [
-      { playerId: 'CFBD-1', name: 'Quint Back', usage: { overall: 0.85 }, ppa: { averagePPA: { all: 0.45 } } },
+      {
+        playerId: 'CFBD-1',
+        name: 'Quint Back',
+        usage: { overall: 0.85, pass: 0.9, rush: 0.1, thirdDown: 0.8 },
+        ppa: { averagePPA: { all: 0.45, pass: 0.5 }, totalPPA: { all: 12.3, pass: 11.1 } },
+      },
     ],
   },
-  context: undefined,
+  context: {
+    sourceId: 'cfbd-context-v1',
+    sourceType: 'context',
+    returningProduction: { percentPPA: 0.55, percentPassingPPA: 0.73 },
+  },
   ratings: undefined,
 } as unknown as DatasetBySource
 
@@ -72,8 +90,30 @@ describe('mapPipelineToUI', () => {
     expect(qb.games).toBe(12)
     expect(qb.usageOverall).toBe(0.85)
     expect(qb.ppaAll).toBe(0.45)
+    // H1.2: full usage + PPA detail.
+    expect(qb.usage).not.toBeNull()
+    expect(qb.usage!.pass).toBe(0.9)
+    expect(qb.usage!.thirdDown).toBe(0.8)
+    expect(qb.ppa!.averagePPA!.pass).toBe(0.5)
+    expect(qb.ppa!.totalPPA!.all).toBe(12.3)
+    // H1.3: per-game log threaded.
+    expect(qb.perGame).not.toBeNull()
+    expect(qb.perGame!).toHaveLength(2)
+    expect(qb.perGame![0]!.stats.passYds).toBe(280)
     const cb = ui.allPlayers.find((p) => p.name === 'Corner Back')!
     expect(cb.side).toBe('DEF')
+    // CB has no advanced/perGame rows → all the detail fields are null.
+    expect(cb.usage).toBeNull()
+    expect(cb.ppa).toBeNull()
+    expect(cb.perGame).toBeNull()
+  })
+
+  it('H1.1: threads the team returning-production summary onto the UI dataset', () => {
+    expect(ui.returningProduction).not.toBeNull()
+    expect(ui.returningProduction!.percentPPA).toBe(0.55)
+    expect(ui.returningProduction!.percentPassingPPA).toBe(0.73)
+    // Absent splits stay null (honest), never fabricated.
+    expect(ui.returningProduction!.percentRushingPPA).toBeNull()
   })
 
   it('threads team coverage onto the UI dataset', () => {

@@ -39,6 +39,9 @@ const mk = (over: Partial<UIPlayer>): UIPlayer => ({
   games: null,
   usageOverall: null,
   ppaAll: null,
+  usage: null,
+  ppa: null,
+  perGame: null,
   hometown: null,
   recruitMatchMethod: null,
   isStub: false,
@@ -53,6 +56,7 @@ const dataset = (off: Record<string, UIPlayer[]>, def: Record<string, UIPlayer[]
   defensiveStarters: { ...emptyDef, ...def } as Formation,
   allPlayers: [],
   coverage: EMPTY_COVERAGE,
+  returningProduction: null,
 })
 
 describe('computeDepthGrade', () => {
