@@ -60,8 +60,33 @@ Florida + Miami enriched + hardened + deployed:
 - **H3 verify:** + projection-penalty & inferRedshirt unit tests; jsdom modal render test covers the
   new sections (headless pixel-check blocked by sandbox chromium — eyeball recommended). 181 tests.
 
-Deferred (H4 + later): extend enrichment to the 31 non-pilot teams; injury/NIL/measurables sources;
-visuals (headshots/hometown maps via captured lat/lon); DOM-based scrapers.
+## Pilot deepening — full 2026 roster + golden-record reconciliation (2026-06-13, COMPLETE, live)
+Florida + Miami rebuilt as multi-source golden records (deduped + fact-checked):
+- **Sources:** ESPN roster API = 2026 current-roster **spine** (ids/bio/class/status/**headshots**;
+  ESPN id == CFBD athleteId → direct join); **official sites** overlay HS/previous-school/hometown
+  (FL Nuxt, MIA Presto SPA scrape); CFBD = 2025 production/usage/ppa + 247-composite recruiting;
+  OurLads depth; On3/Rivals best-effort (degraded/blocked). Vintage = **2026 roster + 2025 production**.
+- **Reconciliation engine** (`scripts/collect/reconcile/`): per-source id crosswalk → field-level
+  **golden merge** (documented precedence + per-field provenance/confidence + **conflict/fact-check
+  flags**) → coverage report. **Every spine player → a record (100%)**; walk-ons/new-2026/unrated
+  flagged honestly. Storage: `player-master.json` + `sources/*.json` per team.
+- **Numbers:** FL 130 / MIA 115 players; rated 68/69; **transfers rated 15/17** (247 overlay, was
+  1/3); special-teams included; headshots 96/98; HS 54/66; position conflicts 6/4 (fixed full-word→code).
+- **UI:** headshots, HS/previous-school/hometown, transfer/walk-on/new-2026 chips, conflict indicator,
+  2025-labeled production, extended coverage banner. Pipeline consumes the golden master (31 legacy
+  teams unchanged). **248 tests**; tsc strict; deployed.
+
+### Known residual gaps (honest, documented)
+- **2026 HS signing class not yet on the ESPN spine** — CFBD has the 17 FL recruits but ESPN's
+  published roster doesn't carry them yet; the name-match machinery is built and will auto-rate them
+  once ESPN adds them (no fabrication). The "new-2026" count is mostly OurLads depth stubs.
+- **Transfers' original-school recruiting** is only as good as the 247 portal scrape (CFBD
+  `/recruiting/players?team=` returns the team's own recruits only); On3/Rivals (the fuller fix) is
+  blocked. Unmatched transfers stay honestly `isTransfer + unrated`.
+- **On3/Rivals scrape** is blocked/degraded (non-load-bearing by design). NIL still deferred.
+
+Deferred (later): extend to the 31 non-pilot teams; injury/NIL/measurables; hometown maps (lat/lon
+captured); auto-refresh the 2026 class once ESPN publishes it.
 
 Live: https://mibarnes.github.io/Roster_Builder/ (publishes from `main`).
 
