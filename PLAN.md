@@ -85,8 +85,21 @@ Florida + Miami rebuilt as multi-source golden records (deduped + fact-checked):
   blocked. Unmatched transfers stay honestly `isTransfer + unrated`.
 - **On3/Rivals scrape** is blocked/degraded (non-load-bearing by design). NIL still deferred.
 
-Deferred (later): extend to the 31 non-pilot teams; injury/NIL/measurables; hometown maps (lat/lon
-captured); auto-refresh the 2026 class once ESPN publishes it.
+## Gap closure — CFBD-native recruiting + pixel verification (2026-06-13, COMPLETE, live)
+- **Recruiting closed via CFBD-native feeds (no scraping):** national recruiting index
+  (`/recruiting/players` 2019–26, ~23k rows, in-memory) + transfer-portal feed (`/player/portal`).
+  Recruiting now attaches to **every spine player** by precedence (`recruitSource`):
+  cfbd-team → cfbd-natl-id → cfbd-natl-name (cross-school HS rating + recruitedSchool/year) →
+  cfbd-portal (origin/eligibility) → 247-portal → unrated. Fixed the ESPN-only spine name-index.
+- **Results:** stubs FL 30→16 / MIA 15→4; transfers rated FL 89% / MIA 81%; residual unrated are
+  genuinely unrated in all CFBD feeds (honest). UI shows recruiting source + transfer origin/eligibility.
+- **Pixel verification finally working:** `scripts/verify-screenshot.sh` (headless chromium via the
+  micromamba-resolved NSS libs). Caught + fixed two bugs jsdom/greps missed — banner "114% recruited"
+  (→ 75%, recruited = star-rated) and the "2025 ROSTER" label (→ "2026 ROSTER · 2025 STATS"). 259 tests.
+
+Deferred (later): On3/Rivals scrape + NIL (blocked); not-yet-enrolled future signees; extend to the
+31 non-pilot teams; injury/measurables; hometown maps; auto-refresh the 2026 class when ESPN publishes
+it; long-tail transfer name-match misses (a few notable transfers still NR — honest, not fabricated).
 
 Live: https://mibarnes.github.io/Roster_Builder/ (publishes from `main`).
 
