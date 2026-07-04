@@ -35,3 +35,20 @@ Project-scoped lessons. Cross-project lessons promote up to `~/.AI_TOOLS/lessons
 - Root cause: pnpm 11.5.2 bug — install writes a workspace-state its own verify rejects for single-package roots.
 - Resolution: `verifyDepsBeforeRun: warn` in pnpm-workspace.yaml (documented inline). Supply-chain controls (minimumReleaseAge, onlyBuiltDependencies) kept at full strength.
 - Prevention: re-test `error` when pnpm is upgraded; don't reinstall-thrash on this symptom.
+
+## 2026-07-04 — Blueprint's official-site engine anchor drifted; verify data formats empirically
+- Date: 2026-07-04
+- Area: data
+- Context: F3/P6 — implementing the "sidearm-json" official-roster engine the finalization blueprint
+  described as the "dominant ACC/SEC CMS with a JSON island or /api/roster endpoint".
+- Symptom: Building against the blueprint's description would have produced an engine for a format
+  that mostly doesn't exist — most schools serve the SAME `__NUXT_DATA__` island as Florida.
+- Root cause: The July-2026 audit inferred the engine landscape without fetching all 31 sites; the
+  real split (probed live) is 15 camelCase-Nuxt (already handled), 8 snake_case-Nuxt (the actual
+  "sidearm-json"), 1 wmt-presto, 7 genuinely-other/degrade.
+- Resolution: Fetched all 31 official roster pages + ran the real parser over them BEFORE writing
+  code; implemented `parseSidearmJsonRoster` for the snake_case variant of the same island;
+  detection stays content-based (not registry-hint-based) so a CMS swap still resolves.
+- Prevention: When a design doc names an external data format/CMS/endpoint, treat it as a hypothesis
+  — fetch real samples and run the existing parser over them first. Anchors for third-party formats
+  go stale between audit and implementation.
