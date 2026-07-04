@@ -21,8 +21,8 @@
         "endpoint": "ourlads:florida"
       }
     ],
-    "collectedAt": "2026-07-04T02:40:55.555Z",
-    "collectorVersion": "cb93d5c",
+    "collectedAt": "2026-07-04T03:08:40.395Z",
+    "collectorVersion": "49805db",
     "dataSeason": 2026,
     "dataCutoff": null,
     "rosterSeason": 2026,
@@ -182,18 +182,18 @@
             }
           },
           {
-            "gameId": "401752737",
-            "stats": {
-              "rec": 1,
-              "recYds": 15,
-              "recTD": 0
-            }
-          },
-          {
             "gameId": "401752741",
             "stats": {
               "rec": 1,
               "recYds": 26,
+              "recTD": 0
+            }
+          },
+          {
+            "gameId": "401752737",
+            "stats": {
+              "rec": 1,
+              "recYds": 15,
               "recTD": 0
             }
           },
@@ -555,6 +555,17 @@
         },
         "perGame": [
           {
+            "gameId": "401752709",
+            "stats": {
+              "rushAtt": 12,
+              "rushYds": 46,
+              "rushTD": 1,
+              "rec": 3,
+              "recYds": 9,
+              "recTD": 0
+            }
+          },
+          {
             "gameId": "401752699",
             "stats": {
               "rushAtt": 10,
@@ -572,13 +583,13 @@
             }
           },
           {
-            "gameId": "401752709",
+            "gameId": "401752727",
             "stats": {
-              "rushAtt": 12,
-              "rushYds": 46,
+              "rushAtt": 27,
+              "rushYds": 107,
               "rushTD": 1,
               "rec": 3,
-              "recYds": 9,
+              "recYds": 16,
               "recTD": 0
             }
           },
@@ -594,33 +605,11 @@
             }
           },
           {
-            "gameId": "401752727",
-            "stats": {
-              "rushAtt": 27,
-              "rushYds": 107,
-              "rushTD": 1,
-              "rec": 3,
-              "recYds": 16,
-              "recTD": 0
-            }
-          },
-          {
             "gameId": "401752668",
             "stats": {
               "rushAtt": 9,
               "rushYds": 104,
               "rushTD": 1
-            }
-          },
-          {
-            "gameId": "401752737",
-            "stats": {
-              "rushAtt": 18,
-              "rushYds": 65,
-              "rushTD": 0,
-              "rec": 4,
-              "recYds": 10,
-              "recTD": 0
             }
           },
           {
@@ -635,11 +624,14 @@
             }
           },
           {
-            "gameId": "401752684",
+            "gameId": "401752737",
             "stats": {
               "rushAtt": 18,
-              "rushYds": 93,
-              "rushTD": 0
+              "rushYds": 65,
+              "rushTD": 0,
+              "rec": 4,
+              "recYds": 10,
+              "recTD": 0
             }
           },
           {
@@ -657,6 +649,14 @@
               "pr": 1,
               "prYds": 6,
               "prTD": 0
+            }
+          },
+          {
+            "gameId": "401752684",
+            "stats": {
+              "rushAtt": 18,
+              "rushYds": 93,
+              "rushTD": 0
             }
           },
           {
@@ -871,12 +871,12 @@
           "rec": 40,
           "recYds": 524,
           "recTD": 0,
-          "pr": 12,
-          "prYds": 140,
-          "prTD": 0,
           "kr": 7,
           "krYds": 122,
           "krTD": 0,
+          "pr": 12,
+          "prYds": 140,
+          "prTD": 0,
           "rushAtt": 1,
           "rushYds": 14,
           "rushTD": 0,
@@ -892,17 +892,6 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
-            "stats": {
-              "rec": 8,
-              "recYds": 62,
-              "recTD": 0,
-              "pr": 3,
-              "prYds": 43,
-              "prTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "rec": 2,
@@ -911,6 +900,17 @@
               "kr": 1,
               "krYds": 19,
               "krTD": 0
+            }
+          },
+          {
+            "gameId": "401752699",
+            "stats": {
+              "rec": 8,
+              "recYds": 62,
+              "recTD": 0,
+              "pr": 3,
+              "prYds": 43,
+              "prTD": 0
             }
           },
           {
@@ -945,6 +945,17 @@
             }
           },
           {
+            "gameId": "401752741",
+            "stats": {
+              "rec": 5,
+              "recYds": 95,
+              "recTD": 0,
+              "pr": 1,
+              "prYds": 0,
+              "prTD": 0
+            }
+          },
+          {
             "gameId": "401752737",
             "stats": {
               "rec": 6,
@@ -958,17 +969,6 @@
               "krTD": 0,
               "pr": 1,
               "prYds": 8,
-              "prTD": 0
-            }
-          },
-          {
-            "gameId": "401752741",
-            "stats": {
-              "rec": 5,
-              "recYds": 95,
-              "recTD": 0,
-              "pr": 1,
-              "prYds": 0,
               "prTD": 0
             }
           },
@@ -1719,19 +1719,19 @@
             }
           },
           {
-            "gameId": "401752737",
-            "stats": {
-              "rushAtt": 3,
-              "rushYds": 28,
-              "rushTD": 0
-            }
-          },
-          {
             "gameId": "401752741",
             "stats": {
               "rushAtt": 4,
               "rushYds": 15,
               "rushTD": 1
+            }
+          },
+          {
+            "gameId": "401752737",
+            "stats": {
+              "rushAtt": 3,
+              "rushYds": 28,
+              "rushTD": 0
             }
           },
           {
@@ -2943,6 +2943,14 @@
         },
         "perGame": [
           {
+            "gameId": "401752709",
+            "stats": {
+              "rec": 2,
+              "recYds": 4,
+              "recTD": 0
+            }
+          },
+          {
             "gameId": "401752699",
             "stats": {
               "rec": 7,
@@ -2954,22 +2962,6 @@
               "tfl": 0,
               "passDef": 0,
               "defTD": 0
-            }
-          },
-          {
-            "gameId": "401752709",
-            "stats": {
-              "rec": 2,
-              "recYds": 4,
-              "recTD": 0
-            }
-          },
-          {
-            "gameId": "401752769",
-            "stats": {
-              "rec": 2,
-              "recYds": 5,
-              "recTD": 0
             }
           },
           {
@@ -2990,6 +2982,14 @@
             }
           },
           {
+            "gameId": "401752769",
+            "stats": {
+              "rec": 2,
+              "recYds": 5,
+              "recTD": 0
+            }
+          },
+          {
             "gameId": "401752668",
             "stats": {
               "rec": 3,
@@ -2998,18 +2998,18 @@
             }
           },
           {
-            "gameId": "401752737",
-            "stats": {
-              "rec": 1,
-              "recYds": 24,
-              "recTD": 0
-            }
-          },
-          {
             "gameId": "401752741",
             "stats": {
               "rec": 4,
               "recYds": 23,
+              "recTD": 0
+            }
+          },
+          {
+            "gameId": "401752737",
+            "stats": {
+              "rec": 1,
+              "recYds": 24,
               "recTD": 0
             }
           },
@@ -3728,19 +3728,19 @@
             }
           },
           {
-            "gameId": "401752737",
-            "stats": {
-              "rec": 1,
-              "recYds": 1,
-              "recTD": 1
-            }
-          },
-          {
             "gameId": "401752741",
             "stats": {
               "rec": 1,
               "recYds": 18,
               "recTD": 0
+            }
+          },
+          {
+            "gameId": "401752737",
+            "stats": {
+              "rec": 1,
+              "recYds": 1,
+              "recTD": 1
             }
           },
           {
@@ -3936,14 +3936,6 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
-            "stats": {
-              "rushAtt": 7,
-              "rushYds": 13,
-              "rushTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "rushAtt": 7,
@@ -3952,6 +3944,14 @@
               "rec": 1,
               "recYds": 4,
               "recTD": 0
+            }
+          },
+          {
+            "gameId": "401752699",
+            "stats": {
+              "rushAtt": 7,
+              "rushYds": 13,
+              "rushTD": 0
             }
           },
           {
@@ -5230,6 +5230,18 @@
         },
         "perGame": [
           {
+            "gameId": "401752709",
+            "stats": {
+              "passCmpAtt": 12,
+              "passYds": 61,
+              "passTD": 0,
+              "passINT": 0,
+              "rushAtt": 8,
+              "rushYds": -8,
+              "rushTD": 0
+            }
+          },
+          {
             "gameId": "401752699",
             "stats": {
               "passCmpAtt": 33,
@@ -5242,15 +5254,12 @@
             }
           },
           {
-            "gameId": "401752709",
+            "gameId": "401752727",
             "stats": {
-              "passCmpAtt": 12,
-              "passYds": 61,
-              "passTD": 0,
-              "passINT": 0,
-              "rushAtt": 8,
-              "rushYds": -8,
-              "rushTD": 0
+              "passCmpAtt": 21,
+              "passYds": 298,
+              "passTD": 2,
+              "passINT": 1
             }
           },
           {
@@ -5272,15 +5281,6 @@
             }
           },
           {
-            "gameId": "401752727",
-            "stats": {
-              "passCmpAtt": 21,
-              "passYds": 298,
-              "passTD": 2,
-              "passINT": 1
-            }
-          },
-          {
             "gameId": "401752668",
             "stats": {
               "passCmpAtt": 15,
@@ -5290,21 +5290,6 @@
               "rushAtt": 3,
               "rushYds": 3,
               "rushTD": 0
-            }
-          },
-          {
-            "gameId": "401752737",
-            "stats": {
-              "passCmpAtt": 21,
-              "passYds": 245,
-              "passTD": 2,
-              "passINT": 0,
-              "rushAtt": 3,
-              "rushYds": -19,
-              "rushTD": 0,
-              "fumbles": 2,
-              "fumblesLost": 1,
-              "fumRec": 0
             }
           },
           {
@@ -5326,15 +5311,18 @@
             }
           },
           {
-            "gameId": "401752684",
+            "gameId": "401752737",
             "stats": {
-              "passCmpAtt": 23,
-              "passYds": 222,
-              "passTD": 1,
-              "passINT": 1,
-              "rushAtt": 6,
-              "rushYds": 9,
-              "rushTD": 0
+              "passCmpAtt": 21,
+              "passYds": 245,
+              "passTD": 2,
+              "passINT": 0,
+              "rushAtt": 3,
+              "rushYds": -19,
+              "rushTD": 0,
+              "fumbles": 2,
+              "fumblesLost": 1,
+              "fumRec": 0
             }
           },
           {
@@ -5350,6 +5338,18 @@
               "fumbles": 1,
               "fumblesLost": 0,
               "fumRec": 0
+            }
+          },
+          {
+            "gameId": "401752684",
+            "stats": {
+              "passCmpAtt": 23,
+              "passYds": 222,
+              "passTD": 1,
+              "passINT": 1,
+              "rushAtt": 6,
+              "rushYds": 9,
+              "rushTD": 0
             }
           },
           {
@@ -5570,14 +5570,6 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
-            "stats": {
-              "rec": 2,
-              "recYds": 14,
-              "recTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "rec": 1,
@@ -5586,10 +5578,10 @@
             }
           },
           {
-            "gameId": "401752769",
+            "gameId": "401752699",
             "stats": {
-              "rec": 1,
-              "recYds": 38,
+              "rec": 2,
+              "recYds": 14,
               "recTD": 0
             }
           },
@@ -5598,6 +5590,14 @@
             "stats": {
               "rec": 1,
               "recYds": 9,
+              "recTD": 0
+            }
+          },
+          {
+            "gameId": "401752769",
+            "stats": {
+              "rec": 1,
+              "recYds": 38,
               "recTD": 0
             }
           },
@@ -6706,18 +6706,18 @@
             }
           },
           {
-            "gameId": "401752769",
-            "stats": {
-              "rec": 3,
-              "recYds": 14,
-              "recTD": 0
-            }
-          },
-          {
             "gameId": "401752727",
             "stats": {
               "rec": 4,
               "recYds": 18,
+              "recTD": 0
+            }
+          },
+          {
+            "gameId": "401752769",
+            "stats": {
+              "rec": 3,
+              "recYds": 14,
               "recTD": 0
             }
           },
@@ -8929,23 +8929,23 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
-            "stats": {
-              "tackles": 2,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "tackles": 5,
               "soloTackles": 3,
               "sacks": 0,
               "tfl": 0.5,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752699",
+            "stats": {
+              "tackles": 2,
+              "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 0,
               "passDef": 0,
               "defTD": 0
             }
@@ -9154,10 +9154,10 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
+            "gameId": "401752709",
             "stats": {
-              "tackles": 4,
-              "soloTackles": 1,
+              "tackles": 5,
+              "soloTackles": 3,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -9165,10 +9165,10 @@
             }
           },
           {
-            "gameId": "401752709",
+            "gameId": "401752699",
             "stats": {
-              "tackles": 5,
-              "soloTackles": 3,
+              "tackles": 4,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -9198,17 +9198,6 @@
             }
           },
           {
-            "gameId": "401752737",
-            "stats": {
-              "tackles": 7,
-              "soloTackles": 3,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752741",
             "stats": {
               "tackles": 1,
@@ -9220,10 +9209,10 @@
             }
           },
           {
-            "gameId": "401752684",
+            "gameId": "401752737",
             "stats": {
-              "tackles": 5,
-              "soloTackles": 1,
+              "tackles": 7,
+              "soloTackles": 3,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -9235,6 +9224,17 @@
             "stats": {
               "tackles": 1,
               "soloTackles": 0,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752684",
+            "stats": {
+              "tackles": 5,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -9426,17 +9426,6 @@
         },
         "perGame": [
           {
-            "gameId": "401752769",
-            "stats": {
-              "tackles": 4,
-              "soloTackles": 2,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752727",
             "stats": {
               "tackles": 2,
@@ -9448,10 +9437,10 @@
             }
           },
           {
-            "gameId": "401752668",
+            "gameId": "401752769",
             "stats": {
-              "tackles": 1,
-              "soloTackles": 0,
+              "tackles": 4,
+              "soloTackles": 2,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -9459,7 +9448,7 @@
             }
           },
           {
-            "gameId": "401752737",
+            "gameId": "401752668",
             "stats": {
               "tackles": 1,
               "soloTackles": 0,
@@ -9484,10 +9473,10 @@
             }
           },
           {
-            "gameId": "401752684",
+            "gameId": "401752737",
             "stats": {
-              "tackles": 4,
-              "soloTackles": 1,
+              "tackles": 1,
+              "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -9501,6 +9490,17 @@
               "soloTackles": 1,
               "sacks": 1,
               "tfl": 1,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752684",
+            "stats": {
+              "tackles": 4,
+              "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 0,
               "passDef": 0,
               "defTD": 0
             }
@@ -10159,10 +10159,10 @@
             }
           },
           {
-            "gameId": "401752737",
+            "gameId": "401752741",
             "stats": {
-              "tackles": 2,
-              "soloTackles": 2,
+              "tackles": 3,
+              "soloTackles": 3,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -10170,10 +10170,10 @@
             }
           },
           {
-            "gameId": "401752741",
+            "gameId": "401752737",
             "stats": {
-              "tackles": 3,
-              "soloTackles": 3,
+              "tackles": 2,
+              "soloTackles": 2,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -10332,17 +10332,6 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
-            "stats": {
-              "tackles": 2,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "tackles": 10,
@@ -10354,10 +10343,10 @@
             }
           },
           {
-            "gameId": "401752769",
+            "gameId": "401752699",
             "stats": {
-              "tackles": 10,
-              "soloTackles": 8,
+              "tackles": 2,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -10376,6 +10365,17 @@
               "interceptions": 1,
               "intYds": 18,
               "intTD": 0
+            }
+          },
+          {
+            "gameId": "401752769",
+            "stats": {
+              "tackles": 10,
+              "soloTackles": 8,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
             }
           },
           {
@@ -10404,10 +10404,10 @@
             }
           },
           {
-            "gameId": "401752684",
+            "gameId": "401752755",
             "stats": {
-              "tackles": 5,
-              "soloTackles": 3,
+              "tackles": 11,
+              "soloTackles": 5,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -10415,10 +10415,10 @@
             }
           },
           {
-            "gameId": "401752755",
+            "gameId": "401752684",
             "stats": {
-              "tackles": 11,
-              "soloTackles": 5,
+              "tackles": 5,
+              "soloTackles": 3,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -10602,6 +10602,17 @@
         },
         "perGame": [
           {
+            "gameId": "401752709",
+            "stats": {
+              "tackles": 2,
+              "soloTackles": 0,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
             "gameId": "401752699",
             "stats": {
               "tackles": 4,
@@ -10613,9 +10624,9 @@
             }
           },
           {
-            "gameId": "401752709",
+            "gameId": "401752727",
             "stats": {
-              "tackles": 2,
+              "tackles": 3,
               "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
@@ -10635,10 +10646,10 @@
             }
           },
           {
-            "gameId": "401752727",
+            "gameId": "401752741",
             "stats": {
-              "tackles": 3,
-              "soloTackles": 0,
+              "tackles": 5,
+              "soloTackles": 3,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -10657,10 +10668,10 @@
             }
           },
           {
-            "gameId": "401752741",
+            "gameId": "401752755",
             "stats": {
               "tackles": 5,
-              "soloTackles": 3,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -10675,17 +10686,6 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 1,
-              "defTD": 0
-            }
-          },
-          {
-            "gameId": "401752755",
-            "stats": {
-              "tackles": 5,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
               "defTD": 0
             }
           },
@@ -11014,6 +11014,17 @@
         },
         "perGame": [
           {
+            "gameId": "401752709",
+            "stats": {
+              "tackles": 4,
+              "soloTackles": 4,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
             "gameId": "401752699",
             "stats": {
               "tackles": 3,
@@ -11025,10 +11036,10 @@
             }
           },
           {
-            "gameId": "401752709",
+            "gameId": "401752727",
             "stats": {
               "tackles": 4,
-              "soloTackles": 4,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -11047,32 +11058,10 @@
             }
           },
           {
-            "gameId": "401752727",
-            "stats": {
-              "tackles": 4,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752737",
             "stats": {
               "tackles": 6,
               "soloTackles": 6,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
-            "gameId": "401752684",
-            "stats": {
-              "tackles": 4,
-              "soloTackles": 3,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -11086,6 +11075,17 @@
               "soloTackles": 3,
               "sacks": 0,
               "tfl": 1,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752684",
+            "stats": {
+              "tackles": 4,
+              "soloTackles": 3,
+              "sacks": 0,
+              "tfl": 0,
               "passDef": 0,
               "defTD": 0
             }
@@ -12137,6 +12137,17 @@
         },
         "perGame": [
           {
+            "gameId": "401752709",
+            "stats": {
+              "tackles": 7,
+              "soloTackles": 2,
+              "sacks": 0,
+              "tfl": 0.5,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
             "gameId": "401752699",
             "stats": {
               "tackles": 4,
@@ -12148,12 +12159,12 @@
             }
           },
           {
-            "gameId": "401752709",
+            "gameId": "401752727",
             "stats": {
-              "tackles": 7,
+              "tackles": 5,
               "soloTackles": 2,
               "sacks": 0,
-              "tfl": 0.5,
+              "tfl": 0,
               "passDef": 0,
               "defTD": 0
             }
@@ -12170,21 +12181,21 @@
             }
           },
           {
-            "gameId": "401752727",
+            "gameId": "401752668",
             "stats": {
               "tackles": 5,
-              "soloTackles": 2,
+              "soloTackles": 4,
               "sacks": 0,
-              "tfl": 0,
+              "tfl": 1,
               "passDef": 0,
               "defTD": 0
             }
           },
           {
-            "gameId": "401752668",
+            "gameId": "401752741",
             "stats": {
-              "tackles": 5,
-              "soloTackles": 4,
+              "tackles": 6,
+              "soloTackles": 3,
               "sacks": 0,
               "tfl": 1,
               "passDef": 0,
@@ -12203,13 +12214,13 @@
             }
           },
           {
-            "gameId": "401752741",
+            "gameId": "401752755",
             "stats": {
-              "tackles": 6,
-              "soloTackles": 3,
+              "tackles": 8,
+              "soloTackles": 1,
               "sacks": 0,
-              "tfl": 1,
-              "passDef": 0,
+              "tfl": 0,
+              "passDef": 1,
               "defTD": 0
             }
           },
@@ -12221,17 +12232,6 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
-            "gameId": "401752755",
-            "stats": {
-              "tackles": 8,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 1,
               "defTD": 0
             }
           },
@@ -12980,10 +12980,10 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
+            "gameId": "401752709",
             "stats": {
-              "tackles": 1,
-              "soloTackles": 0,
+              "tackles": 2,
+              "soloTackles": 2,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -12991,10 +12991,10 @@
             }
           },
           {
-            "gameId": "401752709",
+            "gameId": "401752699",
             "stats": {
-              "tackles": 2,
-              "soloTackles": 2,
+              "tackles": 1,
+              "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -13469,6 +13469,17 @@
         },
         "perGame": [
           {
+            "gameId": "401752709",
+            "stats": {
+              "tackles": 5,
+              "soloTackles": 2,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
             "gameId": "401752699",
             "stats": {
               "tackles": 1,
@@ -13480,12 +13491,12 @@
             }
           },
           {
-            "gameId": "401752709",
+            "gameId": "401752727",
             "stats": {
-              "tackles": 5,
-              "soloTackles": 2,
-              "sacks": 0,
-              "tfl": 0,
+              "tackles": 2,
+              "soloTackles": 1,
+              "sacks": 0.5,
+              "tfl": 0.5,
               "passDef": 0,
               "defTD": 0
             }
@@ -13502,34 +13513,12 @@
             }
           },
           {
-            "gameId": "401752727",
-            "stats": {
-              "tackles": 2,
-              "soloTackles": 1,
-              "sacks": 0.5,
-              "tfl": 0.5,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752668",
             "stats": {
               "tackles": 5,
               "soloTackles": 2,
               "sacks": 0,
               "tfl": 0.5,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
-            "gameId": "401752737",
-            "stats": {
-              "tackles": 6,
-              "soloTackles": 3,
-              "sacks": 0,
-              "tfl": 0,
               "passDef": 0,
               "defTD": 0
             }
@@ -13546,10 +13535,10 @@
             }
           },
           {
-            "gameId": "401752684",
+            "gameId": "401752737",
             "stats": {
-              "tackles": 0,
-              "soloTackles": 0,
+              "tackles": 6,
+              "soloTackles": 3,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -13564,6 +13553,17 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 1,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752684",
+            "stats": {
+              "tackles": 0,
+              "soloTackles": 0,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
               "defTD": 0
             }
           },
@@ -13752,6 +13752,17 @@
         },
         "perGame": [
           {
+            "gameId": "401752709",
+            "stats": {
+              "tackles": 4,
+              "soloTackles": 3,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 1,
+              "defTD": 0
+            }
+          },
+          {
             "gameId": "401752699",
             "stats": {
               "tackles": 3,
@@ -13763,17 +13774,6 @@
               "interceptions": 1,
               "intYds": 7,
               "intTD": 0
-            }
-          },
-          {
-            "gameId": "401752709",
-            "stats": {
-              "tackles": 4,
-              "soloTackles": 3,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 1,
-              "defTD": 0
             }
           },
           {
@@ -14529,23 +14529,23 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
-            "stats": {
-              "tackles": 2,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "tackles": 4,
               "soloTackles": 2,
               "sacks": 0,
               "tfl": 1,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752699",
+            "stats": {
+              "tackles": 2,
+              "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 0,
               "passDef": 0,
               "defTD": 0
             }
@@ -14562,10 +14562,10 @@
             }
           },
           {
-            "gameId": "401752737",
+            "gameId": "401752741",
             "stats": {
-              "tackles": 4,
-              "soloTackles": 1,
+              "tackles": 3,
+              "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -14573,10 +14573,10 @@
             }
           },
           {
-            "gameId": "401752741",
+            "gameId": "401752737",
             "stats": {
-              "tackles": 3,
-              "soloTackles": 0,
+              "tackles": 4,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -14963,17 +14963,6 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
-            "stats": {
-              "tackles": 2,
-              "soloTackles": 2,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "tackles": 3,
@@ -14988,7 +14977,7 @@
             }
           },
           {
-            "gameId": "401752769",
+            "gameId": "401752699",
             "stats": {
               "tackles": 2,
               "soloTackles": 2,
@@ -15010,10 +14999,32 @@
             }
           },
           {
+            "gameId": "401752769",
+            "stats": {
+              "tackles": 2,
+              "soloTackles": 2,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
             "gameId": "401752737",
             "stats": {
               "tackles": 2,
               "soloTackles": 0,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752755",
+            "stats": {
+              "tackles": 2,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -15027,17 +15038,6 @@
               "soloTackles": 1,
               "sacks": 0,
               "tfl": 1,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
-            "gameId": "401752755",
-            "stats": {
-              "tackles": 2,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
               "passDef": 0,
               "defTD": 0
             }
@@ -15216,17 +15216,6 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
-            "stats": {
-              "tackles": 1,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "tackles": 0,
@@ -15238,10 +15227,10 @@
             }
           },
           {
-            "gameId": "401752769",
+            "gameId": "401752699",
             "stats": {
               "tackles": 1,
-              "soloTackles": 0,
+              "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -15260,9 +15249,31 @@
             }
           },
           {
+            "gameId": "401752769",
+            "stats": {
+              "tackles": 1,
+              "soloTackles": 0,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
             "gameId": "401752668",
             "stats": {
               "tackles": 2,
+              "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752741",
+            "stats": {
+              "tackles": 1,
               "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
@@ -15278,17 +15289,6 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 1,
-              "defTD": 0
-            }
-          },
-          {
-            "gameId": "401752741",
-            "stats": {
-              "tackles": 1,
-              "soloTackles": 1,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
               "defTD": 0
             }
           },
@@ -15787,17 +15787,6 @@
             }
           },
           {
-            "gameId": "401752769",
-            "stats": {
-              "tackles": 4,
-              "soloTackles": 2,
-              "sacks": 1.5,
-              "tfl": 1.5,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752727",
             "stats": {
               "tackles": 4,
@@ -15809,23 +15798,23 @@
             }
           },
           {
+            "gameId": "401752769",
+            "stats": {
+              "tackles": 4,
+              "soloTackles": 2,
+              "sacks": 1.5,
+              "tfl": 1.5,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
             "gameId": "401752668",
             "stats": {
               "tackles": 4,
               "soloTackles": 4,
               "sacks": 0,
               "tfl": 2,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
-            "gameId": "401752737",
-            "stats": {
-              "tackles": 5,
-              "soloTackles": 3,
-              "sacks": 0,
-              "tfl": 0,
               "passDef": 0,
               "defTD": 0
             }
@@ -15842,13 +15831,13 @@
             }
           },
           {
-            "gameId": "401752684",
+            "gameId": "401752737",
             "stats": {
-              "tackles": 9,
-              "soloTackles": 4,
+              "tackles": 5,
+              "soloTackles": 3,
               "sacks": 0,
               "tfl": 0,
-              "passDef": 1,
+              "passDef": 0,
               "defTD": 0
             }
           },
@@ -15860,6 +15849,17 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752684",
+            "stats": {
+              "tackles": 9,
+              "soloTackles": 4,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 1,
               "defTD": 0
             }
           },
@@ -17080,17 +17080,6 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
-            "stats": {
-              "tackles": 3,
-              "soloTackles": 0,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 0,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "tackles": 3,
@@ -17102,10 +17091,10 @@
             }
           },
           {
-            "gameId": "401752769",
+            "gameId": "401752699",
             "stats": {
               "tackles": 3,
-              "soloTackles": 2,
+              "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -17124,10 +17113,10 @@
             }
           },
           {
-            "gameId": "401752668",
+            "gameId": "401752769",
             "stats": {
-              "tackles": 1,
-              "soloTackles": 0,
+              "tackles": 3,
+              "soloTackles": 2,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -17135,10 +17124,10 @@
             }
           },
           {
-            "gameId": "401752737",
+            "gameId": "401752668",
             "stats": {
               "tackles": 1,
-              "soloTackles": 1,
+              "soloTackles": 0,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -17157,9 +17146,9 @@
             }
           },
           {
-            "gameId": "401752684",
+            "gameId": "401752737",
             "stats": {
-              "tackles": 2,
+              "tackles": 1,
               "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
@@ -17171,6 +17160,17 @@
             "gameId": "401752755",
             "stats": {
               "tackles": 3,
+              "soloTackles": 1,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752684",
+            "stats": {
+              "tackles": 2,
               "soloTackles": 1,
               "sacks": 0,
               "tfl": 0,
@@ -17347,17 +17347,6 @@
         },
         "perGame": [
           {
-            "gameId": "401752699",
-            "stats": {
-              "tackles": 3,
-              "soloTackles": 3,
-              "sacks": 0,
-              "tfl": 0,
-              "passDef": 1,
-              "defTD": 0
-            }
-          },
-          {
             "gameId": "401752709",
             "stats": {
               "tackles": 4,
@@ -17369,13 +17358,13 @@
             }
           },
           {
-            "gameId": "401752769",
+            "gameId": "401752699",
             "stats": {
-              "tackles": 6,
-              "soloTackles": 4,
+              "tackles": 3,
+              "soloTackles": 3,
               "sacks": 0,
               "tfl": 0,
-              "passDef": 0,
+              "passDef": 1,
               "defTD": 0
             }
           },
@@ -17384,6 +17373,17 @@
             "stats": {
               "tackles": 5,
               "soloTackles": 3,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 0,
+              "defTD": 0
+            }
+          },
+          {
+            "gameId": "401752769",
+            "stats": {
+              "tackles": 6,
+              "soloTackles": 4,
               "sacks": 0,
               "tfl": 0,
               "passDef": 0,
@@ -17405,6 +17405,17 @@
             }
           },
           {
+            "gameId": "401752741",
+            "stats": {
+              "tackles": 7,
+              "soloTackles": 2,
+              "sacks": 0,
+              "tfl": 0,
+              "passDef": 1,
+              "defTD": 0
+            }
+          },
+          {
             "gameId": "401752737",
             "stats": {
               "tackles": 6,
@@ -17416,12 +17427,12 @@
             }
           },
           {
-            "gameId": "401752741",
+            "gameId": "401752755",
             "stats": {
-              "tackles": 7,
-              "soloTackles": 2,
+              "tackles": 6,
+              "soloTackles": 4,
               "sacks": 0,
-              "tfl": 0,
+              "tfl": 1,
               "passDef": 1,
               "defTD": 0
             }
@@ -17434,17 +17445,6 @@
               "sacks": 0,
               "tfl": 0,
               "passDef": 2,
-              "defTD": 0
-            }
-          },
-          {
-            "gameId": "401752755",
-            "stats": {
-              "tackles": 6,
-              "soloTackles": 4,
-              "sacks": 0,
-              "tfl": 1,
-              "passDef": 1,
               "defTD": 0
             }
           },

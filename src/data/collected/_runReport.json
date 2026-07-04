@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-04T03:11:00.244Z",
+  "collectorVersion": "49805db",
+  "season": 2025,
+  "rosterSeason": 2026,
+  "durationMs": 159873,
+  "targets": [
+    "florida-gators",
+    "miami-hurricanes"
+  ],
+  "teamsOk": 2,
+  "teamsFailed": 0,
+  "closure": {
+    "nationalRows": 23185,
+    "nationalWithAthleteId": 11466,
+    "portalRows": 12304
+  },
+  "net": {
+    "requests": 174,
+    "cacheHits": 0,
+    "retries": 0
+  },
+  "teams": [
+    {
+      "id": "florida-gators",
+      "label": "Florida Gators",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 112,
+        "offenseSlots": 30,
+        "defenseSlots": 30,
+        "recruitingPct": 75,
+        "productionPct": 56.3,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 130,
+          "matchedByIdPct": 82.5,
+          "headshotPct": 73.8,
+          "highSchoolPct": 41.5,
+          "transfersRated": 17,
+          "transfersTotal": 19,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "miami-hurricanes",
+      "label": "Miami Hurricanes",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 113,
+        "offenseSlots": 24,
+        "defenseSlots": 29,
+        "recruitingPct": 77.9,
+        "productionPct": 51.3,
+        "hometownPct": 99.1,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 115,
+          "matchedByIdPct": 82.9,
+          "headshotPct": 85.2,
+          "highSchoolPct": 57.4,
+          "transfersRated": 17,
+          "transfersTotal": 21,
+          "officialEngine": "wmt-presto",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    }
+  ]
+}
