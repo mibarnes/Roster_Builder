@@ -30,8 +30,11 @@ function seededTeamDirs(): string[] {
 const seeded = seededTeamDirs()
 
 describe('teamRegistry', () => {
-  it('has 33 teams with two pilots (Florida + Miami)', () => {
-    expect(TEAMS.length).toBe(33)
+  it('has 54 collected teams with two pilots (Florida + Miami)', () => {
+    // 33 ACC/SEC/ND + 18 Big Ten + 3 Big 12 (Utah/Arizona State/Texas Tech). The
+    // other 13 Big 12 teams are pending a CFBD quota reset (docs/PENDING_TEAMS.md) —
+    // trimmed from the registry so it stays == teams with data.
+    expect(TEAMS.length).toBe(54)
     const pilots = TEAMS.filter((t) => t.isPilot).map((t) => t.id).sort()
     expect(pilots).toEqual(['florida-gators', 'miami-hurricanes'])
   })
