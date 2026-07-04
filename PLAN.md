@@ -10,25 +10,27 @@
 
 **The app is live and hardened** at https://mibarnes.github.io/Roster_Builder/ (publishes from
 `main`). The M1–M6 rebuild + Round-2 enrichment + golden-record reconciliation are complete (see
-*Completed work* below). **307 tests; tsc strict clean.**
+*Completed work* below). **485 tests; tsc strict clean.**
 
 We are executing the **F0–F8 finalization plan** — evolving the working demo into a polished,
 zero-stub CFB intelligence tool. **Decisions locked 2026-07-04:** (1) full F0–F8 is the committed
-plan-of-record; (2) the **33-team golden expansion (F3) is the spine** — cross-team intelligence
-(rating v2, League view, portal flow) depends on it, so we commit to it (execution still user-gated
-per wave); (3) F0 executes immediately.
+plan-of-record; (2) the **golden expansion (F3) is the spine** — cross-team intelligence
+(rating v2, League view, portal flow) depends on it; (3) scope grew from the original 33 (ACC+SEC+ND)
+to the **full Power Four (67)** — Big Ten + Big 12 added 2026-07-04.
 
 **Progress:** F0 (hygiene) ✅ · F1 (collector industrialization) ✅ · F2 (routing/UX) ✅ —
 **F0–F2 PUSHED LIVE 2026-07-04** (deploy verified; live bundle serves the F2 hash-router). F3
-collection is **COMPLETE**: **P5 (registry backfill) ✅ · P6 (official-site engine framework +
-sidearm-json) ✅ · Waves 1–5 ✅ — ALL 33 TEAMS GOLDEN** (2026-07-04). Every team ships a golden
-`player-master.json` (100% spine→master coverage); the collector ran clean across all 5 waves
-(**0 failed / 0 retries / no CFBD rate-limit hit** — ~950 requests total). 24 teams got the full
-official HS overlay (16 nuxt-sidearm + 8 sidearm-json); 9 degrade to hometown+recruiting only (Notre
-Dame presto + the 7 non-Sidearm sites) — all still fully golden via ESPN + CFBD. 359 tests; tsc
-strict clean. **All F3 collection committed local-only** (data push is a separate later gate).
-**Next: D1 — app-side path unification** (the legacy 3-file path is now dead for every team; delete it
-+ introduce `tier:'gold'` / retire `isPilot`), then D4/D5/S8.
+collection: **P5 (registry backfill) ✅ · P6 (engine framework + sidearm-json) ✅ · original 33
+teams ALL GOLDEN ✅** · **Power-Four expansion → 54 of 67 golden** (all ACC+SEC+ND + all 18 Big Ten +
+Utah/Arizona State/Texas Tech). Every collected team ships a golden `player-master.json` (100%
+spine→master coverage); ~9 waves ran clean until the **CFBD monthly call quota was exhausted**
+(`429 "Monthly call quota exceeded."`) mid-Big-12-Wave-1. **13 Big 12 teams remain** (BYU, Baylor,
+TCU, Oklahoma State, Kansas, Iowa State, Cincinnati, Houston, Colorado, Kansas State, Arizona, UCF,
+West Virginia) — fully sourced, rows preserved in [docs/PENDING_TEAMS.md](docs/PENDING_TEAMS.md);
+**re-add + collect when the CFBD quota resets (next month) or the plan is upgraded.** Registry was
+trimmed to 54 (== teams with data) so app + tests stay green. 485 tests; tsc strict clean. **All F3
+collection committed local-only.** **Next: D1 — app-side path unification** (legacy 3-file path is
+dead for every team; delete it + `tier:'gold'` / retire `isPilot`), or finish Big 12 on quota reset.
 
 > **P6 anchor-drift finding (2026-07-04):** the blueprint assumed `sidearm-json` was a distinct
 > `/api/roster`-endpoint CMS. Empirical probe of all 31 non-pilot official sites showed the reality:
@@ -177,6 +179,15 @@ Display → scouting tool. (Blueprint 6.2/6.3, U6/U9/U10, S12.)
 ---
 
 ## Completed work (history — condensed)
+
+- **Power-Four expansion → 54/67 golden; CFBD quota hit (2026-07-04)** — expanded the registry from
+  33 (ACC+SEC+ND) to 67 by adding Big Ten (18) + Big 12 (16), each row sourced empirically (espnId via
+  ESPN API, OurLads slug+id via the OurLads team index, official URL + engine probed: 23 nuxt-sidearm
+  / 9 sidearm-json / 2 unknown). Collected all 18 Big Ten + 3 Big 12 (Utah/Arizona State/Texas Tech)
+  golden across 4 clean waves (0 retries), then **CFBD returned `429 Monthly call quota exceeded`** on
+  BYU/Baylor/TCU — atomic writes left no partial data. Trimmed the 13 uncollected Big 12 teams to
+  [docs/PENDING_TEAMS.md](docs/PENDING_TEAMS.md) (ready-to-paste rows) so registry == data. **54 teams
+  golden.** 485 tests; tsc strict clean.
 
 - **F0–F2 pushed live + F3 collection complete — all 33 golden (2026-07-04)** — pushed the 22 local
   F0–F2 commits to `main` (Pages deploy verified). Backfilled the registry for all 33 (espnId +
