@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Minnesota Golden Gophers",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/minnesota/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:minnesota"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:57:12.228Z",
+    "collectorVersion": "693c517",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

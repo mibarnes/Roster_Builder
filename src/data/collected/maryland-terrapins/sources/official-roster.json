@@ -1,0 +1,951 @@
+{
+  "sourceId": "official-roster-v1",
+  "sourceType": "official-roster",
+  "team": "Maryland Terrapins",
+  "sourceUrl": "https://umterps.com/sports/football/roster",
+  "engine": "nuxt-sidearm",
+  "degraded": false,
+  "degradeReason": null,
+  "coverage": 103,
+  "provenance": {
+    "sources": [
+      {
+        "name": "Official team roster page",
+        "endpoint": "https://umterps.com/sports/football/roster"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:58:34.118Z",
+    "collectorVersion": "693c517",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": [
+    {
+      "name": "Zion Elee",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Fr.",
+      "hometown": "Baltimore, MD",
+      "highSchool": "St. Frances Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "DeJuan Williams",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "R-So.",
+      "hometown": "Baltimore, MD",
+      "highSchool": "Saint Frances Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Na'eem Abdul-Rahim Gladding",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Jr.",
+      "hometown": "Brooklyn, N.Y",
+      "highSchool": "Stone Bridge",
+      "previousSchool": "Old Dominion"
+    },
+    {
+      "name": "Daniel Wingate",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Sr.",
+      "hometown": "Bowie, MD",
+      "highSchool": "St. Vincent Pallotti",
+      "previousSchool": null
+    },
+    {
+      "name": "Lavain Scruggs",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-Sr.",
+      "hometown": "Baltimore, MD",
+      "highSchool": "Archbishop Spalding",
+      "previousSchool": null
+    },
+    {
+      "name": "Kaleb Webb",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Sr.",
+      "hometown": "Powder Springs, GA",
+      "highSchool": "McEachern",
+      "previousSchool": "Tennessee"
+    },
+    {
+      "name": "Trey Reddick",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Jr.",
+      "hometown": "Hampton, VA",
+      "highSchool": "Phoebus",
+      "previousSchool": null
+    },
+    {
+      "name": "Jamare Glasker",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-Sr.",
+      "hometown": "Temple Hills, MD",
+      "highSchool": "Potomac",
+      "previousSchool": "Wake Forest"
+    },
+    {
+      "name": "Darrell Carey",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Fr.",
+      "hometown": "Washington, DC",
+      "highSchool": "DeMatha Catholic",
+      "previousSchool": null
+    },
+    {
+      "name": "Dontay Joyner",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Sr.",
+      "hometown": "Lakeland, FL",
+      "highSchool": "Lakeland",
+      "previousSchool": "Arkansas State"
+    },
+    {
+      "name": "Gavin Edwards",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-Jr.",
+      "hometown": "Alvin, SC",
+      "highSchool": "Timberland",
+      "previousSchool": "North Greenville / Austin Peay"
+    },
+    {
+      "name": "Malik Washington",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "So.",
+      "hometown": "Glen Burnie, MD",
+      "highSchool": "Archbishop Spalding",
+      "previousSchool": null
+    },
+    {
+      "name": "Preston Howard",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "R-Sr.",
+      "hometown": "Arbutus, MD",
+      "highSchool": "McDonogh",
+      "previousSchool": null
+    },
+    {
+      "name": "Mekhai White",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-So.",
+      "hometown": "King George, VA",
+      "highSchool": "King George",
+      "previousSchool": null
+    },
+    {
+      "name": "Dorian Fleming",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "R-Jr.",
+      "hometown": "Henrico, VA",
+      "highSchool": "Life Christian Academy",
+      "previousSchool": "Georgia State"
+    },
+    {
+      "name": "Zahir Mathis",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "So.",
+      "hometown": "Philadelphia, PA",
+      "highSchool": "Imhotep Institute",
+      "previousSchool": null
+    },
+    {
+      "name": "Cam Brickle II",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Fr.",
+      "hometown": "Philadelphia, PA",
+      "highSchool": "IMG Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Zymear Smith",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Fr.",
+      "hometown": "Ridgely, MD",
+      "highSchool": "North Caroline",
+      "previousSchool": null
+    },
+    {
+      "name": "Ryan Manning",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Jr.",
+      "hometown": "Glenn Dale, MD",
+      "highSchool": "St. Frances Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Sidney Stewart",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "So.",
+      "hometown": "Joppa, MD",
+      "highSchool": "Concordia Prep",
+      "previousSchool": null
+    },
+    {
+      "name": "Nathan Bernhard",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "Fr.",
+      "hometown": "Ashland, OH",
+      "highSchool": "Ashland",
+      "previousSchool": null
+    },
+    {
+      "name": "Jayden Shipps",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "So.",
+      "hometown": "Severn, MD",
+      "highSchool": "Archbishop Spalding",
+      "previousSchool": null
+    },
+    {
+      "name": "Chris Durr Jr.",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Jr.",
+      "hometown": "Morgan Park",
+      "highSchool": "Chicago, IL",
+      "previousSchool": "Wyoming"
+    },
+    {
+      "name": "Sean Johnson",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Fr.",
+      "hometown": "Severna Park, MD",
+      "highSchool": "Archbishop Spalding",
+      "previousSchool": null
+    },
+    {
+      "name": "Jordan Scott",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Sr.",
+      "hometown": "Lynchburg, VA",
+      "highSchool": "Appomattox County",
+      "previousSchool": "Florida State"
+    },
+    {
+      "name": "Jackson Hamilton",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "R-Fr.",
+      "hometown": "Houston, TX",
+      "highSchool": "Manvel",
+      "previousSchool": null
+    },
+    {
+      "name": "Lloyd Irvin III",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-So.",
+      "hometown": "Springdale, MD",
+      "highSchool": "Charles Herbert Flowers",
+      "previousSchool": null
+    },
+    {
+      "name": "Damon Hall Jr.",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Fr.",
+      "hometown": "Baltimore, MD",
+      "highSchool": "St. Frances Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Jayden Kitchens",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Fr.",
+      "hometown": "Forestville, MD",
+      "highSchool": "St. James Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Alex Moore",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-Jr.",
+      "hometown": "Beltsville, MD",
+      "highSchool": "St. Vincent Pallotti",
+      "previousSchool": null
+    },
+    {
+      "name": "Josiah Teasley",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Fr.",
+      "hometown": "Springfield, VA",
+      "highSchool": "St. James Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "DJ Samuels",
+      "jersey": null,
+      "position": "FB",
+      "classYear": "R-Jr.",
+      "hometown": "Englewood, NJ",
+      "highSchool": "Bergen Catholic",
+      "previousSchool": null
+    },
+    {
+      "name": "Ontario Washington Jr.",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Fr.",
+      "hometown": "Stafford, VA",
+      "highSchool": "North Stafford",
+      "previousSchool": null
+    },
+    {
+      "name": "Judah Jenkins",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-So.",
+      "hometown": "Olney, MD",
+      "highSchool": "Good Counsel",
+      "previousSchool": null
+    },
+    {
+      "name": "Sean Williams",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Jr.",
+      "hometown": "Washington, DC",
+      "highSchool": "St. John's College",
+      "previousSchool": null
+    },
+    {
+      "name": "Zahir Cobb",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Fr.",
+      "hometown": "Washington, DC",
+      "highSchool": "St. Albans",
+      "previousSchool": null
+    },
+    {
+      "name": "Max Lawrence",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "Jr.",
+      "hometown": "Hialeah, FL",
+      "highSchool": "Westland Hialeah",
+      "previousSchool": "Graceland"
+    },
+    {
+      "name": "Iverson Howard",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "So.",
+      "hometown": "Gaithersburg, MD",
+      "highSchool": "Quince Orchard",
+      "previousSchool": null
+    },
+    {
+      "name": "Amari Jackson",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-Sr.",
+      "hometown": "McDonough, Ga.",
+      "highSchool": "Eagle's Landing",
+      "previousSchool": "Boston College"
+    },
+    {
+      "name": "Ricardo Cooper Jr.",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-Jr.",
+      "hometown": "Baltimore, MD",
+      "highSchool": "Calvert Hall",
+      "previousSchool": null
+    },
+    {
+      "name": "Harry Dalton III",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "R-Fr.",
+      "hometown": "Dinwiddie, VA",
+      "highSchool": "Dinwiddie County",
+      "previousSchool": "USC"
+    },
+    {
+      "name": "Hakim Satterwhite",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Fr.",
+      "hometown": "Bowie, MD",
+      "highSchool": "St. Frances Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Kaden Carter",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Fr.",
+      "hometown": "Barnesville, GA",
+      "highSchool": "Lamar County",
+      "previousSchool": null
+    },
+    {
+      "name": "Liam Willson",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "Jr.",
+      "hometown": "Reston, VA",
+      "highSchool": "Herndon",
+      "previousSchool": "Wake Forest"
+    },
+    {
+      "name": "Travares Daniels II",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "R-Fr.",
+      "hometown": "Miami, FL",
+      "highSchool": "St. Thomas Aquinas",
+      "previousSchool": null
+    },
+    {
+      "name": "Carlton Smith",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "So.",
+      "hometown": "Norfolk, VA",
+      "highSchool": "Maury",
+      "previousSchool": null
+    },
+    {
+      "name": "Messiah Delhomme",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "So.",
+      "hometown": "Newport News, VA",
+      "highSchool": "Warwick",
+      "previousSchool": null
+    },
+    {
+      "name": "Jianni Davis",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Fr.",
+      "hometown": "Bowie, MD",
+      "highSchool": "Bishop McNamara",
+      "previousSchool": null
+    },
+    {
+      "name": "Bryce McFerson",
+      "jersey": null,
+      "position": "P",
+      "classYear": "R-Sr.",
+      "hometown": "Indian Trail, NC",
+      "highSchool": "Metrolina Christian Academy",
+      "previousSchool": "Notre Dame"
+    },
+    {
+      "name": "Keyari James",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "R-So.",
+      "hometown": "Calgary, Alberta, Canada",
+      "highSchool": "Clearwater Academy International",
+      "previousSchool": null
+    },
+    {
+      "name": "Sean O'Haire",
+      "jersey": null,
+      "position": "K",
+      "classYear": "R-So.",
+      "hometown": "Kildare, Ireland",
+      "highSchool": "St. Mary's Secondary",
+      "previousSchool": "Richmond"
+    },
+    {
+      "name": "Taylor Best",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-Jr.",
+      "hometown": "Chevy Chase, MD",
+      "highSchool": "Landon School",
+      "previousSchool": null
+    },
+    {
+      "name": "Daniel Owens",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "R-Sr.",
+      "hometown": "Pikesville, MD",
+      "highSchool": "Calvert Hall",
+      "previousSchool": null
+    },
+    {
+      "name": "Nahsir Taylor",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "So.",
+      "hometown": "Suitland, MD",
+      "highSchool": "Riverdale Baptist",
+      "previousSchool": null
+    },
+    {
+      "name": "Philip Noyes",
+      "jersey": null,
+      "position": "P",
+      "classYear": "R-So.",
+      "hometown": "Pittsford, NY",
+      "highSchool": "Pittsford Mendon",
+      "previousSchool": null
+    },
+    {
+      "name": "Joel Starlings",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Jr.",
+      "hometown": "Richmond, VA",
+      "highSchool": "Benedictine",
+      "previousSchool": "University of North Carolina"
+    },
+    {
+      "name": "Solomon Foye",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "R-Fr.",
+      "hometown": "Elkton, MD",
+      "highSchool": "Elkton",
+      "previousSchool": null
+    },
+    {
+      "name": "Darius Grimes",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "R-Jr.",
+      "hometown": "Upper Marlboro, MD",
+      "highSchool": "Frederick Douglass",
+      "previousSchool": null
+    },
+    {
+      "name": "Chris Wells",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "R-Jr.",
+      "hometown": "Washington, DC",
+      "highSchool": "Landon",
+      "previousSchool": null
+    },
+    {
+      "name": "EJ Moore Jr.",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Jr.",
+      "hometown": "Decatur, GA",
+      "highSchool": "Columbia",
+      "previousSchool": "Western Carolina"
+    },
+    {
+      "name": "Trevor Szymanski",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-So.",
+      "hometown": "Timonium, MD",
+      "highSchool": "Loyola Blakefield",
+      "previousSchool": null
+    },
+    {
+      "name": "Michael McMonigle",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "York, PA",
+      "highSchool": "William Penn",
+      "previousSchool": null
+    },
+    {
+      "name": "Kellen McConnell",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "R-So.",
+      "hometown": "Kensington, MD",
+      "highSchool": "Bishop O'Connell",
+      "previousSchool": null
+    },
+    {
+      "name": "JaMarcus Whyce",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Fr.",
+      "hometown": "Dayton, OH",
+      "highSchool": "Trotwood-Madison",
+      "previousSchool": null
+    },
+    {
+      "name": "Lamar Williams",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Midway, FL",
+      "highSchool": "Gadsen County",
+      "previousSchool": null
+    },
+    {
+      "name": "Tellek Lockette",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Sr.",
+      "hometown": "Miami, FL",
+      "highSchool": "St. Thomas Aquinas",
+      "previousSchool": "Texas State"
+    },
+    {
+      "name": "DD Holmes",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-So.",
+      "hometown": "Washington, D.C.",
+      "highSchool": "Gonzaga College",
+      "previousSchool": "Florida State"
+    },
+    {
+      "name": "Bryce Jenkins",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "So.",
+      "hometown": "Hyattsville, MD",
+      "highSchool": "Friendship Collegiate Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Jesse Moody",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Fr.",
+      "hometown": "Philadelphia, PA",
+      "highSchool": "Imhotep Charter",
+      "previousSchool": null
+    },
+    {
+      "name": "Joshua Simmons",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-So.",
+      "hometown": "Fort Washington, MD",
+      "highSchool": "DeMatha",
+      "previousSchool": null
+    },
+    {
+      "name": "Rory Knipp",
+      "jersey": null,
+      "position": "LS",
+      "classYear": "Fr.",
+      "hometown": "Pittsburgh, PA",
+      "highSchool": "Central Catholic",
+      "previousSchool": null
+    },
+    {
+      "name": "Michael Hershey",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Jr.",
+      "hometown": "Spring Grove, PA",
+      "highSchool": "Spring Grove",
+      "previousSchool": null
+    },
+    {
+      "name": "Aaron Folivi",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Sr.",
+      "hometown": "Laurel, MD",
+      "highSchool": "Bethesda Chevy Chase",
+      "previousSchool": null
+    },
+    {
+      "name": "Teagan Cox",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Fr.",
+      "hometown": "Lusby, MD",
+      "highSchool": "Patuxent",
+      "previousSchool": null
+    },
+    {
+      "name": "Jonathan Panagou",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Fr.",
+      "hometown": "South Hamilton, MA",
+      "highSchool": "Pingree School",
+      "previousSchool": null
+    },
+    {
+      "name": "Carlos Moore",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Sr.",
+      "hometown": "Bowie, MD",
+      "highSchool": "St. John's College Prep",
+      "previousSchool": "Elon"
+    },
+    {
+      "name": "Logan Bennett",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-So.",
+      "hometown": "Baltimore, MD",
+      "highSchool": "St. Frances Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Jaylen Gilchrist",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Virginia Beach, VA",
+      "highSchool": "Salem",
+      "previousSchool": null
+    },
+    {
+      "name": "Ryan Howerton",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-So.",
+      "hometown": "Laurel, MD",
+      "highSchool": "St. Vincent Pallotti",
+      "previousSchool": null
+    },
+    {
+      "name": "Ben Beymer",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Auburndale, FL",
+      "highSchool": "Lakeland",
+      "previousSchool": null
+    },
+    {
+      "name": "Davon Watkins",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-So.",
+      "hometown": "Baltimore, MD",
+      "highSchool": "St. Mary's",
+      "previousSchool": null
+    },
+    {
+      "name": "Isaiah Wright",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Gr.",
+      "hometown": "North Plainfield, NJ",
+      "highSchool": "St. Peter’s Prep",
+      "previousSchool": "Buffalo"
+    },
+    {
+      "name": "Day'Jon Moore",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Fr.",
+      "hometown": "Oak Cliff, TX",
+      "highSchool": "Willis",
+      "previousSchool": null
+    },
+    {
+      "name": "Rahtrel Perry",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Sr.",
+      "hometown": "New London, CT",
+      "highSchool": "Trinity-Pawling",
+      "previousSchool": "Central Connecticut State"
+    },
+    {
+      "name": "Amory Hills",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "So.",
+      "hometown": "Baltimore, MD",
+      "highSchool": "Milford Mill Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Anthony Robsock",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-So.",
+      "hometown": "Harrisburg, PA",
+      "highSchool": "Central Dauphin",
+      "previousSchool": null
+    },
+    {
+      "name": "Ejani Shakir",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Jr.",
+      "hometown": "Pennsauken, NJ",
+      "highSchool": "Pennsauken",
+      "previousSchool": "Independence CC"
+    },
+    {
+      "name": "Javonte Williams",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Fr.",
+      "hometown": "Damascus, MD",
+      "highSchool": "Northwest",
+      "previousSchool": null
+    },
+    {
+      "name": "Emerson Smith",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-So.",
+      "hometown": "Stowe, VT",
+      "highSchool": "Fork Union Military Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Thomas McCluskey",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "R-Jr.",
+      "hometown": "New Fairfield, CT",
+      "highSchool": "Cheshire Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "JT Taggart",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "So.",
+      "hometown": "Bowling Green, KY",
+      "highSchool": "Calvert Hall",
+      "previousSchool": null
+    },
+    {
+      "name": "Eli Fulcher",
+      "jersey": null,
+      "position": "K",
+      "classYear": "Fr.",
+      "hometown": "Winston-Salem, NC",
+      "highSchool": "Oak Grove",
+      "previousSchool": null
+    },
+    {
+      "name": "Brayden Marko",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Fr.",
+      "hometown": "New Market, MD",
+      "highSchool": "Gonzaga College",
+      "previousSchool": null
+    },
+    {
+      "name": "Justin DeVaughn",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Fr.",
+      "hometown": "Baltimore, MD",
+      "highSchool": "Mergenthaler Vocational Technical",
+      "previousSchool": null
+    },
+    {
+      "name": "Derrick LeBlanc",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Jr.",
+      "hometown": "Opa-locka, FL",
+      "highSchool": "Osceola",
+      "previousSchool": "UCF / Oklahoma"
+    },
+    {
+      "name": "AJ Szymanski",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Sr.",
+      "hometown": "Timonium, MD",
+      "highSchool": "Loyola Blakefield",
+      "previousSchool": null
+    },
+    {
+      "name": "Delmar White",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Fr.",
+      "hometown": "Millersville, MD",
+      "highSchool": "Archbishop Spalding",
+      "previousSchool": null
+    },
+    {
+      "name": "Armon Parker",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Sr.",
+      "hometown": "Detroit, MI",
+      "highSchool": "Fordson",
+      "previousSchool": "Washington"
+    },
+    {
+      "name": "Luke O'Hare",
+      "jersey": null,
+      "position": "LS",
+      "classYear": "R-Fr.",
+      "hometown": "Annapolis, MD",
+      "highSchool": "DeMatha Catholic",
+      "previousSchool": null
+    },
+    {
+      "name": "Jayvon Parker",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Sr.",
+      "hometown": "Detroit, MI",
+      "highSchool": "Fordson",
+      "previousSchool": "Washington"
+    },
+    {
+      "name": "Daniel Leahy",
+      "jersey": null,
+      "position": "K",
+      "classYear": "Fr.",
+      "hometown": "Dublin, Ireland",
+      "highSchool": "Blackrock College",
+      "previousSchool": null
+    },
+    {
+      "name": "Eyan Thomas",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Jr.",
+      "hometown": "Chichester, PA",
+      "highSchool": "Chichester",
+      "previousSchool": "Saint Francis (PA)"
+    },
+    {
+      "name": "Lavon Johnson",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Sr.",
+      "hometown": "Allentown, PA",
+      "highSchool": "Cheshire Academy",
+      "previousSchool": null
+    }
+  ]
+}

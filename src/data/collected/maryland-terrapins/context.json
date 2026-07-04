@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Maryland Terrapins",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Maryland"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:58:14.494Z",
+    "collectorVersion": "693c517",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 49.7,
+    "totalPassingPPA": 4.7,
+    "totalReceivingPPA": 45.5,
+    "totalRushingPPA": -0.5,
+    "percentPPA": 0.128,
+    "percentPassingPPA": 0.05,
+    "percentReceivingPPA": 0.177,
+    "percentRushingPPA": -0.014,
+    "usage": 0.119,
+    "passingUsage": 0.004,
+    "receivingUsage": 0.185,
+    "rushingUsage": 0.229
+  }
+}

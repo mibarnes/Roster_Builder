@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Iowa Hawkeyes",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/iowa/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:iowa"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:56:49.747Z",
+    "collectorVersion": "693c517",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

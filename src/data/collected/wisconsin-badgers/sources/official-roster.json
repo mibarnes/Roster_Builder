@@ -1,0 +1,987 @@
+{
+  "sourceId": "official-roster-v1",
+  "sourceType": "official-roster",
+  "team": "Wisconsin Badgers",
+  "sourceUrl": "https://uwbadgers.com/sports/football/roster",
+  "engine": "nuxt-sidearm",
+  "degraded": false,
+  "degradeReason": null,
+  "coverage": 107,
+  "provenance": {
+    "sources": [
+      {
+        "name": "Official team roster page",
+        "endpoint": "https://uwbadgers.com/sports/football/roster"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:56:14.517Z",
+    "collectorVersion": "693c517",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": [
+    {
+      "name": "Justus Boone",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "6th",
+      "hometown": "Sumter, S.C.",
+      "highSchool": "Sumter",
+      "previousSchool": "Arkansas"
+    },
+    {
+      "name": "Tyrell Henry",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Sr.",
+      "hometown": "Roseville, Mich.",
+      "highSchool": "Roseville",
+      "previousSchool": "Michigan State"
+    },
+    {
+      "name": "Eric Fletcher Jr.",
+      "jersey": null,
+      "position": "CB",
+      "classYear": "R-So.",
+      "hometown": "Ft. Myers, Fla.",
+      "highSchool": "Dunbar",
+      "previousSchool": "Oklahoma State"
+    },
+    {
+      "name": "Colton Joseph",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "R-Jr.",
+      "hometown": "Newport Beach, Calif.",
+      "highSchool": "Newport Harbor",
+      "previousSchool": "Old Dominion"
+    },
+    {
+      "name": "Chris Brooks Jr.",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Sr.",
+      "hometown": "St. Louis, Mo.",
+      "highSchool": "St. Louis University School",
+      "previousSchool": null
+    },
+    {
+      "name": "Javan Robinson",
+      "jersey": null,
+      "position": "CB",
+      "classYear": "R-Sr.",
+      "hometown": "Orlando, Fla.",
+      "highSchool": "West Orange",
+      "previousSchool": "Arizona State"
+    },
+    {
+      "name": "Cai Bates",
+      "jersey": null,
+      "position": "CB",
+      "classYear": "R-So.",
+      "hometown": "West Orlando, Fla.",
+      "highSchool": "Edgewater",
+      "previousSchool": "Florida State"
+    },
+    {
+      "name": "Abu Sama III",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "Sr.",
+      "hometown": "Des Moines, Iowa",
+      "highSchool": "Southeast Polk",
+      "previousSchool": "Iowa State"
+    },
+    {
+      "name": "Marvin Burks Jr.",
+      "jersey": null,
+      "position": "S",
+      "classYear": "Sr.",
+      "hometown": "St. Louis, Mo.",
+      "highSchool": "Cardinal Ritter",
+      "previousSchool": "Missouri"
+    },
+    {
+      "name": "Carter Smith",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "R-Fr.",
+      "hometown": "Fort Myers, Fla.",
+      "highSchool": "Bishop Verot",
+      "previousSchool": null
+    },
+    {
+      "name": "Bryce West",
+      "jersey": null,
+      "position": "CB",
+      "classYear": "R-So.",
+      "hometown": "Cleveland, Ohio",
+      "highSchool": "Glenville",
+      "previousSchool": "Ohio State"
+    },
+    {
+      "name": "Darrion Dupree",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "Jr.",
+      "hometown": "Chicago, Ill.",
+      "highSchool": "Mount Carmel",
+      "previousSchool": null
+    },
+    {
+      "name": "Tyreese Fearbry",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "R-Sr.",
+      "hometown": "Pittsburgh, Pa.",
+      "highSchool": "Perry Traditional Acadamy",
+      "previousSchool": "Kentucky"
+    },
+    {
+      "name": "Shamar Rigby",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Jr.",
+      "hometown": "St. Petersburg, Fla.",
+      "highSchool": "Clearwater Central Catholic",
+      "previousSchool": "Oklahoma State"
+    },
+    {
+      "name": "Deuce Adams",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "R-So.",
+      "hometown": "Austin, Texas",
+      "highSchool": "Vandergrift",
+      "previousSchool": "Louisville"
+    },
+    {
+      "name": "Mason Posa",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "So.",
+      "hometown": "Albuquerque, N.M.",
+      "highSchool": "La Cueva",
+      "previousSchool": null
+    },
+    {
+      "name": "Jaylon Domingeaux",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Sr.",
+      "hometown": "Lafayette, La.",
+      "highSchool": "Comeaux",
+      "previousSchool": "Southeastern Louisiana"
+    },
+    {
+      "name": "Ryan Hopkins",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "Fr.",
+      "hometown": "Newport Beach, Calif.",
+      "highSchool": "Mater Dei",
+      "previousSchool": null
+    },
+    {
+      "name": "Gideon Ituka",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "R-So.",
+      "hometown": "Gaithersburg, Md.",
+      "highSchool": "Gaithersburg",
+      "previousSchool": null
+    },
+    {
+      "name": "Jahmare Washington",
+      "jersey": null,
+      "position": "CB",
+      "classYear": "R-Fr.",
+      "hometown": "Chicago, Ill.",
+      "highSchool": "Morgan Park",
+      "previousSchool": null
+    },
+    {
+      "name": "Kash Brock",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Fr.",
+      "hometown": "Chandler, Ariz.",
+      "highSchool": "Basha",
+      "previousSchool": null
+    },
+    {
+      "name": "Carson Van Dinter",
+      "jersey": null,
+      "position": "S",
+      "classYear": "R-So.",
+      "hometown": "Kaukauna, Wis.",
+      "highSchool": "Kaukauna",
+      "previousSchool": "Iowa State"
+    },
+    {
+      "name": "Nicolas Clayton",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "So.",
+      "hometown": "Gainesville, Fla.",
+      "highSchool": "Bucholz",
+      "previousSchool": null
+    },
+    {
+      "name": "Zion Kearney",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Jr.",
+      "hometown": "Fresno, Texas",
+      "highSchool": "Hightower",
+      "previousSchool": "Oklahoma"
+    },
+    {
+      "name": "Eugene Hilton Jr.",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "So.",
+      "hometown": "Zionsville, Ind.",
+      "highSchool": "Zionsville",
+      "previousSchool": null
+    },
+    {
+      "name": "Matthew Traynor",
+      "jersey": null,
+      "position": "S",
+      "classYear": "R-Jr.",
+      "hometown": "Marietta, Ga.",
+      "highSchool": "George Walton",
+      "previousSchool": "Richmond"
+    },
+    {
+      "name": "Liam Danitz",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "R-Sr.",
+      "hometown": "West Branch, Mich.",
+      "highSchool": "Ogemaw Heights",
+      "previousSchool": "Hope College"
+    },
+    {
+      "name": "Keeyshawn Tabuteau",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Fr.",
+      "hometown": "Montreal, Canada",
+      "highSchool": "McCallie School",
+      "previousSchool": null
+    },
+    {
+      "name": "Sebastian Cheeks",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "Gr.",
+      "hometown": "Skokie, Ill.",
+      "highSchool": "Evanston Township",
+      "previousSchool": "North Carolina"
+    },
+    {
+      "name": "Nate Palmer",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "R-So.",
+      "hometown": "Decatur, Texas",
+      "highSchool": "Decatur",
+      "previousSchool": "TCU"
+    },
+    {
+      "name": "Malachi Coleman",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Jr.",
+      "hometown": "Lincoln, Neb.",
+      "highSchool": "Lincoln East",
+      "previousSchool": "Minnesota"
+    },
+    {
+      "name": "Grant Dean",
+      "jersey": null,
+      "position": "S",
+      "classYear": "So.",
+      "hometown": "Neenah, Wis.",
+      "highSchool": "Neenah",
+      "previousSchool": null
+    },
+    {
+      "name": "Nizyi Davis",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "R-Fr.",
+      "hometown": "Indianapolis, Ind.",
+      "highSchool": "Lawrence Central",
+      "previousSchool": null
+    },
+    {
+      "name": "Carsen Eloms",
+      "jersey": null,
+      "position": "CB",
+      "classYear": "Fr.",
+      "hometown": "Fishers, Ind.",
+      "highSchool": "Fishers",
+      "previousSchool": null
+    },
+    {
+      "name": "Danny O'Neil",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "Jr.",
+      "hometown": "Indianapolis, Ind.",
+      "highSchool": "Cathedral",
+      "previousSchool": "SDSU"
+    },
+    {
+      "name": "Thomas Heiberger",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "R-So.",
+      "hometown": "Sioux Falls, S.D.",
+      "highSchool": "Jefferson",
+      "previousSchool": null
+    },
+    {
+      "name": "Langdon Nordgaard",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-So.",
+      "hometown": "West De Pere, Wis.",
+      "highSchool": "West De Pere",
+      "previousSchool": null
+    },
+    {
+      "name": "Luke Emmerich",
+      "jersey": null,
+      "position": "S",
+      "classYear": "R-Fr.",
+      "hometown": "Monticello, Minn.",
+      "highSchool": "Monticello",
+      "previousSchool": null
+    },
+    {
+      "name": "Bryan Jackson II",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "Jr.",
+      "hometown": "McKinney, Texas",
+      "highSchool": "McKinney",
+      "previousSchool": "USC"
+    },
+    {
+      "name": "Cairo Skanes",
+      "jersey": null,
+      "position": "S",
+      "classYear": "So.",
+      "hometown": "Asheville, N.C.",
+      "highSchool": "Providence Day",
+      "previousSchool": null
+    },
+    {
+      "name": "Landon Gauthier",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "R-So.",
+      "hometown": "Green Bay, Wis.",
+      "highSchool": "Bay Port",
+      "previousSchool": null
+    },
+    {
+      "name": "Davion Thomas-Kumpula",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Jr.",
+      "hometown": "Racine, Wis.",
+      "highSchool": "Saint Catherine's",
+      "previousSchool": null
+    },
+    {
+      "name": "Zion Legree",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Fr.",
+      "hometown": "Pensacola, Fla.",
+      "highSchool": "Choctawhatchee",
+      "previousSchool": null
+    },
+    {
+      "name": "Jai'mier Scott",
+      "jersey": null,
+      "position": "CB",
+      "classYear": "R-Fr.",
+      "hometown": "Mt. Healthy, Ohio",
+      "highSchool": "Mt. Healthy",
+      "previousSchool": null
+    },
+    {
+      "name": "Eli Adams",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-So.",
+      "hometown": "Austin, Texas",
+      "highSchool": "Vandergrift",
+      "previousSchool": "Louisville"
+    },
+    {
+      "name": "Kah'ni Watts",
+      "jersey": null,
+      "position": "S",
+      "classYear": "Fr.",
+      "hometown": "Ft. Myers, Fla.",
+      "highSchool": "Iowa Colony (Texas)",
+      "previousSchool": null
+    },
+    {
+      "name": "Raphael Dunn",
+      "jersey": null,
+      "position": "S",
+      "classYear": "R-So.",
+      "hometown": "Lawrenceville, N.J.",
+      "highSchool": "Lawrenceville",
+      "previousSchool": null
+    },
+    {
+      "name": "Jon Jon Kamara",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "R-So.",
+      "hometown": "Goodyear, Ariz.",
+      "highSchool": "Desert Edge",
+      "previousSchool": "Kansas"
+    },
+    {
+      "name": "Matthew Jung",
+      "jersey": null,
+      "position": "S",
+      "classYear": "R-Sr.",
+      "hometown": "Neenah, Wis.",
+      "highSchool": "Neenah",
+      "previousSchool": "Bethel"
+    },
+    {
+      "name": "Charles Perkins",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Sr.",
+      "hometown": "Memphis, Tenn.",
+      "highSchool": "Memphis Academy of Health Sciences",
+      "previousSchool": "UT-Martin"
+    },
+    {
+      "name": "Harrison Bortolotti",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "So.",
+      "hometown": "Whitefish Bay, Wis.",
+      "highSchool": "Whitefish Bay",
+      "previousSchool": null
+    },
+    {
+      "name": "Mason Lane",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "R-So.",
+      "hometown": "Lodi, Wis.",
+      "highSchool": "Lodi",
+      "previousSchool": null
+    },
+    {
+      "name": "Jayden Loftin",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "R-Fr.",
+      "hometown": "Somerville, N.J.",
+      "highSchool": "Somerville",
+      "previousSchool": "Tennessee"
+    },
+    {
+      "name": "Tyler Jansey",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "R-Jr.",
+      "hometown": "Batavia, Ill.",
+      "highSchool": "Batavia",
+      "previousSchool": null
+    },
+    {
+      "name": "Taylor Schaefer",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Jr.",
+      "hometown": "Sturgeon Bay, Wis.",
+      "highSchool": "Southern Door",
+      "previousSchool": "Iowa Central CC"
+    },
+    {
+      "name": "Cooper Catalano",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "So.",
+      "hometown": "Richfield, Wis.",
+      "highSchool": "Germantown",
+      "previousSchool": null
+    },
+    {
+      "name": "Yahya Gaad",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "Fr.",
+      "hometown": "Medina, Tenn.",
+      "highSchool": "South Gibson County",
+      "previousSchool": null
+    },
+    {
+      "name": "James Roe",
+      "jersey": null,
+      "position": "LS",
+      "classYear": "Jr.",
+      "hometown": "Kennesaw, Ga.",
+      "highSchool": "North Cobb",
+      "previousSchool": "Toledo"
+    },
+    {
+      "name": "Evan Van Dyn Hoven",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "R-Jr.",
+      "hometown": "Menasha, Wis.",
+      "highSchool": "Menasha",
+      "previousSchool": null
+    },
+    {
+      "name": "Andrew Goodman",
+      "jersey": null,
+      "position": "LS",
+      "classYear": "R-Sr.",
+      "hometown": "Montreal, Canada",
+      "highSchool": "John Abbott Academy",
+      "previousSchool": "Tulane"
+    },
+    {
+      "name": "Ben Wenzel",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Fr.",
+      "hometown": "Appleton, Wis.",
+      "highSchool": "Appleton North",
+      "previousSchool": null
+    },
+    {
+      "name": "Ryan Cory",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-So.",
+      "hometown": "Gibsonia, Pa.",
+      "highSchool": "Pine-Richland",
+      "previousSchool": null
+    },
+    {
+      "name": "Sam Lateju",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "R-Fr.",
+      "hometown": "Lagos, Nigeria",
+      "highSchool": "Lawrenceville",
+      "previousSchool": null
+    },
+    {
+      "name": "Micheal Garner",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "Sr.",
+      "hometown": "Chicago Heights, Ill.",
+      "highSchool": "Bloom Township",
+      "previousSchool": "Grambling State"
+    },
+    {
+      "name": "Austin Kawecki",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Gr.",
+      "hometown": "Frisco, Texas",
+      "highSchool": "Lebanon Trail",
+      "previousSchool": "Oklahoma State"
+    },
+    {
+      "name": "Hardy Watts",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Boston, Mass.",
+      "highSchool": "Dexter Southfield",
+      "previousSchool": null
+    },
+    {
+      "name": "Cam Clark",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Dexter, Mich.",
+      "highSchool": "Dexter",
+      "previousSchool": null
+    },
+    {
+      "name": "Brady Bekkenhuis",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Fr.",
+      "hometown": "Arlington, Mass.",
+      "highSchool": "Arlington",
+      "previousSchool": null
+    },
+    {
+      "name": "Drew Braam",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "R-So.",
+      "hometown": "Oak Creek, Wis.",
+      "highSchool": "Oak Creek",
+      "previousSchool": null
+    },
+    {
+      "name": "Kevin Heywood",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-So.",
+      "hometown": "Limerick, Pa.",
+      "highSchool": "Pope John Paul II",
+      "previousSchool": null
+    },
+    {
+      "name": "Michael Roeske",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Wautoma, Wis.",
+      "highSchool": "Wautoma",
+      "previousSchool": null
+    },
+    {
+      "name": "Aaron Witt",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Gr.",
+      "hometown": "Winona, Minn.",
+      "highSchool": "Winona",
+      "previousSchool": null
+    },
+    {
+      "name": "Nolan Davenport",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Massillon, Ohio",
+      "highSchool": "Massillon",
+      "previousSchool": null
+    },
+    {
+      "name": "Evan Brown",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Jr.",
+      "hometown": "Tallahassee, Fla.",
+      "highSchool": "Maclay",
+      "previousSchool": null
+    },
+    {
+      "name": "Barrett Nelson",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Sr.",
+      "hometown": "Stoughton, Wis.",
+      "highSchool": "Stoughton",
+      "previousSchool": null
+    },
+    {
+      "name": "PJ Wilkins",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Jr.",
+      "hometown": "Atlanta, Ga.",
+      "highSchool": "Saint Frances",
+      "previousSchool": "Ole Miss"
+    },
+    {
+      "name": "Lucas Simmons-Johansson",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Jr.",
+      "hometown": "Stockholm, Sweden",
+      "highSchool": "Clearwater Academy International (Fla.)",
+      "previousSchool": "Florida State"
+    },
+    {
+      "name": "Blake Cherry",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "So.",
+      "hometown": "Claremore, Okla.",
+      "highSchool": "Owasso",
+      "previousSchool": "Arkansas"
+    },
+    {
+      "name": "Emerson Mandell",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-So.",
+      "hometown": "Moundsview, Minn.",
+      "highSchool": "Irondale",
+      "previousSchool": null
+    },
+    {
+      "name": "Stylz Blackmon",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Jr.",
+      "hometown": "Grain Valley, Mo.",
+      "highSchool": "Grain Valley",
+      "previousSchool": "Augustana"
+    },
+    {
+      "name": "Dillan Johnson",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Jr.",
+      "hometown": "Plainfield, Ill.",
+      "highSchool": "Joliet Catholic",
+      "previousSchool": null
+    },
+    {
+      "name": "Peyton Lange",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Jr.",
+      "hometown": "Minneapolis, Minn.",
+      "highSchool": "Minnehaha Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Will McDonald",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "R-Jr.",
+      "hometown": "Houlton, Wis.",
+      "highSchool": "Hudson",
+      "previousSchool": null
+    },
+    {
+      "name": "Colin Cubberly",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-So.",
+      "hometown": "Lagrangeville, N.Y.",
+      "highSchool": "Arlington",
+      "previousSchool": null
+    },
+    {
+      "name": "Logan Powell",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Phoenix, Ariz.",
+      "highSchool": "Brophy Prep Jesuit",
+      "previousSchool": null
+    },
+    {
+      "name": "Mason Kelley",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Fr.",
+      "hometown": "Mukwonago, Wis.",
+      "highSchool": "Mukwonago",
+      "previousSchool": null
+    },
+    {
+      "name": "Emmett Bork",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "R-Fr.",
+      "hometown": "Oconomowoc, Wis.",
+      "highSchool": "Oconomowoc",
+      "previousSchool": null
+    },
+    {
+      "name": "Ryan Schwendeman",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Gr.",
+      "hometown": "O'Fallon, Mo.",
+      "highSchool": "St. Dominic",
+      "previousSchool": "Southern Illinois"
+    },
+    {
+      "name": "Hayden Metzger",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-So.",
+      "hometown": "Pewaukee, Wis.",
+      "highSchool": "Pewaukee",
+      "previousSchool": null
+    },
+    {
+      "name": "Grant Stec",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "R-So.",
+      "hometown": "Sleepy Hollow, Ill.",
+      "highSchool": "Henry Jacobs",
+      "previousSchool": null
+    },
+    {
+      "name": "Jack Sievers",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Fr.",
+      "hometown": "Everett, Wash.",
+      "highSchool": "Archbishop Murphy",
+      "previousSchool": null
+    },
+    {
+      "name": "Jackson McGohan",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Jr.",
+      "hometown": "Miamisburg, Ohio",
+      "highSchool": "Miamisburg",
+      "previousSchool": "LSU"
+    },
+    {
+      "name": "Jacob Harris",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "R-Jr.",
+      "hometown": "Columbus, Ohio",
+      "highSchool": "Westerville Central",
+      "previousSchool": "Bowling Green"
+    },
+    {
+      "name": "Djidjou Bah",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Fr.",
+      "hometown": "Memphis, Tenn.",
+      "highSchool": "Germantown",
+      "previousSchool": null
+    },
+    {
+      "name": "Hammond Russell IV",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "6th",
+      "hometown": "Columbus, Ohio",
+      "highSchool": "Dublin Coffman",
+      "previousSchool": "West Virginia"
+    },
+    {
+      "name": "Sean West",
+      "jersey": null,
+      "position": "P",
+      "classYear": "R-So.",
+      "hometown": "Mequon, Wis.",
+      "highSchool": "Homestead",
+      "previousSchool": null
+    },
+    {
+      "name": "Nolan Vils",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Jr.",
+      "hometown": "Prairie Du Sac, Wis.",
+      "highSchool": "Sauk Prairie",
+      "previousSchool": null
+    },
+    {
+      "name": "DeNigel Cooper",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-So.",
+      "hometown": "Kingsland, Ga.",
+      "highSchool": "Camden County",
+      "previousSchool": "Appalachian State"
+    },
+    {
+      "name": "Xavier Ukponu",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Fr.",
+      "hometown": "Denton, Texas",
+      "highSchool": "Guyer",
+      "previousSchool": null
+    },
+    {
+      "name": "Jacob Anderson",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Gr.",
+      "hometown": "Davis, Ill.",
+      "highSchool": "Durand",
+      "previousSchool": "Illinois State"
+    },
+    {
+      "name": "Arthur Scott III",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Fr.",
+      "hometown": "Streetsboro, Ohio",
+      "highSchool": "Streetsboro",
+      "previousSchool": null
+    },
+    {
+      "name": "Gavin Lahm",
+      "jersey": null,
+      "position": "K",
+      "classYear": "Gr.",
+      "hometown": "Kaukauna, Wis.",
+      "highSchool": "Kaukauna",
+      "previousSchool": null
+    },
+    {
+      "name": "Jaylen Williams",
+      "jersey": null,
+      "position": "OLB",
+      "classYear": "R-Fr.",
+      "hometown": "Chicago, Ill.",
+      "highSchool": "Palatine",
+      "previousSchool": null
+    },
+    {
+      "name": "Torin Pettaway",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Fr.",
+      "hometown": "Middleton, Wis.",
+      "highSchool": "Middleton",
+      "previousSchool": null
+    },
+    {
+      "name": "Ethan Tranel",
+      "jersey": null,
+      "position": "P",
+      "classYear": "R-Jr.",
+      "hometown": "Blue Mounds, Wis.",
+      "highSchool": "Mt. Horeb",
+      "previousSchool": "UW-La Crosse"
+    },
+    {
+      "name": "Junior Poyser",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Jr.",
+      "hometown": "Brampton, Ontario",
+      "highSchool": "Williston Northampton School",
+      "previousSchool": "Buffalo"
+    },
+    {
+      "name": "Donovan Dunmore",
+      "jersey": null,
+      "position": "CB",
+      "classYear": "Fr.",
+      "hometown": "Clovis, Calif.",
+      "highSchool": "Buchanan",
+      "previousSchool": null
+    }
+  ]
+}

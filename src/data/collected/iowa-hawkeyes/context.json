@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Iowa Hawkeyes",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Iowa"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:56:17.988Z",
+    "collectorVersion": "693c517",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 126.8,
+    "totalPassingPPA": 5.3,
+    "totalReceivingPPA": 106.3,
+    "totalRushingPPA": 15.2,
+    "percentPPA": 0.488,
+    "percentPassingPPA": 0.113,
+    "percentReceivingPPA": 0.773,
+    "percentRushingPPA": 0.202,
+    "usage": 0.357,
+    "passingUsage": 0.137,
+    "receivingUsage": 0.684,
+    "rushingUsage": 0.373
+  }
+}
