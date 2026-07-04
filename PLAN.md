@@ -10,7 +10,13 @@
 
 **The app is live and hardened** at https://mibarnes.github.io/Roster_Builder/ (publishes from
 `main`). The M1–M6 rebuild + Round-2 enrichment + golden-record reconciliation are complete (see
-*Completed work* below). **485 tests; tsc strict clean.**
+*Completed work* below). **494 tests; tsc strict clean.**
+
+> **Deepening arc DONE (2026-07-04):** D1 (master-only data path) · F4 (league-calibrated ratings +
+> `_baselines`/`_identity`/`_league` offline artifacts) · F6 (League view `#/league` + Team HQ
+> `#/team/:id/hq`). Cross-team OVR is now honest and the 54-team breadth is a real intelligence tool.
+> All local-only. **Next candidates:** push everything live; D1b legacy-file cleanup; F5 freshness;
+> finish Big 12 (13 teams) + P7 origin-production on CFBD quota reset.
 
 We are executing the **F0–F8 finalization plan** — evolving the working demo into a polished,
 zero-stub CFB intelligence tool. **Decisions locked 2026-07-04:** (1) full F0–F8 is the committed
@@ -113,13 +119,17 @@ The tier collapse — collapses the two-path debt. (Blueprint 5.2, P5–P8, D1/D
 - [ ] **S8 Signee source** — CFBD recruiting-commits synthetic spine → signed HS players get real records flagged `notYetEnrolled` instead of `ourlads-stub-*`.
 - **Gate:** all 33 masters validate; legacy path deleted; 259+ tests green.
 
-### F4 — Identity graph + rating v2  ·  status: PLANNED
-Makes cross-team comparison honest. (Blueprint 5.4, 6.1, P7/P8, D2/D7.)
-- [ ] **Identity artifact** `collected/_identity.json` — `playerGlobalId` (`CFBD-<athleteId>`) → appearances, from portal origin/destination + national index.
-- [ ] **P7 Origin-production carry** — portal-linked incoming transfers get `priorProduction:{school,season,stats,perGame}`; fix `newIn2026` to mean genuinely new.
-- [ ] **D2** `transferOrigin` → `{teamId?:TeamId, name}`; eligibility → structured; `departures[]` per team.
-- [ ] **D7 Rating v2 — league-calibrated** — collect-time `_baselines.json` (position-group distributions across all 33); in-app OVR z-scores vs league (not team); extract coefficients to documented `ratingConfig.ts` with golden-file + monotonicity tests; optional `ovrConfidence` from completeness.
-- **Gate:** comparison honest cross-team; transfer modal shows prior stats.
+### F4 — Identity graph + rating v2  ·  status: DONE (2026-07-04, P7 deferred to quota reset)
+Makes cross-team comparison honest — the payoff of the 54-team data. (Blueprint 5.4, 6.1, D2/D7.)
+- [x] **D7 Rating v2 — league-calibrated** ✅ — `ratingConfig.ts` (documented single source: weight sets, projection penalty, z-score constants, `LeagueBaselines`); `computeTeamRatings(players, leagueBaselines?)` z-scores OVR vs the LEAGUE (`overall.ts` normContext sites), team-relative stays the fallback; golden/monotonicity/calibration tests. Added `RatingConfidence` (high/med/low from completeness), surfaced to `UIPlayer`. **Pixel-verified honest:** league avg-starter-OVR ranks Georgia/Notre Dame/LSU top, Rutgers/Syracuse bottom; Georgia 5-stars (85) now outrank Rutgers 4-stars (75) cross-team.
+- [x] **Offline artifacts** ✅ — `scripts/buildLeagueArtifacts.ts` (`pnpm build:artifacts`, NO CFBD) reads all 54 masters via the exact app pipeline → `_baselines.json` (per-group mean/sd/n) + `_identity.json` (1200 portal edges, 563 in-league) + `_league.json` (per-team league-honest summary). App statically imports `_baselines.json`.
+- [ ] **P7 Origin-production carry** — `priorProduction` from origin-team 2025 `/games/players`. **Deferred → CFBD quota reset** (needs the API). `newIn2026` fix rides with it.
+- [~] **D2** `transferOrigin` → `{teamId?, name}` deep-links — partially in F6 (portal ledger/flow deep-link to in-registry origin teams); the per-player transfer-chip origin card is deferred polish.
+- **Gate:** ✅ comparison honest cross-team; 494 tests; tsc clean.
+
+### D1 — App-side path unification  ·  status: DONE (app-side; D1b deferred)
+- [x] ✅ Master-only `loadTeamData` (legacy 3-file branch + globs + helper deleted); mock mode + `VITE_DATA_MODE` + `DataMode` plumbing removed (D4/S7 app-side); S10 `isTransfer`-false bug gone with the legacy path.
+- [ ] **D1b (deferred, §17-sensitive):** stop the collector writing the legacy trio + delete the 54×3 on-disk `roster/production/recruiting.json` + `seed.test` disk reads. Kept `isPilot` (collector target concept; a uniform `tier:'gold'` would be vestigial now).
 
 ### F5 — Freshness loop  ·  status: PLANNED (parallel to F6)
 "Live feel" without a server. (Blueprint 5.3, 7.2.)
@@ -130,14 +140,12 @@ Makes cross-team comparison honest. (Blueprint 5.4, 6.1, P7/P8, D2/D7.)
 - [ ] **7.2 Roster Moves ticker** — dismissible strip from `_changes.json` + per-team changelog page.
 - **Gate:** one automated refresh PR merged end-to-end.
 
-### F6 — Intelligence surfaces  ·  status: PLANNED (parallel to F5)
-Display → scouting tool. (Blueprint 6.2/6.3, U6/U9/U10, S12.)
-- [ ] **Team HQ** (`#/team/:id/hq`) — roster-construction (class×position stacked bars), portal ledger, returning-production gauges, recruiting-class trajectory (`classHistory.json`), strength-vs-conference percentile bars (`_baselines.json`).
-- [ ] **League view** — sortable 33-team boards + position-group leaderboards + portal flow Sankey, from a single small `collected/_league.json` (built at collect time — never load 33 chunks client-side).
-- [ ] **U6 Special teams** (S12) — `ST` group + K/P/LS/KR/PR slots + tab; include in Ratings filter.
-- [ ] **U9 Formations** — data-driven templates (4-3/3-4/nickel/11-12-21) from depth-chart shape + manual switcher.
-- [ ] **U10 Comparison metric selector** — OVR / recruiting / stars / class-weighted / returning; documented thresholds.
-- **Gate:** new routes live; artifacts in CI data-QA gate.
+### F6 — Intelligence surfaces  ·  status: DONE (core; U6/U9/U10 deferred) (2026-07-04)
+Display → scouting tool. (Blueprint 6.2/6.3.)
+- [x] **Team HQ** (`#/team/:id/hq`) ✅ — strength-vs-league bars (group avg OVR vs league mean 73), returning-production gauges, roster-construction class×position grid, incoming/outgoing portal ledger (`_identity.json`). New `hq` team tab.
+- [x] **League view** (`#/league`) ✅ — conference-filterable, sortable board of all 54 teams (league-calibrated OVR + OFF/DEF/returning/portal-net) + a transfer-portal **flow panel** (net gainers/losers + top in-league moves), from the single small `_league.json` + `_identity.json`. "League" nav button. *(Design note: the portal "Sankey" is a ranked net-flow panel — a 54-node node-link diagram is unreadable; this is clearer.)*
+- [ ] **U6 Special teams / U9 formations / U10 metric selector** — deferred polish (not needed for the League/HQ payoff). Recruiting-class trajectory (`classHistory.json`) also deferred.
+- **Gate:** ✅ both routes live + pixel-verified; 494 tests; tsc clean. (CI data-QA gate for artifacts → future.)
 
 ### F7 — Player depth + delight  ·  status: PLANNED
 (Blueprint 6.1/6.4/6.5, U12, 7.3/7.4.)
@@ -179,6 +187,15 @@ Display → scouting tool. (Blueprint 6.2/6.3, U6/U9/U10, S12.)
 ---
 
 ## Completed work (history — condensed)
+
+- **Deepening arc D1 → F4 → F6 (2026-07-04)** — turned the app into a cross-team intelligence tool.
+  **D1:** master-only data path (deleted the dead legacy 3-file loader + mock mode; S10 bug gone).
+  **F4:** league-calibrated OVR (`computeTeamRatings(players, leagueBaselines?)` z-scores vs the
+  league, not the team — pixel-verified honest: Georgia 5-stars now outrank Rutgers 4-stars
+  cross-team) + `ratingConfig.ts` + `RatingConfidence` + an offline `buildLeagueArtifacts.ts`
+  (`pnpm build:artifacts`, no CFBD) emitting `_baselines`/`_identity`/`_league.json`. **F6:** League
+  view (`#/league`, sortable 54-team board + portal flow) + Team HQ (`#/team/:id/hq`, strength-vs-
+  league + roster construction + portal ledger + returning gauges). 494 tests; tsc clean; all local.
 
 - **Power-Four expansion → 54/67 golden; CFBD quota hit (2026-07-04)** — expanded the registry from
   33 (ACC+SEC+ND) to 67 by adding Big Ten (18) + Big 12 (16), each row sourced empirically (espnId via
