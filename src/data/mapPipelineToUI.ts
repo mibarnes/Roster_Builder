@@ -102,6 +102,7 @@ const toUiPlayer = (player: PipelinePlayer, id: number): UIPlayer => ({
   ovr: player.ratings.overall ?? 0,
   isRated: player.ratings.overall != null,
   ratingMethod: player.ratings.method,
+  confidence: player.ratings.confidence,
   ratingBreakdown: { ...player.ratings.breakdown },
   eligibilityRemaining: player.bio.eligibilityRemaining ?? null,
   stats: toUiStats(player.production.stats),

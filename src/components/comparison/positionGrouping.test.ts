@@ -27,6 +27,7 @@ const mk = (over: Partial<UIPlayer>): UIPlayer => ({
   ovr: 80,
   isRated: true,
   ratingMethod: 'blended',
+  confidence: 'high',
   ratingBreakdown: { recruiting: null, production: null, class: 71, weights: { recruiting: 0.45, production: 0.45, class: 0.1 } },
   eligibilityRemaining: null,
   stats: {},

@@ -16,10 +16,12 @@ import RatingsView, { type RatingsFilters } from './components/RatingsView.tsx'
 import Star from './components/Star.tsx'
 import TeamComparisonView from './components/comparison/TeamComparisonView.tsx'
 import PositionDepthView from './components/comparison/PositionDepthView.tsx'
+import LeagueView from './components/league/LeagueView.tsx'
+import TeamHQ from './components/hq/TeamHQ.tsx'
 import { EMPTY_COVERAGE, type PipelineMetrics } from './data/schema/pipeline.ts'
 import type { Formation, UIDataset, UIPlayer } from './data/schema/ui.ts'
 
-type Tab = 'offense' | 'defense' | 'ratings'
+type Tab = 'offense' | 'defense' | 'ratings' | 'hq'
 type DepthMode = 'starters' | 'second-team' | 'all'
 
 const EMPTY_OFFENSE: Formation = { LT: [], LG: [], C: [], RG: [], RT: [], WRX: [], SLOT: [], QB: [], RB: [], TE: [], WRZ: [] }
@@ -137,12 +139,23 @@ export default function App() {
     navigate({ kind: 'player', teamId, playerId: player.playerId })
   }
 
+  // ── League view (F6) — cross-team, needs no single team loaded (#/league) ──
+  if (route.kind === 'league') {
+    return (
+      <LeagueView
+        onBack={() => navigate({ kind: 'team', teamId, tab: 'offense' })}
+        onTeamClick={(id) => navigate({ kind: 'team', teamId: id, tab: 'offense' })}
+      />
+    )
+  }
+
   const { offensiveStarters, defensiveStarters, allPlayers } = rosterData
 
   const tabs: Array<{ id: Tab; label: string }> = [
     { id: 'offense', label: 'OFFENSE' },
     { id: 'defense', label: 'DEFENSE' },
     { id: 'ratings', label: 'RATINGS' },
+    { id: 'hq', label: 'HQ' },
   ]
 
   const isFormationTab = tab === 'offense' || tab === 'defense'
@@ -222,6 +235,14 @@ export default function App() {
             className="rounded-md px-3 py-1.5 text-xs font-bold text-white whitespace-nowrap flex-shrink-0 team-accent-bg hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Team Comparison
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate({ kind: 'league' })}
+            title="League-wide boards + transfer portal flow"
+            className="rounded-md px-3 py-1.5 text-xs font-bold text-white whitespace-nowrap flex-shrink-0 bg-neutral-700 hover:bg-neutral-600 transition-colors"
+          >
+            League
           </button>
           <div className="flex-1" />
           <label htmlFor="team-select" className="text-[11px] font-bold text-gray-300 uppercase tracking-wide">
@@ -440,6 +461,9 @@ export default function App() {
           )}
           {tab === 'ratings' && (
             <RatingsView allPlayers={allPlayers} filters={filters} setFilters={setFilters} onPlayerClick={onPlayerClick} />
+          )}
+          {tab === 'hq' && (
+            <TeamHQ teamId={teamId} uiData={rosterData} metrics={metrics} onPlayerClick={onPlayerClick} />
           )}
         </div>
       </main>

@@ -112,16 +112,23 @@ interface PortalEdge {
   toName: string
   transferRating: number | null
 }
+// Golden-master fields are MetaField `{value, _meta}` wrappers — unwrap to the scalar.
+const unwrap = (v: unknown): string | null => {
+  if (v == null) return null
+  if (typeof v === 'object' && 'value' in (v as Record<string, unknown>)) return unwrap((v as { value: unknown }).value)
+  return String(v)
+}
+
 const edges: PortalEdge[] = []
 for (const [teamId, ds] of datasets) {
   const label = getTeamById(teamId)?.label ?? teamId
   for (const pl of ds.master?.players ?? []) {
     if (!pl.flags?.isTransfer) continue
-    const origin = pl.recruiting?.origin ?? pl.recruiting?.fromSchool ?? null
+    const origin = unwrap(pl.recruiting?.origin) ?? unwrap(pl.recruiting?.fromSchool)
     if (!origin) continue
     edges.push({
-      name: pl.name,
-      position: pl.position ?? null,
+      name: unwrap(pl.name) ?? '',
+      position: unwrap(pl.position),
       fromName: origin,
       fromTeamId: resolveSchool(origin),
       toTeamId: teamId,

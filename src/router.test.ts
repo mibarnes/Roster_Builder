@@ -60,3 +60,16 @@ describe('router — routeTeamId', () => {
     expect(routeTeamId({ kind: 'compare', leftId: 'c', rightId: 'd' })).toBe('c')
   })
 })
+
+describe('router — F6 routes (league + hq)', () => {
+  it('parses + builds the #/league route (round-trip)', () => {
+    expect(parseHash('#/league')).toEqual({ kind: 'league' })
+    expect(buildHash({ kind: 'league' })).toBe('#/league')
+    expect(routeTeamId({ kind: 'league' })).toBeTruthy() // resolves to a default team, no throw
+  })
+
+  it('parses + builds the hq team tab', () => {
+    expect(parseHash('#/team/georgia-bulldogs/hq')).toEqual({ kind: 'team', teamId: 'georgia-bulldogs', tab: 'hq' })
+    expect(buildHash({ kind: 'team', teamId: 'georgia-bulldogs', tab: 'hq' })).toBe('#/team/georgia-bulldogs/hq')
+  })
+})

@@ -7,7 +7,7 @@
 
 import type { MatchMethod } from './common.ts'
 import type { PipelineCoverage, ReturningProductionSummary } from './pipeline.ts'
-import type { RatingMethod } from '../rating/overall.ts'
+import type { RatingMethod, RatingConfidence } from '../rating/overall.ts'
 import type { Usage, Ppa } from './advanced.ts'
 import type { PerGameLog } from './production.ts'
 import type { RecruitSourceTag } from './recruiting.ts'
@@ -68,6 +68,8 @@ export interface UIPlayer {
   posGroupSize: number
   /** Which model path produced the OVR ('blended' | 'recruiting-projection' | …). */
   ratingMethod: RatingMethod
+  /** OVR confidence from data completeness — 'low' renders with a hollow badge. */
+  confidence: RatingConfidence
   /** Sub-score breakdown for the modal. */
   ratingBreakdown: UIRatingBreakdown
   eligibilityRemaining: number | null
