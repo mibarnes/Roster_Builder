@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Arizona State Sun Devils",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/arizona-state/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:arizona-state"
+      }
+    ],
+    "collectedAt": "2026-07-04T13:03:16.547Z",
+    "collectorVersion": "e394909",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

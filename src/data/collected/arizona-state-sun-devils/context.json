@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Arizona State Sun Devils",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Arizona%20State"
+      }
+    ],
+    "collectedAt": "2026-07-04T13:02:43.584Z",
+    "collectorVersion": "e394909",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 367.1,
+    "totalPassingPPA": 128,
+    "totalReceivingPPA": 181.9,
+    "totalRushingPPA": 57.2,
+    "percentPPA": 0.695,
+    "percentPassingPPA": 0.903,
+    "percentReceivingPPA": 0.76,
+    "percentRushingPPA": 0.389,
+    "usage": 0.687,
+    "passingUsage": 0.987,
+    "receivingUsage": 0.691,
+    "rushingUsage": 0.469
+  }
+}
