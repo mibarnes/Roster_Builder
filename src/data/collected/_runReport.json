@@ -1,18 +1,19 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-04T12:12:38.001Z",
-  "collectorVersion": "e243f65",
+  "generatedAt": "2026-07-04T12:23:54.844Z",
+  "collectorVersion": "10b1763",
   "season": 2025,
   "rosterSeason": 2026,
-  "durationMs": 139363,
+  "durationMs": 153225,
   "targets": [
-    "clemson-tigers",
-    "auburn-tigers",
-    "texas-am-aggies",
-    "georgia-bulldogs",
-    "tennessee-volunteers"
+    "oklahoma-sooners",
+    "ole-miss-rebels",
+    "texas-longhorns",
+    "missouri-tigers",
+    "vanderbilt-commodores",
+    "mississippi-state-bulldogs"
   ],
-  "teamsOk": 5,
+  "teamsOk": 6,
   "teamsFailed": 0,
   "closure": {
     "nationalRows": 23185,
@@ -20,113 +21,32 @@
     "portalRows": 12304
   },
   "net": {
-    "requests": 136,
+    "requests": 161,
     "cacheHits": 0,
     "retries": 0
   },
   "teams": [
     {
-      "id": "clemson-tigers",
-      "label": "Clemson Tigers",
+      "id": "oklahoma-sooners",
+      "label": "Oklahoma Sooners",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
-        "rosterPlayers": 117,
-        "offenseSlots": 33,
+        "rosterPlayers": 104,
+        "offenseSlots": 30,
         "defenseSlots": 24,
-        "recruitingPct": 71.8,
-        "productionPct": 55.6,
-        "hometownPct": 100,
+        "recruitingPct": 84.6,
+        "productionPct": 52.9,
+        "hometownPct": 99,
         "master": {
           "spineCount": 100,
-          "masterCount": 118,
-          "matchedByIdPct": 82.9,
-          "headshotPct": 82.2,
-          "highSchoolPct": 57.6,
-          "transfersRated": 3,
-          "transfersTotal": 4,
-          "officialEngine": "sidearm-json",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "auburn-tigers",
-      "label": "Auburn Tigers",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 103,
-        "offenseSlots": 39,
-        "defenseSlots": 38,
-        "recruitingPct": 78.6,
-        "productionPct": 55.3,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 147,
-          "matchedByIdPct": 73.3,
-          "headshotPct": 67.3,
-          "highSchoolPct": 33.3,
-          "transfersRated": 26,
-          "transfersTotal": 27,
-          "officialEngine": "sidearm-json",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "texas-am-aggies",
-      "label": "Texas A&M Aggies",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 120,
-        "offenseSlots": 32,
-        "defenseSlots": 26,
-        "recruitingPct": 72.5,
-        "productionPct": 57.5,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 122,
-          "matchedByIdPct": 79.8,
-          "headshotPct": 81.1,
-          "highSchoolPct": 51.6,
-          "transfersRated": 11,
-          "transfersTotal": 12,
-          "officialEngine": "sidearm-json",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "georgia-bulldogs",
-      "label": "Georgia Bulldogs",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 123,
-        "offenseSlots": 38,
-        "defenseSlots": 27,
-        "recruitingPct": 73.2,
-        "productionPct": 56.1,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 123,
-          "matchedByIdPct": 85.5,
-          "headshotPct": 79.7,
-          "highSchoolPct": 59.3,
-          "transfersRated": 10,
-          "transfersTotal": 11,
+          "masterCount": 119,
+          "matchedByIdPct": 84.4,
+          "headshotPct": 84,
+          "highSchoolPct": 47.1,
+          "transfersRated": 21,
+          "transfersTotal": 24,
           "officialEngine": "nuxt-sidearm",
           "officialDegraded": false,
           "on3Degraded": true
@@ -134,26 +54,134 @@
       }
     },
     {
-      "id": "tennessee-volunteers",
-      "label": "Tennessee Volunteers",
+      "id": "ole-miss-rebels",
+      "label": "Ole Miss Rebels",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
-        "rosterPlayers": 104,
-        "offenseSlots": 31,
-        "defenseSlots": 36,
-        "recruitingPct": 76.9,
-        "productionPct": 70.2,
+        "rosterPlayers": 112,
+        "offenseSlots": 32,
+        "defenseSlots": 31,
+        "recruitingPct": 75,
+        "productionPct": 49.1,
         "hometownPct": 100,
         "master": {
           "spineCount": 99,
-          "masterCount": 124,
-          "matchedByIdPct": 86,
-          "headshotPct": 79,
-          "highSchoolPct": 49.2,
-          "transfersRated": 10,
-          "transfersTotal": 13,
+          "masterCount": 130,
+          "matchedByIdPct": 76.9,
+          "headshotPct": 73.1,
+          "highSchoolPct": 46.2,
+          "transfersRated": 29,
+          "transfersTotal": 34,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "texas-longhorns",
+      "label": "Texas Longhorns",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 106,
+        "offenseSlots": 31,
+        "defenseSlots": 34,
+        "recruitingPct": 76.4,
+        "productionPct": 60.4,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 98,
+          "masterCount": 125,
+          "matchedByIdPct": 90.5,
+          "headshotPct": 76.8,
+          "highSchoolPct": 50.4,
+          "transfersRated": 6,
+          "transfersTotal": 7,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "missouri-tigers",
+      "label": "Missouri Tigers",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 100,
+        "offenseSlots": 36,
+        "defenseSlots": 34,
+        "recruitingPct": 78,
+        "productionPct": 64,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 135,
+          "matchedByIdPct": 76.1,
+          "headshotPct": 65.2,
+          "highSchoolPct": 43,
+          "transfersRated": 21,
+          "transfersTotal": 26,
+          "officialEngine": "sidearm-json",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "vanderbilt-commodores",
+      "label": "Vanderbilt Commodores",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 106,
+        "offenseSlots": 25,
+        "defenseSlots": 32,
+        "recruitingPct": 77.4,
+        "productionPct": 58.5,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 118,
+          "matchedByIdPct": 87.5,
+          "headshotPct": 83.1,
+          "highSchoolPct": 55.1,
+          "transfersRated": 25,
+          "transfersTotal": 26,
+          "officialEngine": "sidearm-json",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "mississippi-state-bulldogs",
+      "label": "Mississippi State Bulldogs",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 110,
+        "offenseSlots": 35,
+        "defenseSlots": 30,
+        "recruitingPct": 87.3,
+        "productionPct": 60,
+        "hometownPct": 99.1,
+        "master": {
+          "spineCount": 99,
+          "masterCount": 134,
+          "matchedByIdPct": 79.5,
+          "headshotPct": 67.2,
+          "highSchoolPct": 32.8,
+          "transfersRated": 34,
+          "transfersTotal": 35,
           "officialEngine": "nuxt-sidearm",
           "officialDegraded": false,
           "on3Degraded": true

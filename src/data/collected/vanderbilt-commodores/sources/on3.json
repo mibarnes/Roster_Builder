@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Vanderbilt Commodores",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/vanderbilt/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:vanderbilt"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:23:20.775Z",
+    "collectorVersion": "10b1763",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}
