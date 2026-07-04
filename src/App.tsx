@@ -18,6 +18,7 @@ import TeamComparisonView from './components/comparison/TeamComparisonView.tsx'
 import PositionDepthView from './components/comparison/PositionDepthView.tsx'
 import LeagueView from './components/league/LeagueView.tsx'
 import TeamHQ from './components/hq/TeamHQ.tsx'
+import SearchOmnibox from './components/search/SearchOmnibox.tsx'
 import { EMPTY_COVERAGE, type PipelineMetrics } from './data/schema/pipeline.ts'
 import type { Formation, UIDataset, UIPlayer } from './data/schema/ui.ts'
 
@@ -150,13 +151,21 @@ export default function App() {
     navigate({ kind: 'player', teamId, playerId: player.playerId })
   }
 
+  // Global player search (F7) — one instance; mounts in whichever branch renders.
+  const searchBox = (
+    <SearchOmnibox onSelect={(tid, pid) => navigate({ kind: 'player', teamId: tid, playerId: pid })} />
+  )
+
   // ── League view (F6) — cross-team, needs no single team loaded (#/league) ──
   if (route.kind === 'league') {
     return (
-      <LeagueView
-        onBack={() => navigate({ kind: 'team', teamId, tab: 'offense' })}
-        onTeamClick={(id) => navigate({ kind: 'team', teamId: id, tab: 'offense' })}
-      />
+      <>
+        {searchBox}
+        <LeagueView
+          onBack={() => navigate({ kind: 'team', teamId, tab: 'offense' })}
+          onTeamClick={(id) => navigate({ kind: 'team', teamId: id, tab: 'offense' })}
+        />
+      </>
     )
   }
 
@@ -208,6 +217,7 @@ export default function App() {
         } as React.CSSProperties
       }
     >
+      {searchBox}
       {/* ── Header ── */}
       <header className="flex-shrink-0 px-4 py-3 bg-surface border-b border-surface-border">
         <div className="flex items-center justify-between">
@@ -277,6 +287,14 @@ export default function App() {
             className="rounded-md px-3 py-1.5 text-xs font-bold text-white whitespace-nowrap flex-shrink-0 bg-neutral-700 hover:bg-neutral-600 transition-colors"
           >
             League
+          </button>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+            title="Search any player (⌘K)"
+            className="rounded-md px-3 py-1.5 text-xs font-semibold text-neutral-300 whitespace-nowrap flex-shrink-0 bg-neutral-800 hover:bg-neutral-700 transition-colors"
+          >
+            Search <kbd className="ml-1 rounded bg-neutral-700 px-1 text-[10px]">⌘K</kbd>
           </button>
           <div className="flex-1" />
           <label htmlFor="team-select" className="text-[11px] font-bold text-gray-300 uppercase tracking-wide">

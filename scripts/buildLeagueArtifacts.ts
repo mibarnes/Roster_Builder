@@ -164,6 +164,17 @@ interface LeagueTeam {
   portalNet: number
 }
 const leagueTeams: LeagueTeam[] = []
+// Global player search index (F7/U12) — one lean row per rated-or-not player.
+interface SearchRow {
+  id: string // playerId
+  n: string // name
+  t: string // teamId
+  tl: string // team label
+  p: string // position
+  o: number | null // league-calibrated OVR (null = NR)
+  s: number // recruit stars
+}
+const searchRows: SearchRow[] = []
 /** Avg OVR of starters on one depth-chart side ('OFFENSE'|'DEFENSE'). */
 const sideStarterOvr = (pipe: ReturnType<typeof buildPlayerPipeline>, side: string): number | null => {
   const ovrById = new Map(pipe.players.map((p) => [p.playerId, p.ratings.overall]))
@@ -180,6 +191,18 @@ for (const [teamId, ds] of datasets) {
   const rated = pipe.players.filter((p) => p.ratings.overall != null).length
   const pIn = portalIn.get(teamId) ?? 0
   const pOut = portalOut.get(teamId) ?? 0
+  for (const p of pipe.players) {
+    if (p.isStub) continue // depth-chart-only stubs aren't real searchable players
+    searchRows.push({
+      id: p.playerId,
+      n: p.bio.name,
+      t: teamId,
+      tl: t.label,
+      p: p.bio.position,
+      o: p.ratings.overall,
+      s: p.recruiting.stars ?? 0,
+    })
+  }
   leagueTeams.push({
     teamId,
     label: t.label,
@@ -199,4 +222,9 @@ for (const [teamId, ds] of datasets) {
 leagueTeams.sort((a, b) => (b.avgStarterOverall ?? 0) - (a.avgStarterOverall ?? 0))
 writeFileSync(join(COLLECTED, '_league.json'), JSON.stringify({ generatedAt: NOW, teamsIncluded: datasets.size, teams: leagueTeams }, null, 2) + '\n')
 console.log(`_league.json: ${leagueTeams.length} teams; top avg-starter-OVR = ${leagueTeams[0]?.label} (${leagueTeams[0]?.avgStarterOverall}).`)
+
+// ── Global search index (F7) — sorted best-first so prefix matches surface stars. ──
+searchRows.sort((a, b) => (b.o ?? 0) - (a.o ?? 0) || b.s - a.s)
+writeFileSync(join(COLLECTED, '_searchIndex.json'), JSON.stringify({ generatedAt: NOW, players: searchRows }) + '\n')
+console.log(`_searchIndex.json: ${searchRows.length} players.`)
 console.log('Done.')
