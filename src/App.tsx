@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { loadPlayerPipeline } from './data/pipeline/loadPlayerPipeline.ts'
 import { mapPipelineToUI } from './data/mapPipelineToUI.ts'
-import { DEFAULT_TEAM_ID, TEAMS, requireTeam, teamLogoUrl } from './data/teamRegistry.ts'
+import { TEAMS, requireTeam, teamLogoUrl } from './data/teamRegistry.ts'
+import { routeTeamId, useHashRoute } from './router.ts'
 import CompositeHeader from './components/CompositeHeader.tsx'
 import DefenseFormation from './components/DefenseFormation.tsx'
 import OffenseFormation from './components/OffenseFormation.tsx'
@@ -36,12 +37,14 @@ const hexToRgbString = (hex = '#1a4d2e'): string => {
 }
 
 export default function App() {
-  const [tab, setTab] = useState<Tab>('offense')
-  const [teamId, setTeamId] = useState<string>(DEFAULT_TEAM_ID)
+  const { route, navigate } = useHashRoute()
+  const teamId = routeTeamId(route)
+
+  const [lastTab, setLastTab] = useState<Tab>('offense')
+  const tab: Tab = route.kind === 'team' ? route.tab : lastTab
+
   const [depthTeam, setDepthTeam] = useState<DepthMode>('starters')
   const [filters, setFilters] = useState<RatingsFilters>({ side: 'ALL', pos: 'ALL', stars: 0, sort: 'composite' })
-  const [compareMode, setCompareMode] = useState(false)
-  const [selected, setSelected] = useState<UIPlayer | null>(null)
   const [returnFocusEl, setReturnFocusEl] = useState<HTMLElement | null>(null)
   const [rosterData, setRosterData] = useState<UIDataset>(EMPTY_ROSTER)
   const [metrics, setMetrics] = useState<PipelineMetrics>(EMPTY_METRICS)
@@ -49,10 +52,29 @@ export default function App() {
   const [loadError, setLoadError] = useState('')
   const [warnings, setWarnings] = useState<string[]>([])
 
+  // Keep the last formation/ratings tab so closing a player modal (a route with
+  // no tab of its own) returns to the view the user was on.
+  useEffect(() => {
+    if (route.kind === 'team') setLastTab(route.tab)
+  }, [route])
+
   const selectedTeam = requireTeam(teamId)
   const teamAccentColor = selectedTeam.accentColor
   const dataMode = (import.meta.env?.VITE_DATA_MODE as DataMode | undefined) ?? 'bundled'
   const logoSrc = teamLogoUrl(teamId)
+
+  // ── Navigation helpers (URL is the source of truth for the active view) ──
+  const defaultRightId = (leftId: string): string =>
+    TEAMS.find((t) => t.id !== leftId)?.id ?? TEAMS[0]!.id
+  const setTab = (next: Tab) => navigate({ kind: 'team', teamId, tab: next })
+  const setTeamId = (id: string) => navigate({ kind: 'team', teamId: id, tab })
+  const openCompare = () => navigate({ kind: 'compare', leftId: teamId, rightId: defaultRightId(teamId) })
+  const backToTeam = () => navigate({ kind: 'team', teamId, tab })
+
+  const selected: UIPlayer | null =
+    route.kind === 'player'
+      ? rosterData.allPlayers.find((p) => p.playerId === route.playerId) ?? null
+      : null
 
   useEffect(() => {
     let cancelled = false
@@ -90,7 +112,7 @@ export default function App() {
 
   const onPlayerClick = (player: UIPlayer) => {
     setReturnFocusEl(document.activeElement instanceof HTMLElement ? document.activeElement : null)
-    setSelected(player)
+    navigate({ kind: 'player', teamId, playerId: player.playerId })
   }
 
   const { offensiveStarters, defensiveStarters, allPlayers } = rosterData
@@ -116,15 +138,18 @@ export default function App() {
   const visibleOffense = filterFormationByDepth(offensiveStarters, depthIndex)
   const visibleDefense = filterFormationByDepth(defensiveStarters, depthIndex)
 
-  // ── Full-screen two-team comparison (M5) ──
-  if (compareMode) {
+  // ── Full-screen two-team comparison (M5) — a deep-linkable route (#/compare/:a/:b) ──
+  if (route.kind === 'compare') {
     return (
       <TeamComparisonView
-        leftTeamId={teamId}
+        leftTeamId={route.leftId}
         leftUiData={rosterData}
         leftMetrics={metrics}
+        rightTeamId={route.rightId}
+        onRightTeamChange={(rightId) => navigate({ kind: 'compare', leftId: route.leftId, rightId })}
+        onPlayerClick={onPlayerClick}
         dataMode={dataMode}
-        onBack={() => setCompareMode(false)}
+        onBack={backToTeam}
       />
     )
   }
@@ -171,7 +196,7 @@ export default function App() {
         <div className="mx-auto max-w-6xl flex items-center gap-2">
           <button
             type="button"
-            onClick={() => setCompareMode(true)}
+            onClick={openCompare}
             disabled={isLoading}
             title="Compare this team against another"
             className="rounded-md px-3 py-1.5 text-xs font-bold text-white whitespace-nowrap flex-shrink-0 team-accent-bg hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
@@ -423,7 +448,7 @@ export default function App() {
         </footer>
       )}
 
-      <PlayerModal player={selected} onClose={() => setSelected(null)} returnFocusEl={returnFocusEl} />
+      <PlayerModal player={selected} onClose={backToTeam} returnFocusEl={returnFocusEl} />
     </div>
   )
 }

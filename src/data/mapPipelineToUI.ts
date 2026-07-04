@@ -74,6 +74,7 @@ const toUiStats = (stats: Record<string, number> = {}): Record<string, number> =
 
 const toUiPlayer = (player: PipelinePlayer, id: number): UIPlayer => ({
   id,
+  playerId: player.playerId,
   name: player.bio.name,
   number: player.bio.number,
   pos: player.bio.position,

@@ -14,6 +14,7 @@ import { EMPTY_COVERAGE } from '../../data/schema/pipeline.ts'
 let seq = 0
 const mk = (over: Partial<UIPlayer>): UIPlayer => ({
   id: ++seq,
+  playerId: `CFBD-${seq}`,
   name: 'X Y',
   number: 1,
   pos: 'QB',

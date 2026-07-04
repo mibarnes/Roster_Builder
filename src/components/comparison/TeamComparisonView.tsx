@@ -35,7 +35,7 @@ import {
   type PosGroupRow,
 } from './comparisonMath.ts'
 import type { PipelineMetrics } from '../../data/schema/pipeline.ts'
-import type { UIDataset } from '../../data/schema/ui.ts'
+import type { UIDataset, UIPlayer } from '../../data/schema/ui.ts'
 import type { DataMode } from '../../data/schema/dataset.ts'
 
 const DEPTH_RANK: Record<DepthGrade, number> = { THIN: 0, SOLID: 1, DEEP: 2 }
@@ -190,6 +190,12 @@ export interface TeamComparisonViewProps {
   leftMetrics: PipelineMetrics | null
   dataMode: DataMode
   onBack: () => void
+  /** Controlled right team (from the #/compare/:a/:b route); optional. */
+  rightTeamId?: string
+  /** Called when the user picks a different right team (updates the URL). */
+  onRightTeamChange?: (rightId: string) => void
+  /** Open a player modal (U3); optional so the view still works standalone. */
+  onPlayerClick?: (player: UIPlayer) => void
 }
 
 export default function TeamComparisonView({
@@ -198,12 +204,19 @@ export default function TeamComparisonView({
   leftMetrics,
   dataMode,
   onBack,
+  rightTeamId: rightTeamIdProp,
+  onRightTeamChange,
 }: TeamComparisonViewProps) {
   const leftTeam = getTeamById(leftTeamId)
   const leftColor = leftTeam?.accentColor ?? '#1a4d2e'
 
   const defaultRightId = TEAMS.find((t) => t.id !== leftTeamId)?.id ?? TEAMS[0]!.id
-  const [rightTeamId, setRightTeamId] = useState<string>(defaultRightId)
+  const [internalRight, setInternalRight] = useState<string>(rightTeamIdProp ?? defaultRightId)
+  const rightTeamId = rightTeamIdProp ?? internalRight
+  const setRightTeamId = (id: string) => {
+    setInternalRight(id)
+    onRightTeamChange?.(id)
+  }
   const [rightUiData, setRightUiData] = useState<UIDataset | null>(null)
   const [rightMetrics, setRightMetrics] = useState<PipelineMetrics | null>(null)
   const [rightLoading, setRightLoading] = useState(false)

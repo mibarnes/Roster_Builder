@@ -5,6 +5,7 @@ import type { UIPlayer } from '../../data/schema/ui.ts'
 let seq = 0
 const mk = (over: Partial<UIPlayer>): UIPlayer => ({
   id: ++seq,
+  playerId: `CFBD-${seq}`,
   name: 'Player',
   number: 1,
   pos: 'QB',

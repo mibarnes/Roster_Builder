@@ -33,6 +33,8 @@ export interface UIDataCompleteness {
 export interface UIPlayer {
   /** Sequential UI id (stable within a single map call). */
   id: number
+  /** Stable canonical player id (CFBD-<athleteId> / 247-… / ourlads-stub-…) — deep-link key. */
+  playerId: string
   name: string
   number: number | null
   /** Display position (slot-overridden for formation players). */
