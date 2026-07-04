@@ -1,0 +1,942 @@
+{
+  "sourceId": "official-roster-v1",
+  "sourceType": "official-roster",
+  "team": "Texas Longhorns",
+  "sourceUrl": "https://texassports.com/sports/football/roster",
+  "engine": "nuxt-sidearm",
+  "degraded": false,
+  "degradeReason": null,
+  "coverage": 102,
+  "provenance": {
+    "sources": [
+      {
+        "name": "Official team roster page",
+        "endpoint": "https://texassports.com/sports/football/roster"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:22:23.168Z",
+    "collectorVersion": "10b1763",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": [
+    {
+      "name": "Raleek Brown",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "Sr.",
+      "hometown": "Stockton, Calif.",
+      "highSchool": "Mater Dei",
+      "previousSchool": "Arizona State"
+    },
+    {
+      "name": "Colin Simmons",
+      "jersey": null,
+      "position": "EDGE",
+      "classYear": "Jr.",
+      "hometown": "Dallas, Texas",
+      "highSchool": "Duncanville",
+      "previousSchool": null
+    },
+    {
+      "name": "Ryan Wingo",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Jr.",
+      "hometown": "St. Louis, Mo.",
+      "highSchool": "St. Louis University",
+      "previousSchool": null
+    },
+    {
+      "name": "Hollywood Smothers",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "Jr.",
+      "hometown": "Charlotte, N.C.",
+      "highSchool": "W. Charlotte",
+      "previousSchool": "NC State"
+    },
+    {
+      "name": "Derek Williams Jr.",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Jr.",
+      "hometown": "New Iberia, La.",
+      "highSchool": "Westgate",
+      "previousSchool": null
+    },
+    {
+      "name": "Rasheem Biles",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Sr.",
+      "hometown": "Columbus, Ohio",
+      "highSchool": "Pickerington Central",
+      "previousSchool": "Pitt"
+    },
+    {
+      "name": "Emmett Mosley V",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Jr.",
+      "hometown": "Chicago, Ill.",
+      "highSchool": "Santa Margarita",
+      "previousSchool": "Stanford"
+    },
+    {
+      "name": "Jermaine Bishop Jr.",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Fr.",
+      "hometown": "Willis, Texas",
+      "highSchool": "Willis",
+      "previousSchool": null
+    },
+    {
+      "name": "Jelani McDonald",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Sr.",
+      "hometown": "Waco, Texas",
+      "highSchool": "Connally",
+      "previousSchool": null
+    },
+    {
+      "name": "Derrek Cooper",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "Fr.",
+      "hometown": "Lauderhill, Fla.",
+      "highSchool": "Chaminade Madonna Prep",
+      "previousSchool": null
+    },
+    {
+      "name": "Bo Mascoe",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Sr.",
+      "hometown": "Kissimmee, Fla.",
+      "highSchool": "Osceola",
+      "previousSchool": "Rutgers"
+    },
+    {
+      "name": "Dia Bell",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "Fr.",
+      "hometown": "Fort Lauderdale, Fla.",
+      "highSchool": "Mater Lakes Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Kobe Black",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Jr.",
+      "hometown": "Waco, Texas",
+      "highSchool": "Connally",
+      "previousSchool": null
+    },
+    {
+      "name": "Kaliq Lockett",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "R-Fr.",
+      "hometown": "Dallas, Texas",
+      "highSchool": "Sachse",
+      "previousSchool": null
+    },
+    {
+      "name": "Cam Coleman",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Jr.",
+      "hometown": "Phenix City, Ala.",
+      "highSchool": "Central",
+      "previousSchool": "Auburn"
+    },
+    {
+      "name": "Kade Phillips",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "So.",
+      "hometown": "Missouri City, Texas",
+      "highSchool": "Hightower",
+      "previousSchool": null
+    },
+    {
+      "name": "Karle \"KJ\" Lacey Jr.",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "R-Fr.",
+      "hometown": "Saraland, Ala.",
+      "highSchool": "Saraland",
+      "previousSchool": null
+    },
+    {
+      "name": "Jonah Williams",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "So.",
+      "hometown": "Galveston, Texas",
+      "highSchool": "Ball",
+      "previousSchool": null
+    },
+    {
+      "name": "Samari Matthews",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Fr.",
+      "hometown": "Charlotte, N.C.",
+      "highSchool": "Hough",
+      "previousSchool": null
+    },
+    {
+      "name": "Michael Terry III",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "R-Fr.",
+      "hometown": "San Antonio, Texas",
+      "highSchool": "Alamo Heights",
+      "previousSchool": null
+    },
+    {
+      "name": "Kohen Brown",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Fr.",
+      "hometown": "Dallas, Texas",
+      "highSchool": "Waxahchie",
+      "previousSchool": null
+    },
+    {
+      "name": "Zelus Hicks",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "R-Fr.",
+      "hometown": "Atlanta, Ga.",
+      "highSchool": "Carrollton",
+      "previousSchool": null
+    },
+    {
+      "name": "Brad Spence",
+      "jersey": null,
+      "position": "EDGE",
+      "classYear": "Sr.",
+      "hometown": "Houston, Texas",
+      "highSchool": "Klein Forest",
+      "previousSchool": "Arkansas"
+    },
+    {
+      "name": "Chris Stewart",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Fr.",
+      "hometown": "Missouri City, Texas",
+      "highSchool": "Shadow Creek",
+      "previousSchool": null
+    },
+    {
+      "name": "Michael Masunas",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Sr.",
+      "hometown": "Tucson, Ariz.",
+      "highSchool": "Hamilton",
+      "previousSchool": "Michigan State"
+    },
+    {
+      "name": "Justus Terry",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "So.",
+      "hometown": "Manchester, Ga.",
+      "highSchool": "Manchester",
+      "previousSchool": null
+    },
+    {
+      "name": "Tyler Atkinson",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Fr.",
+      "hometown": "Lawrenceville, Ga.",
+      "highSchool": "Grayson",
+      "previousSchool": null
+    },
+    {
+      "name": "Arch Manning",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "Jr.",
+      "hometown": "New Orleans, La.",
+      "highSchool": "Isidore Newman",
+      "previousSchool": null
+    },
+    {
+      "name": "Xavier Filsaime",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Jr.",
+      "hometown": "McKinney, Texas",
+      "highSchool": "McKinney",
+      "previousSchool": null
+    },
+    {
+      "name": "Daylan McCutcheon",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "So.",
+      "hometown": "Lucas, Texas",
+      "highSchool": "Lovejoy",
+      "previousSchool": null
+    },
+    {
+      "name": "Sterling Berkhalter",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Sr.",
+      "hometown": "Cincinnati, Ohio",
+      "highSchool": "Georgia Prep",
+      "previousSchool": "Wake Forest"
+    },
+    {
+      "name": "Kosi Okpala",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Fr.",
+      "hometown": "Houston, Texas",
+      "highSchool": "Mayde Creek",
+      "previousSchool": null
+    },
+    {
+      "name": "MJ Morris",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "Sr.",
+      "hometown": "Carrollton, Ga.",
+      "highSchool": "Carrollton",
+      "previousSchool": "Coastal Carolina"
+    },
+    {
+      "name": "Zina Umeozulu",
+      "jersey": null,
+      "position": "EDGE",
+      "classYear": "So.",
+      "hometown": "Allen, Texas",
+      "highSchool": "Allen",
+      "previousSchool": null
+    },
+    {
+      "name": "Hayward Howard Jr.",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Fr.",
+      "hometown": "New Orleans, La.",
+      "highSchool": "Edna Karr",
+      "previousSchool": null
+    },
+    {
+      "name": "Ryan Niblett",
+      "jersey": null,
+      "position": "RB/WR",
+      "classYear": "Jr.",
+      "hometown": "Houston, Texas",
+      "highSchool": "Eisenhower",
+      "previousSchool": null
+    },
+    {
+      "name": "Jordon Johnson-Rubell",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Jr.",
+      "hometown": "Fort Worth, Texas",
+      "highSchool": "IMG Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Warren Roberson",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Jr.",
+      "hometown": "Red Oak, Texas",
+      "highSchool": "Red Oak",
+      "previousSchool": null
+    },
+    {
+      "name": "Toray Davis",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Fr.",
+      "hometown": "Thornton, Colo.",
+      "highSchool": "Fairview",
+      "previousSchool": null
+    },
+    {
+      "name": "Luke Dunham",
+      "jersey": null,
+      "position": "QB",
+      "classYear": "So.",
+      "hometown": "Austin, Texas",
+      "highSchool": "McCallum",
+      "previousSchool": null
+    },
+    {
+      "name": "Ty'Anthony Smith",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Jr.",
+      "hometown": "Jasper, Texas",
+      "highSchool": "Jasper",
+      "previousSchool": null
+    },
+    {
+      "name": "Wardell Mack",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "So.",
+      "hometown": "New Orleans, La.",
+      "highSchool": "John Ehret",
+      "previousSchool": null
+    },
+    {
+      "name": "Justin Cryer",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Sr.",
+      "hometown": "Katy, Texas",
+      "highSchool": "Royal",
+      "previousSchool": "Florida State"
+    },
+    {
+      "name": "Jett Walker",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "Fr.",
+      "hometown": "Georgetown, Texas",
+      "highSchool": "Georgetown",
+      "previousSchool": null
+    },
+    {
+      "name": "Graceson Littleton",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "So.",
+      "hometown": "Tampa, Fla.",
+      "highSchool": "Wiregrass Ranch",
+      "previousSchool": null
+    },
+    {
+      "name": "Rocky Cummings",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Fr.",
+      "hometown": "Carlsbad, Calif.",
+      "highSchool": "Carlsbad",
+      "previousSchool": null
+    },
+    {
+      "name": "Yaheim Riley",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Fr.",
+      "hometown": "Miami, Fla.",
+      "highSchool": "Austin Anderson",
+      "previousSchool": null
+    },
+    {
+      "name": "James Simon",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "R-Fr.",
+      "hometown": "Shreveport, La.",
+      "highSchool": "Calvary Baptist Academy",
+      "previousSchool": null
+    },
+    {
+      "name": "Brady Sarkisian",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Sr.",
+      "hometown": "Newport Beach, Calif.",
+      "highSchool": "Corona Del Mar",
+      "previousSchool": null
+    },
+    {
+      "name": "Carson Berger",
+      "jersey": null,
+      "position": "RB",
+      "classYear": "Jr.",
+      "hometown": "Houston, Texas",
+      "highSchool": "John Cooper School",
+      "previousSchool": "Stanford"
+    },
+    {
+      "name": "Myron Charles",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Fr.",
+      "hometown": "Port Charlotte, Fla.",
+      "highSchool": "Port Charlotte",
+      "previousSchool": null
+    },
+    {
+      "name": "Rett Andersen",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Sr.",
+      "hometown": "San Antonio, Texas",
+      "highSchool": "Alamo Heights",
+      "previousSchool": null
+    },
+    {
+      "name": "McCoy Bruce",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Jr.",
+      "hometown": "Boerne, Texas",
+      "highSchool": "Boerne",
+      "previousSchool": null
+    },
+    {
+      "name": "Jonathan Cunningham",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "R-Fr.",
+      "hometown": "Fort Worth, Texas",
+      "highSchool": "North Crowley",
+      "previousSchool": null
+    },
+    {
+      "name": "Lance Jackson",
+      "jersey": null,
+      "position": "EDGE",
+      "classYear": "So.",
+      "hometown": "Texarkana, Texas",
+      "highSchool": "Pleasant Grove",
+      "previousSchool": null
+    },
+    {
+      "name": "Ziky Umeozulu",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "So.",
+      "hometown": "Allen, Texas",
+      "highSchool": "Allen",
+      "previousSchool": null
+    },
+    {
+      "name": "Trott O'Neal",
+      "jersey": null,
+      "position": "DS",
+      "classYear": "Fr.",
+      "hometown": "The Colony, Texas",
+      "highSchool": "Prestonwood Christian",
+      "previousSchool": null
+    },
+    {
+      "name": "Mac Chiumento",
+      "jersey": null,
+      "position": "P",
+      "classYear": "Sr.",
+      "hometown": "Daytona Beach, Fla.",
+      "highSchool": "Seabreeze",
+      "previousSchool": "Florida State"
+    },
+    {
+      "name": "Eric Garza",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "Jr.",
+      "hometown": "Southlake, Texas",
+      "highSchool": "Southlake Carroll",
+      "previousSchool": null
+    },
+    {
+      "name": "Markus Boswell",
+      "jersey": null,
+      "position": "LB",
+      "classYear": "So.",
+      "hometown": "Austin, Texas",
+      "highSchool": "Lake Travis/Jireh Prep",
+      "previousSchool": "Akron"
+    },
+    {
+      "name": "Gianni Spetic",
+      "jersey": null,
+      "position": "K",
+      "classYear": "Sr.",
+      "hometown": "Chardon, Ohio",
+      "highSchool": "Notre Dame Cathedral Latin School",
+      "previousSchool": "Memphis"
+    },
+    {
+      "name": "Mikey Bukauskas",
+      "jersey": null,
+      "position": "P",
+      "classYear": "Fr.",
+      "hometown": "Prosper, Texas",
+      "highSchool": "Prosper",
+      "previousSchool": null
+    },
+    {
+      "name": "Spencer Barnett",
+      "jersey": null,
+      "position": "K",
+      "classYear": "So.",
+      "hometown": "Austin, Texas",
+      "highSchool": "Westlake",
+      "previousSchool": null
+    },
+    {
+      "name": "Smith Orogbo",
+      "jersey": null,
+      "position": "EDGE",
+      "classYear": "R-Fr.",
+      "hometown": "Houston, Texas",
+      "highSchool": "Alief Hastings",
+      "previousSchool": null
+    },
+    {
+      "name": "Trey Dubuc",
+      "jersey": null,
+      "position": "DS",
+      "classYear": "Jr.",
+      "hometown": "Fort Lauderdale, Fla.",
+      "highSchool": "Cardinal Gibbons",
+      "previousSchool": "New Mexico"
+    },
+    {
+      "name": "Bryce Chambers",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Sr.",
+      "hometown": "Austin, Texas",
+      "highSchool": "Westlake",
+      "previousSchool": null
+    },
+    {
+      "name": "Jackson Duffey",
+      "jersey": null,
+      "position": "DB",
+      "classYear": "Jr.",
+      "hometown": "Spring Branch, Texas",
+      "highSchool": "Smithson Valley",
+      "previousSchool": null
+    },
+    {
+      "name": "Jake Collett",
+      "jersey": null,
+      "position": "K",
+      "classYear": "Fr.",
+      "hometown": "Ringgold, Ga.",
+      "highSchool": "Heritage",
+      "previousSchool": null
+    },
+    {
+      "name": "John Turntine III",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Fr.",
+      "hometown": "Fort Worth, Texas",
+      "highSchool": "North Crowley",
+      "previousSchool": null
+    },
+    {
+      "name": "James Johnson",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Fr.",
+      "hometown": "Fort Myers, Fla.",
+      "highSchool": "Miami Northwestern",
+      "previousSchool": null
+    },
+    {
+      "name": "Isaiah Coleman",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Fr.",
+      "hometown": "Cedar Hill, Texas",
+      "highSchool": "Cedar Hill",
+      "previousSchool": null
+    },
+    {
+      "name": "Dylan Sikorski",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "So.",
+      "hometown": "Sumner, Wash.",
+      "highSchool": "Sumner",
+      "previousSchool": "Oregon State"
+    },
+    {
+      "name": "Devin Coleman",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Cedar Hill, Texas",
+      "highSchool": "Cedar Hill",
+      "previousSchool": null
+    },
+    {
+      "name": "Connor Robertson",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Sr.",
+      "hometown": "Austin, Texas",
+      "highSchool": "Westlake",
+      "previousSchool": null
+    },
+    {
+      "name": "Robert Sweeney",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Sr.",
+      "hometown": "Dallas, Texas",
+      "highSchool": "Highland Park",
+      "previousSchool": null
+    },
+    {
+      "name": "Brooks Kieschnick Jr.",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Sr.",
+      "hometown": "San Antonio, Texas",
+      "highSchool": "Alamo Heights",
+      "previousSchool": null
+    },
+    {
+      "name": "Kaden Scherer",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Fr.",
+      "hometown": "Georgetown, Texas",
+      "highSchool": "Georgetown",
+      "previousSchool": null
+    },
+    {
+      "name": "Melvin Siani",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Sr.",
+      "hometown": "Hamilton, Ontario",
+      "highSchool": "Wyoming Seminary Prep",
+      "previousSchool": "Wake Forest"
+    },
+    {
+      "name": "Brandon Baker",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Jr.",
+      "hometown": "Ontario, Calif.",
+      "highSchool": "Mater Dei",
+      "previousSchool": null
+    },
+    {
+      "name": "Trevor Goosby",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Jr.",
+      "hometown": "Melissa, Texas",
+      "highSchool": "Melissa",
+      "previousSchool": null
+    },
+    {
+      "name": "Jaydon Chatman",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "Jr.",
+      "hometown": "Harker Heights, Texas",
+      "highSchool": "Harker Heights",
+      "previousSchool": null
+    },
+    {
+      "name": "Jackson Christian",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Port Neches, Texas",
+      "highSchool": "Port Neches-Groves",
+      "previousSchool": null
+    },
+    {
+      "name": "Andre Cojoe",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "So.",
+      "hometown": "Grand Prairie, Texas",
+      "highSchool": "Mansfield Timberview",
+      "previousSchool": null
+    },
+    {
+      "name": "Jordan Coleman",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Cedar Hill, Texas",
+      "highSchool": "Cedar Hill",
+      "previousSchool": null
+    },
+    {
+      "name": "Jonte Newman",
+      "jersey": null,
+      "position": "OL",
+      "classYear": "R-Fr.",
+      "hometown": "Cypress, Texas",
+      "highSchool": "Bridgeland",
+      "previousSchool": null
+    },
+    {
+      "name": "Nick Townsend",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "So.",
+      "hometown": "Houston, Texas",
+      "highSchool": "Dekaney",
+      "previousSchool": null
+    },
+    {
+      "name": "Ridge Barker",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Jr.",
+      "hometown": "Lucas, Texas",
+      "highSchool": "Lovejoy",
+      "previousSchool": null
+    },
+    {
+      "name": "Spencer Shannon",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Jr.",
+      "hometown": "San Clemente, Calif.",
+      "highSchool": "Mater Dei",
+      "previousSchool": null
+    },
+    {
+      "name": "Emaree Winston",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "So.",
+      "hometown": "Calhoun, Ga.",
+      "highSchool": "Calhoun",
+      "previousSchool": null
+    },
+    {
+      "name": "Hudson Powell",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Jr.",
+      "hometown": "Austin, Texas",
+      "highSchool": "Regents School",
+      "previousSchool": null
+    },
+    {
+      "name": "Will Randle",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Jr.",
+      "hometown": "New Orleans, La.",
+      "highSchool": "Isidore Newman",
+      "previousSchool": null
+    },
+    {
+      "name": "Charlie Jilek",
+      "jersey": null,
+      "position": "TE",
+      "classYear": "Fr.",
+      "hometown": "Portage, Mich.",
+      "highSchool": "Portage Central",
+      "previousSchool": null
+    },
+    {
+      "name": "Maraad Watson",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Jr.",
+      "hometown": "Irvington, N.J.",
+      "highSchool": "Irvington",
+      "previousSchool": "Syracuse"
+    },
+    {
+      "name": "Ty Boatright",
+      "jersey": null,
+      "position": "WR",
+      "classYear": "Sr.",
+      "hometown": "Kingwood, Texas",
+      "highSchool": "Kingwood",
+      "previousSchool": null
+    },
+    {
+      "name": "Josiah Sharma",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Fr.",
+      "hometown": "Folsom, Calif.",
+      "highSchool": "Folsom",
+      "previousSchool": null
+    },
+    {
+      "name": "Colton Vasek",
+      "jersey": null,
+      "position": "EDGE",
+      "classYear": "Jr.",
+      "hometown": "Austin, Texas",
+      "highSchool": "Westlake",
+      "previousSchool": null
+    },
+    {
+      "name": "Hero Kanu",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Sr.",
+      "hometown": "Geltendorf, Germany",
+      "highSchool": "Santa Margarita Catholic",
+      "previousSchool": "Ohio State"
+    },
+    {
+      "name": "Jamarion Carlton",
+      "jersey": null,
+      "position": "EDGE",
+      "classYear": "Fr.",
+      "hometown": "Temple, Texas",
+      "highSchool": "Temple",
+      "previousSchool": null
+    },
+    {
+      "name": "Ian Geffrard",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Sr.",
+      "hometown": "Mableton, Ga.",
+      "highSchool": "Whitefield Academy",
+      "previousSchool": "Arkansas"
+    },
+    {
+      "name": "Zion Williams",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "R-Fr.",
+      "hometown": "Lufkin, Texas",
+      "highSchool": "Lufkin",
+      "previousSchool": null
+    },
+    {
+      "name": "Alex January",
+      "jersey": null,
+      "position": "DL",
+      "classYear": "Jr.",
+      "hometown": "Duncanville, Texas",
+      "highSchool": "Duncanville",
+      "previousSchool": null
+    },
+    {
+      "name": "Richard Wesley",
+      "jersey": null,
+      "position": "EDGE",
+      "classYear": "Fr.",
+      "hometown": "Sylmar, Calif.",
+      "highSchool": "Sierra Canyon",
+      "previousSchool": null
+    }
+  ]
+}

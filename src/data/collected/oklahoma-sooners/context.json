@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Oklahoma Sooners",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Oklahoma"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:21:26.977Z",
+    "collectorVersion": "10b1763",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 145.8,
+    "totalPassingPPA": 23.3,
+    "totalReceivingPPA": 88.6,
+    "totalRushingPPA": 34,
+    "percentPPA": 0.528,
+    "percentPassingPPA": 0.635,
+    "percentReceivingPPA": 0.523,
+    "percentRushingPPA": 0.486,
+    "usage": 0.489,
+    "passingUsage": 0.324,
+    "receivingUsage": 0.509,
+    "rushingUsage": 0.624
+  }
+}
