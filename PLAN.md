@@ -12,13 +12,14 @@
 `main`). The M1–M6 rebuild + Round-2 enrichment + golden-record reconciliation are complete (see
 *Completed work* below). **494 tests; tsc strict clean.**
 
-> **Deepening arc + hardening DONE (2026-07-04), pushed live:** D1+D1b (master is the ONLY data
-> path; 270 legacy files retired) · F4 (league-calibrated ratings + `_baselines`/`_identity`/`_league`
-> offline artifacts) · F6 (League view `#/league` + Team HQ `#/team/:id/hq`) · F5 (as-of framing +
-> vintage snapshots + scheduled-collection workflow). Cross-team OVR is honest; the 54-team breadth
-> is a real intelligence tool. **F0–F6 + D1 are LIVE** (F5's post-D1b changes are committed; push at
-> will). **Remaining (all quota-gated):** finish Big 12 (13 teams); P7 origin-production; F5
-> change-feed + Roster Moves ticker (need ≥2 snapshots); U6/U9/U10 polish; F7/F8.
+> **Deepening arc + hardening + delight DONE (2026-07-04):** D1+D1b (master is the ONLY data path;
+> 270 legacy files retired) · F4 (league-calibrated ratings + `_baselines`/`_identity`/`_league`
+> artifacts) · F6 (League view + Team HQ) · F5 (as-of framing + snapshots + scheduled workflow) ·
+> **F7** (⌘K global search + watchlist + similar-players) · **F8** (About-the-data) · **D2** (transfer
+> deep-links). **F0–F6 + D1 are LIVE**; D1b/F5/F7/F8/D2 committed local (push at will). **Remaining:**
+> **all quota-gated** — finish Big 12 (13 teams); P7 origin-production; F5 change-feed + Roster Moves
+> ticker (need ≥2 snapshots). **Offline polish (deferred):** U6 special-teams tab, U9 formations, U10
+> comparison-metric selector, F7 player-pages/geo, F8 what-if/print/perf-budget/zero-stub-attestation.
 
 We are executing the **F0–F8 finalization plan** — evolving the working demo into a polished,
 zero-stub CFB intelligence tool. **Decisions locked 2026-07-04:** (1) full F0–F8 is the committed
@@ -148,17 +149,21 @@ Display → scouting tool. (Blueprint 6.2/6.3.)
 - [ ] **U6 Special teams / U9 formations / U10 metric selector** — deferred polish (not needed for the League/HQ payoff). Recruiting-class trajectory (`classHistory.json`) also deferred.
 - **Gate:** ✅ both routes live + pixel-verified; 494 tests; tsc clean. (CI data-QA gate for artifacts → future.)
 
-### F7 — Player depth + delight  ·  status: PLANNED
+### F7 — Player depth + delight  ·  status: PARTIAL (search/watchlist/similar done; player-pages/geo deferred) (2026-07-04)
 (Blueprint 6.1/6.4/6.5, U12, 7.3/7.4.)
-- [ ] Player pages (career timeline, prior-school production, trajectory sparkline, percentile bars) + template scouting blurb (no LLM in build) + similar-players (precomputed top-5).
-- [ ] Geo recruiting-footprint SVG map (`geo.json`, dependency-free).
-- [ ] Global player search omnibox (Cmd/K, `_searchIndex.json`, U12).
-- [ ] Watchlist (localStorage, `playerGlobalId`-keyed, 7.4) + depth-chart PNG export (7.3).
+- [x] **Global player search omnibox** (⌘K, `_searchIndex.json`, U12) ✅ — 5,945 players across 54 teams, lazy-loaded, name-prefix-ranked, cross-team deep-link.
+- [x] **Similar-players** ✅ — modal shows the 5 nearest league-calibrated OVRs in the same coarse position group, league-wide, clickable (computed client-side from `_searchIndex`; no precomputed artifact).
+- [x] **Watchlist** (localStorage, `playerId`-keyed, 7.4) ✅ — ★ toggle in the modal + a "★ N" header dropdown (deep-link + remove), `useSyncExternalStore`.
+- [ ] Full player *pages* (career timeline, trajectory sparkline, percentile bars) + template scouting blurb — deferred (modal is rich; a full route is polish). Geo recruiting-footprint SVG map — deferred (needs geocoding). Depth-chart PNG export (7.3) — deferred.
 
-### F8 — Final polish  ·  status: PLANNED
+### F8 — Final polish  ·  status: PARTIAL (About-the-data done; rest deferred) (2026-07-04)
 (Blueprint 7.5–7.8.)
-- [ ] What-if scenario mode (client-only, dashed "hypothetical" treatment) · print/compact mode · onboarding coach-marks + auto-generated "About the data" · perf budget (Lighthouse ≥90 in CI).
+- [x] **"About the data"** ✅ — in-app provenance + methodology modal (opened from the header "as of <date> ⓘ"), replacing the blueprint's "auto-generated" note with a real panel.
+- [ ] What-if scenario mode · print/compact mode · onboarding coach-marks · perf budget (Lighthouse ≥90 in CI) — deferred polish.
 - [ ] **Zero-stub attestation** — full S1–S18 register swept; every item closed or explicitly dated-deferred in this PLAN.
+
+### U10 — Comparison metric selector  ·  status: DEFERRED (2026-07-04)
+OVR/recruiting/stars/returning selector in the comparison view — deferred: `p.ovr` is threaded through many `comparisonMath` functions + a 967-line component, so it's a deliberate refactor, not a quick add.
 
 ---
 
