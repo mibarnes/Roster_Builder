@@ -14,7 +14,6 @@
  * roster player by trying these in order. The name resolver in normalize.ts is
  * the fuzzy fallback when no id matches.
  */
-import { stdName } from './normalize.ts'
 
 export type IdKind = 'cfbd' | '247' | 'ourlads-stub'
 
@@ -82,13 +81,4 @@ export const reconcile = (input: ReconcileInput): ReconcileResult => {
   }
 
   return { playerId: ourladsStubId(name ?? 'unknown'), source: 'stub' }
-}
-
-/** Convenience: is this name resolvable to an existing CFBD roster id? */
-export const matchesRosterName = (
-  name: string,
-  resolveByName: (name: string) => string | null,
-): boolean => {
-  if (!stdName(name)) return false
-  return resolveByName(name) != null
 }

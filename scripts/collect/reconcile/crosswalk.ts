@@ -62,9 +62,6 @@ export interface CrosswalkResult {
   recruitSourceCounts: Record<string, number>
 }
 
-const jerseyMatch = (a: number | null, b: number | null | undefined): boolean =>
-  a != null && b != null && a === b
-
 /**
  * Does a recruiting record carry an actual rating? A record can EXIST (e.g. an
  * empty cfbd-team profile for a preferred walk-on) yet be unrated. The C2
@@ -414,7 +411,6 @@ export const buildCrosswalk = ({
     recruitSourceCounts[src] = (recruitSourceCounts[src] ?? 0) + 1
   }
 
-  void jerseyMatch // (kept for potential conflict cross-checks in merge)
   return { rows, unmatchedOfficial, unmatchedOn3, spineIndex, recruitSourceCounts }
 }
 
