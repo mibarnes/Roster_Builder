@@ -93,8 +93,17 @@ export default function RatingsView({ allPlayers, filters, setFilters, onPlayerC
           return (
             <div
               key={p.id}
+              role="button"
+              tabIndex={0}
               onClick={() => onPlayerClick(p)}
-              className="flex items-center gap-3 px-4 py-3 cursor-pointer transition-all hover:bg-gray-900/50 active:bg-gray-800/50 border-b border-surface-border"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  onPlayerClick(p)
+                }
+              }}
+              aria-label={`${p.name ?? 'Player'}, ${p.pos}, overall ${getOvrDisplay(p)}`}
+              className="flex items-center gap-3 px-4 py-3 cursor-pointer transition-all hover:bg-gray-900/50 active:bg-gray-800/50 border-b border-surface-border focus:outline-none focus:ring-2 focus:ring-inset team-accent-ring"
               style={{ animation: `fadeSlideUp 0.3s ease-out ${i * 25}ms both` }}
             >
               <Headshot url={p.headshotUrl} name={p.name} fallback={p.pos} size={40} className="flex-shrink-0" />

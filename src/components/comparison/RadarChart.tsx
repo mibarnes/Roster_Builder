@@ -133,8 +133,27 @@ export default function RadarChart({
         {LABELS.map((label, i) => {
           const [x, y] = polarPt(i, R + 20)
           const isActive = activeIdx === i
+          const meta = spokeMeta[i]
           return (
-            <g key={label} onClick={() => handleSpoke(i)} style={{ cursor: 'pointer' }}>
+            <g
+              key={label}
+              onClick={() => handleSpoke(i)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  handleSpoke(i)
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={
+                meta
+                  ? `${meta.groupId} unit — ${leftLabel} ${meta.lOvr ?? 'NR'} vs ${rightLabel} ${meta.rOvr ?? 'NR'}`
+                  : label
+              }
+              aria-pressed={isActive}
+              style={{ cursor: 'pointer' }}
+            >
               <circle cx={x} cy={y} r={13} fill="transparent" />
               <text
                 x={x}

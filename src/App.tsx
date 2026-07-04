@@ -253,7 +253,7 @@ export default function App() {
             role="tab"
             aria-selected={tab === t.id}
             onClick={() => setTab(t.id)}
-            className={`flex-1 py-3 text-[11px] font-bold relative transition-all ${tab === t.id ? 'text-white' : 'text-[#666666]'}`}
+            className={`flex-1 py-3 text-[11px] font-bold relative transition-all ${tab === t.id ? 'text-white' : 'text-gray-400 hover:text-gray-200'}`}
           >
             {t.label}
             {tab === t.id && <div className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full team-accent-bg" />}

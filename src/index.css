@@ -80,3 +80,17 @@ body {
     transform: translateY(0) scale(1);
   }
 }
+
+/* ── Accessibility: honor prefers-reduced-motion (U5). Neutralize the entry
+   animations + staggers + transitions for users who ask for reduced motion. ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
