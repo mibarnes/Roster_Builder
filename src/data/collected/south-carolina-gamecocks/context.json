@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "South Carolina Gamecocks",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=South%20Carolina"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:34:12.369Z",
+    "collectorVersion": "29ea6c8",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 283.6,
+    "totalPassingPPA": 101.5,
+    "totalReceivingPPA": 129.4,
+    "totalRushingPPA": 52.7,
+    "percentPPA": 0.625,
+    "percentPassingPPA": 0.837,
+    "percentReceivingPPA": 0.552,
+    "percentRushingPPA": 0.534,
+    "usage": 0.634,
+    "passingUsage": 0.879,
+    "receivingUsage": 0.507,
+    "rushingUsage": 0.522
+  }
+}

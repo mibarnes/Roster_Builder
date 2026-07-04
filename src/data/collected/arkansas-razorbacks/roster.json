@@ -1,10 +1,26 @@
 {
-  "sourceId": "cfbd-roster-v1",
+  "sourceId": "cfbd-roster-v2",
   "sourceType": "roster",
-  "asOf": "2026-03-07",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.2",
   "team": "Arkansas Razorbacks",
   "season": 2025,
-  "version": "cfbd-2026.1",
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD roster",
+        "endpoint": "/roster?year=2025&team=Arkansas"
+      },
+      {
+        "name": "OurLads depth chart",
+        "endpoint": "https://www.ourlads.com/ncaa-football-depth-charts/depth-chart/arkansas/89992"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:32:48.785Z",
+    "collectorVersion": "29ea6c8",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
   "players": [
     {
       "playerId": "CFBD-3116099",
@@ -13,10 +29,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 230,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Lee's Summit",
+      "homeState": "MO",
+      "homeLat": 38.9107156,
+      "homeLon": -94.3821295
     },
     {
       "playerId": "CFBD-4429039",
@@ -25,10 +46,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'5\"",
       "weight": 298,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Lauderdale Lakes",
+      "homeState": "FL",
+      "homeLat": 26.1667184,
+      "homeLon": -80.2085565
     },
     {
       "playerId": "CFBD-4430883",
@@ -37,10 +63,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 240,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Orlando",
+      "homeState": "FL",
+      "homeLat": 28.5421109,
+      "homeLon": -81.3790304
     },
     {
       "playerId": "CFBD-4431325",
@@ -49,10 +80,15 @@
       "side": "OFF",
       "position": "QB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'6\"",
       "weight": 224,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Lewisville",
+      "homeState": "TX",
+      "homeLat": 33.046233,
+      "homeLon": -96.994174
     },
     {
       "playerId": "CFBD-4431570",
@@ -61,10 +97,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 231,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Campbellton",
+      "homeState": "FL",
+      "homeLat": 0,
+      "homeLon": 0
     },
     {
       "playerId": "CFBD-4596362",
@@ -73,10 +114,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'4\"",
       "weight": 266,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Sumter",
+      "homeState": "SC",
+      "homeLat": 33.9204354,
+      "homeLon": -80.3414693
     },
     {
       "playerId": "CFBD-4596437",
@@ -85,10 +131,15 @@
       "side": "OFF",
       "position": "RB",
       "classYear": "SR",
+      "isRedshirt": true,
       "height": "5'10\"",
       "weight": 210,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Tulsa",
+      "homeState": "OK",
+      "homeLat": 36.1556805,
+      "homeLon": -95.9929113
     },
     {
       "playerId": "CFBD-4596541",
@@ -97,10 +148,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'0\"",
       "weight": 203,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Tampa",
+      "homeState": "FL",
+      "homeLat": 27.9477595,
+      "homeLon": -82.458444
     },
     {
       "playerId": "CFBD-4682749",
@@ -109,10 +165,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 201,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Atlanta",
+      "homeState": "GA",
+      "homeLat": 33.7490987,
+      "homeLon": -84.3901849
     },
     {
       "playerId": "CFBD-4684086",
@@ -121,10 +182,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'4\"",
       "weight": 240,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Jacksonville",
+      "homeState": "FL",
+      "homeLat": 30.3321838,
+      "homeLon": -81.655651
     },
     {
       "playerId": "CFBD-4684173",
@@ -133,10 +199,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 182,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Rock Hill",
+      "homeState": "SC",
+      "homeLat": 34.9248667,
+      "homeLon": -81.0250784
     },
     {
       "playerId": "CFBD-4684543",
@@ -145,10 +216,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 200,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "San Francisco",
+      "homeState": "CA",
+      "homeLat": 37.7790262,
+      "homeLon": -122.4199061
     },
     {
       "playerId": "CFBD-4685374",
@@ -157,10 +233,15 @@
       "side": "OFF",
       "position": "RB",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "5'10\"",
       "weight": 195,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Statesboro",
+      "homeState": "GA",
+      "homeLat": 32.4490141,
+      "homeLon": -81.7832912
     },
     {
       "playerId": "CFBD-4685378",
@@ -169,10 +250,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "JR",
+      "isRedshirt": true,
       "height": "6'7\"",
       "weight": 300,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Little Rock",
+      "homeState": "AR",
+      "homeLat": 34.7464809,
+      "homeLon": -92.2895948
     },
     {
       "playerId": "CFBD-4685525",
@@ -181,10 +267,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 196,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Jacksonville",
+      "homeState": "FL",
+      "homeLat": 30.3321838,
+      "homeLon": -81.655651
     },
     {
       "playerId": "CFBD-4686658",
@@ -193,10 +284,15 @@
       "side": "OFF",
       "position": "RB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 223,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Utica",
+      "homeState": "NY",
+      "homeLat": 43.1009031,
+      "homeLon": -75.2326641
     },
     {
       "playerId": "CFBD-4691878",
@@ -205,10 +301,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "SR",
+      "isRedshirt": true,
       "height": "6'5\"",
       "weight": 326,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Atlanta",
+      "homeState": "GA",
+      "homeLat": 33.7490987,
+      "homeLon": -84.3901849
     },
     {
       "playerId": "CFBD-4696076",
@@ -217,10 +318,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'0\"",
       "weight": 205,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Philadelphia",
+      "homeState": "PA",
+      "homeLat": 39.9527237,
+      "homeLon": -75.1635262
     },
     {
       "playerId": "CFBD-4698435",
@@ -229,10 +335,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 235,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Las Vegas",
+      "homeState": "NV",
+      "homeLat": 36.1672559,
+      "homeLon": -115.1485163
     },
     {
       "playerId": "CFBD-4705561",
@@ -241,10 +352,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'5\"",
       "weight": 307,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Roswell",
+      "homeState": "GA",
+      "homeLat": 34.02332,
+      "homeLon": -84.360022
     },
     {
       "playerId": "CFBD-4709774",
@@ -253,10 +369,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 201,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Clayton",
+      "homeState": "GA",
+      "homeLat": 0,
+      "homeLon": 0
     },
     {
       "playerId": "CFBD-4710000",
@@ -265,10 +386,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'5\"",
       "weight": 325,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Las Vegas",
+      "homeState": "NV",
+      "homeLat": 36.1672559,
+      "homeLon": -115.1485163
     },
     {
       "playerId": "CFBD-4710718",
@@ -277,10 +403,15 @@
       "side": "OFF",
       "position": "TE",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'6\"",
       "weight": 265,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Copenhagen",
+      "homeState": null,
+      "homeLat": 0,
+      "homeLon": 0
     },
     {
       "playerId": "CFBD-4751465",
@@ -289,10 +420,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 316,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Camden",
+      "homeState": "AR",
+      "homeLat": 33.5845582,
+      "homeLon": -92.8343294
     },
     {
       "playerId": "CFBD-4833606",
@@ -301,10 +437,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 312,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Lagos",
+      "homeState": "",
+      "homeLat": 0,
+      "homeLon": 0
     },
     {
       "playerId": "CFBD-4833623",
@@ -313,10 +454,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 306,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "The Colony",
+      "homeState": "TX",
+      "homeLat": 33.0890094,
+      "homeLon": -96.8863922
     },
     {
       "playerId": "CFBD-4833624",
@@ -325,10 +471,15 @@
       "side": "OFF",
       "position": "QB",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'0\"",
       "weight": 202,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Texarkana",
+      "homeState": "TX",
+      "homeLat": 33.44628645,
+      "homeLon": -94.07638067493534
     },
     {
       "playerId": "CFBD-4834815",
@@ -337,10 +488,15 @@
       "side": "OFF",
       "position": "RB",
       "classYear": "JR",
+      "isRedshirt": true,
       "height": "6'3\"",
       "weight": 255,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Aledo",
+      "homeState": "TX",
+      "homeLat": 32.69900905,
+      "homeLon": -97.60396629774493
     },
     {
       "playerId": "CFBD-4837476",
@@ -349,10 +505,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 195,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Lawrenceville",
+      "homeState": "GA",
+      "homeLat": 33.9562149,
+      "homeLon": -83.9879625
     },
     {
       "playerId": "CFBD-4870071",
@@ -361,10 +522,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 220,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Oxford",
+      "homeState": "AL",
+      "homeLat": 33.5853695,
+      "homeLon": -85.91428175037092
     },
     {
       "playerId": "CFBD-4870619",
@@ -373,10 +539,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 174,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Miami",
+      "homeState": "FL",
+      "homeLat": 25.7742658,
+      "homeLon": -80.1936589
     },
     {
       "playerId": "CFBD-4870748",
@@ -385,10 +556,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 223,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Orlando",
+      "homeState": "FL",
+      "homeLat": 28.5421109,
+      "homeLon": -81.3790304
     },
     {
       "playerId": "CFBD-4870759",
@@ -397,10 +573,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "SO",
+      "isRedshirt": true,
       "height": "6'5\"",
       "weight": 389,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Mableton",
+      "homeState": "GA",
+      "homeLat": 33.8188333,
+      "homeLon": -84.5822632
     },
     {
       "playerId": "CFBD-4870761",
@@ -409,10 +590,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "SO",
+      "isRedshirt": true,
       "height": "6'4\"",
       "weight": 265,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Mansfield",
+      "homeState": "TX",
+      "homeLat": 32.5631924,
+      "homeLon": -97.1416768
     },
     {
       "playerId": "CFBD-4870844",
@@ -421,10 +607,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 184,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Miami",
+      "homeState": "FL",
+      "homeLat": 25.7742658,
+      "homeLon": -80.1936589
     },
     {
       "playerId": "CFBD-4872957",
@@ -433,10 +624,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "5'9\"",
       "weight": 165,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Allen",
+      "homeState": "TX",
+      "homeLat": 33.1031744,
+      "homeLon": -96.6705503
     },
     {
       "playerId": "CFBD-4899360",
@@ -445,10 +641,15 @@
       "side": "OFF",
       "position": "TE",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'5\"",
       "weight": 260,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Haslet",
+      "homeState": "TX",
+      "homeLat": 32.96116000000001,
+      "homeLon": -97.34228157049023
     },
     {
       "playerId": "CFBD-4918136",
@@ -457,10 +658,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'6\"",
       "weight": 276,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "North Little Rock",
+      "homeState": "AR",
+      "homeLat": 34.769536,
+      "homeLon": -92.2670941
     },
     {
       "playerId": "CFBD-5079292",
@@ -469,10 +675,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "FR",
+      "isRedshirt": true,
       "height": "5'10\"",
       "weight": 165,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Aledo",
+      "homeState": "TX",
+      "homeLat": 32.69900905,
+      "homeLon": -97.60396629774493
     },
     {
       "playerId": "CFBD-5079380",
@@ -481,10 +692,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'5\"",
       "weight": 255,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Pine Bluff",
+      "homeState": "AR",
+      "homeLat": 34.2157064,
+      "homeLon": -92.0140402
     },
     {
       "playerId": "CFBD-5079476",
@@ -493,10 +709,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "FR",
+      "isRedshirt": true,
       "height": "6'2\"",
       "weight": 257,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Leeds",
+      "homeState": "AL",
+      "homeLat": 33.506102,
+      "homeLon": -86.61711816402307
     },
     {
       "playerId": "CFBD-5079516",
@@ -505,10 +726,15 @@
       "side": "OFF",
       "position": "QB",
       "classYear": "FR",
+      "isRedshirt": true,
       "height": "6'4\"",
       "weight": 220,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Montgomery",
+      "homeState": "AL",
+      "homeLat": 32.3669656,
+      "homeLon": -86.3006485
     },
     {
       "playerId": "CFBD-5079586",
@@ -517,10 +743,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'8\"",
       "weight": 344,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Pinson",
+      "homeState": "AL",
+      "homeLat": 33.706205,
+      "homeLon": -86.67007895992774
     },
     {
       "playerId": "CFBD-5079589",
@@ -529,10 +760,15 @@
       "side": "OFF",
       "position": "RB",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 238,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Benton",
+      "homeState": "AR",
+      "homeLat": 34.5645372,
+      "homeLon": -92.586828
     },
     {
       "playerId": "CFBD-5079715",
@@ -541,10 +777,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 235,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Hoover",
+      "homeState": "AL",
+      "homeLat": 33.3848933,
+      "homeLon": -86.8070484
     },
     {
       "playerId": "CFBD-5080704",
@@ -553,10 +794,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "JR",
+      "isRedshirt": true,
       "height": "6'4\"",
       "weight": 201,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Jonesboro",
+      "homeState": "AR",
+      "homeLat": 35.8428646,
+      "homeLon": -90.7034522
     },
     {
       "playerId": "CFBD-5080706",
@@ -565,10 +811,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'0\"",
       "weight": 183,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Springdale",
+      "homeState": "AR",
+      "homeLat": 36.1867442,
+      "homeLon": -94.1288142
     },
     {
       "playerId": "CFBD-5080708",
@@ -577,10 +828,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 223,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Little Rock",
+      "homeState": "AR",
+      "homeLat": 34.7464809,
+      "homeLon": -92.2895948
     },
     {
       "playerId": "CFBD-5080713",
@@ -589,10 +845,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'4\"",
       "weight": 316,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Bryant",
+      "homeState": "AR",
+      "homeLat": 34.5959265,
+      "homeLon": -92.4890469
     },
     {
       "playerId": "CFBD-5083509",
@@ -601,10 +862,15 @@
       "side": "OFF",
       "position": "TE",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 236,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Montreal",
+      "homeState": "PQ",
+      "homeLat": 0,
+      "homeLon": 0
     },
     {
       "playerId": "CFBD-5084223",
@@ -613,10 +879,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'5\"",
       "weight": 208,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Sterlington",
+      "homeState": "LA",
+      "homeLat": 32.6944321,
+      "homeLon": -92.0760295
     },
     {
       "playerId": "CFBD-5085268",
@@ -625,10 +896,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'4\"",
       "weight": 225,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Baldwin",
+      "homeState": "FL",
+      "homeLat": 30.3027384,
+      "homeLon": -81.9753865
     },
     {
       "playerId": "CFBD-5091017",
@@ -637,10 +913,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'4\"",
       "weight": 176,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Fort Smith",
+      "homeState": "AR",
+      "homeLat": 35.3872218,
+      "homeLon": -94.4248983
     },
     {
       "playerId": "CFBD-5103176",
@@ -649,10 +930,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "JR",
+      "isRedshirt": true,
       "height": "6'3\"",
       "weight": 257,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Philadelphia",
+      "homeState": "PA",
+      "homeLat": 39.9527237,
+      "homeLon": -75.1635262
     },
     {
       "playerId": "CFBD-5104279",
@@ -661,10 +947,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'6\"",
       "weight": 306,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "New Iberia",
+      "homeState": "LA",
+      "homeLat": 30.0035365,
+      "homeLon": -91.8187285
     },
     {
       "playerId": "CFBD-5107937",
@@ -673,10 +964,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 181,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Temple",
+      "homeState": "TX",
+      "homeLat": 31.098207,
+      "homeLon": -97.3427847
     },
     {
       "playerId": "CFBD-5120970",
@@ -685,10 +981,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'0\"",
       "weight": 198,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Denver",
+      "homeState": "CO",
+      "homeLat": 39.7392364,
+      "homeLon": -104.9848623
     },
     {
       "playerId": "CFBD-5121666",
@@ -697,10 +998,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "5'8\"",
       "weight": 170,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Prattville",
+      "homeState": "AL",
+      "homeLat": 32.4640245,
+      "homeLon": -86.4596966
     },
     {
       "playerId": "CFBD-5123477",
@@ -709,10 +1015,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 195,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Pine Bluff",
+      "homeState": "AR",
+      "homeLat": 34.2157064,
+      "homeLon": -92.0140402
     },
     {
       "playerId": "CFBD-5126470",
@@ -721,10 +1032,15 @@
       "side": "OFF",
       "position": "QB",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 187,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Winter Garden",
+      "homeState": "FL",
+      "homeLat": 28.5656649,
+      "homeLon": -81.5856742
     },
     {
       "playerId": "CFBD-5141369",
@@ -733,10 +1049,15 @@
       "side": "OFF",
       "position": "RB",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "5'10\"",
       "weight": 180,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Atlanta",
+      "homeState": "TX",
+      "homeLat": 33.1162131,
+      "homeLon": -94.1663493
     },
     {
       "playerId": "CFBD-5141449",
@@ -745,10 +1066,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 182,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Houston",
+      "homeState": "TX",
+      "homeLat": 29.7589382,
+      "homeLon": -95.3676974
     },
     {
       "playerId": "CFBD-5141579",
@@ -757,10 +1083,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 288,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Hattiesburg",
+      "homeState": "MS",
+      "homeLat": 31.3271189,
+      "homeLon": -89.2903392
     },
     {
       "playerId": "CFBD-5141679",
@@ -769,10 +1100,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 286,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Brandon",
+      "homeState": "MS",
+      "homeLat": 32.2731475,
+      "homeLon": -89.9868058
     },
     {
       "playerId": "CFBD-5141745",
@@ -781,10 +1117,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "FR",
+      "isRedshirt": true,
       "height": "6'1\"",
       "weight": 228,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Jesup",
+      "homeState": "GA",
+      "homeLat": 31.6074365,
+      "homeLon": -81.8853924
     },
     {
       "playerId": "CFBD-5142236",
@@ -793,10 +1134,15 @@
       "side": "OFF",
       "position": "QB",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 211,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "North Little Rock",
+      "homeState": "AR",
+      "homeLat": 34.769536,
+      "homeLon": -92.2670941
     },
     {
       "playerId": "CFBD-5146719",
@@ -805,10 +1151,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 194,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Bentonville",
+      "homeState": "AR",
+      "homeLat": 36.3728538,
+      "homeLon": -94.2088172
     },
     {
       "playerId": "CFBD-5146871",
@@ -817,10 +1168,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "FR",
+      "isRedshirt": true,
       "height": "6'5\"",
       "weight": 326,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Fort Smith",
+      "homeState": "AR",
+      "homeLat": 35.3872218,
+      "homeLon": -94.4248983
     },
     {
       "playerId": "CFBD-5147148",
@@ -829,10 +1185,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "FR",
+      "isRedshirt": true,
       "height": "6'2\"",
       "weight": 232,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Kennesaw",
+      "homeState": "GA",
+      "homeLat": 34.0234337,
+      "homeLon": -84.6154897
     },
     {
       "playerId": "CFBD-5147153",
@@ -841,10 +1202,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "FR",
+      "isRedshirt": true,
       "height": "6'1\"",
       "weight": 230,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Searcy",
+      "homeState": "AR",
+      "homeLat": 35.2506406,
+      "homeLon": -91.7362488
     },
     {
       "playerId": "CFBD-5147383",
@@ -853,10 +1219,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SO",
+      "isRedshirt": true,
       "height": "5'11\"",
       "weight": 185,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Texarkana",
+      "homeState": "TX",
+      "homeLat": 33.44628645,
+      "homeLon": -94.07638067493534
     },
     {
       "playerId": "CFBD-5150261",
@@ -865,10 +1236,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SO",
+      "isRedshirt": true,
       "height": "5'10\"",
       "weight": 195,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Pine Bluff",
+      "homeState": "AR",
+      "homeLat": 34.2157064,
+      "homeLon": -92.0140402
     },
     {
       "playerId": "CFBD-5150263",
@@ -877,10 +1253,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 208,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Little Rock",
+      "homeState": "AR",
+      "homeLat": 34.7464809,
+      "homeLon": -92.2895948
     },
     {
       "playerId": "CFBD-5150266",
@@ -889,10 +1270,15 @@
       "side": "OFF",
       "position": "TE",
       "classYear": "SO",
+      "isRedshirt": true,
       "height": "6'3\"",
       "weight": 246,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Warren",
+      "homeState": "AR",
+      "homeLat": 33.6126086,
+      "homeLon": -92.0645831
     },
     {
       "playerId": "CFBD-5150267",
@@ -901,10 +1287,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 213,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Malvern",
+      "homeState": "AR",
+      "homeLat": 34.3623149,
+      "homeLon": -92.8129463
     },
     {
       "playerId": "CFBD-5150270",
@@ -913,10 +1304,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 252,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Arkadelphia",
+      "homeState": "AR",
+      "homeLat": 34.1209292,
+      "homeLon": -93.053784
     },
     {
       "playerId": "CFBD-5150273",
@@ -925,10 +1321,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "SO",
+      "isRedshirt": true,
       "height": "6'6\"",
       "weight": 300,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Conway",
+      "homeState": "AR",
+      "homeLat": 35.0886963,
+      "homeLon": -92.4421011
     },
     {
       "playerId": "CFBD-5150277",
@@ -937,10 +1338,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "5'8\"",
       "weight": 172,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Frisco",
+      "homeState": "TX",
+      "homeLat": 33.1506744,
+      "homeLon": -96.8236116
     },
     {
       "playerId": "CFBD-5155167",
@@ -949,10 +1355,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'5\"",
       "weight": 320,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Covington",
+      "homeState": "GA",
+      "homeLat": 33.5967815,
+      "homeLon": -83.8601827
     },
     {
       "playerId": "CFBD-5167190",
@@ -961,10 +1372,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 202,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Dallas",
+      "homeState": "TX",
+      "homeLat": 32.7762719,
+      "homeLon": -96.7968559
     },
     {
       "playerId": "CFBD-5180487",
@@ -973,10 +1389,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'4\"",
       "weight": 285,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Carthage",
+      "homeState": "TX",
+      "homeLat": 32.1570412,
+      "homeLon": -94.338114
     },
     {
       "playerId": "CFBD-5193351",
@@ -985,10 +1406,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "FR",
+      "isRedshirt": true,
       "height": "5'10\"",
       "weight": 176,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "New Orleans",
+      "homeState": "LA",
+      "homeLat": 29.9499323,
+      "homeLon": -90.0701156
     },
     {
       "playerId": "CFBD-5195482",
@@ -997,10 +1423,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 263,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Terrell",
+      "homeState": "TX",
+      "homeLat": 32.7359626,
+      "homeLon": -96.2752569
     },
     {
       "playerId": "CFBD-5199942",
@@ -1009,10 +1440,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 287,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Alpharetta",
+      "homeState": "GA",
+      "homeLat": 34.0709576,
+      "homeLon": -84.2747329
     },
     {
       "playerId": "CFBD-5201871",
@@ -1021,10 +1457,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'6\"",
       "weight": 230,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Warren",
+      "homeState": "AR",
+      "homeLat": 33.6126086,
+      "homeLon": -92.0645831
     },
     {
       "playerId": "CFBD-5214472",
@@ -1033,10 +1474,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 295,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Shreveport",
+      "homeState": "LA",
+      "homeLat": 32.5221828,
+      "homeLon": -93.7651944
     },
     {
       "playerId": "CFBD-5214818",
@@ -1045,10 +1491,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'5\"",
       "weight": 309,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Claremore",
+      "homeState": "OK",
+      "homeLat": 36.3126005,
+      "homeLon": -95.6160686
     },
     {
       "playerId": "CFBD-5216560",
@@ -1057,10 +1508,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'4\"",
       "weight": 245,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Mobile",
+      "homeState": "AL",
+      "homeLat": 30.6943566,
+      "homeLon": -88.0430541
     },
     {
       "playerId": "CFBD-5218698",
@@ -1069,10 +1525,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "FR",
+      "isRedshirt": true,
       "height": "6'4\"",
       "weight": 173,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Yoakum",
+      "homeState": "TX",
+      "homeLat": 29.289352,
+      "homeLon": -97.1492978
     },
     {
       "playerId": "CFBD-5218699",
@@ -1081,10 +1542,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 210,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Fayetteville",
+      "homeState": "AR",
+      "homeLat": 36.0625843,
+      "homeLon": -94.1574328
     },
     {
       "playerId": "CFBD-5218701",
@@ -1093,10 +1559,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "5'11\"",
       "weight": 218,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Little Rock",
+      "homeState": "AR",
+      "homeLat": 34.7464809,
+      "homeLon": -92.2895948
     },
     {
       "playerId": "CFBD-5218703",
@@ -1105,10 +1576,15 @@
       "side": "DEF",
       "position": "LB",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'0\"",
       "weight": 206,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Prosper",
+      "homeState": "TX",
+      "homeLat": 33.2385763,
+      "homeLon": -96.7866058
     },
     {
       "playerId": "CFBD-5218704",
@@ -1117,10 +1593,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'5\"",
       "weight": 298,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Springdale",
+      "homeState": "AR",
+      "homeLat": 36.1867442,
+      "homeLon": -94.1288142
     },
     {
       "playerId": "CFBD-5218705",
@@ -1129,10 +1610,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 299,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Little Rock",
+      "homeState": "AR",
+      "homeLat": 34.7464809,
+      "homeLon": -92.2895948
     },
     {
       "playerId": "CFBD-5218708",
@@ -1141,10 +1627,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 325,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Topeka",
+      "homeState": "KS",
+      "homeLat": 39.049011,
+      "homeLon": -95.677556
     },
     {
       "playerId": "CFBD-5220589",
@@ -1153,10 +1644,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 178,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Houston",
+      "homeState": "TX",
+      "homeLat": 29.7589382,
+      "homeLon": -95.3676974
     },
     {
       "playerId": "CFBD-5222256",
@@ -1165,10 +1661,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'2\"",
       "weight": 190,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Mobile",
+      "homeState": "AL",
+      "homeLat": 30.6943566,
+      "homeLon": -88.0430541
     },
     {
       "playerId": "CFBD-5222564",
@@ -1177,10 +1678,15 @@
       "side": "OFF",
       "position": "RB",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "5'11\"",
       "weight": 204,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Little Rock",
+      "homeState": "AR",
+      "homeLat": 34.7464809,
+      "homeLon": -92.2895948
     },
     {
       "playerId": "CFBD-5236182",
@@ -1189,10 +1695,15 @@
       "side": "OFF",
       "position": "TE",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'7\"",
       "weight": 254,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Chico",
+      "homeState": "CA",
+      "homeLat": 39.7284945,
+      "homeLon": -121.8374777
     },
     {
       "playerId": "CFBD-5293670",
@@ -1201,10 +1712,15 @@
       "side": "DEF",
       "position": "DB",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 165,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Tampa",
+      "homeState": "FL",
+      "homeLat": 27.9477595,
+      "homeLon": -82.458444
     },
     {
       "playerId": "CFBD-5293671",
@@ -1213,10 +1729,15 @@
       "side": "OFF",
       "position": "TE",
       "classYear": "JR",
+      "isRedshirt": false,
       "height": "6'4\"",
       "weight": 232,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 2,
+      "isTransfer": false,
+      "homeCity": "Fontana",
+      "homeState": "CA",
+      "homeLat": 34.0922335,
+      "homeLon": -117.435048
     },
     {
       "playerId": "CFBD-5293672",
@@ -1225,10 +1746,15 @@
       "side": "OFF",
       "position": "TE",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "5'10\"",
       "weight": 215,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Boerne",
+      "homeState": "TX",
+      "homeLat": 29.7946641,
+      "homeLon": -98.7319703
     },
     {
       "playerId": "CFBD-5293673",
@@ -1237,10 +1763,15 @@
       "side": "DEF",
       "position": "DL",
       "classYear": "SR",
+      "isRedshirt": false,
       "height": "6'4\"",
       "weight": 275,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 1,
+      "isTransfer": false,
+      "homeCity": "Pago Pago",
+      "homeState": "",
+      "homeLat": 0,
+      "homeLon": 0
     },
     {
       "playerId": "CFBD-5293674",
@@ -1249,10 +1780,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'8\"",
       "weight": 362,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Bessemer",
+      "homeState": "AL",
+      "homeLat": 33.3823635,
+      "homeLon": -86.91720475
     },
     {
       "playerId": "CFBD-5293675",
@@ -1261,10 +1797,15 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "SO",
+      "isRedshirt": false,
       "height": "6'8\"",
       "weight": 307,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 3,
+      "isTransfer": false,
+      "homeCity": "Fort Wayne",
+      "homeState": "IN",
+      "homeLat": 41.0799898,
+      "homeLon": -85.1386015
     },
     {
       "playerId": "CFBD-5293676",
@@ -1273,10 +1814,15 @@
       "side": "OFF",
       "position": "WR",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'1\"",
       "weight": 180,
-      "eligibilityRemaining": null,
-      "isTransfer": false
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Greenwood",
+      "homeState": "AR",
+      "homeLat": 35.2156489,
+      "homeLon": -94.2557663
     },
     {
       "playerId": "CFBD-5306454",
@@ -1285,8 +1831,26 @@
       "side": "OFF",
       "position": "OL",
       "classYear": "FR",
+      "isRedshirt": false,
       "height": "6'3\"",
       "weight": 318,
+      "eligibilityRemaining": 4,
+      "isTransfer": false,
+      "homeCity": "Shreveport",
+      "homeState": "LA",
+      "homeLat": 32.5221828,
+      "homeLon": -93.7651944
+    },
+    {
+      "playerId": "ourlads-stub-chris-marshall",
+      "name": "Chris Marshall",
+      "number": null,
+      "side": "OFF",
+      "position": "WR",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
       "eligibilityRemaining": null,
       "isTransfer": false
     },
@@ -1297,10 +1861,11 @@
       "side": "OFF",
       "position": "WR",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-jelani-watkins",
@@ -1309,22 +1874,24 @@
       "side": "OFF",
       "position": "WR",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
-      "playerId": "ourlads-stub-chris-marshall",
-      "name": "Chris Marshall",
+      "playerId": "ourlads-stub-blair-irvin-iii",
+      "name": "Blair Irvin III",
       "number": null,
       "side": "OFF",
       "position": "WR",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-jamari-hawkins",
@@ -1333,70 +1900,37 @@
       "side": "OFF",
       "position": "WR",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
-      "playerId": "ourlads-stub-bryant-williams",
-      "name": "Bryant Williams",
+      "playerId": "ourlads-stub-dequane-prevo",
+      "name": "Dequane Prevo",
       "number": null,
       "side": "OFF",
-      "position": "OL",
+      "position": "WR",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
-      "playerId": "ourlads-stub-adam-hawkes",
-      "name": "Adam Hawkes",
-      "number": null,
-      "side": "OFF",
-      "position": "OL",
-      "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
-      "height": null,
-      "weight": null
-    },
-    {
-      "playerId": "ourlads-stub-malachi-breland",
-      "name": "Malachi Breland",
-      "number": null,
-      "side": "OFF",
-      "position": "OL",
-      "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
-      "height": null,
-      "weight": null
-    },
-    {
-      "playerId": "ourlads-stub-davion-weatherspoon",
-      "name": "Davion Weatherspoon",
-      "number": null,
-      "side": "OFF",
-      "position": "OL",
-      "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
-      "height": null,
-      "weight": null
-    },
-    {
-      "playerId": "ourlads-stub-terence-roberson-jr-",
+      "playerId": "ourlads-stub-terence-roberson-jr",
       "name": "Terence Roberson Jr.",
       "number": null,
       "side": "OFF",
       "position": "OL",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-josiah-clemons",
@@ -1405,10 +1939,63 @@
       "side": "OFF",
       "position": "OL",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-malachi-breland",
+      "name": "Malachi Breland",
+      "number": null,
+      "side": "OFF",
+      "position": "OL",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-carey-clayton",
+      "name": "Carey Clayton",
+      "number": null,
+      "side": "OFF",
+      "position": "OL",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-bryant-williams",
+      "name": "Bryant Williams",
+      "number": null,
+      "side": "OFF",
+      "position": "OL",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-adam-hawkes",
+      "name": "Adam Hawkes",
+      "number": null,
+      "side": "OFF",
+      "position": "OL",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-ty-lockwood",
@@ -1417,10 +2004,11 @@
       "side": "OFF",
       "position": "TE",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-matt-adcock",
@@ -1429,10 +2017,11 @@
       "side": "OFF",
       "position": "TE",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-aj-hill",
@@ -1441,10 +2030,11 @@
       "side": "OFF",
       "position": "QB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-braeden-fuller",
@@ -1453,22 +2043,37 @@
       "side": "OFF",
       "position": "QB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
-      "playerId": "ourlads-stub-jasper-parker",
-      "name": "Jasper Parker",
+      "playerId": "ourlads-stub-cade-trotter",
+      "name": "Cade Trotter",
       "number": null,
       "side": "OFF",
-      "position": "RB",
+      "position": "QB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-hank-hendrix",
+      "name": "Hank Hendrix",
+      "number": null,
+      "side": "OFF",
+      "position": "QB",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-sutton-smith",
@@ -1477,10 +2082,24 @@
       "side": "OFF",
       "position": "RB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-jasper-parker",
+      "name": "Jasper Parker",
+      "number": null,
+      "side": "OFF",
+      "position": "RB",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-trajen-odom",
@@ -1489,10 +2108,24 @@
       "side": "DEF",
       "position": "DE",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-brian-alston",
+      "name": "Brian Alston",
+      "number": null,
+      "side": "DEF",
+      "position": "DE",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-carlon-jones",
@@ -1501,10 +2134,24 @@
       "side": "DEF",
       "position": "DT",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-danny-beale-iii",
+      "name": "Danny Beale III",
+      "number": null,
+      "side": "DEF",
+      "position": "DT",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-antonio-sandel-bascomb",
@@ -1513,10 +2160,11 @@
       "side": "DEF",
       "position": "DT",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-hunter-osborne",
@@ -1525,10 +2173,11 @@
       "side": "DEF",
       "position": "DT",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-xadavien-sims",
@@ -1537,22 +2186,24 @@
       "side": "DEF",
       "position": "DT",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
-      "playerId": "ourlads-stub-steven-soles-jr-",
+      "playerId": "ourlads-stub-steven-soles-jr",
       "name": "Steven Soles Jr.",
       "number": null,
       "side": "DEF",
       "position": "DE",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-jamonta-waller",
@@ -1561,22 +2212,24 @@
       "side": "DEF",
       "position": "DE",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
-      "playerId": "ourlads-stub-khmori-house",
-      "name": "Khmori House",
+      "playerId": "ourlads-stub-j-lynn-allen",
+      "name": "J'Lynn Allen",
       "number": null,
       "side": "DEF",
-      "position": "LB",
+      "position": "DE",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-ja-quavion-smith",
@@ -1585,22 +2238,11 @@
       "side": "DEF",
       "position": "LB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
-    },
-    {
-      "playerId": "ourlads-stub-ben-bogle",
-      "name": "Ben Bogle",
-      "number": null,
-      "side": "DEF",
-      "position": "LB",
-      "classYear": null,
-      "isTransfer": false,
+      "weight": null,
       "eligibilityRemaining": null,
-      "height": null,
-      "weight": null
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-phoenix-jackson",
@@ -1609,82 +2251,76 @@
       "side": "DEF",
       "position": "LB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
-      "playerId": "ourlads-stub-tyler-scott",
-      "name": "Tyler Scott",
+      "playerId": "ourlads-stub-jeremy-evans",
+      "name": "Jeremy Evans",
+      "number": null,
+      "side": "DEF",
+      "position": "LB",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-ben-bogle",
+      "name": "Ben Bogle",
+      "number": null,
+      "side": "DEF",
+      "position": "LB",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-shelton-lewis",
+      "name": "Shelton Lewis",
       "number": null,
       "side": "DEF",
       "position": "CB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-brandon-ford",
+      "name": "Brandon Ford",
+      "number": null,
+      "side": "DEF",
+      "position": "CB",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-kyeaure-magloire",
       "name": "Kyeaure Magloire",
       "number": null,
       "side": "DEF",
-      "position": "CB",
-      "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
-      "height": null,
-      "weight": null
-    },
-    {
-      "playerId": "ourlads-stub-john-howse-iv",
-      "name": "John Howse IV",
-      "number": null,
-      "side": "DEF",
       "position": "S",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
-    },
-    {
-      "playerId": "ourlads-stub-lamarcus-hicks-ii",
-      "name": "LaMarcus Hicks II",
-      "number": null,
-      "side": "DEF",
-      "position": "S",
-      "classYear": null,
-      "isTransfer": false,
+      "weight": null,
       "eligibilityRemaining": null,
-      "height": null,
-      "weight": null
-    },
-    {
-      "playerId": "ourlads-stub-carter-stoutmire",
-      "name": "Carter Stoutmire",
-      "number": null,
-      "side": "DEF",
-      "position": "S",
-      "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
-      "height": null,
-      "weight": null
-    },
-    {
-      "playerId": "ourlads-stub-ian-williams",
-      "name": "Ian Williams",
-      "number": null,
-      "side": "DEF",
-      "position": "S",
-      "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
-      "height": null,
-      "weight": null
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-nsongbeh-ginyui",
@@ -1693,10 +2329,76 @@
       "side": "DEF",
       "position": "S",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-john-howse-iv",
+      "name": "John Howse IV",
+      "number": null,
+      "side": "DEF",
+      "position": "S",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-christian-harrison",
+      "name": "Christian Harrison",
+      "number": null,
+      "side": "DEF",
+      "position": "S",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-ian-williams",
+      "name": "Ian Williams",
+      "number": null,
+      "side": "DEF",
+      "position": "S",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-tay-lockett",
+      "name": "Tay Lockett",
+      "number": null,
+      "side": "DEF",
+      "position": "S",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-lamarcus-hicks-ii",
+      "name": "LaMarcus Hicks II",
+      "number": null,
+      "side": "DEF",
+      "position": "S",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-la-khi-roland",
@@ -1705,10 +2407,24 @@
       "side": "DEF",
       "position": "CB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
+    },
+    {
+      "playerId": "ourlads-stub-dj-hairston-jr",
+      "name": "DJ Hairston Jr.",
+      "number": null,
+      "side": "DEF",
+      "position": "CB",
+      "classYear": null,
+      "isRedshirt": false,
+      "height": null,
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
       "playerId": "ourlads-stub-braydon-lee",
@@ -1717,169 +2433,187 @@
       "side": "DEF",
       "position": "CB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
-      "playerId": "ourlads-stub-christian-harrison",
-      "name": "Christian Harrison",
+      "playerId": "ourlads-stub-khmori-house",
+      "name": "Khmori House",
       "number": null,
       "side": "DEF",
       "position": "LB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
-      "playerId": "ourlads-stub-shelton-lewis",
-      "name": "Shelton Lewis",
+      "playerId": "ourlads-stub-carter-stoutmire",
+      "name": "Carter Stoutmire",
       "number": null,
       "side": "DEF",
       "position": "LB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     },
     {
-      "playerId": "ourlads-stub-kourtlan-marsh",
-      "name": "Kourtlan Marsh",
+      "playerId": "ourlads-stub-tyler-scott",
+      "name": "Tyler Scott",
       "number": null,
       "side": "DEF",
       "position": "LB",
       "classYear": null,
-      "isTransfer": false,
-      "eligibilityRemaining": null,
+      "isRedshirt": false,
       "height": null,
-      "weight": null
+      "weight": null,
+      "eligibilityRemaining": null,
+      "isTransfer": false
     }
   ],
   "depthChart": {
     "offense": {
-      "WRX": "ourlads-stub-donovan-faupel",
-      "WRX2": "ourlads-stub-jelani-watkins",
-      "WRX3": "CFBD-3116099",
-      "WRX5": "CFBD-4684173",
-      "WRZ": "ourlads-stub-chris-marshall",
-      "WRZ2": "CFBD-4870619",
-      "WRZ3": "CFBD-5123477",
-      "SLOT": "ourlads-stub-jamari-hawkins",
-      "SLOT2": "CFBD-5146719",
-      "SLOT3": "CFBD-5120970",
-      "SLOT5": "CFBD-4872957",
-      "LT": "ourlads-stub-bryant-williams",
-      "LT2": "ourlads-stub-adam-hawkes",
-      "LT5": "CFBD-4705561",
+      "WRX": "ourlads-stub-chris-marshall",
+      "WRX2": "CFBD-5123477",
+      "WRX3": "CFBD-5201871",
+      "WRX4": "CFBD-3116099",
+      "WRZ": "CFBD-5146719",
+      "WRZ2": "ourlads-stub-donovan-faupel",
+      "WRZ3": "ourlads-stub-jelani-watkins",
+      "WRZ4": "ourlads-stub-blair-irvin-iii",
+      "SLOT": "CFBD-5120970",
+      "SLOT2": "ourlads-stub-jamari-hawkins",
+      "SLOT3": "ourlads-stub-dequane-prevo",
+      "LT": "CFBD-5104279",
+      "LT2": "ourlads-stub-terence-roberson-jr",
+      "LT3": "ourlads-stub-josiah-clemons",
       "LG": "ourlads-stub-malachi-breland",
-      "LG2": "ourlads-stub-davion-weatherspoon",
-      "LG5": "CFBD-4710000",
+      "LG2": "CFBD-5218705",
       "C": "CFBD-4833623",
       "C2": "CFBD-5180487",
+      "C3": "ourlads-stub-carey-clayton",
       "RG": "CFBD-5146871",
       "RG2": "CFBD-5080713",
-      "RT": "ourlads-stub-terence-roberson-jr-",
-      "RT2": "CFBD-5104279",
-      "RT3": "ourlads-stub-josiah-clemons",
+      "RG3": "CFBD-5084223",
+      "RT": "ourlads-stub-bryant-williams",
+      "RT2": "ourlads-stub-adam-hawkes",
+      "RT3": "CFBD-5218704",
       "TE": "CFBD-4899360",
       "TE2": "ourlads-stub-ty-lockwood",
       "TE3": "ourlads-stub-matt-adcock",
-      "TE5": "CFBD-5083509",
+      "TE4": "CFBD-5150266",
       "QB": "CFBD-5079516",
       "QB2": "ourlads-stub-aj-hill",
       "QB3": "ourlads-stub-braeden-fuller",
-      "QB5": "CFBD-4431325",
-      "RB": "CFBD-5150266",
-      "RB2": "ourlads-stub-jasper-parker",
-      "RB3": "ourlads-stub-sutton-smith",
-      "RB5": "CFBD-4686658"
+      "QB4": "ourlads-stub-cade-trotter",
+      "QB5": "ourlads-stub-hank-hendrix",
+      "RB": "CFBD-5079589",
+      "RB2": "ourlads-stub-sutton-smith",
+      "RB3": "ourlads-stub-jasper-parker",
+      "RB4": "CFBD-5222564"
     },
     "defense": {
       "LDE": "CFBD-5079380",
-      "LDE2": "ourlads-stub-steven-soles-jr-",
+      "LDE2": "ourlads-stub-steven-soles-jr",
       "LDE3": "ourlads-stub-jamonta-waller",
-      "LDE5": "CFBD-4684086",
+      "LDE4": "CFBD-5216560",
       "NT": "CFBD-4833606",
       "NT2": "ourlads-stub-carlon-jones",
-      "NT3": "ourlads-stub-antonio-sandel-bascomb",
+      "NT3": "ourlads-stub-danny-beale-iii",
+      "NT4": "ourlads-stub-antonio-sandel-bascomb",
       "DT": "ourlads-stub-hunter-osborne",
       "DT2": "ourlads-stub-xadavien-sims",
       "DT3": "CFBD-5141679",
-      "DT5": "CFBD-4691878",
-      "WLB": "ourlads-stub-khmori-house",
-      "WLB2": "CFBD-5147153",
-      "WLB3": "ourlads-stub-ja-quavion-smith",
-      "WLB5": "CFBD-4431570",
+      "DT4": "CFBD-5195482",
+      "LDE5": "ourlads-stub-j-lynn-allen",
+      "WLB": "ourlads-stub-ja-quavion-smith",
+      "WLB2": "ourlads-stub-phoenix-jackson",
+      "WLB3": "ourlads-stub-jeremy-evans",
       "MLB": "CFBD-5079715",
-      "MLB2": "ourlads-stub-ben-bogle",
-      "MLB3": "ourlads-stub-phoenix-jackson",
-      "MLB5": "CFBD-4430883",
+      "MLB2": "CFBD-5147153",
+      "MLB3": "ourlads-stub-ben-bogle",
       "LCB": "CFBD-5147383",
-      "LCB2": "ourlads-stub-tyler-scott",
-      "LCB3": "ourlads-stub-kyeaure-magloire",
+      "LCB2": "ourlads-stub-shelton-lewis",
+      "LCB3": "ourlads-stub-brandon-ford",
       "SS": "CFBD-4870071",
-      "SS2": "ourlads-stub-john-howse-iv",
-      "SS3": "ourlads-stub-lamarcus-hicks-ii",
-      "SS5": "CFBD-5085268",
-      "FS": "ourlads-stub-carter-stoutmire",
+      "SS2": "ourlads-stub-kyeaure-magloire",
+      "SS3": "ourlads-stub-nsongbeh-ginyui",
+      "SS4": "ourlads-stub-john-howse-iv",
+      "FS": "ourlads-stub-christian-harrison",
       "FS2": "ourlads-stub-ian-williams",
-      "FS3": "ourlads-stub-nsongbeh-ginyui",
+      "FS3": "ourlads-stub-tay-lockett",
+      "FS4": "ourlads-stub-lamarcus-hicks-ii",
       "RCB": "ourlads-stub-la-khi-roland",
-      "RCB2": "ourlads-stub-braydon-lee",
-      "RCB5": "CFBD-4684543",
-      "NB": "ourlads-stub-christian-harrison",
-      "NB2": "ourlads-stub-shelton-lewis",
-      "NB3": "ourlads-stub-kourtlan-marsh",
-      "NB5": "CFBD-4596541"
+      "RCB2": "ourlads-stub-dj-hairston-jr",
+      "RCB3": "ourlads-stub-braydon-lee",
+      "NB": "ourlads-stub-khmori-house",
+      "NB2": "ourlads-stub-carter-stoutmire",
+      "NB3": "ourlads-stub-tyler-scott"
     }
   },
   "depthChartMeta": {
     "sourceId": "ourlads-depthchart-v1",
-    "sourceUrl": "https://www.ourlads.com/ncaa-football-depth-charts/depth-chart.aspx?s=arkansas&id=89992",
+    "sourceUrl": "https://www.ourlads.com/ncaa-football-depth-charts/depth-chart/arkansas/89992",
     "parsedRows": {
-      "offense": 12,
+      "offense": 11,
       "defense": 11
     },
     "unmatchedOurladsPlayers": [
       {
         "slot": "WRX",
         "depth": 1,
+        "name": "Chris Marshall",
+        "cleanedName": "chris marshall"
+      },
+      {
+        "slot": "WRZ",
+        "depth": 2,
         "name": "Donovan Faupel",
         "cleanedName": "donovan faupel"
       },
       {
-        "slot": "WRX",
-        "depth": 2,
+        "slot": "WRZ",
+        "depth": 3,
         "name": "Jelani Watkins",
         "cleanedName": "jelani watkins"
       },
       {
         "slot": "WRZ",
-        "depth": 1,
-        "name": "Chris Marshall",
-        "cleanedName": "chris marshall"
+        "depth": 4,
+        "name": "Blair Irvin III",
+        "cleanedName": "blair irvin"
       },
       {
         "slot": "SLOT",
-        "depth": 1,
+        "depth": 2,
         "name": "Jamari Hawkins",
         "cleanedName": "jamari hawkins"
       },
       {
-        "slot": "LT",
-        "depth": 1,
-        "name": "Bryant Williams",
-        "cleanedName": "bryant williams"
+        "slot": "SLOT",
+        "depth": 3,
+        "name": "Dequane Prevo",
+        "cleanedName": "dequane prevo"
       },
       {
         "slot": "LT",
         "depth": 2,
-        "name": "Adam Hawkes",
-        "cleanedName": "adam hawkes"
+        "name": "Terence Roberson Jr.",
+        "cleanedName": "terence roberson"
+      },
+      {
+        "slot": "LT",
+        "depth": 3,
+        "name": "Josiah Clemons",
+        "cleanedName": "josiah clemons"
       },
       {
         "slot": "LG",
@@ -1888,22 +2622,22 @@
         "cleanedName": "malachi breland"
       },
       {
-        "slot": "LG",
-        "depth": 2,
-        "name": "Davion Weatherspoon",
-        "cleanedName": "davion weatherspoon"
+        "slot": "C",
+        "depth": 3,
+        "name": "Carey Clayton",
+        "cleanedName": "carey clayton"
       },
       {
         "slot": "RT",
         "depth": 1,
-        "name": "Terence Roberson Jr.",
-        "cleanedName": "terence roberson"
+        "name": "Bryant Williams",
+        "cleanedName": "bryant williams"
       },
       {
         "slot": "RT",
-        "depth": 3,
-        "name": "Josiah Clemons",
-        "cleanedName": "josiah clemons"
+        "depth": 2,
+        "name": "Adam Hawkes",
+        "cleanedName": "adam hawkes"
       },
       {
         "slot": "TE",
@@ -1930,22 +2664,40 @@
         "cleanedName": "braeden fuller"
       },
       {
+        "slot": "QB",
+        "depth": 4,
+        "name": "Cade Trotter",
+        "cleanedName": "cade trotter"
+      },
+      {
+        "slot": "QB",
+        "depth": 5,
+        "name": "Hank Hendrix",
+        "cleanedName": "hank hendrix"
+      },
+      {
         "slot": "RB",
         "depth": 2,
-        "name": "Jasper Parker",
-        "cleanedName": "jasper parker"
+        "name": "Sutton Smith",
+        "cleanedName": "sutton smith"
       },
       {
         "slot": "RB",
         "depth": 3,
-        "name": "Sutton Smith",
-        "cleanedName": "sutton smith"
+        "name": "Jasper Parker",
+        "cleanedName": "jasper parker"
       },
       {
         "slot": "LDE",
         "depth": 2,
         "name": "Trajen Odom",
         "cleanedName": "trajen odom"
+      },
+      {
+        "slot": "LDE",
+        "depth": 4,
+        "name": "Brian Alston",
+        "cleanedName": "brian alston"
       },
       {
         "slot": "NT",
@@ -1956,6 +2708,12 @@
       {
         "slot": "NT",
         "depth": 3,
+        "name": "Danny Beale III",
+        "cleanedName": "danny beale"
+      },
+      {
+        "slot": "NT",
+        "depth": 4,
         "name": "Antonio Sandel-Bascomb",
         "cleanedName": "antonio sandel bascomb"
       },
@@ -1984,58 +2742,70 @@
         "cleanedName": "jamonta waller"
       },
       {
-        "slot": "WLB",
-        "depth": 1,
-        "name": "Khmori House",
-        "cleanedName": "khmori house"
+        "slot": "LDE",
+        "depth": 5,
+        "name": "J'Lynn Allen",
+        "cleanedName": "j lynn allen"
       },
       {
         "slot": "WLB",
-        "depth": 3,
+        "depth": 1,
         "name": "Ja'Quavion Smith",
         "cleanedName": "ja quavion smith"
       },
       {
-        "slot": "MLB",
+        "slot": "WLB",
         "depth": 2,
-        "name": "Ben Bogle",
-        "cleanedName": "ben bogle"
-      },
-      {
-        "slot": "MLB",
-        "depth": 3,
         "name": "Phoenix Jackson",
         "cleanedName": "phoenix jackson"
       },
       {
+        "slot": "WLB",
+        "depth": 3,
+        "name": "Jeremy Evans",
+        "cleanedName": "jeremy evans"
+      },
+      {
+        "slot": "MLB",
+        "depth": 3,
+        "name": "Ben Bogle",
+        "cleanedName": "ben bogle"
+      },
+      {
         "slot": "LCB",
         "depth": 2,
-        "name": "Tyler Scott",
-        "cleanedName": "tyler scott"
+        "name": "Shelton Lewis",
+        "cleanedName": "shelton lewis"
       },
       {
         "slot": "LCB",
         "depth": 3,
+        "name": "Brandon Ford",
+        "cleanedName": "brandon ford"
+      },
+      {
+        "slot": "SS",
+        "depth": 2,
         "name": "Kyeaure Magloire",
         "cleanedName": "kyeaure magloire"
       },
       {
         "slot": "SS",
-        "depth": 2,
+        "depth": 3,
+        "name": "Nsongbeh Ginyui",
+        "cleanedName": "nsongbeh ginyui"
+      },
+      {
+        "slot": "SS",
+        "depth": 4,
         "name": "John Howse IV",
         "cleanedName": "john howse"
       },
       {
-        "slot": "SS",
-        "depth": 3,
-        "name": "LaMarcus Hicks II",
-        "cleanedName": "lamarcus hicks"
-      },
-      {
         "slot": "FS",
         "depth": 1,
-        "name": "Carter Stoutmire",
-        "cleanedName": "carter stoutmire"
+        "name": "Christian Harrison",
+        "cleanedName": "christian harrison"
       },
       {
         "slot": "FS",
@@ -2046,8 +2816,14 @@
       {
         "slot": "FS",
         "depth": 3,
-        "name": "Nsongbeh Ginyui",
-        "cleanedName": "nsongbeh ginyui"
+        "name": "Tay Lockett",
+        "cleanedName": "tay lockett"
+      },
+      {
+        "slot": "FS",
+        "depth": 4,
+        "name": "LaMarcus Hicks II",
+        "cleanedName": "lamarcus hicks"
       },
       {
         "slot": "RCB",
@@ -2058,29 +2834,48 @@
       {
         "slot": "RCB",
         "depth": 2,
+        "name": "DJ Hairston Jr.",
+        "cleanedName": "dj hairston"
+      },
+      {
+        "slot": "RCB",
+        "depth": 3,
         "name": "Braydon Lee",
         "cleanedName": "braydon lee"
       },
       {
         "slot": "NB",
         "depth": 1,
-        "name": "Christian Harrison",
-        "cleanedName": "christian harrison"
+        "name": "Khmori House",
+        "cleanedName": "khmori house"
       },
       {
         "slot": "NB",
         "depth": 2,
-        "name": "Shelton Lewis",
-        "cleanedName": "shelton lewis"
+        "name": "Carter Stoutmire",
+        "cleanedName": "carter stoutmire"
       },
       {
         "slot": "NB",
         "depth": 3,
-        "name": "Kourtlan Marsh",
-        "cleanedName": "kourtlan marsh"
+        "name": "Tyler Scott",
+        "cleanedName": "tyler scott"
       }
     ],
     "stubPlayers": [
+      {
+        "playerId": "ourlads-stub-chris-marshall",
+        "name": "Chris Marshall",
+        "number": null,
+        "side": "OFF",
+        "position": "WR",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
+      },
       {
         "playerId": "ourlads-stub-donovan-faupel",
         "name": "Donovan Faupel",
@@ -2091,7 +2886,8 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-jelani-watkins",
@@ -2103,11 +2899,12 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
-        "playerId": "ourlads-stub-chris-marshall",
-        "name": "Chris Marshall",
+        "playerId": "ourlads-stub-blair-irvin-iii",
+        "name": "Blair Irvin III",
         "number": null,
         "side": "OFF",
         "position": "WR",
@@ -2115,7 +2912,8 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-jamari-hawkins",
@@ -2127,58 +2925,24 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
-        "playerId": "ourlads-stub-bryant-williams",
-        "name": "Bryant Williams",
+        "playerId": "ourlads-stub-dequane-prevo",
+        "name": "Dequane Prevo",
         "number": null,
         "side": "OFF",
-        "position": "OL",
+        "position": "WR",
         "classYear": null,
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
-        "playerId": "ourlads-stub-adam-hawkes",
-        "name": "Adam Hawkes",
-        "number": null,
-        "side": "OFF",
-        "position": "OL",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-malachi-breland",
-        "name": "Malachi Breland",
-        "number": null,
-        "side": "OFF",
-        "position": "OL",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-davion-weatherspoon",
-        "name": "Davion Weatherspoon",
-        "number": null,
-        "side": "OFF",
-        "position": "OL",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-terence-roberson-jr-",
+        "playerId": "ourlads-stub-terence-roberson-jr",
         "name": "Terence Roberson Jr.",
         "number": null,
         "side": "OFF",
@@ -2187,7 +2951,8 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-josiah-clemons",
@@ -2199,7 +2964,60 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-malachi-breland",
+        "name": "Malachi Breland",
+        "number": null,
+        "side": "OFF",
+        "position": "OL",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-carey-clayton",
+        "name": "Carey Clayton",
+        "number": null,
+        "side": "OFF",
+        "position": "OL",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-bryant-williams",
+        "name": "Bryant Williams",
+        "number": null,
+        "side": "OFF",
+        "position": "OL",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-adam-hawkes",
+        "name": "Adam Hawkes",
+        "number": null,
+        "side": "OFF",
+        "position": "OL",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-ty-lockwood",
@@ -2211,7 +3029,8 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-matt-adcock",
@@ -2223,7 +3042,8 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-aj-hill",
@@ -2235,7 +3055,8 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-braeden-fuller",
@@ -2247,19 +3068,34 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
-        "playerId": "ourlads-stub-jasper-parker",
-        "name": "Jasper Parker",
+        "playerId": "ourlads-stub-cade-trotter",
+        "name": "Cade Trotter",
         "number": null,
         "side": "OFF",
-        "position": "RB",
+        "position": "QB",
         "classYear": null,
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-hank-hendrix",
+        "name": "Hank Hendrix",
+        "number": null,
+        "side": "OFF",
+        "position": "QB",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-sutton-smith",
@@ -2271,7 +3107,21 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-jasper-parker",
+        "name": "Jasper Parker",
+        "number": null,
+        "side": "OFF",
+        "position": "RB",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-trajen-odom",
@@ -2283,7 +3133,21 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-brian-alston",
+        "name": "Brian Alston",
+        "number": null,
+        "side": "DEF",
+        "position": "DE",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-carlon-jones",
@@ -2295,7 +3159,21 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-danny-beale-iii",
+        "name": "Danny Beale III",
+        "number": null,
+        "side": "DEF",
+        "position": "DT",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-antonio-sandel-bascomb",
@@ -2307,7 +3185,8 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-hunter-osborne",
@@ -2319,7 +3198,8 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-xadavien-sims",
@@ -2331,10 +3211,11 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
-        "playerId": "ourlads-stub-steven-soles-jr-",
+        "playerId": "ourlads-stub-steven-soles-jr",
         "name": "Steven Soles Jr.",
         "number": null,
         "side": "DEF",
@@ -2343,7 +3224,8 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-jamonta-waller",
@@ -2355,19 +3237,21 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
-        "playerId": "ourlads-stub-khmori-house",
-        "name": "Khmori House",
+        "playerId": "ourlads-stub-j-lynn-allen",
+        "name": "J'Lynn Allen",
         "number": null,
         "side": "DEF",
-        "position": "LB",
+        "position": "DE",
         "classYear": null,
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-ja-quavion-smith",
@@ -2379,19 +3263,8 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-ben-bogle",
-        "name": "Ben Bogle",
-        "number": null,
-        "side": "DEF",
-        "position": "LB",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-phoenix-jackson",
@@ -2403,11 +3276,38 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
-        "playerId": "ourlads-stub-tyler-scott",
-        "name": "Tyler Scott",
+        "playerId": "ourlads-stub-jeremy-evans",
+        "name": "Jeremy Evans",
+        "number": null,
+        "side": "DEF",
+        "position": "LB",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-ben-bogle",
+        "name": "Ben Bogle",
+        "number": null,
+        "side": "DEF",
+        "position": "LB",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-shelton-lewis",
+        "name": "Shelton Lewis",
         "number": null,
         "side": "DEF",
         "position": "CB",
@@ -2415,67 +3315,34 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-brandon-ford",
+        "name": "Brandon Ford",
+        "number": null,
+        "side": "DEF",
+        "position": "CB",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-kyeaure-magloire",
         "name": "Kyeaure Magloire",
         "number": null,
         "side": "DEF",
-        "position": "CB",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-john-howse-iv",
-        "name": "John Howse IV",
-        "number": null,
-        "side": "DEF",
         "position": "S",
         "classYear": null,
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-lamarcus-hicks-ii",
-        "name": "LaMarcus Hicks II",
-        "number": null,
-        "side": "DEF",
-        "position": "S",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-carter-stoutmire",
-        "name": "Carter Stoutmire",
-        "number": null,
-        "side": "DEF",
-        "position": "S",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
-      },
-      {
-        "playerId": "ourlads-stub-ian-williams",
-        "name": "Ian Williams",
-        "number": null,
-        "side": "DEF",
-        "position": "S",
-        "classYear": null,
-        "isTransfer": false,
-        "eligibilityRemaining": null,
-        "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-nsongbeh-ginyui",
@@ -2487,7 +3354,73 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-john-howse-iv",
+        "name": "John Howse IV",
+        "number": null,
+        "side": "DEF",
+        "position": "S",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-christian-harrison",
+        "name": "Christian Harrison",
+        "number": null,
+        "side": "DEF",
+        "position": "S",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-ian-williams",
+        "name": "Ian Williams",
+        "number": null,
+        "side": "DEF",
+        "position": "S",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-tay-lockett",
+        "name": "Tay Lockett",
+        "number": null,
+        "side": "DEF",
+        "position": "S",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-lamarcus-hicks-ii",
+        "name": "LaMarcus Hicks II",
+        "number": null,
+        "side": "DEF",
+        "position": "S",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-la-khi-roland",
@@ -2499,7 +3432,21 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
+      },
+      {
+        "playerId": "ourlads-stub-dj-hairston-jr",
+        "name": "DJ Hairston Jr.",
+        "number": null,
+        "side": "DEF",
+        "position": "CB",
+        "classYear": null,
+        "isTransfer": false,
+        "eligibilityRemaining": null,
+        "height": null,
+        "weight": null,
+        "isRedshirt": false
       },
       {
         "playerId": "ourlads-stub-braydon-lee",
@@ -2511,11 +3458,12 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
-        "playerId": "ourlads-stub-christian-harrison",
-        "name": "Christian Harrison",
+        "playerId": "ourlads-stub-khmori-house",
+        "name": "Khmori House",
         "number": null,
         "side": "DEF",
         "position": "LB",
@@ -2523,11 +3471,12 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
-        "playerId": "ourlads-stub-shelton-lewis",
-        "name": "Shelton Lewis",
+        "playerId": "ourlads-stub-carter-stoutmire",
+        "name": "Carter Stoutmire",
         "number": null,
         "side": "DEF",
         "position": "LB",
@@ -2535,11 +3484,12 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       },
       {
-        "playerId": "ourlads-stub-kourtlan-marsh",
-        "name": "Kourtlan Marsh",
+        "playerId": "ourlads-stub-tyler-scott",
+        "name": "Tyler Scott",
         "number": null,
         "side": "DEF",
         "position": "LB",
@@ -2547,8 +3497,13 @@
         "isTransfer": false,
         "eligibilityRemaining": null,
         "height": null,
-        "weight": null
+        "weight": null,
+        "isRedshirt": false
       }
-    ]
+    ],
+    "stubReduction": {
+      "before": 49,
+      "after": 49
+    }
   }
 }

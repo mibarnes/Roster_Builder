@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "LSU Tigers",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=LSU"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:33:44.595Z",
+    "collectorVersion": "29ea6c8",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 331.2,
+    "totalPassingPPA": 174,
+    "totalReceivingPPA": 131.2,
+    "totalRushingPPA": 26,
+    "percentPPA": 0.66,
+    "percentPassingPPA": 0.951,
+    "percentReceivingPPA": 0.469,
+    "percentRushingPPA": 0.672,
+    "usage": 0.711,
+    "passingUsage": 0.976,
+    "receivingUsage": 0.45,
+    "rushingUsage": 0.625
+  }
+}

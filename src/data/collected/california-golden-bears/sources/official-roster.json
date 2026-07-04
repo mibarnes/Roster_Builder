@@ -1,0 +1,23 @@
+{
+  "sourceId": "official-roster-v1",
+  "sourceType": "official-roster",
+  "team": "California Golden Bears",
+  "sourceUrl": "https://calbears.com/sports/football/roster",
+  "engine": "unknown",
+  "degraded": true,
+  "degradeReason": "No __NUXT_DATA__ island (likely a client-rendered/non-Sidearm roster)",
+  "coverage": 0,
+  "provenance": {
+    "sources": [
+      {
+        "name": "Official team roster page",
+        "endpoint": "https://calbears.com/sports/football/roster"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:34:59.310Z",
+    "collectorVersion": "29ea6c8",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

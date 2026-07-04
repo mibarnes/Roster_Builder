@@ -1,0 +1,655 @@
+{
+  "sourceId": "cfbd-advanced-v1",
+  "sourceType": "advanced",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "LSU Tigers",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/usage",
+        "endpoint": "https://api.collegefootballdata.com/player/usage?year=2025&team=LSU"
+      },
+      {
+        "name": "CFBD ppa/players/season",
+        "endpoint": "https://api.collegefootballdata.com/ppa/players/season?year=2025&team=LSU"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:33:44.595Z",
+    "collectorVersion": "29ea6c8",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "playerAdvanced": [
+    {
+      "playerId": "CFBD-4431334",
+      "name": "Chris Hilton Jr.",
+      "position": "WR",
+      "usage": {
+        "overall": 0.023,
+        "pass": 0.04,
+        "rush": 0,
+        "firstDown": 0.022,
+        "secondDown": 0.016,
+        "thirdDown": 0.027,
+        "standardDowns": 0.019,
+        "passingDowns": 0.033
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": -0.064,
+          "pass": -0.064,
+          "rush": null,
+          "firstDown": 0.15,
+          "secondDown": 1.445,
+          "thirdDown": -0.083,
+          "standardDowns": -0.661,
+          "passingDowns": 0.681
+        },
+        "totalPPA": {
+          "all": -0.58,
+          "pass": -0.58,
+          "rush": 0,
+          "firstDown": 0.6,
+          "secondDown": 2.89,
+          "thirdDown": -0.166,
+          "standardDowns": -3.304,
+          "passingDowns": 2.723
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-4567747",
+      "name": "Garrett Nussmeier",
+      "position": "QB",
+      "usage": {
+        "overall": 0.55,
+        "pass": 0.903,
+        "rush": 0.06,
+        "firstDown": 0.486,
+        "secondDown": 0.566,
+        "thirdDown": 0.661,
+        "standardDowns": 0.485,
+        "passingDowns": 0.673
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 0.211,
+          "pass": 0.2,
+          "rush": 0.463,
+          "firstDown": 0.14,
+          "secondDown": 0.176,
+          "thirdDown": 0.35,
+          "standardDowns": 0.125,
+          "passingDowns": 0.331
+        },
+        "totalPPA": {
+          "all": 66.176,
+          "pass": 59.692,
+          "rush": 6.484,
+          "firstDown": 17.458,
+          "secondDown": 18.78,
+          "thirdDown": 26.608,
+          "standardDowns": 22.538,
+          "passingDowns": 43.638
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-4691138",
+      "name": "Aaron Anderson",
+      "position": "WR",
+      "usage": {
+        "overall": 0.095,
+        "pass": 0.158,
+        "rush": 0.005,
+        "firstDown": 0.084,
+        "secondDown": 0.089,
+        "thirdDown": 0.135,
+        "standardDowns": 0.082,
+        "passingDowns": 0.119
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 0.672,
+          "pass": 0.693,
+          "rush": -0.31,
+          "firstDown": 0.497,
+          "secondDown": 0.404,
+          "thirdDown": 1.196,
+          "standardDowns": 0.45,
+          "passingDowns": 0.957
+        },
+        "totalPPA": {
+          "all": 32.254,
+          "pass": 32.564,
+          "rush": -0.31,
+          "firstDown": 9.449,
+          "secondDown": 6.062,
+          "thirdDown": 16.742,
+          "standardDowns": 12.16,
+          "passingDowns": 20.094
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-4698597",
+      "name": "Barion Brown",
+      "position": "WR",
+      "usage": {
+        "overall": 0.102,
+        "pass": 0.166,
+        "rush": 0.013,
+        "firstDown": 0.101,
+        "secondDown": 0.132,
+        "thirdDown": 0.061,
+        "standardDowns": 0.094,
+        "passingDowns": 0.117
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 0.303,
+          "pass": 0.285,
+          "rush": 0.645,
+          "firstDown": -0.068,
+          "secondDown": 0.519,
+          "thirdDown": 0.91,
+          "standardDowns": -0.027,
+          "passingDowns": 0.806
+        },
+        "totalPPA": {
+          "all": 17.584,
+          "pass": 15.65,
+          "rush": 1.934,
+          "firstDown": -1.757,
+          "secondDown": 12.974,
+          "thirdDown": 6.367,
+          "standardDowns": -0.954,
+          "passingDowns": 18.538
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-4699866",
+      "name": "Nic Anderson",
+      "position": "WR",
+      "usage": {
+        "overall": 0.044,
+        "pass": 0.077,
+        "rush": 0,
+        "firstDown": 0.026,
+        "secondDown": 0.07,
+        "thirdDown": 0.044,
+        "standardDowns": 0.039,
+        "passingDowns": 0.054
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 0.307,
+          "pass": 0.307,
+          "rush": null,
+          "firstDown": 0.097,
+          "secondDown": 0.478,
+          "thirdDown": 0.141,
+          "standardDowns": 0.352,
+          "passingDowns": 0.245
+        },
+        "totalPPA": {
+          "all": 5.833,
+          "pass": 5.833,
+          "rush": 0,
+          "firstDown": 0.487,
+          "secondDown": 4.783,
+          "thirdDown": 0.563,
+          "standardDowns": 3.871,
+          "passingDowns": 1.963
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-4869748",
+      "name": "Zavion Thomas",
+      "position": "WR",
+      "usage": {
+        "overall": 0.075,
+        "pass": 0.087,
+        "rush": 0.06,
+        "firstDown": 0.072,
+        "secondDown": 0.077,
+        "thirdDown": 0.07,
+        "standardDowns": 0.072,
+        "passingDowns": 0.079
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 0.392,
+          "pass": 0.467,
+          "rush": 0.246,
+          "firstDown": 0.026,
+          "secondDown": 0.407,
+          "thirdDown": 0.766,
+          "standardDowns": 0.218,
+          "passingDowns": 0.683
+        },
+        "totalPPA": {
+          "all": 21.964,
+          "pass": 17.288,
+          "rush": 4.676,
+          "firstDown": 0.614,
+          "secondDown": 7.736,
+          "thirdDown": 8.421,
+          "standardDowns": 7.628,
+          "passingDowns": 14.337
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-4870839",
+      "name": "Kaleb Jackson",
+      "position": "RB",
+      "usage": {
+        "overall": 0.047,
+        "pass": 0.037,
+        "rush": 0.06,
+        "firstDown": 0.023,
+        "secondDown": 0.065,
+        "thirdDown": 0.077,
+        "standardDowns": 0.031,
+        "passingDowns": 0.08
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": -0.248,
+          "pass": 0.24,
+          "rush": -0.666,
+          "firstDown": -0.409,
+          "secondDown": -0.806,
+          "thirdDown": 0.71,
+          "standardDowns": -0.355,
+          "passingDowns": -0.157
+        },
+        "totalPPA": {
+          "all": -3.224,
+          "pass": 1.44,
+          "rush": -4.664,
+          "firstDown": -1.226,
+          "secondDown": -4.838,
+          "thirdDown": 2.839,
+          "standardDowns": -2.128,
+          "passingDowns": -1.096
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-4890373",
+      "name": "Bauer Sharp",
+      "position": "TE",
+      "usage": {
+        "overall": 0.05,
+        "pass": 0.089,
+        "rush": 0,
+        "firstDown": 0.084,
+        "secondDown": 0.021,
+        "thirdDown": 0.025,
+        "standardDowns": 0.068,
+        "passingDowns": 0.015
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 0.081,
+          "pass": 0.081,
+          "rush": null,
+          "firstDown": 0.088,
+          "secondDown": 0.379,
+          "thirdDown": -0.369,
+          "standardDowns": 0.106,
+          "passingDowns": -0.134
+        },
+        "totalPPA": {
+          "all": 2.352,
+          "pass": 2.352,
+          "rush": 0,
+          "firstDown": 1.942,
+          "secondDown": 1.515,
+          "thirdDown": -1.106,
+          "standardDowns": 2.752,
+          "passingDowns": -0.401
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-4900640",
+      "name": "Kyle Parker",
+      "position": "WR",
+      "usage": {
+        "overall": 0.049,
+        "pass": 0.081,
+        "rush": 0,
+        "firstDown": 0.035,
+        "secondDown": 0.05,
+        "thirdDown": 0.061,
+        "standardDowns": 0.035,
+        "passingDowns": 0.077
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 1.079,
+          "pass": 1.079,
+          "rush": null,
+          "firstDown": 1.812,
+          "secondDown": 0.591,
+          "thirdDown": 0.374,
+          "standardDowns": 1.752,
+          "passingDowns": 0.467
+        },
+        "totalPPA": {
+          "all": 22.66,
+          "pass": 22.66,
+          "rush": 0,
+          "firstDown": 12.681,
+          "secondDown": 4.14,
+          "thirdDown": 1.872,
+          "standardDowns": 17.52,
+          "passingDowns": 5.14
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-5079379",
+      "name": "Caden Durham",
+      "position": "RB",
+      "usage": {
+        "overall": 0.161,
+        "pass": 0.035,
+        "rush": 0.333,
+        "firstDown": 0.183,
+        "secondDown": 0.144,
+        "thirdDown": 0.153,
+        "standardDowns": 0.194,
+        "passingDowns": 0.102
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 0.034,
+          "pass": 0.227,
+          "rush": 0.008,
+          "firstDown": -0.123,
+          "secondDown": 0.013,
+          "thirdDown": 0.462,
+          "standardDowns": 0.022,
+          "passingDowns": 0.078
+        },
+        "totalPPA": {
+          "all": 4.289,
+          "pass": 3.41,
+          "rush": 0.88,
+          "firstDown": -7.741,
+          "secondDown": 0.478,
+          "thirdDown": 11.553,
+          "standardDowns": 2.092,
+          "passingDowns": 2.198
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-5079420",
+      "name": "Trey'Dez Green",
+      "position": "TE",
+      "usage": {
+        "overall": 0.081,
+        "pass": 0.14,
+        "rush": 0,
+        "firstDown": 0.089,
+        "secondDown": 0.057,
+        "thirdDown": 0.093,
+        "standardDowns": 0.098,
+        "passingDowns": 0.051
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 1.023,
+          "pass": 1.023,
+          "rush": null,
+          "firstDown": 0.94,
+          "secondDown": 1.59,
+          "thirdDown": 0.76,
+          "standardDowns": 0.948,
+          "passingDowns": 1.271
+        },
+        "totalPPA": {
+          "all": 30.694,
+          "pass": 30.694,
+          "rush": 0,
+          "firstDown": 14.093,
+          "secondDown": 11.133,
+          "thirdDown": 5.322,
+          "standardDowns": 21.799,
+          "passingDowns": 8.894
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-5079537",
+      "name": "Ju'Juan Johnson",
+      "position": "QB",
+      "usage": {
+        "overall": 0.066,
+        "pass": 0.034,
+        "rush": 0.111,
+        "firstDown": 0.078,
+        "secondDown": 0.066,
+        "thirdDown": 0.04,
+        "standardDowns": 0.078,
+        "passingDowns": 0.044
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": -0.003,
+          "pass": -0.002,
+          "rush": -0.004,
+          "firstDown": 0.126,
+          "secondDown": -0.408,
+          "thirdDown": 0.34,
+          "standardDowns": 0.134,
+          "passingDowns": -0.446
+        },
+        "totalPPA": {
+          "all": -0.191,
+          "pass": -0.029,
+          "rush": -0.162,
+          "firstDown": 3.647,
+          "secondDown": -7.338,
+          "thirdDown": 2.383,
+          "standardDowns": 5.612,
+          "passingDowns": -5.803
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-5079620",
+      "name": "Michael Van Buren Jr.",
+      "position": "QB",
+      "usage": {
+        "overall": 0.171,
+        "pass": 0.281,
+        "rush": 0.036,
+        "firstDown": 0.138,
+        "secondDown": 0.157,
+        "thirdDown": 0.23,
+        "standardDowns": 0.162,
+        "passingDowns": 0.188
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": -0.132,
+          "pass": -0.245,
+          "rush": 1.043,
+          "firstDown": -0.496,
+          "secondDown": 0.086,
+          "thirdDown": 0.144,
+          "standardDowns": -0.382,
+          "passingDowns": 0.241
+        },
+        "totalPPA": {
+          "all": -10.595,
+          "pass": -17.897,
+          "rush": 7.302,
+          "firstDown": -13.891,
+          "secondDown": 2.061,
+          "thirdDown": 3.309,
+          "standardDowns": -18.313,
+          "passingDowns": 7.718
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-5079759",
+      "name": "Jelani Watkins",
+      "position": "WR",
+      "usage": {
+        "overall": 0.038,
+        "pass": 0.067,
+        "rush": 0,
+        "firstDown": 0.056,
+        "secondDown": 0.04,
+        "thirdDown": 0,
+        "standardDowns": 0.053,
+        "passingDowns": 0
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 0.077,
+          "pass": 0.077,
+          "rush": null,
+          "firstDown": -0.272,
+          "secondDown": 0.775,
+          "thirdDown": null,
+          "standardDowns": 0.077,
+          "passingDowns": null
+        },
+        "totalPPA": {
+          "all": 0.231,
+          "pass": 0.231,
+          "rush": 0,
+          "firstDown": -0.543,
+          "secondDown": 0.775,
+          "thirdDown": 0,
+          "standardDowns": 0.231,
+          "passingDowns": 0
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-5086240",
+      "name": "Donovan Green",
+      "position": "TE",
+      "usage": {
+        "overall": 0.026,
+        "pass": 0.044,
+        "rush": 0,
+        "firstDown": 0,
+        "secondDown": 0.04,
+        "thirdDown": 0.071,
+        "standardDowns": 0,
+        "passingDowns": 0.095
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 2.216,
+          "pass": 2.216,
+          "rush": null,
+          "firstDown": null,
+          "secondDown": 1.551,
+          "thirdDown": 2.881,
+          "standardDowns": null,
+          "passingDowns": 2.216
+        },
+        "totalPPA": {
+          "all": 4.431,
+          "pass": 4.431,
+          "rush": 0,
+          "firstDown": 0,
+          "secondDown": 1.551,
+          "thirdDown": 2.881,
+          "standardDowns": 0,
+          "passingDowns": 4.431
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-5122231",
+      "name": "Harlem Berry",
+      "position": "RB",
+      "usage": {
+        "overall": 0.125,
+        "pass": 0.004,
+        "rush": 0.291,
+        "firstDown": 0.168,
+        "secondDown": 0.109,
+        "thirdDown": 0.069,
+        "standardDowns": 0.158,
+        "passingDowns": 0.065
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": 0.078,
+          "pass": -0.577,
+          "rush": 0.091,
+          "firstDown": 0.011,
+          "secondDown": 0.158,
+          "thirdDown": 0.23,
+          "standardDowns": 0.051,
+          "passingDowns": 0.203
+        },
+        "totalPPA": {
+          "all": 8.148,
+          "pass": -1.154,
+          "rush": 9.301,
+          "firstDown": 0.653,
+          "secondDown": 4.732,
+          "thirdDown": 2.762,
+          "standardDowns": 4.298,
+          "passingDowns": 3.849
+        }
+      }
+    },
+    {
+      "playerId": "CFBD-5149484",
+      "name": "Phillip Wright III",
+      "position": "WR",
+      "usage": {
+        "overall": 0.013,
+        "pass": 0.022,
+        "rush": 0,
+        "firstDown": 0,
+        "secondDown": 0,
+        "thirdDown": 0.071,
+        "standardDowns": 0.018,
+        "passingDowns": 0
+      },
+      "ppa": {
+        "averagePPA": {
+          "all": -0.245,
+          "pass": -0.245,
+          "rush": null,
+          "firstDown": null,
+          "secondDown": null,
+          "thirdDown": -0.245,
+          "standardDowns": -0.245,
+          "passingDowns": null
+        },
+        "totalPPA": {
+          "all": -0.245,
+          "pass": -0.245,
+          "rush": 0,
+          "firstDown": 0,
+          "secondDown": 0,
+          "thirdDown": -0.245,
+          "standardDowns": -0.245,
+          "passingDowns": 0
+        }
+      }
+    }
+  ]
+}

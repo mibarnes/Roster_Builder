@@ -1,0 +1,23 @@
+{
+  "sourceId": "official-roster-v1",
+  "sourceType": "official-roster",
+  "team": "Arkansas Razorbacks",
+  "sourceUrl": "https://arkansasrazorbacks.com/sports/football/roster",
+  "engine": "unknown",
+  "degraded": true,
+  "degradeReason": "fetch failed: https://arkansasrazorbacks.com/sports/football/roster",
+  "coverage": 0,
+  "provenance": {
+    "sources": [
+      {
+        "name": "Official team roster page",
+        "endpoint": "https://arkansasrazorbacks.com/sports/football/roster"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:33:08.535Z",
+    "collectorVersion": "29ea6c8",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

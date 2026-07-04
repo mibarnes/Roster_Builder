@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "LSU Tigers",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/lsu/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:lsu"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:34:09.288Z",
+    "collectorVersion": "29ea6c8",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Kentucky Wildcats",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/kentucky/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:kentucky"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:33:41.611Z",
+    "collectorVersion": "29ea6c8",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}
