@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react'
 import { loadPlayerPipeline } from './data/pipeline/loadPlayerPipeline.ts'
 import { mapPipelineToUI } from './data/mapPipelineToUI.ts'
 import { TEAMS, requireTeam, teamLogoUrl } from './data/teamRegistry.ts'
-import { routeTeamId, useHashRoute } from './router.ts'
+import { routeTeamId, useHashRoute, type RouteTab } from './router.ts'
+import { readStored, usePersistentState } from './hooks/usePersistentState.ts'
+
+/** Was the URL free of an explicit route at first load? (→ resume last view, U4.) */
+const INITIAL_HASH_EMPTY =
+  typeof window !== 'undefined' && (!window.location.hash || window.location.hash === '#/')
 import CompositeHeader from './components/CompositeHeader.tsx'
 import DefenseFormation from './components/DefenseFormation.tsx'
 import OffenseFormation from './components/OffenseFormation.tsx'
@@ -44,7 +49,7 @@ export default function App() {
   const tab: Tab = route.kind === 'team' ? route.tab : lastTab
 
   const [depthTeam, setDepthTeam] = useState<DepthMode>('starters')
-  const [filters, setFilters] = useState<RatingsFilters>({ side: 'ALL', pos: 'ALL', stars: 0, sort: 'composite' })
+  const [filters, setFilters] = usePersistentState<RatingsFilters>('rb:filters', { side: 'ALL', pos: 'ALL', stars: 0, sort: 'composite' })
   const [returnFocusEl, setReturnFocusEl] = useState<HTMLElement | null>(null)
   const [rosterData, setRosterData] = useState<UIDataset>(EMPTY_ROSTER)
   const [metrics, setMetrics] = useState<PipelineMetrics>(EMPTY_METRICS)
@@ -53,10 +58,29 @@ export default function App() {
   const [warnings, setWarnings] = useState<string[]>([])
 
   // Keep the last formation/ratings tab so closing a player modal (a route with
-  // no tab of its own) returns to the view the user was on.
+  // no tab of its own) returns to the view the user was on; also persist it (U4).
   useEffect(() => {
-    if (route.kind === 'team') setLastTab(route.tab)
+    if (route.kind === 'team') {
+      setLastTab(route.tab)
+      try {
+        window.localStorage.setItem('rb:lastView', JSON.stringify({ teamId: route.teamId, tab: route.tab }))
+      } catch {
+        /* storage unavailable — non-fatal */
+      }
+    }
   }, [route])
+
+  // Resume the last-visited team/tab on a fresh visit with no explicit URL (U4).
+  // URL wins: only restores when the page opened without a route in the hash.
+  useEffect(() => {
+    if (!INITIAL_HASH_EMPTY) return
+    const last = readStored<{ teamId: string; tab: RouteTab }>('rb:lastView')
+    if (last && TEAMS.some((t) => t.id === last.teamId)) {
+      navigate({ kind: 'team', teamId: last.teamId, tab: last.tab })
+    }
+    // Run once on mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const selectedTeam = requireTeam(teamId)
   const teamAccentColor = selectedTeam.accentColor
