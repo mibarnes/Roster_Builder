@@ -1,20 +1,19 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-04T12:35:39.192Z",
-  "collectorVersion": "29ea6c8",
+  "generatedAt": "2026-07-04T12:55:16.439Z",
+  "collectorVersion": "b85b400",
   "season": 2025,
   "rosterSeason": 2026,
-  "durationMs": 175733,
+  "durationMs": 166963,
   "targets": [
-    "arkansas-razorbacks",
-    "kentucky-wildcats",
-    "lsu-tigers",
-    "south-carolina-gamecocks",
-    "california-golden-bears",
-    "georgia-tech-yellow-jackets",
-    "smu-mustangs"
+    "ohio-state-buckeyes",
+    "michigan-wolverines",
+    "oregon-ducks",
+    "penn-state-nittany-lions",
+    "usc-trojans",
+    "washington-huskies"
   ],
-  "teamsOk": 7,
+  "teamsOk": 6,
   "teamsFailed": 0,
   "closure": {
     "nationalRows": 23185,
@@ -22,210 +21,169 @@
     "portalRows": 12304
   },
   "net": {
-    "requests": 186,
+    "requests": 161,
     "cacheHits": 0,
     "retries": 0
   },
   "teams": [
     {
-      "id": "arkansas-razorbacks",
-      "label": "Arkansas Razorbacks",
+      "id": "ohio-state-buckeyes",
+      "label": "Ohio State Buckeyes",
       "ok": true,
       "error": null,
-      "warnings": [
-        "official overlay degraded (unknown)"
-      ],
+      "warnings": [],
       "stats": {
-        "rosterPlayers": 107,
-        "offenseSlots": 38,
-        "defenseSlots": 36,
-        "recruitingPct": 79.4,
-        "productionPct": 58.9,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 148,
-          "matchedByIdPct": 77.6,
-          "headshotPct": 66.2,
-          "highSchoolPct": 0,
-          "transfersRated": 30,
-          "transfersTotal": 31,
-          "officialEngine": "unknown",
-          "officialDegraded": true,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "kentucky-wildcats",
-      "label": "Kentucky Wildcats",
-      "ok": true,
-      "error": null,
-      "warnings": [
-        "official overlay degraded (unknown)"
-      ],
-      "stats": {
-        "rosterPlayers": 108,
-        "offenseSlots": 33,
-        "defenseSlots": 31,
-        "recruitingPct": 80.6,
-        "productionPct": 58.3,
+        "rosterPlayers": 114,
+        "offenseSlots": 32,
+        "defenseSlots": 32,
+        "recruitingPct": 75.4,
+        "productionPct": 49.1,
         "hometownPct": 99.1,
         "master": {
           "spineCount": 100,
-          "masterCount": 130,
-          "matchedByIdPct": 80.5,
-          "headshotPct": 74.6,
+          "masterCount": 126,
+          "matchedByIdPct": 83.6,
+          "headshotPct": 78.6,
           "highSchoolPct": 0,
-          "transfersRated": 29,
-          "transfersTotal": 29,
-          "officialEngine": "unknown",
-          "officialDegraded": true,
+          "transfersRated": 48,
+          "transfersTotal": 64,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
           "on3Degraded": true
         }
       }
     },
     {
-      "id": "lsu-tigers",
-      "label": "LSU Tigers",
+      "id": "michigan-wolverines",
+      "label": "Michigan Wolverines",
       "ok": true,
       "error": null,
-      "warnings": [
-        "official overlay degraded (unknown)"
-      ],
+      "warnings": [],
       "stats": {
-        "rosterPlayers": 103,
-        "offenseSlots": 33,
-        "defenseSlots": 23,
-        "recruitingPct": 81.6,
-        "productionPct": 57.3,
+        "rosterPlayers": 111,
+        "offenseSlots": 40,
+        "defenseSlots": 32,
+        "recruitingPct": 82.9,
+        "productionPct": 55,
         "hometownPct": 100,
         "master": {
-          "spineCount": 97,
-          "masterCount": 126,
-          "matchedByIdPct": 79.5,
-          "headshotPct": 75.4,
-          "highSchoolPct": 0,
-          "transfersRated": 18,
+          "spineCount": 100,
+          "masterCount": 129,
+          "matchedByIdPct": 85.3,
+          "headshotPct": 77.5,
+          "highSchoolPct": 50.4,
+          "transfersRated": 15,
           "transfersTotal": 18,
-          "officialEngine": "unknown",
-          "officialDegraded": true,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
           "on3Degraded": true
         }
       }
     },
     {
-      "id": "south-carolina-gamecocks",
-      "label": "South Carolina Gamecocks",
+      "id": "oregon-ducks",
+      "label": "Oregon Ducks",
       "ok": true,
       "error": null,
-      "warnings": [
-        "official overlay degraded (unknown)"
-      ],
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 104,
+        "offenseSlots": 37,
+        "defenseSlots": 24,
+        "recruitingPct": 79.8,
+        "productionPct": 58.7,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 126,
+          "matchedByIdPct": 81.4,
+          "headshotPct": 78.6,
+          "highSchoolPct": 47.6,
+          "transfersRated": 14,
+          "transfersTotal": 14,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "penn-state-nittany-lions",
+      "label": "Penn State Nittany Lions",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 120,
+        "offenseSlots": 34,
+        "defenseSlots": 26,
+        "recruitingPct": 81.7,
+        "productionPct": 45,
+        "hometownPct": 98.3,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 135,
+          "matchedByIdPct": 81,
+          "headshotPct": 63,
+          "highSchoolPct": 35.6,
+          "transfersRated": 8,
+          "transfersTotal": 9,
+          "officialEngine": "sidearm-json",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "usc-trojans",
+      "label": "USC Trojans",
+      "ok": true,
+      "error": null,
+      "warnings": [],
       "stats": {
         "rosterPlayers": 106,
-        "offenseSlots": 36,
-        "defenseSlots": 27,
-        "recruitingPct": 81.1,
-        "productionPct": 57.5,
+        "offenseSlots": 28,
+        "defenseSlots": 30,
+        "recruitingPct": 82.1,
+        "productionPct": 65.1,
         "hometownPct": 100,
         "master": {
           "spineCount": 100,
-          "masterCount": 127,
-          "matchedByIdPct": 83.8,
-          "headshotPct": 78.7,
-          "highSchoolPct": 0,
-          "transfersRated": 25,
-          "transfersTotal": 25,
-          "officialEngine": "unknown",
-          "officialDegraded": true,
+          "masterCount": 118,
+          "matchedByIdPct": 84.1,
+          "headshotPct": 83.1,
+          "highSchoolPct": 50,
+          "transfersRated": 18,
+          "transfersTotal": 18,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
           "on3Degraded": true
         }
       }
     },
     {
-      "id": "california-golden-bears",
-      "label": "California Golden Bears",
+      "id": "washington-huskies",
+      "label": "Washington Huskies",
       "ok": true,
       "error": null,
-      "warnings": [
-        "official overlay degraded (unknown)"
-      ],
-      "stats": {
-        "rosterPlayers": 105,
-        "offenseSlots": 30,
-        "defenseSlots": 25,
-        "recruitingPct": 80,
-        "productionPct": 55.2,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 130,
-          "matchedByIdPct": 77.8,
-          "headshotPct": 75.4,
-          "highSchoolPct": 0,
-          "transfersRated": 32,
-          "transfersTotal": 34,
-          "officialEngine": "unknown",
-          "officialDegraded": true,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "georgia-tech-yellow-jackets",
-      "label": "Georgia Tech Yellow Jackets",
-      "ok": true,
-      "error": null,
-      "warnings": [
-        "official overlay degraded (unknown)"
-      ],
+      "warnings": [],
       "stats": {
         "rosterPlayers": 99,
-        "offenseSlots": 38,
-        "defenseSlots": 33,
-        "recruitingPct": 79.8,
-        "productionPct": 63.6,
+        "offenseSlots": 43,
+        "defenseSlots": 29,
+        "recruitingPct": 88.9,
+        "productionPct": 49.5,
         "hometownPct": 100,
         "master": {
-          "spineCount": 95,
-          "masterCount": 119,
-          "matchedByIdPct": 85.6,
-          "headshotPct": 79.8,
-          "highSchoolPct": 0,
-          "transfersRated": 24,
-          "transfersTotal": 25,
-          "officialEngine": "unknown",
-          "officialDegraded": true,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "smu-mustangs",
-      "label": "SMU Mustangs",
-      "ok": true,
-      "error": null,
-      "warnings": [
-        "official overlay degraded (unknown)"
-      ],
-      "stats": {
-        "rosterPlayers": 109,
-        "offenseSlots": 28,
-        "defenseSlots": 26,
-        "recruitingPct": 76.1,
-        "productionPct": 54.1,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
+          "spineCount": 96,
           "masterCount": 120,
-          "matchedByIdPct": 83.5,
-          "headshotPct": 80.8,
-          "highSchoolPct": 0,
-          "transfersRated": 29,
-          "transfersTotal": 30,
-          "officialEngine": "unknown",
-          "officialDegraded": true,
+          "matchedByIdPct": 89.1,
+          "headshotPct": 77.5,
+          "highSchoolPct": 49.2,
+          "transfersRated": 24,
+          "transfersTotal": 27,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
           "on3Degraded": true
         }
       }

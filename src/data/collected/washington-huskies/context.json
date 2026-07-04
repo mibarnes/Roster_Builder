@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Washington Huskies",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Washington"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:54:52.778Z",
+    "collectorVersion": "b85b400",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 206.8,
+    "totalPassingPPA": 34.8,
+    "totalReceivingPPA": 125.8,
+    "totalRushingPPA": 46.3,
+    "percentPPA": 0.424,
+    "percentPassingPPA": 0.237,
+    "percentReceivingPPA": 0.442,
+    "percentRushingPPA": 0.818,
+    "usage": 0.491,
+    "passingUsage": 0.288,
+    "receivingUsage": 0.405,
+    "rushingUsage": 0.801
+  }
+}

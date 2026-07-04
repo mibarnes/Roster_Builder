@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Penn State Nittany Lions",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Penn%20State"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:54:07.796Z",
+    "collectorVersion": "b85b400",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 354.9,
+    "totalPassingPPA": 154.8,
+    "totalReceivingPPA": 94.1,
+    "totalRushingPPA": 106,
+    "percentPPA": 0.565,
+    "percentPassingPPA": 0.88,
+    "percentReceivingPPA": 0.311,
+    "percentRushingPPA": 0.71,
+    "usage": 0.773,
+    "passingUsage": 0.908,
+    "receivingUsage": 0.368,
+    "rushingUsage": 0.891
+  }
+}

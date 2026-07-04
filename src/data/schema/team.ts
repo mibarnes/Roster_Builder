@@ -1,4 +1,4 @@
-export type Conference = 'ACC' | 'SEC' | 'IND'
+export type Conference = 'ACC' | 'SEC' | 'Big Ten' | 'Big 12' | 'IND'
 
 export type TeamId = string
 
