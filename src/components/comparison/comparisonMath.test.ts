@@ -73,6 +73,7 @@ const dataset = (off: Record<string, UIPlayer[]>, def: Record<string, UIPlayer[]
   allPlayers: [],
   coverage: EMPTY_COVERAGE,
   returningProduction: null,
+  vintage: null,
 })
 
 describe('computeDepthGrade', () => {

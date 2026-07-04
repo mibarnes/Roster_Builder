@@ -1,0 +1,94 @@
+name: Scheduled collection (freshness)
+
+# F5 freshness loop — refresh the golden masters on a cadence and open a PR with
+# the data diff (NEVER direct-push; a human reviews the _runReport + diff, then
+# merges). INERT until the `CFBD_API_KEY` repo secret is set + the CFBD plan has
+# quota; without it the collect step fails fast and no PR is opened.
+#
+# Cadence: monthly by default (quota-safe). Bump to weekly in-season by editing
+# the cron, or run on demand via "Run workflow" with a custom team list.
+
+on:
+  schedule:
+    - cron: '0 8 1 * *' # 1st of each month, 08:00 UTC
+  workflow_dispatch:
+    inputs:
+      teams:
+        description: 'Comma-separated team ids to collect'
+        required: false
+        default: 'florida-gators,miami-hurricanes'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# Opt JS actions into Node 24 (matches deploy.yml).
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Guard against npm artifacts
+        run: bash scripts/guard-no-npm.sh .
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+
+      - name: Enable corepack (pnpm)
+        run: corepack enable
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Provision CFBD key (server-side only; never VITE_-prefixed)
+        run: |
+          printf 'CFBD_API_KEY=%s\nCFBD_SEASON=2025\n' "${{ secrets.CFBD_API_KEY }}" > .env
+
+      - name: Collect (wave)
+        run: node --env-file=.env scripts/collect.ts --teams="${{ github.event.inputs.teams || 'florida-gators,miami-hurricanes' }}" --force-nonpilot
+
+      - name: Rebuild league artifacts (baselines / identity / league)
+        run: pnpm build:artifacts
+
+      - name: Remove the key file
+        if: always()
+        run: rm -f .env
+
+      - name: Typecheck + test + build (gate the refreshed data)
+        run: |
+          pnpm typecheck
+          pnpm test
+          pnpm build
+        env:
+          VITE_BASE: /Roster_Builder/
+
+      - name: Open a data-refresh PR (never direct-push)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- src/data/collected; then
+            echo "No data changes — nothing to open."
+            exit 0
+          fi
+          STAMP="$(date -u +%Y-%m-%d)"
+          BRANCH="data/refresh-$(date -u +%Y%m%d-%H%M)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add src/data/collected
+          git commit -m "data: scheduled refresh ${STAMP}"
+          git push origin "$BRANCH"
+          gh pr create \
+            --base main --head "$BRANCH" \
+            --title "Data refresh ${STAMP}" \
+            --body "Automated scheduled collection (F5). Review \`src/data/collected/_runReport.json\` + the data diff before merging. Tests/build already passed in this run."

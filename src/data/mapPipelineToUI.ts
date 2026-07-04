@@ -230,5 +230,6 @@ export const mapPipelineToUI = (pipeline: PlayerPipeline): UIDataset => {
     allPlayers,
     coverage: pipeline.coverage,
     returningProduction: pipeline.returningProduction ?? null,
+    vintage: pipeline.vintage ?? null,
   }
 }

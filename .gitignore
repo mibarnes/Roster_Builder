@@ -9,6 +9,9 @@ coverage/
 # --- collector on-disk HTTP cache (regenerable; conditional-GET store) ---
 scripts/.cache/
 
+# --- F5 vintage snapshots (local diffable-history cache; not committed) ---
+src/data/collected/*/snapshots/
+
 # --- env / secrets (NEVER commit) ---
 .env
 .env.*

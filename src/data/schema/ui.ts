@@ -6,7 +6,7 @@
  */
 
 import type { MatchMethod } from './common.ts'
-import type { PipelineCoverage, ReturningProductionSummary } from './pipeline.ts'
+import type { DataVintage, PipelineCoverage, ReturningProductionSummary } from './pipeline.ts'
 import type { RatingMethod, RatingConfidence } from '../rating/overall.ts'
 import type { Usage, Ppa } from './advanced.ts'
 import type { PerGameLog } from './production.ts'
@@ -135,4 +135,6 @@ export interface UIDataset {
   coverage: PipelineCoverage
   /** Team returning-production strip; null when the team ships no context. */
   returningProduction: ReturningProductionSummary | null
+  /** Data vintage (collectedAt + seasons) for the as-of header + aging chip (F5). */
+  vintage: DataVintage | null
 }

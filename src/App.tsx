@@ -22,11 +22,22 @@ import { EMPTY_COVERAGE, type PipelineMetrics } from './data/schema/pipeline.ts'
 import type { Formation, UIDataset, UIPlayer } from './data/schema/ui.ts'
 
 type Tab = 'offense' | 'defense' | 'ratings' | 'hq'
+
+/** As-of framing (F5): format a collectedAt ISO into a label + age in days. */
+const formatAsOf = (iso: string | null): { label: string; ageDays: number } | null => {
+  if (!iso) return null
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return null
+  const ageDays = Math.floor((Date.now() - d.getTime()) / 86_400_000)
+  return { label: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }), ageDays }
+}
+/** In-season (Aug–Jan) data ages faster; flag staleness past this many days. */
+const DATA_AGING_DAYS = 45
 type DepthMode = 'starters' | 'second-team' | 'all'
 
 const EMPTY_OFFENSE: Formation = { LT: [], LG: [], C: [], RG: [], RT: [], WRX: [], SLOT: [], QB: [], RB: [], TE: [], WRZ: [] }
 const EMPTY_DEFENSE: Formation = { LDE: [], NT: [], DT: [], RDE: [], LCB: [], SS: [], WLB: [], MLB: [], NB: [], FS: [], RCB: [] }
-const EMPTY_ROSTER: UIDataset = { offensiveStarters: EMPTY_OFFENSE, defensiveStarters: EMPTY_DEFENSE, allPlayers: [], coverage: EMPTY_COVERAGE, returningProduction: null }
+const EMPTY_ROSTER: UIDataset = { offensiveStarters: EMPTY_OFFENSE, defensiveStarters: EMPTY_DEFENSE, allPlayers: [], coverage: EMPTY_COVERAGE, returningProduction: null, vintage: null }
 const EMPTY_METRICS: PipelineMetrics = {
   offense: { avgStarterComposite: 0, starterCount: 0 },
   defense: { avgStarterComposite: 0, starterCount: 0 },
@@ -215,8 +226,31 @@ export default function App() {
             </div>
             <div>
               <h1 className="text-base font-black text-white tracking-tight">{selectedTeam.label.toUpperCase()}</h1>
-              <p className="text-[11px] text-gray-400 font-semibold">
-                {rosterData.allPlayers.some((p) => p.headshotUrl) ? '2026 ROSTER · 2025 STATS' : '2025 ROSTER DEPTH CHART'}
+              <p className="text-[11px] text-gray-400 font-semibold flex items-center gap-1.5 flex-wrap">
+                {/* As-of framing (F5) — keyed on the master's provenance, not a headshot heuristic (S13). */}
+                <span>
+                  {rosterData.vintage
+                    ? `${rosterData.vintage.rosterSeason ?? '—'} ROSTER · ${rosterData.vintage.productionSeason ?? '—'} STATS`
+                    : '2026 ROSTER · 2025 STATS'}
+                </span>
+                {(() => {
+                  const asOf = formatAsOf(rosterData.vintage?.collectedAt ?? null)
+                  if (!asOf) return null
+                  return (
+                    <>
+                      <span className="text-gray-600">·</span>
+                      <span className="text-gray-500">as of {asOf.label}</span>
+                      {asOf.ageDays > DATA_AGING_DAYS && (
+                        <span
+                          className="rounded bg-amber-500/20 px-1.5 py-0.5 text-[9px] font-bold text-amber-400"
+                          title={`Collected ${asOf.ageDays} days ago`}
+                        >
+                          DATA AGING
+                        </span>
+                      )}
+                    </>
+                  )
+                })()}
               </p>
             </div>
           </div>

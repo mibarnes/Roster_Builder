@@ -514,6 +514,13 @@ export const buildPlayerPipeline = (
     depthChart: buildDepthChartView(datasetBySource?.roster?.depthChart, playerMap),
     coverage,
     returningProduction: buildReturningProduction(datasetBySource),
+    vintage: datasetBySource?.master
+      ? {
+          collectedAt: datasetBySource.master.provenance?.collectedAt ?? null,
+          rosterSeason: datasetBySource.master.provenance?.rosterSeason ?? datasetBySource.roster?.season ?? null,
+          productionSeason: datasetBySource.master.provenance?.productionSeason ?? datasetBySource.production?.season ?? null,
+        }
+      : null,
     // Index-aligned with `players` — consumed by the offline baseline builder
     // (scripts/buildLeagueArtifacts.ts); the app ignores it.
     ratingInputs,

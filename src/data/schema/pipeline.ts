@@ -237,6 +237,13 @@ export interface ReturningProductionSummary {
   rushingUsage: number | null
 }
 
+/** Data vintage (F5 as-of framing) — from the golden master's provenance. */
+export interface DataVintage {
+  collectedAt: string | null
+  rosterSeason: number | null
+  productionSeason: number | null
+}
+
 /** Full pipeline product consumed by mapPipelineToUI. */
 export interface PlayerPipeline {
   players: PipelinePlayer[]
@@ -246,6 +253,8 @@ export interface PlayerPipeline {
   coverage: PipelineCoverage
   /** Team returning-production strip; null when the team ships no context. */
   returningProduction: ReturningProductionSummary | null
+  /** Data vintage for the as-of header + aging chip (F5); null if no master. */
+  vintage: DataVintage | null
   /** Rating inputs index-aligned with `players` (offline baseline builder only). */
   ratingInputs?: RatingInput[]
 }

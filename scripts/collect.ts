@@ -209,6 +209,41 @@ interface HistoryEntry { file: string; collectedAt: string; collectorVersion: st
  * single serialized read-modify-write so the timeline can't be corrupted by
  * concurrent updates. Fail-soft: a missing/corrupt prior file = no entry.
  */
+/**
+ * Vintage snapshots (F5): before the incoming master overwrites the old one,
+ * preserve the OUTGOING `player-master.json` as `snapshots/<YYYY-MM-DD>.json`
+ * (dated by its collectedAt), carrying forward prior snapshots and pruning to the
+ * newest `keepN`. Written into the staging dir so it commits atomically. These are
+ * the diffable data history the change-feed (F5) reads; gitignored (local vintage
+ * cache) to keep the repo light.
+ */
+async function recordSnapshot(readDir: string, writeDir: string, keepN = 6): Promise<void> {
+  const snapOut = path.join(writeDir, 'snapshots')
+  await mkdir(snapOut, { recursive: true })
+  // Carry forward existing snapshots.
+  try {
+    for (const f of (await readdir(path.join(readDir, 'snapshots'))).filter((f) => f.endsWith('.json'))) {
+      await writeFile(path.join(snapOut, f), await readFile(path.join(readDir, 'snapshots', f), 'utf8'), 'utf8')
+    }
+  } catch {
+    // no prior snapshots
+  }
+  // Snapshot the outgoing master under its collectedAt date (nothing to do on first run).
+  try {
+    const raw = await readFile(path.join(readDir, 'player-master.json'), 'utf8')
+    const prov = (JSON.parse(raw) as { provenance?: { collectedAt?: string } }).provenance
+    const stamp = (prov?.collectedAt ?? nowIso()).slice(0, 10)
+    await writeFile(path.join(snapOut, `${stamp}.json`), raw, 'utf8')
+  } catch {
+    return
+  }
+  // Prune to newest N (ISO-date filenames sort lexically).
+  const all = (await readdir(snapOut)).filter((f) => f.endsWith('.json')).sort()
+  for (const f of all.slice(0, Math.max(0, all.length - keepN))) {
+    await rm(path.join(snapOut, f), { force: true })
+  }
+}
+
 async function recordHistory(readDir: string, writeDir: string, files: string[]): Promise<void> {
   const supersededAt = nowIso()
   const newEntries: HistoryEntry[] = []
@@ -492,6 +527,8 @@ async function collectTeam(team: Team, closure: RecruitingClosure): Promise<Team
   try {
     // Preserve prior vintage: read the OLD master's collectedAt, append to _history.
     await recordHistory(teamDir, writeDir, ['player-master.json'])
+    // F5: snapshot the outgoing master before it is superseded (diffable history).
+    await recordSnapshot(teamDir, writeDir)
 
     const write = (file: string, data: unknown) =>
       writeFile(path.join(writeDir, file), `${JSON.stringify(data, null, 2)}\n`, 'utf8')
