@@ -10,6 +10,8 @@ import {
   RATING_METHOD_LABEL,
 } from '../utils/playerHelpers.ts'
 import { STAT_ABBREVIATIONS } from '../data/mapPipelineToUI.ts'
+import { teamIdForSchool } from '../data/teamRegistry.ts'
+import { useWatchlist, watchlist } from '../hooks/useWatchlist.ts'
 import type { UIPlayer } from '../data/schema/ui.ts'
 
 /** Per-game column header label — reuse the season abbreviation map, else upper-case. */
@@ -68,9 +70,15 @@ interface PlayerModalProps {
   player: UIPlayer | null
   onClose: () => void
   returnFocusEl: HTMLElement | null
+  /** Deep-link to another team (D2 — used for the transfer-origin link). */
+  onTeamClick?: (teamId: string) => void
+  /** Team context for the watchlist entry (the player belongs to this team). */
+  teamId?: string
+  teamLabel?: string
 }
 
-export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerModalProps) {
+export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClick, teamId, teamLabel }: PlayerModalProps) {
+  const watched = useWatchlist()
   const modalRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -210,6 +218,20 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
         onClick={(e) => e.stopPropagation()}
       >
         <div className="sticky top-0 z-10 p-5 bg-surface border-b border-surface-border">
+          {teamId && (
+            <button
+              onClick={() =>
+                watchlist.toggle({ id: player.playerId, name: player.name, teamId, teamLabel: teamLabel ?? teamId, pos: player.pos, ovr: player.isRated ? player.ovr : null })
+              }
+              aria-label={watched[player.playerId] ? 'Remove from watchlist' : 'Add to watchlist'}
+              title={watched[player.playerId] ? 'On your watchlist' : 'Add to watchlist'}
+              className={`absolute top-4 right-14 w-8 h-8 rounded-full flex items-center justify-center transition-all ${watched[player.playerId] ? 'bg-amber-500/20 text-amber-400' : 'bg-gray-900 text-white/60 hover:text-amber-400 hover:bg-gray-800'}`}
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill={watched[player.playerId] ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.5l2.6 5.27 5.82.85-4.21 4.1.99 5.8L11.48 17l-5.2 2.52.99-5.8-4.21-4.1 5.82-.85z" />
+              </svg>
+            </button>
+          )}
           <button
             onClick={onClose}
             aria-label="Close player details"
@@ -434,15 +456,29 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
             </div>
           )}
 
-          {player.isTransfer && (player.transferOrigin ?? player.fromSchool) && (
-            <div className="bg-orange-950/40 border border-orange-700/40 rounded-xl px-3 py-2.5 flex items-center gap-2 flex-wrap">
-              <span className="text-[10px] font-black text-orange-400 uppercase tracking-widest">Transfer from</span>
-              <span className="text-white font-bold text-sm">{player.transferOrigin ?? player.fromSchool}</span>
-              {player.transferEligibility && (
-                <span className="text-[10px] text-orange-300/90 font-semibold">· {player.transferEligibility}</span>
-              )}
-            </div>
-          )}
+          {player.isTransfer && (player.transferOrigin ?? player.fromSchool) && (() => {
+            const origin = player.transferOrigin ?? player.fromSchool
+            const originTeamId = teamIdForSchool(origin)
+            return (
+              <div className="bg-orange-950/40 border border-orange-700/40 rounded-xl px-3 py-2.5 flex items-center gap-2 flex-wrap">
+                <span className="text-[10px] font-black text-orange-400 uppercase tracking-widest">Transfer from</span>
+                {originTeamId && onTeamClick ? (
+                  <button
+                    onClick={() => onTeamClick(originTeamId)}
+                    className="text-white font-bold text-sm underline decoration-orange-500/50 underline-offset-2 hover:decoration-orange-400"
+                    title={`Go to ${origin}`}
+                  >
+                    {origin} ↗
+                  </button>
+                ) : (
+                  <span className="text-white font-bold text-sm">{origin}</span>
+                )}
+                {player.transferEligibility && (
+                  <span className="text-[10px] text-orange-300/90 font-semibold">· {player.transferEligibility}</span>
+                )}
+              </div>
+            )
+          })()}
 
           <div className="bg-gray-900 rounded-xl p-3 space-y-2">
             <div className="flex items-center justify-between gap-2">

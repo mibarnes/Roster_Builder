@@ -19,6 +19,7 @@ import PositionDepthView from './components/comparison/PositionDepthView.tsx'
 import LeagueView from './components/league/LeagueView.tsx'
 import TeamHQ from './components/hq/TeamHQ.tsx'
 import SearchOmnibox from './components/search/SearchOmnibox.tsx'
+import WatchlistButton from './components/watchlist/WatchlistButton.tsx'
 import { EMPTY_COVERAGE, type PipelineMetrics } from './data/schema/pipeline.ts'
 import type { Formation, UIDataset, UIPlayer } from './data/schema/ui.ts'
 
@@ -296,6 +297,7 @@ export default function App() {
           >
             Search <kbd className="ml-1 rounded bg-neutral-700 px-1 text-[10px]">⌘K</kbd>
           </button>
+          <WatchlistButton onSelect={(tid, pid) => navigate({ kind: 'player', teamId: tid, playerId: pid })} />
           <div className="flex-1" />
           <label htmlFor="team-select" className="text-[11px] font-bold text-gray-300 uppercase tracking-wide">
             Team
@@ -544,7 +546,14 @@ export default function App() {
         </footer>
       )}
 
-      <PlayerModal player={selected} onClose={backToTeam} returnFocusEl={returnFocusEl} />
+      <PlayerModal
+        player={selected}
+        onClose={backToTeam}
+        returnFocusEl={returnFocusEl}
+        onTeamClick={(id) => navigate({ kind: 'team', teamId: id, tab: 'offense' })}
+        teamId={teamId}
+        teamLabel={selectedTeam.label}
+      />
     </div>
   )
 }

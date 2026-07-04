@@ -734,6 +734,12 @@ export function resolveTeam(value: string): Team | undefined {
   return TEAMS.find((t) => t.id === n || t.label.toLowerCase() === n)
 }
 
+const BY_CFBD = new Map(TEAMS.map((t) => [t.cfbdQuery.toLowerCase(), t.id]))
+/** Resolve a CFBD school name (e.g. a transfer `origin`) to an in-registry teamId. */
+export function teamIdForSchool(name: string | null | undefined): string | null {
+  return name ? BY_CFBD.get(name.trim().toLowerCase()) ?? null : null
+}
+
 /** Logo URL resolved via Vite asset handling (src/assets/logos/<id>.png). */
 export function teamLogoUrl(id: TeamId): string {
   return new URL(`../assets/logos/${id}.png`, import.meta.url).href
