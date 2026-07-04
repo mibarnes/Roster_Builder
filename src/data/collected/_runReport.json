@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-04T12:23:54.844Z",
-  "collectorVersion": "10b1763",
+  "generatedAt": "2026-07-04T12:26:50.132Z",
+  "collectorVersion": "2ba6b68",
   "season": 2025,
   "rosterSeason": 2026,
-  "durationMs": 153225,
+  "durationMs": 149337,
   "targets": [
-    "oklahoma-sooners",
-    "ole-miss-rebels",
-    "texas-longhorns",
-    "missouri-tigers",
-    "vanderbilt-commodores",
-    "mississippi-state-bulldogs"
+    "north-carolina-tar-heels",
+    "nc-state-wolfpack",
+    "duke-blue-devils",
+    "wake-forest-demon-deacons",
+    "louisville-cardinals",
+    "pittsburgh-panthers"
   ],
   "teamsOk": 6,
   "teamsFailed": 0,
@@ -27,161 +27,161 @@
   },
   "teams": [
     {
-      "id": "oklahoma-sooners",
-      "label": "Oklahoma Sooners",
+      "id": "north-carolina-tar-heels",
+      "label": "North Carolina Tar Heels",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
-        "rosterPlayers": 104,
-        "offenseSlots": 30,
-        "defenseSlots": 24,
-        "recruitingPct": 84.6,
-        "productionPct": 52.9,
-        "hometownPct": 99,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 119,
-          "matchedByIdPct": 84.4,
-          "headshotPct": 84,
-          "highSchoolPct": 47.1,
-          "transfersRated": 21,
-          "transfersTotal": 24,
-          "officialEngine": "nuxt-sidearm",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "ole-miss-rebels",
-      "label": "Ole Miss Rebels",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 112,
+        "rosterPlayers": 102,
         "offenseSlots": 32,
-        "defenseSlots": 31,
-        "recruitingPct": 75,
-        "productionPct": 49.1,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 99,
-          "masterCount": 130,
-          "matchedByIdPct": 76.9,
-          "headshotPct": 73.1,
-          "highSchoolPct": 46.2,
-          "transfersRated": 29,
-          "transfersTotal": 34,
-          "officialEngine": "nuxt-sidearm",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "texas-longhorns",
-      "label": "Texas Longhorns",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 106,
-        "offenseSlots": 31,
-        "defenseSlots": 34,
-        "recruitingPct": 76.4,
-        "productionPct": 60.4,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 98,
-          "masterCount": 125,
-          "matchedByIdPct": 90.5,
-          "headshotPct": 76.8,
-          "highSchoolPct": 50.4,
-          "transfersRated": 6,
-          "transfersTotal": 7,
-          "officialEngine": "nuxt-sidearm",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "missouri-tigers",
-      "label": "Missouri Tigers",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 100,
-        "offenseSlots": 36,
-        "defenseSlots": 34,
-        "recruitingPct": 78,
-        "productionPct": 64,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 135,
-          "matchedByIdPct": 76.1,
-          "headshotPct": 65.2,
-          "highSchoolPct": 43,
-          "transfersRated": 21,
-          "transfersTotal": 26,
-          "officialEngine": "sidearm-json",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "vanderbilt-commodores",
-      "label": "Vanderbilt Commodores",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 106,
-        "offenseSlots": 25,
         "defenseSlots": 32,
-        "recruitingPct": 77.4,
-        "productionPct": 58.5,
+        "recruitingPct": 93.1,
+        "productionPct": 58.8,
         "hometownPct": 100,
         "master": {
           "spineCount": 100,
-          "masterCount": 118,
-          "matchedByIdPct": 87.5,
-          "headshotPct": 83.1,
-          "highSchoolPct": 55.1,
-          "transfersRated": 25,
-          "transfersTotal": 26,
-          "officialEngine": "sidearm-json",
+          "masterCount": 129,
+          "matchedByIdPct": 84.7,
+          "headshotPct": 77.5,
+          "highSchoolPct": 39.5,
+          "transfersRated": 35,
+          "transfersTotal": 38,
+          "officialEngine": "nuxt-sidearm",
           "officialDegraded": false,
           "on3Degraded": true
         }
       }
     },
     {
-      "id": "mississippi-state-bulldogs",
-      "label": "Mississippi State Bulldogs",
+      "id": "nc-state-wolfpack",
+      "label": "NC State Wolfpack",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
-        "rosterPlayers": 110,
-        "offenseSlots": 35,
-        "defenseSlots": 30,
-        "recruitingPct": 87.3,
-        "productionPct": 60,
+        "rosterPlayers": 117,
+        "offenseSlots": 28,
+        "defenseSlots": 27,
+        "recruitingPct": 72.6,
+        "productionPct": 47.9,
         "hometownPct": 99.1,
         "master": {
-          "spineCount": 99,
-          "masterCount": 134,
-          "matchedByIdPct": 79.5,
-          "headshotPct": 67.2,
-          "highSchoolPct": 32.8,
-          "transfersRated": 34,
-          "transfersTotal": 35,
+          "spineCount": 100,
+          "masterCount": 127,
+          "matchedByIdPct": 80.9,
+          "headshotPct": 75.6,
+          "highSchoolPct": 48.8,
+          "transfersRated": 19,
+          "transfersTotal": 22,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "duke-blue-devils",
+      "label": "Duke Blue Devils",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 95,
+        "offenseSlots": 31,
+        "defenseSlots": 23,
+        "recruitingPct": 91.6,
+        "productionPct": 53.7,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 93,
+          "masterCount": 108,
+          "matchedByIdPct": 86.7,
+          "headshotPct": 77.8,
+          "highSchoolPct": 56.5,
+          "transfersRated": 11,
+          "transfersTotal": 11,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "wake-forest-demon-deacons",
+      "label": "Wake Forest Demon Deacons",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 113,
+        "offenseSlots": 28,
+        "defenseSlots": 29,
+        "recruitingPct": 82.3,
+        "productionPct": 49.6,
+        "hometownPct": 94.7,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 129,
+          "matchedByIdPct": 80.7,
+          "headshotPct": 77.5,
+          "highSchoolPct": 38.8,
+          "transfersRated": 30,
+          "transfersTotal": 32,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "louisville-cardinals",
+      "label": "Louisville Cardinals",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 101,
+        "offenseSlots": 32,
+        "defenseSlots": 31,
+        "recruitingPct": 82.2,
+        "productionPct": 56.4,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 131,
+          "matchedByIdPct": 82.1,
+          "headshotPct": 76.3,
+          "highSchoolPct": 34.4,
+          "transfersRated": 40,
+          "transfersTotal": 41,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "pittsburgh-panthers",
+      "label": "Pittsburgh Panthers",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 107,
+        "offenseSlots": 26,
+        "defenseSlots": 25,
+        "recruitingPct": 74.8,
+        "productionPct": 57,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 120,
+          "matchedByIdPct": 87.6,
+          "headshotPct": 82.5,
+          "highSchoolPct": 48.3,
+          "transfersRated": 21,
+          "transfersTotal": 24,
           "officialEngine": "nuxt-sidearm",
           "officialDegraded": false,
           "on3Degraded": true

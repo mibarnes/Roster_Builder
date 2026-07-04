@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Pittsburgh Panthers",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/pittsburgh/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:pittsburgh"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:26:50.118Z",
+    "collectorVersion": "2ba6b68",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}
