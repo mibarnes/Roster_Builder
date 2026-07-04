@@ -1,5 +1,5 @@
 import type { ClassYear, MatchMethod, Side } from './common.ts'
-import type { RatingMethod } from '../rating/overall.ts'
+import type { RatingMethod, RatingConfidence, RatingInput } from '../rating/overall.ts'
 import type { Usage, Ppa } from './advanced.ts'
 import type { PerGameLog } from './production.ts'
 import type { RecruitSourceTag } from './recruiting.ts'
@@ -66,6 +66,8 @@ export interface PlayerRatings {
   derived: boolean
   /** Which path produced this OVR ('blended' | 'recruiting-projection' | …). */
   method: RatingMethod
+  /** OVR confidence from data completeness — 'low' renders with a hollow badge. */
+  confidence: RatingConfidence
   /** Sub-score breakdown + weights for the modal. */
   breakdown: PlayerRatingBreakdown
   attributes: Record<string, unknown>
@@ -244,4 +246,6 @@ export interface PlayerPipeline {
   coverage: PipelineCoverage
   /** Team returning-production strip; null when the team ships no context. */
   returningProduction: ReturningProductionSummary | null
+  /** Rating inputs index-aligned with `players` (offline baseline builder only). */
+  ratingInputs?: RatingInput[]
 }

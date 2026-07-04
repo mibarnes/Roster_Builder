@@ -29,6 +29,7 @@ import type {
 import type { RosterPlayer } from '../schema/roster.ts'
 import { canonicalizePositionGroup } from '../positions.ts'
 import { computeTeamRatings, type RatingInput } from '../rating/overall.ts'
+import type { LeagueBaselines } from '../rating/ratingConfig.ts'
 
 interface IdItem {
   playerId?: string
@@ -277,7 +278,10 @@ const buildGolden = (rp: RosterPlayer): PlayerGolden | null => {
   }
 }
 
-export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPipeline => {
+export const buildPlayerPipeline = (
+  datasetBySource: DatasetBySource,
+  leagueBaselines?: LeagueBaselines,
+): PlayerPipeline => {
   const rosterPlayers = datasetBySource?.roster?.players ?? []
   const recruitingLookup = buildSourceLookup(
     datasetBySource?.recruiting?.playerRecruitProfiles as IdItem[] | undefined,
@@ -381,7 +385,7 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
       isStub: d.isStub,
     }
   })
-  const ratingResults = computeTeamRatings(ratingInputs)
+  const ratingResults = computeTeamRatings(ratingInputs, leagueBaselines)
 
   // ── Phase 3: assemble the final PipelinePlayer list. ──
   const players: PipelinePlayer[] = drafts.map((d, i) => {
@@ -444,6 +448,7 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
         // OVR has no independent provider — it's computed (blended) here.
         derived: true,
         method: rating.method,
+        confidence: rating.confidence,
         breakdown: { ...rating.components, weights: rating.weights },
         attributes,
       },
@@ -509,5 +514,8 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
     depthChart: buildDepthChartView(datasetBySource?.roster?.depthChart, playerMap),
     coverage,
     returningProduction: buildReturningProduction(datasetBySource),
+    // Index-aligned with `players` — consumed by the offline baseline builder
+    // (scripts/buildLeagueArtifacts.ts); the app ignores it.
+    ratingInputs,
   }
 }

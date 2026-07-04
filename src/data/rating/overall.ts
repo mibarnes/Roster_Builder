@@ -11,20 +11,42 @@
  *   - production only → 'production-only'        (— / 0.82 / 0.18)
  *   - neither        → 'nr'                      (overall = null)
  *
- * Weights live in RATING_WEIGHTS (single source, tunable).
+ * All coefficients live in ratingConfig.ts (single documented source, tunable).
+ * When a `leagueBaselines` argument is supplied, the within-group z-scores are
+ * taken against the LEAGUE distribution (honest cross-team comparison) instead of
+ * the player's own team — see F4/D7.
  */
 
-export const RATING_WEIGHTS = { recruiting: 0.45, production: 0.45, class: 0.1 } as const
+import {
+  CLASS_BASE,
+  CLASS_BASE_DEFAULT,
+  CLASS_MAX,
+  CLASS_MIN,
+  MIN_GROUP_N,
+  OVERALL_MAX,
+  OVERALL_MIN,
+  PRODUCTION_ABSOLUTE_FALLBACK,
+  PRODUCTION_ONLY_WEIGHTS,
+  PROJECTION_CLASS_PENALTY,
+  PROJECTION_WEIGHTS,
+  RATING_WEIGHTS,
+  recruitingAbsolute,
+  REDSHIRT_BONUS,
+  SUBSCORE_MAX,
+  SUBSCORE_MEAN,
+  SUBSCORE_MIN,
+  SUBSCORE_PER_SIGMA,
+  type Baseline,
+  type LeagueBaselines,
+} from './ratingConfig.ts'
 
-/**
- * "No playing time" penalty applied to recruiting-projection players (zero
- * production), scaled by class: a true freshman who hasn't played yet keeps the
- * full projection; an upperclassman who never took a snap is a career backup and
- * is pushed below proven starters.
- */
-export const PROJECTION_CLASS_PENALTY: Record<string, number> = { FR: 0, SO: 4, JR: 9, SR: 14 }
+export { RATING_WEIGHTS, PROJECTION_CLASS_PENALTY } from './ratingConfig.ts'
+export type { LeagueBaselines, Baseline } from './ratingConfig.ts'
 
 export type RatingMethod = 'blended' | 'recruiting-projection' | 'production-only' | 'nr'
+
+/** OVR confidence from data completeness — the UI renders 'low' with a hollow badge. */
+export type RatingConfidence = 'high' | 'medium' | 'low'
 
 export interface RatingProductionInput {
   games: number | null
@@ -53,6 +75,7 @@ export interface RatingInput {
 export interface RatingResult {
   overall: number | null
   method: RatingMethod
+  confidence: RatingConfidence
   components: { recruiting: number | null; production: number | null; class: number }
   weights: { recruiting: number; production: number; class: number }
 }
@@ -61,8 +84,25 @@ const clamp = (n: number, lo: number, hi: number): number => Math.max(lo, Math.m
 
 /** Class/experience sub-score (0–100 scale). Redshirt adds a developmental year. */
 const classScore = (classYear: RatingInput['classYear'], isRedshirt: boolean): number => {
-  const base = { FR: 68, SO: 74, JR: 79, SR: 83 }[classYear ?? 'FR'] ?? 71
-  return clamp(base + (isRedshirt ? 2 : 0), 60, 90)
+  const base = CLASS_BASE[classYear ?? 'FR'] ?? CLASS_BASE_DEFAULT
+  return clamp(base + (isRedshirt ? REDSHIRT_BONUS : 0), CLASS_MIN, CLASS_MAX)
+}
+
+/**
+ * OVR confidence from signal completeness: real production games + a recruiting
+ * record → high; one solid signal → medium; projection/thin → low.
+ */
+const ratingConfidence = (
+  method: RatingMethod,
+  hasRecruiting: boolean,
+  games: number | null,
+): RatingConfidence => {
+  if (method === 'nr') return 'low'
+  const playedEnough = (games ?? 0) >= 4
+  if (method === 'blended' && playedEnough && hasRecruiting) return 'high'
+  if (method === 'production-only' && playedEnough) return 'high'
+  if (method === 'blended' || method === 'production-only') return 'medium'
+  return 'low' // recruiting-projection (no production yet)
 }
 
 /**
@@ -70,7 +110,7 @@ const classScore = (classYear: RatingInput['classYear'], isRedshirt: boolean): n
  * the number is comparable within a group; cross-group comparability is handled
  * by the later within-group normalization.
  */
-const statValue = (group: string, s: Record<string, number>): number => {
+export const statValue = (group: string, s: Record<string, number>): number => {
   const v = (k: string): number => s[k] ?? 0
   switch (group) {
     case 'QB':
@@ -104,7 +144,7 @@ const statValue = (group: string, s: Record<string, number>): number => {
  * + involvement + counting output. Games anchors it so a 12-game starter with no
  * box-score (e.g. OL) still earns production credit.
  */
-const productionRaw = (group: string, p: RatingProductionInput): number | null => {
+export const productionRaw = (group: string, p: RatingProductionInput): number | null => {
   const hasAny = (p.games ?? 0) > 0 || p.ppaAll != null || p.usageOverall != null || p.stats != null
   if (!hasAny) return null
   const games = p.games ?? 0
@@ -131,19 +171,31 @@ const normContext = (values: number[]): NormCtx => {
   return { mean, sd: Math.sqrt(variance), n }
 }
 
-/** z-score → 0–100 OVR sub-score (mean→73, ±1σ→±9), small-sample-aware. */
+/** z-score → 0–100 OVR sub-score (mean→SUBSCORE_MEAN, ±1σ→±PER_SIGMA), small-sample-aware. */
 const toSubScore = (value: number, ctx: NormCtx, absoluteFallback: number): number => {
-  if (ctx.n < 3 || ctx.sd === 0) return clamp(Math.round(absoluteFallback), 50, 99)
+  if (ctx.n < MIN_GROUP_N || ctx.sd === 0) return clamp(Math.round(absoluteFallback), SUBSCORE_MIN, SUBSCORE_MAX)
   const z = (value - ctx.mean) / ctx.sd
-  return clamp(Math.round(73 + z * 9), 50, 99)
+  return clamp(Math.round(SUBSCORE_MEAN + z * SUBSCORE_PER_SIGMA), SUBSCORE_MIN, SUBSCORE_MAX)
 }
 
+/** A committed league Baseline is structurally a NormCtx — adapt directly. */
+const baselineCtx = (b: Baseline | undefined): NormCtx | null =>
+  b && b.n >= MIN_GROUP_N ? { mean: b.mean, sd: b.sd, n: b.n } : null
+
 /**
- * Compute OVR for every player on a team. Normalization is within position group,
- * with a fallback to the broad side bucket when a group has too few rated/produced
- * players to normalize stably.
+ * Compute OVR for every player on a team.
+ *
+ * Without `leagueBaselines`, each signal is z-scored WITHIN the team's position
+ * group (side-bucket fallback for tiny groups) — team-relative. With
+ * `leagueBaselines` (built offline across all collected teams), the z-score is
+ * taken against the LEAGUE distribution for that group instead, making OVR honest
+ * ACROSS teams (F4/D7). Team distributions remain the fallback when a group is
+ * absent from the baselines.
  */
-export function computeTeamRatings(players: RatingInput[]): RatingResult[] {
+export function computeTeamRatings(
+  players: RatingInput[],
+  leagueBaselines?: LeagueBaselines,
+): RatingResult[] {
   // Build per-group and per-side distributions for each signal.
   const recByGroup = new Map<string, number[]>()
   const recBySide = new Map<string, number[]>()
@@ -171,19 +223,23 @@ export function computeTeamRatings(players: RatingInput[]): RatingResult[] {
 
   return players.map((p, i) => {
     if (p.isStub) {
-      return { overall: null, method: 'nr', components: { recruiting: null, production: null, class: classScore(p.classYear, p.isRedshirt) }, weights: { ...RATING_WEIGHTS } }
+      return { overall: null, method: 'nr', confidence: 'low', components: { recruiting: null, production: null, class: classScore(p.classYear, p.isRedshirt) }, weights: { ...RATING_WEIGHTS } }
     }
 
     const cls = classScore(p.classYear, p.isRedshirt)
+    const hasRecruiting = typeof p.compositeRating === 'number'
+    const games = p.production?.games ?? null
 
-    // Recruiting sub-score (group-normalized, side fallback, absolute fallback).
+    // Recruiting sub-score. League baseline (cross-team) when provided, else the
+    // team group-normalized distribution (side fallback), else absolute fallback.
     let recruiting: number | null = null
     if (typeof p.compositeRating === 'number') {
       const grp = recByGroup.get(p.positionGroup) ?? []
-      const ctx = grp.length >= 3 ? normContext(grp) : normContext(recBySide.get(p.sideBucket) ?? grp)
-      // Absolute fallback maps composite 0.80→~78, 0.90→~85, 1.0→~93.
-      const absolute = 70 + (p.compositeRating - 0.8) * 115
-      recruiting = toSubScore(p.compositeRating, ctx, absolute)
+      const teamCtx = grp.length >= MIN_GROUP_N ? normContext(grp) : normContext(recBySide.get(p.sideBucket) ?? grp)
+      const ctx = leagueBaselines
+        ? baselineCtx(leagueBaselines.recByGroup[p.positionGroup]) ?? baselineCtx(leagueBaselines.recBySide[p.sideBucket]) ?? teamCtx
+        : teamCtx
+      recruiting = toSubScore(p.compositeRating, ctx, recruitingAbsolute(p.compositeRating))
     }
 
     // Production sub-score.
@@ -191,30 +247,33 @@ export function computeTeamRatings(players: RatingInput[]): RatingResult[] {
     const praw = prodRawCache[i] ?? null
     if (praw != null) {
       const grp = prodByGroup.get(p.positionGroup) ?? []
-      const ctx = grp.length >= 3 ? normContext(grp) : normContext(prodBySide.get(p.sideBucket) ?? grp)
-      production = toSubScore(praw, ctx, 72)
+      const teamCtx = grp.length >= MIN_GROUP_N ? normContext(grp) : normContext(prodBySide.get(p.sideBucket) ?? grp)
+      const ctx = leagueBaselines
+        ? baselineCtx(leagueBaselines.prodByGroup[p.positionGroup]) ?? baselineCtx(leagueBaselines.prodBySide[p.sideBucket]) ?? teamCtx
+        : teamCtx
+      production = toSubScore(praw, ctx, PRODUCTION_ABSOLUTE_FALLBACK)
     }
 
-    const W = RATING_WEIGHTS
     if (recruiting != null && production != null) {
+      const W = RATING_WEIGHTS
       const overall = Math.round(W.recruiting * recruiting + W.production * production + W.class * cls)
-      return { overall: clamp(overall, 40, 99), method: 'blended', components: { recruiting, production, class: cls }, weights: { ...W } }
+      return { overall: clamp(overall, OVERALL_MIN, OVERALL_MAX), method: 'blended', confidence: ratingConfidence('blended', hasRecruiting, games), components: { recruiting, production, class: cls }, weights: { ...W } }
     }
     if (recruiting != null) {
       // No production at all → a "projection". A true FR who hasn't had a chance
       // legitimately projects on recruiting alone; but an upperclassman who never
       // took a snap is a career backup, not a star — penalize by class so a g=0
       // recruit can't outrank proven starters. (Redshirt FR keep the FR grace.)
-      const w = { recruiting: 0.82, production: 0, class: 0.18 }
+      const w = PROJECTION_WEIGHTS
       const penalty = PROJECTION_CLASS_PENALTY[p.classYear ?? 'FR'] ?? 0
-      const overall = clamp(Math.round(w.recruiting * recruiting + w.class * cls) - penalty, 40, 99)
-      return { overall, method: 'recruiting-projection', components: { recruiting, production: null, class: cls }, weights: w }
+      const overall = clamp(Math.round(w.recruiting * recruiting + w.class * cls) - penalty, OVERALL_MIN, OVERALL_MAX)
+      return { overall, method: 'recruiting-projection', confidence: ratingConfidence('recruiting-projection', hasRecruiting, games), components: { recruiting, production: null, class: cls }, weights: { ...w } }
     }
     if (production != null) {
-      const w = { recruiting: 0, production: 0.82, class: 0.18 }
+      const w = PRODUCTION_ONLY_WEIGHTS
       const overall = Math.round(w.production * production + w.class * cls)
-      return { overall: clamp(overall, 40, 99), method: 'production-only', components: { recruiting: null, production, class: cls }, weights: w }
+      return { overall: clamp(overall, OVERALL_MIN, OVERALL_MAX), method: 'production-only', confidence: ratingConfidence('production-only', hasRecruiting, games), components: { recruiting: null, production, class: cls }, weights: { ...w } }
     }
-    return { overall: null, method: 'nr', components: { recruiting: null, production: null, class: cls }, weights: { ...W } }
+    return { overall: null, method: 'nr', confidence: 'low', components: { recruiting: null, production: null, class: cls }, weights: { ...RATING_WEIGHTS } }
   })
 }
