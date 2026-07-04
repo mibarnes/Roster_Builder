@@ -5,7 +5,7 @@ import { getConflictTitle, getEffectiveStars, getOvrDisplay, getOvrDisplayColor 
 import type { UIPlayer } from '../data/schema/ui.ts'
 
 export interface RatingsFilters {
-  side: 'ALL' | 'OFF' | 'DEF'
+  side: 'ALL' | 'OFF' | 'DEF' | 'ST'
   pos: string
   stars: number
   sort: 'composite' | 'ovr' | 'stars'
@@ -40,7 +40,7 @@ export default function RatingsView({ allPlayers, filters, setFilters, onPlayerC
     <div className="h-full flex flex-col bg-card-bg">
       <div className="flex-shrink-0 p-3 flex items-center gap-2 overflow-x-auto bg-surface border-b border-surface-border">
         <div className="flex rounded-xl overflow-hidden bg-surface-border" role="tablist" aria-label="Filter by side">
-          {(['ALL', 'OFF', 'DEF'] as const).map((s) => (
+          {(['ALL', 'OFF', 'DEF', 'ST'] as const).map((s) => (
             <button
               key={s}
               role="tab"
