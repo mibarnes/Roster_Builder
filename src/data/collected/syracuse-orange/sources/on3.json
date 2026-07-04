@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Syracuse Orange",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/syracuse/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:syracuse"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:28:51.005Z",
+    "collectorVersion": "f66e058",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

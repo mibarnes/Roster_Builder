@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Syracuse Orange",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Syracuse"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:28:30.716Z",
+    "collectorVersion": "f66e058",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 96.9,
+    "totalPassingPPA": 3,
+    "totalReceivingPPA": 102.3,
+    "totalRushingPPA": -8.4,
+    "percentPPA": 0.143,
+    "percentPassingPPA": 0.013,
+    "percentReceivingPPA": 0.251,
+    "percentRushingPPA": -0.222,
+    "usage": 0.133,
+    "passingUsage": 0.002,
+    "receivingUsage": 0.25,
+    "rushingUsage": 0.213
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "sourceId": "official-roster-v1",
+  "sourceType": "official-roster",
+  "team": "Notre Dame Fighting Irish",
+  "sourceUrl": "https://und.com/sports/football/roster",
+  "engine": "wmt-presto",
+  "degraded": true,
+  "degradeReason": "WMT/Presto: fetched 113 profiles but none yielded bio fields",
+  "coverage": 0,
+  "provenance": {
+    "sources": [
+      {
+        "name": "Official team roster page",
+        "endpoint": "https://und.com/sports/football/roster"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:32:04.201Z",
+    "collectorVersion": "f66e058",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

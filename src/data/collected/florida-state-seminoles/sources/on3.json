@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Florida State Seminoles",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/florida-state/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:florida-state"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:27:38.302Z",
+    "collectorVersion": "f66e058",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

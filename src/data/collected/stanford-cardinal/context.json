@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Stanford Cardinal",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Stanford"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:29:31.616Z",
+    "collectorVersion": "f66e058",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 38.6,
+    "totalPassingPPA": 8.9,
+    "totalReceivingPPA": 37.1,
+    "totalRushingPPA": -7.3,
+    "percentPPA": 0.189,
+    "percentPassingPPA": 1.236,
+    "percentReceivingPPA": 0.25,
+    "percentRushingPPA": -0.15,
+    "usage": 0.321,
+    "passingUsage": 0.137,
+    "receivingUsage": 0.346,
+    "rushingUsage": 0.48
+  }
+}

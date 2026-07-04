@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Boston College Eagles",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/boston-college/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:boston-college"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:29:28.530Z",
+    "collectorVersion": "f66e058",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}
