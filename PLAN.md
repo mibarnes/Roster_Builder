@@ -12,11 +12,13 @@
 `main`). The M1–M6 rebuild + Round-2 enrichment + golden-record reconciliation are complete (see
 *Completed work* below). **494 tests; tsc strict clean.**
 
-> **Deepening arc DONE (2026-07-04):** D1 (master-only data path) · F4 (league-calibrated ratings +
-> `_baselines`/`_identity`/`_league` offline artifacts) · F6 (League view `#/league` + Team HQ
-> `#/team/:id/hq`). Cross-team OVR is now honest and the 54-team breadth is a real intelligence tool.
-> All local-only. **Next candidates:** push everything live; D1b legacy-file cleanup; F5 freshness;
-> finish Big 12 (13 teams) + P7 origin-production on CFBD quota reset.
+> **Deepening arc + hardening DONE (2026-07-04), pushed live:** D1+D1b (master is the ONLY data
+> path; 270 legacy files retired) · F4 (league-calibrated ratings + `_baselines`/`_identity`/`_league`
+> offline artifacts) · F6 (League view `#/league` + Team HQ `#/team/:id/hq`) · F5 (as-of framing +
+> vintage snapshots + scheduled-collection workflow). Cross-team OVR is honest; the 54-team breadth
+> is a real intelligence tool. **F0–F6 + D1 are LIVE** (F5's post-D1b changes are committed; push at
+> will). **Remaining (all quota-gated):** finish Big 12 (13 teams); P7 origin-production; F5
+> change-feed + Roster Moves ticker (need ≥2 snapshots); U6/U9/U10 polish; F7/F8.
 
 We are executing the **F0–F8 finalization plan** — evolving the working demo into a polished,
 zero-stub CFB intelligence tool. **Decisions locked 2026-07-04:** (1) full F0–F8 is the committed
@@ -127,18 +129,17 @@ Makes cross-team comparison honest — the payoff of the 54-team data. (Blueprin
 - [~] **D2** `transferOrigin` → `{teamId?, name}` deep-links — partially in F6 (portal ledger/flow deep-link to in-registry origin teams); the per-player transfer-chip origin card is deferred polish.
 - **Gate:** ✅ comparison honest cross-team; 494 tests; tsc clean.
 
-### D1 — App-side path unification  ·  status: DONE (app-side; D1b deferred)
-- [x] ✅ Master-only `loadTeamData` (legacy 3-file branch + globs + helper deleted); mock mode + `VITE_DATA_MODE` + `DataMode` plumbing removed (D4/S7 app-side); S10 `isTransfer`-false bug gone with the legacy path.
-- [ ] **D1b (deferred, §17-sensitive):** stop the collector writing the legacy trio + delete the 54×3 on-disk `roster/production/recruiting.json` + `seed.test` disk reads. Kept `isPilot` (collector target concept; a uniform `tier:'gold'` would be vestigial now).
+### D1 — App-side path unification  ·  status: DONE (D1 + D1b) (2026-07-04)
+- [x] ✅ **D1** — Master-only `loadTeamData` (legacy 3-file branch + globs + helper deleted); mock mode + `VITE_DATA_MODE` + `DataMode` plumbing removed (D4/S7 app-side); S10 `isTransfer`-false bug gone with the legacy path.
+- [x] ✅ **D1b** — collector no longer writes the legacy 3+2 files (`recordHistory` tracks the master); **removed the 270 committed legacy files** (54×5) §17-safely (master path live+verified; git history = backup); `seed.test` consolidated onto master+sources. **Master is the only data path.** Kept `isPilot` (collector target concept; a uniform `tier:'gold'` would be vestigial now).
 
-### F5 — Freshness loop  ·  status: PLANNED (parallel to F6)
+### F5 — Freshness loop  ·  status: PARTIAL (as-of + snapshots + workflow done; change-feed/ticker deferred) (2026-07-04)
 "Live feel" without a server. (Blueprint 5.3, 7.2.)
-- [ ] **Scheduled `collect.yml`** — cron (weekly in-season / monthly off), repo-secret key, opens a **PR** with data diff + run report (never direct-push). Higher portal-feed cadence in windows.
-- [ ] **Vintage snapshots** — pre-overwrite `player-master.json` → `collected/<team>/snapshots/<date>.json` (keep last N=6); upgrades `_history.json` to diffable data history.
-- [ ] **Change feed** `collected/_changes.json` — per-team adds/departures/depth/rating moves vs prior snapshot.
-- [ ] **As-of framing** — header keys on `provenance.*Season` + `collectedAt` (kills the headshot heuristic, S13); vintage footnotes; "data aging" chip >45d in-season.
-- [ ] **7.2 Roster Moves ticker** — dismissible strip from `_changes.json` + per-team changelog page.
-- **Gate:** one automated refresh PR merged end-to-end.
+- [x] **As-of framing** ✅ — `vintage` {collectedAt, rosterSeason, productionSeason} threaded master→pipeline→UIDataset→header; header reads "<roster> ROSTER · <stats> STATS · as of <date>" + a **DATA-AGING chip** >45d (dormant while fresh). **Kills S13** (the headshot heuristic).
+- [x] **Vintage snapshots** ✅ — collector preserves the outgoing `player-master.json` → `collected/<team>/snapshots/<date>.json` (keep last 6) before overwrite; gitignored (local diffable-history cache). Effective on next collection.
+- [x] **Scheduled `collect.yml`** ✅ — `.github/workflows/collect.yml`: monthly cron + on-demand; rebuilds artifacts, gates on typecheck/test/build, opens a **data PR** (never direct-push). **Inert until the `CFBD_API_KEY` repo secret + quota.**
+- [ ] **Change feed** `collected/_changes.json` + **7.2 Roster Moves ticker** — **deferred: need ≥2 snapshots** (chicken-egg; unblocks after the next collection).
+- **Gate:** one automated refresh PR merged end-to-end — pending CFBD quota reset.
 
 ### F6 — Intelligence surfaces  ·  status: DONE (core; U6/U9/U10 deferred) (2026-07-04)
 Display → scouting tool. (Blueprint 6.2/6.3.)
@@ -171,13 +172,13 @@ Display → scouting tool. (Blueprint 6.2/6.3.)
 | S4 | Unused exports | ✅ **F1 done (2026-07-04)** — `matchesRosterName` deleted (rest were live) |
 | S5 | Dead ratings-join branch + `schema/ratings.ts` | ✅ **F1 done (2026-07-04)** — excised, `ratings.overall` preserved |
 | S6 | Dead `normalize/depthChart.ts` | ✅ **F0 done (2026-07-04)** |
-| S7 | Mock mode + `VITE_DATA_MODE` + legacy `STAT_ABBREVIATIONS` | F3 (after D1) |
-| S8 | `ourlads-stub-*` placeholder players | F3 (signee source) |
-| S9 | Legacy 31-team 3-file tier | F3 (golden expansion + path delete) |
-| S10 | Legacy `isTransfer` always-false bug | F3 (dies with S9) |
+| S7 | Mock mode + `VITE_DATA_MODE` (+ legacy `STAT_ABBREVIATIONS` kept — live in PlayerModal) | ✅ **D1 done (2026-07-04)** — mock/VITE_DATA_MODE removed |
+| S8 | `ourlads-stub-*` placeholder players | Deferred (signee source; CFBD quota) |
+| S9 | Legacy 31-team 3-file tier | ✅ **D1+D1b done (2026-07-04)** — path deleted; 270 files retired |
+| S10 | Legacy `isTransfer` always-false bug | ✅ **D1 done (2026-07-04)** — died with the legacy path |
 | S11 | Unwired comparison→modal drill-down | ✅ **F2/U3 done (2026-07-04)** |
-| S12 | Invisible special-teams data | F6 (U6) |
-| S13 | Header subtitle headshot-heuristic | F5 (provenance-keyed) |
+| S12 | Invisible special-teams data | Deferred → U6 (F6 polish) |
+| S13 | Header subtitle headshot-heuristic | ✅ **F5 done (2026-07-04)** — provenance-keyed as-of framing |
 | S14 | Dead pilot legacy chunks in `dist/` | F3 (D9) |
 | S15 | `npm run build` in netlify.toml | **F0 (immediate)** |
 | S16 | Stale README | **F0 (immediate)** |
@@ -188,6 +189,11 @@ Display → scouting tool. (Blueprint 6.2/6.3.)
 
 ## Completed work (history — condensed)
 
+- **D1b + F5 (2026-07-04)** — **D1b:** collector stopped writing the legacy 3+2 files; **270 committed
+  legacy files retired** §17-safely (master path live+verified, git history = backup); seed.test onto
+  master+sources. Master is now the ONLY data path. **F5:** as-of framing (provenance-driven header +
+  aging chip, kills S13) + vintage snapshots (collector, gitignored) + scheduled `collect.yml`
+  (monthly/on-demand, opens a data PR, inert until CFBD secret+quota). 386 tests; tsc clean; all local.
 - **Deepening arc D1 → F4 → F6 (2026-07-04)** — turned the app into a cross-team intelligence tool.
   **D1:** master-only data path (deleted the dead legacy 3-file loader + mock mode; S10 bug gone).
   **F4:** league-calibrated OVR (`computeTeamRatings(players, leagueBaselines?)` z-scores vs the
