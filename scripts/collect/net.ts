@@ -106,6 +106,19 @@ export function __resetNet(): void {
   now = () => Date.now()
   sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
   hostNextFree.clear()
+  resetNetStats()
+}
+
+// ── observability — request/cache/retry counters for the run report ──────────
+const netStats = { requests: 0, cacheHits: 0, retries: 0 }
+/** Network requests actually issued, cache reuses (ttl or 304), and retries so far. */
+export const getNetStats = (): { requests: number; cacheHits: number; retries: number } => ({
+  ...netStats,
+})
+export const resetNetStats = (): void => {
+  netStats.requests = 0
+  netStats.cacheHits = 0
+  netStats.retries = 0
 }
 
 // ── rate limiter — per-host min-interval scheduler ───────────────────────────
@@ -179,6 +192,7 @@ export async function fetchWithPolicy(url: string, policy: FetchPolicy): Promise
   const cached = useCache ? await readCache(path) : null
   // TTL fast-path: serve fresh-enough cache without touching the network.
   if (cached && ttlMs > 0 && now() - cached.fetchedAt < ttlMs) {
+    netStats.cacheHits += 1
     return toResponse(cached, true)
   }
 
@@ -190,15 +204,18 @@ export async function fetchWithPolicy(url: string, policy: FetchPolicy): Promise
   for (let attempt = 1; attempt <= retries; attempt += 1) {
     await throttle(host)
     try {
+      netStats.requests += 1
       const response = await fetchImpl(url, { headers: { ...headers, ...conditional }, redirect })
 
       if (response.status === 304 && cached) {
+        netStats.cacheHits += 1
         const refreshed: CacheEntry = { ...cached, fetchedAt: now() }
         if (useCache) await writeCache(path, refreshed)
         return toResponse(refreshed, true)
       }
 
       if (isRetryableStatus(response.status) && attempt < retries) {
+        netStats.retries += 1
         await response.text().catch(() => '')
         await sleep(retryAfterMs(response.headers.get('retry-after')) ?? backoffMs(attempt))
         continue
@@ -221,6 +238,7 @@ export async function fetchWithPolicy(url: string, policy: FetchPolicy): Promise
     } catch (error) {
       lastError = error
       if (attempt < retries) {
+        netStats.retries += 1
         await sleep(backoffMs(attempt))
         continue
       }

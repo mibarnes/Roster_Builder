@@ -50,6 +50,7 @@ import {
   type RosterPlayer,
 } from './collect/cfbd.ts'
 import { buildAdvancedSource, buildContextSource } from './collect/advanced.ts'
+import { getNetStats } from './collect/net.ts'
 import { buildDepthChartFromOurlads, type ExtraResolver } from './collect/parsers/ourlads.ts'
 import { buildIncomingRecruits, buildRecruitingSource, type IncomingRecruit, type MatchMethod, type TransferOverlayRecord } from './collect/recruiting.ts'
 import { buildRosterNameIndex, inferRedshirt, resolveByStdName, stdName } from './collect/normalize.ts'
@@ -792,7 +793,85 @@ async function buildAndWriteMaster({
   }
 }
 
+const round1 = (v: number): number => Math.round(v * 10) / 10
+
+/** Row-count floor + degrade checks per team (P9-lite), surfaced in the run report. */
+function teamWarnings(r: TeamResult): string[] {
+  const w: string[] = []
+  if (!r.ok || !r.stats) return w
+  const s = r.stats
+  if (s.rosterPlayers < 40) w.push(`roster floor: ${s.rosterPlayers} players (<40)`)
+  if (s.offenseSlots + s.defenseSlots === 0) w.push('depth chart empty (OurLads produced 0 slots)')
+  if (s.master) {
+    const m = s.master
+    if (m.spineCount < 60) w.push(`ESPN spine floor: ${m.spineCount} players (<60)`)
+    if (m.masterCount < m.spineCount) w.push(`master invariant broken: masterCount ${m.masterCount} < spineCount ${m.spineCount}`)
+    if (m.officialDegraded) w.push(`official overlay degraded (${m.officialEngine})`)
+  }
+  return w
+}
+
+/** Write the machine-readable run telemetry artifact consumed by ops + the UI banner. */
+async function writeRunReport(
+  results: TeamResult[],
+  targets: Team[],
+  closure: RecruitingClosure,
+  durationMs: number,
+): Promise<void> {
+  const report = {
+    schemaVersion: 1,
+    generatedAt: nowIso(),
+    collectorVersion,
+    season: SEASON,
+    rosterSeason: ROSTER_SEASON,
+    durationMs,
+    targets: targets.map((t) => t.id),
+    teamsOk: results.filter((r) => r.ok).length,
+    teamsFailed: results.filter((r) => !r.ok).length,
+    closure: {
+      nationalRows: closure.nationalIndex?.stats.rows ?? null,
+      nationalWithAthleteId: closure.nationalIndex?.stats.withAthleteId ?? null,
+      portalRows: closure.portal?.rows.length ?? null,
+    },
+    net: getNetStats(),
+    teams: results.map((r) => ({
+      id: r.team.id,
+      label: r.team.label,
+      ok: r.ok,
+      error: r.error ?? null,
+      warnings: teamWarnings(r),
+      stats:
+        r.ok && r.stats
+          ? {
+              rosterPlayers: r.stats.rosterPlayers,
+              offenseSlots: r.stats.offenseSlots,
+              defenseSlots: r.stats.defenseSlots,
+              recruitingPct: round1(r.stats.recruitingPct),
+              productionPct: round1(r.stats.productionPct),
+              hometownPct: round1(r.stats.hometownPct),
+              master: r.stats.master
+                ? {
+                    spineCount: r.stats.master.spineCount,
+                    masterCount: r.stats.master.masterCount,
+                    matchedByIdPct: round1(r.stats.master.matchedByIdPct),
+                    headshotPct: round1(r.stats.master.headshotPct),
+                    highSchoolPct: round1(r.stats.master.highSchoolPct),
+                    transfersRated: r.stats.master.transfersRated,
+                    transfersTotal: r.stats.master.transfersTotal,
+                    officialEngine: r.stats.master.officialEngine,
+                    officialDegraded: r.stats.master.officialDegraded,
+                    on3Degraded: r.stats.master.on3Degraded,
+                  }
+                : null,
+            }
+          : null,
+    })),
+  }
+  await writeFile(path.join(COLLECTED, '_runReport.json'), `${JSON.stringify(report, null, 2)}\n`, 'utf8')
+}
+
 async function main(): Promise<void> {
+  const runStart = Date.now()
   const { teamId, forceNonPilot } = parseArgs(process.argv.slice(2))
 
   let targets: Team[]
@@ -905,6 +984,18 @@ async function main(): Promise<void> {
     }
   }
   console.log('\n==============================================')
+
+  // ── Run telemetry artifact (blueprint 5.1.3) ──────────────────────────────────
+  const durationMs = Date.now() - runStart
+  await writeRunReport(results, targets, closure, durationMs)
+  const net = getNetStats()
+  console.log(
+    `\nRun report → src/data/collected/_runReport.json ` +
+      `(net: ${net.requests} requests / ${net.cacheHits} cache-reuse / ${net.retries} retries; ${durationMs}ms)`,
+  )
+  for (const r of results) {
+    for (const w of teamWarnings(r)) console.log(`  ⚠ ${r.team.id}: ${w}`)
+  }
 
   const failed = results.filter((r) => !r.ok)
   if (failed.length > 0) {
