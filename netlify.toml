@@ -1,6 +1,6 @@
 # Netlify configuration for CFB Roster Portal
 [build]
-  command = "npm run build"
+  command = "corepack enable && pnpm install --frozen-lockfile && pnpm build"
   publish = "dist"
 
 # Redirect all requests to index.html for client-side routing

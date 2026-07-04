@@ -12,9 +12,17 @@ chart, a ratings/filter view, and a multi-team comparison view (radar + position
 
 ## Status
 
-**Phase 0 (scaffold) complete** — toolchain skeleton + recovered data seeded. The application
-itself is **not yet ported**; that is Phases 1–7, driven by [RESTORATION.md](RESTORATION.md).
-`src/App.tsx` is a placeholder shell.
+**Live** at https://mibarnes.github.io/Roster_Builder/ (publishes from `main`). The full rebuild
+(M1–M6) + pilot enrichment + multi-source golden-record reconciliation are complete: interactive
+depth chart, ratings/filter view, multi-team comparison (radar + position-depth), and a rich
+player modal — all TypeScript-strict + zod, **259 tests**.
+
+**Florida + Miami** are gold-standard *pilot* teams (multi-source golden masters with headshots,
+provenance, conflict flags, blended ratings); the other 31 teams carry a shallower single-source
+static seed. Evolving this demo into a polished, zero-stub CFB intelligence tool is the **F0–F8
+finalization plan** — design in [docs/FINALIZATION_BLUEPRINT.md](docs/FINALIZATION_BLUEPRINT.md),
+execution tracked in [PLAN.md](PLAN.md). [RESTORATION.md](RESTORATION.md) is retained as recovery
+history.
 
 ## Stack
 
@@ -23,7 +31,7 @@ itself is **not yet ported**; that is Phases 1–7, driven by [RESTORATION.md](R
 - Vitest + React Testing Library
 - Data: CollegeFootballData API (CFBD) + OurLads / 247Sports scrapers (offline collection)
 
-## Quick start (after Phase 1)
+## Quick start
 
 ```bash
 corepack enable
@@ -38,29 +46,33 @@ pnpm test                       # vitest
 
 ## Data model (high level)
 
-`source adapters (roster / recruiting / ratings / production) → buildPlayerPipeline (join by
-playerId) → mapPipelineToUI → React`. A `bundled` vs `mock` data mode switch. Real per-team data
-is collected offline by `scripts/` and stored as per-team JSON under `src/data/collected/<team>/`.
+Two data depths flow into one in-app pipeline (unifying them is F3 in [PLAN.md](PLAN.md)):
 
-- **32 teams** are seeded with real CFBD captures (carried from the recovered backup).
-- **Pilot teams = Florida Gators + Miami Hurricanes** — the two we actively build out; all
-  re-collection / data-hardening focuses on these. (Miami was a mock placeholder in the recovered
-  build and is re-collected fresh.) Other teams' uneven data is surfaced honestly in the UI.
+- **Pilots (Florida, Miami)** — multi-source **golden master** (`player-master.json` +
+  `sources/*.json`): ESPN roster spine (2026 + headshots) + official-site overlay (HS/hometown) +
+  CFBD (2025 production/usage/ppa + recruiting) + OurLads depth, reconciled by
+  `scripts/collect/reconcile/` (field-level golden merge with provenance/confidence + conflict flags).
+- **The other 31 teams** — single-source CFBD static seed (`roster/recruiting/production` 3-file shape).
+
+In-app: `loadTeamData → buildPlayerPipeline (join by playerId) → mapPipelineToUI → React`. Blended
+OVR = 0.45 recruiting + 0.45 production + 0.10 class, position-group-normalized, honest **NR (null)**
+for no-data players. Per-team JSON is collected offline by `scripts/collect*` and ships as lazy chunks.
 
 ## Repo layout
 
 | Path | What |
 |---|---|
-| `src/` | App (TSX) — ported in Phases 3–4 |
-| `src/data/collected/<team>/` | Seeded real per-team JSON (roster / recruiting / production) |
+| `src/` | App (TSX) — components, data layer, pipeline, rating |
+| `src/data/collected/<team>/` | Per-team JSON (pilots: golden master + sources; others: 3-file seed) |
 | `src/assets/logos/` | 34 team logos |
-| `scripts/` | Data collectors (ported to TS in Phase 5) + `guard-no-npm.sh` |
-| `docs/` | Original PRD / phase docs (reference) |
-| `_recovered/` | **Gitignored.** Local read-only staging of the recovered build to port from |
+| `scripts/collect*` | TS data collectors (pilots-only guard, fail-loud) + `verify-screenshot.sh` + `guard-no-npm.sh` |
+| `docs/` | [FINALIZATION_BLUEPRINT.md](docs/FINALIZATION_BLUEPRINT.md) (forward design) + `archive/` (pre-rebuild PRDs) |
+| `_recovered/` | **Gitignored.** Local read-only staging of the recovered build |
 | `_recovery/` | Recovery reconnaissance report |
-| `RESTORATION.md` | The phased rebuild execution guide (start here next session) |
+| `PLAN.md` | Execution ledger (F0–F8 finalization) — start here |
+| `RESTORATION.md` | Recovery history |
 
 ## Deployment
 
-GitHub Pages (`VITE_BASE=/Roster_Builder/`) and Netlify (root) from the same build. Reconnected
-to the public repo **mibarnes/Roster_Builder**; the hardened build replaces the old `main` (Phase 7).
+GitHub Pages (`VITE_BASE=/Roster_Builder/`) and Netlify (root) from the same pnpm build,
+publishing from `main`. Public repo **mibarnes/Roster_Builder** — confirm-before-push doctrine.
