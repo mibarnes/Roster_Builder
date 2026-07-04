@@ -11,7 +11,7 @@ describe('pilot data path (bundled)', () => {
   it.each(['florida-gators', 'miami-hurricanes'])(
     '%s loads real players, starters, and a UI formation',
     async (teamId) => {
-      const loaded = await loadPlayerPipeline(teamId, 'bundled')
+      const loaded = await loadPlayerPipeline(teamId)
       expect(loaded.warnings).toEqual([])
       expect(loaded.pipeline.players.length).toBeGreaterThan(80)
       expect(loaded.pipeline.starters.length).toBeGreaterThan(20)

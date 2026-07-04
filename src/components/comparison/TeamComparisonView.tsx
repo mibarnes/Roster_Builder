@@ -37,7 +37,6 @@ import {
 } from './comparisonMath.ts'
 import type { PipelineMetrics } from '../../data/schema/pipeline.ts'
 import type { UIDataset, UIPlayer } from '../../data/schema/ui.ts'
-import type { DataMode } from '../../data/schema/dataset.ts'
 
 const DEPTH_RANK: Record<DepthGrade, number> = { THIN: 0, SOLID: 1, DEEP: 2 }
 const shortName = (label: string): string => label.split(' ').pop() ?? label
@@ -189,7 +188,6 @@ export interface TeamComparisonViewProps {
   leftTeamId: string
   leftUiData: UIDataset | null
   leftMetrics: PipelineMetrics | null
-  dataMode: DataMode
   onBack: () => void
   /** Controlled right team (from the #/compare/:a/:b route); optional. */
   rightTeamId?: string
@@ -201,7 +199,6 @@ export default function TeamComparisonView({
   leftTeamId,
   leftUiData,
   leftMetrics,
-  dataMode,
   onBack,
   rightTeamId: rightTeamIdProp,
   onRightTeamChange,
@@ -246,7 +243,7 @@ export default function TeamComparisonView({
       setRightMetrics(null)
       setExpandedGroup(null)
       try {
-        const loaded = await loadPlayerPipeline(rightTeamId, dataMode)
+        const loaded = await loadPlayerPipeline(rightTeamId)
         if (!cancelled) {
           setRightUiData(mapPipelineToUI(loaded.pipeline))
           setRightMetrics(loaded.pipeline.metrics ?? null)
@@ -261,7 +258,7 @@ export default function TeamComparisonView({
     return () => {
       cancelled = true
     }
-  }, [rightTeamId, dataMode])
+  }, [rightTeamId])
 
   const leftOvr = leftMetrics?.team?.avgStarterOverall ?? computeTeamOvr(leftUiData)
   const rightOvr = rightMetrics?.team?.avgStarterOverall ?? computeTeamOvr(rightUiData)

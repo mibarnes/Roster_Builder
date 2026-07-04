@@ -1,5 +1,7 @@
 import { loadPlayerPipeline } from './pipeline/loadPlayerPipeline.ts'
+import { buildPlayerPipeline } from './pipeline/buildPlayerPipeline.ts'
 import { mapPipelineToUI } from './mapPipelineToUI.ts'
+import type { DatasetBySource } from './schema/dataset.ts'
 
 /**
  * H1 hardening — surface already-collected, zod-validated data:
@@ -12,7 +14,7 @@ import { mapPipelineToUI } from './mapPipelineToUI.ts'
  */
 describe('H1 surfaced data (florida-gators pilot)', () => {
   it('H1.1 — exposes the team returning-production summary for a pilot', async () => {
-    const { pipeline } = await loadPlayerPipeline('florida-gators', 'bundled')
+    const { pipeline } = await loadPlayerPipeline('florida-gators')
     const rp = pipeline.returningProduction
     expect(rp).not.toBeNull()
     // Real file value (CFBD /player/returning): 0.55 overall PPA.
@@ -28,7 +30,7 @@ describe('H1 surfaced data (florida-gators pilot)', () => {
   })
 
   it('H1.2 — threads full usage + PPA splits to the UI for a contributor', async () => {
-    const { pipeline } = await loadPlayerPipeline('florida-gators', 'bundled')
+    const { pipeline } = await loadPlayerPipeline('florida-gators')
     const ui = mapPipelineToUI(pipeline)
     const lagway = ui.allPlayers.find((p) => p.name === 'DJ Lagway')
     expect(lagway).toBeDefined()
@@ -48,7 +50,7 @@ describe('H1 surfaced data (florida-gators pilot)', () => {
   })
 
   it('H1.3 — threads a non-empty per-game log to the UI for a contributor', async () => {
-    const { pipeline } = await loadPlayerPipeline('florida-gators', 'bundled')
+    const { pipeline } = await loadPlayerPipeline('florida-gators')
     const ui = mapPipelineToUI(pipeline)
     const lagway = ui.allPlayers.find((p) => p.name === 'DJ Lagway')!
     expect(Array.isArray(lagway.perGame)).toBe(true)
@@ -59,9 +61,35 @@ describe('H1 surfaced data (florida-gators pilot)', () => {
     expect(Object.keys(first.stats).length).toBeGreaterThan(0)
   })
 
-  it('renders null returning-production + null detail for a team without context', async () => {
-    // 'mock' mode ships no context/advanced/perGame → all the new fields are null.
-    const { pipeline } = await loadPlayerPipeline('florida-gators', 'mock')
+  it('renders null returning-production + null detail for a dataset without context/advanced', () => {
+    // A minimal dataset with no advanced (usage/PPA) and no context (returning
+    // production) → all the H1 fields degrade to null, not throw. (Formerly covered
+    // via 'mock' mode; now exercised directly against buildPlayerPipeline.)
+    const dataset: DatasetBySource = {
+      roster: {
+        sourceId: 'cfbd-roster-v1',
+        sourceType: 'roster',
+        season: 2025,
+        players: [
+          { playerId: 'CFBD-1', name: 'Alex One', number: 1, side: 'OFF', position: 'QB', classYear: 'JR', isTransfer: false },
+        ],
+        depthChart: { offense: { QB: 'CFBD-1' }, defense: {} },
+      },
+      recruiting: {
+        sourceId: '247-v1',
+        sourceType: 'recruiting',
+        playerRecruitProfiles: [{ playerId: 'CFBD-1', name: 'Alex One', stars: 4, compositeRating: 0.9 }],
+      },
+      production: {
+        sourceId: 'cfbd-prod-v1',
+        sourceType: 'production',
+        season: 2025,
+        playerProduction: [{ playerId: 'CFBD-1', name: 'Alex One', YDS: 2500, TD: 20 }],
+      },
+      advanced: undefined,
+      context: undefined,
+    }
+    const pipeline = buildPlayerPipeline(dataset)
     expect(pipeline.returningProduction).toBeNull()
     const ui = mapPipelineToUI(pipeline)
     expect(ui.returningProduction).toBeNull()

@@ -54,7 +54,7 @@ describe('master-backed pipeline (all golden teams)', () => {
   })
 
   it('florida-gators: golden fields (headshot/HS/flags) surface to the UIPlayer', async () => {
-    const { pipeline } = await loadPlayerPipeline('florida-gators', 'bundled')
+    const { pipeline } = await loadPlayerPipeline('florida-gators')
     const ui = mapPipelineToUI(pipeline)
 
     // Every depth + roster player survived (no dropped flagged players).

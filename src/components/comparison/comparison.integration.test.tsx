@@ -9,8 +9,8 @@ import PositionDepthView from './PositionDepthView.tsx'
 describe('comparison on real pilot data (florida vs miami)', () => {
   it('computes position-group rows + group wins without throwing', async () => {
     const [fl, mia] = await Promise.all([
-      loadPlayerPipeline('florida-gators', 'bundled'),
-      loadPlayerPipeline('miami-hurricanes', 'bundled'),
+      loadPlayerPipeline('florida-gators'),
+      loadPlayerPipeline('miami-hurricanes'),
     ])
     const left = mapPipelineToUI(fl.pipeline)
     const right = mapPipelineToUI(mia.pipeline)
@@ -26,14 +26,14 @@ describe('comparison on real pilot data (florida vs miami)', () => {
   })
 
   it('groups a pilot roster by position side for the depth view', async () => {
-    const fl = await loadPlayerPipeline('florida-gators', 'bundled')
+    const fl = await loadPlayerPipeline('florida-gators')
     const ui = mapPipelineToUI(fl.pipeline)
     const offGroups = groupPlayersBySide(ui.allPlayers, 'ALL_OFFENSE')
     expect(offGroups.some((g) => g.players.length > 0)).toBe(true)
   })
 
   it('renders PositionDepthView groups for a pilot', async () => {
-    const fl = await loadPlayerPipeline('florida-gators', 'bundled')
+    const fl = await loadPlayerPipeline('florida-gators')
     const ui = mapPipelineToUI(fl.pipeline)
     render(<PositionDepthView allPlayers={ui.allPlayers} onPlayerClick={() => {}} side="ALL_OFFENSE" />)
     // Group headers render (QB / OL labels are always present as panels).

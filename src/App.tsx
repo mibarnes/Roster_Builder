@@ -18,7 +18,6 @@ import TeamComparisonView from './components/comparison/TeamComparisonView.tsx'
 import PositionDepthView from './components/comparison/PositionDepthView.tsx'
 import { EMPTY_COVERAGE, type PipelineMetrics } from './data/schema/pipeline.ts'
 import type { Formation, UIDataset, UIPlayer } from './data/schema/ui.ts'
-import type { DataMode } from './data/schema/dataset.ts'
 
 type Tab = 'offense' | 'defense' | 'ratings'
 type DepthMode = 'starters' | 'second-team' | 'all'
@@ -84,7 +83,6 @@ export default function App() {
 
   const selectedTeam = requireTeam(teamId)
   const teamAccentColor = selectedTeam.accentColor
-  const dataMode = (import.meta.env?.VITE_DATA_MODE as DataMode | undefined) ?? 'bundled'
   const logoSrc = teamLogoUrl(teamId)
 
   // ── Navigation helpers (URL is the source of truth for the active view) ──
@@ -106,7 +104,7 @@ export default function App() {
       setIsLoading(true)
       setLoadError('')
       try {
-        const loaded = await loadPlayerPipeline(teamId, dataMode)
+        const loaded = await loadPlayerPipeline(teamId)
         if (cancelled) return
         setRosterData(mapPipelineToUI(loaded.pipeline))
         setMetrics(loaded.pipeline.metrics ?? EMPTY_METRICS)
@@ -122,7 +120,7 @@ export default function App() {
     return () => {
       cancelled = true
     }
-  }, [dataMode, teamId])
+  }, [teamId])
 
   // Reset depth toggle to starters when team changes.
   useEffect(() => {
@@ -171,7 +169,6 @@ export default function App() {
         leftMetrics={metrics}
         rightTeamId={route.rightId}
         onRightTeamChange={(rightId) => navigate({ kind: 'compare', leftId: route.leftId, rightId })}
-        dataMode={dataMode}
         onBack={backToTeam}
       />
     )

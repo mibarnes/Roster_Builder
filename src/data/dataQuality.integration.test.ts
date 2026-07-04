@@ -11,7 +11,7 @@ import { mapPipelineToUI } from './mapPipelineToUI.ts'
  */
 describe('pilot data quality', () => {
   it.each(['florida-gators', 'miami-hurricanes'])('%s clears quality floors', async (teamId) => {
-    const loaded = await loadPlayerPipeline(teamId, 'bundled')
+    const loaded = await loadPlayerPipeline(teamId)
     const players = loaded.pipeline.players
     const cov = loaded.pipeline.coverage
     const ui = mapPipelineToUI(loaded.pipeline)

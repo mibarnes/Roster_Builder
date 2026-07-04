@@ -24,13 +24,9 @@ export interface DatasetBySource {
   master?: PlayerMasterSource
 }
 
-/** Honest data mode for a loaded dataset. */
-export type DataMode = 'bundled' | 'mock' | 'mock-fallback'
-
 /** Envelope returned by loadDataset. */
 export interface DatasetSummary {
   teamId: string
-  mode: DataMode
   datasetBySource: DatasetBySource
   warnings: string[]
 }

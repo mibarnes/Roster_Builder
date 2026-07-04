@@ -14,7 +14,7 @@ describe('PlayerModal — H1 surfaced sections', () => {
   let players: UIPlayer[]
 
   beforeAll(async () => {
-    const { pipeline } = await loadPlayerPipeline('florida-gators', 'bundled')
+    const { pipeline } = await loadPlayerPipeline('florida-gators')
     const ui = mapPipelineToUI(pipeline)
     players = ui.allPlayers
     lagway = players.find((p) => p.name === 'DJ Lagway')!
@@ -62,7 +62,7 @@ describe('PlayerModal — P4 golden-master overlay', () => {
   let players: UIPlayer[]
 
   beforeAll(async () => {
-    const { pipeline } = await loadPlayerPipeline('florida-gators', 'bundled')
+    const { pipeline } = await loadPlayerPipeline('florida-gators')
     players = mapPipelineToUI(pipeline).allPlayers
   })
 
