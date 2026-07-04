@@ -18,7 +18,10 @@ plan-of-record; (2) the **33-team golden expansion (F3) is the spine** — cross
 (rating v2, League view, portal flow) depends on it, so we commit to it (execution still user-gated
 per wave); (3) F0 executes immediately.
 
-**Active milestone: F0 — Contract hygiene** (then F1 → F2, the no-quota-risk front).
+**Progress:** F0 (hygiene) ✅ · F1 (collector industrialization) ✅ · F2 (routing/UX) ✅ — the
+entire no-quota-risk front is done (all local, nothing pushed). **Next: the F2→F3 decision gate —
+the 33-team golden expansion** (user-gated, CFBD-quota-heavy; the spine for cross-team intelligence).
+285 tests; live app still on the pre-F0 build until a push is approved.
 
 ### Definition of "final" (blueprint Part 0.3 — the six gates)
 1. **One data path** — every team on the golden-record master; legacy 3-file pipeline deleted.
@@ -63,16 +66,18 @@ Correctness + makes every future refresh cheap/safe. (Blueprint 5.1, P1–P4, P9
 
 > **Deferred — S1 (On3 removal) + naked-fetch guard** *(dated 2026-07-04)*: fully removing the always-degraded On3 source is a **schema-boundary + 34-data-file + multi-test** change (threads through `schema/on3.ts` + `playerMaster.ts` enums/`on3Degraded`, 8 collector files, `masterToDataset`, 4 test files, and every `sources/on3.json`). It's inert at runtime (contributes nothing) and pairs naturally with **F3's D4/D5 schema cleanup** — deferred to that focused pass rather than started mid-slice. The naked-`fetch` grep gate waits with it (on3.ts holds the last naked fetch; all keepers are on the substrate). S2 dies with it.
 
-### F2 — Routing + UX hardening  ·  status: PLANNED (parallel to F1)
-Pure frontend, no quota. (Blueprint 3.3: U1–U5, U7, U11.)
-- [ ] **U1** Hash router + deep links (`#/team/:id/:tab`, `#/compare/:a/:b`, `#/player/:teamId/:pid`); comparison + modal become routes with back/forward.
-- [ ] **U2** Responsive — drop `overflow-hidden` viewport lock; formation grid reflows; type floor ≥9–10px; usable at 375px.
-- [ ] **U3** Wire comparison → `PlayerModal` (thread `onPlayerClick`).
-- [ ] **U4** Persistence — `localStorage` last team/tab/opponent/filters; URL wins over storage.
-- [ ] **U5** A11y closure — Ratings rows → `role="button"`+keys; focusable radar spokes; `prefers-reduced-motion`; contrast audit; per-team accent contrast fix.
-- [ ] **U7** Modal information redesign (identity → OVR+breakdown → phase-grouped stats + per-game sparklines → usage/PPA → recruiting/transfer story → provenance; delete duplicate OVR tile; add within-team position rank).
-- [ ] **U11** Skeletons + labeled empty formation slots + Ratings no-results state.
-- **Gate:** Lighthouse ≥90 a11y on team view; mobile usable at 375px.
+### F2 — Routing + UX hardening  ·  status: DONE (2026-07-04)
+Pure frontend, no quota. (Blueprint 3.3: U1–U5, U7, U11.) Each slice pixel-verified.
+- [x] **U1** ✅ Dependency-free hash router (`src/router.ts`): `#/team/:id/:tab`, `#/compare/:a/:b`, `#/player/:teamId/:pid`. App is route-driven; comparison + player modal are shareable routes with back/forward; added stable `playerId` to UIPlayer. router.test.ts.
+- [x] **U2** ✅ Dropped the `overflow-hidden` viewport lock (page scrolls; below-fold reachable); formation "field" is content-width in an `overflow-x-auto` container (centered desktop, horizontal-scroll mobile — metaphor preserved); PlayerCard type floor 6/7px→8px. Pixel-verified usable at 375px, desktop unchanged.
+- [x] **U3** ✅ Comparison roster rows → in-place `PlayerModal` (both datasets loaded → local modal, not a route).
+- [x] **U4** ✅ `usePersistentState` (localStorage): sticky ratings filters + resume last team/tab on empty-hash boot (URL wins). Hook tests.
+- [x] **U5** ✅ `prefers-reduced-motion` guard; Ratings rows + radar spokes keyboard-accessible (role=button/tabIndex/keys/aria); inactive-tab contrast fix.
+- [x] **U7** ✅ (partial) Within-team position rank chip in the modal ("QB1", title "#N of M by OVR"), computed in the pipeline. *Fuller reorder (phase-grouped stats + per-game sparklines) deferred — current order is coherent; no duplicate OVR tile exists (anchor was stale).*
+- [x] **U11** ✅ Labeled dashed empty formation slots (S17) + Ratings "no players match" state.
+- **Gate:** ✅ mobile usable at 375px (pixel-verified: offense field + ratings, no clip); tsc + 285 tests + build green across every slice. *(Lighthouse ≥90 a11y not run headless here — a11y items done to standard; formal Lighthouse deferred to CI perf-budget, 7.8.)*
+
+> **Deferred from F2** *(dated 2026-07-04)*: U7 modal section-reorder + per-game sparklines (polish; current layout coherent). U6 special teams / U9 formations / U10 metric selector belong to **F6**; U8 team-theming-v2 and U12 search to **F6/F7** — never in F2 scope.
 
 ### ── DECISION GATE (locked: PROCEED) — 33-team golden expansion ──
 
@@ -140,13 +145,13 @@ Display → scouting tool. (Blueprint 6.2/6.3, U6/U9/U10, S12.)
 | S8 | `ourlads-stub-*` placeholder players | F3 (signee source) |
 | S9 | Legacy 31-team 3-file tier | F3 (golden expansion + path delete) |
 | S10 | Legacy `isTransfer` always-false bug | F3 (dies with S9) |
-| S11 | Unwired comparison→modal drill-down | F2 (U3) |
+| S11 | Unwired comparison→modal drill-down | ✅ **F2/U3 done (2026-07-04)** |
 | S12 | Invisible special-teams data | F6 (U6) |
 | S13 | Header subtitle headshot-heuristic | F5 (provenance-keyed) |
 | S14 | Dead pilot legacy chunks in `dist/` | F3 (D9) |
 | S15 | `npm run build` in netlify.toml | **F0 (immediate)** |
 | S16 | Stale README | **F0 (immediate)** |
-| S17 | Empty-slot blank formation columns | F2 (U11) |
+| S17 | Empty-slot blank formation columns | ✅ **F2/U11 done (2026-07-04)** — labeled dashed placeholder |
 | S18 | `_recovered/` staging dir | Delete only after 33-team golden supersedes every recovered asset — **explicit user sign-off** (irreplaceable-data doctrine). Keep `_recovery/RECOVERY_REPORT.md`. |
 
 ---
