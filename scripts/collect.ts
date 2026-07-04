@@ -466,12 +466,15 @@ async function collectTeam(team: Team, closure: RecruitingClosure): Promise<Team
     p.isRedshirt = inferRedshirt(p.classYear ?? null, earliestYearByPid.get(p.playerId) ?? null, SEASON, Boolean(p.isTransfer))
   }
 
-  // ── Validate against schemas BEFORE writing (fail loud, no garbage) ─────────
-  const validRoster = validate(RosterSourceSchema, roster, `${team.id}/roster.json`)
-  const validRecruiting = validate(RecruitingSourceSchema, recruiting, `${team.id}/recruiting.json`)
-  const validProduction = validate(ProductionSourceSchema, production, `${team.id}/production.json`)
-  const validAdvanced = validate(AdvancedSourceSchema, advanced, `${team.id}/advanced.json`)
-  const validContext = validate(ContextSourceSchema, context, `${team.id}/context.json`)
+  // ── Validate the in-memory sources BEFORE they feed the master (fail loud). The
+  //    legacy roster/recruiting/production/advanced/context.json are no longer
+  //    written to disk (D1b) — every team is served from player-master.json — but
+  //    the validated data still flows INTO the reconciled master below. ──────────
+  validate(RosterSourceSchema, roster, `${team.id}/roster (in-memory)`)
+  const validRecruiting = validate(RecruitingSourceSchema, recruiting, `${team.id}/recruiting (in-memory)`)
+  const validProduction = validate(ProductionSourceSchema, production, `${team.id}/production (in-memory)`)
+  const validAdvanced = validate(AdvancedSourceSchema, advanced, `${team.id}/advanced (in-memory)`)
+  const validContext = validate(ContextSourceSchema, context, `${team.id}/context (in-memory)`)
 
   const teamDir = path.join(COLLECTED, team.id)
   await mkdir(teamDir, { recursive: true })
@@ -487,16 +490,11 @@ async function collectTeam(team: Team, closure: RecruitingClosure): Promise<Team
 
   let masterStats: NonNullable<TeamResult['stats']>['master']
   try {
-    // Preserve prior vintage: read OLD files from teamDir, write merged history to staging.
-    await recordHistory(teamDir, writeDir, ['roster.json', 'recruiting.json', 'production.json', 'advanced.json', 'context.json'])
+    // Preserve prior vintage: read the OLD master's collectedAt, append to _history.
+    await recordHistory(teamDir, writeDir, ['player-master.json'])
 
     const write = (file: string, data: unknown) =>
       writeFile(path.join(writeDir, file), `${JSON.stringify(data, null, 2)}\n`, 'utf8')
-    await write('roster.json', validRoster)
-    await write('recruiting.json', validRecruiting)
-    await write('production.json', validProduction)
-    await write('advanced.json', validAdvanced)
-    await write('context.json', validContext)
 
     // ══════════════════════════════════════════════════════════════════════════
     //  PILOT-DEEPENING: ESPN 2026 spine → reconciled golden player-master.json
