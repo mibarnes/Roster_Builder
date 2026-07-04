@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Texas Tech Red Raiders",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/texas-tech/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:texas-tech"
+      }
+    ],
+    "collectedAt": "2026-07-04T13:03:42.451Z",
+    "collectorVersion": "e394909",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

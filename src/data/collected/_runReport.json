@@ -1,106 +1,52 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-04T13:01:46.359Z",
-  "collectorVersion": "14b7848",
+  "generatedAt": "2026-07-04T13:04:05.741Z",
+  "collectorVersion": "e394909",
   "season": 2025,
   "rosterSeason": 2026,
-  "durationMs": 175001,
+  "durationMs": 117790,
   "targets": [
-    "rutgers-scarlet-knights",
-    "indiana-hoosiers",
-    "illinois-fighting-illini",
-    "purdue-boilermakers",
-    "northwestern-wildcats",
-    "ucla-bruins"
+    "utah-utes",
+    "arizona-state-sun-devils",
+    "texas-tech-red-raiders",
+    "byu-cougars",
+    "baylor-bears",
+    "tcu-horned-frogs"
   ],
-  "teamsOk": 6,
-  "teamsFailed": 0,
+  "teamsOk": 3,
+  "teamsFailed": 3,
   "closure": {
     "nationalRows": 23185,
     "nationalWithAthleteId": 11466,
     "portalRows": 12304
   },
   "net": {
-    "requests": 161,
+    "requests": 158,
     "cacheHits": 0,
-    "retries": 0
+    "retries": 51
   },
   "teams": [
     {
-      "id": "rutgers-scarlet-knights",
-      "label": "Rutgers Scarlet Knights",
+      "id": "utah-utes",
+      "label": "Utah Utes",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
-        "rosterPlayers": 125,
+        "rosterPlayers": 110,
         "offenseSlots": 28,
-        "defenseSlots": 28,
-        "recruitingPct": 79.2,
-        "productionPct": 44.8,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 126,
-          "matchedByIdPct": 83.8,
-          "headshotPct": 76.2,
-          "highSchoolPct": 59.5,
-          "transfersRated": 13,
-          "transfersTotal": 13,
-          "officialEngine": "nuxt-sidearm",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "indiana-hoosiers",
-      "label": "Indiana Hoosiers",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 97,
-        "offenseSlots": 29,
-        "defenseSlots": 31,
-        "recruitingPct": 79.4,
-        "productionPct": 55.7,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 90,
-          "masterCount": 110,
-          "matchedByIdPct": 82.8,
-          "headshotPct": 80.9,
-          "highSchoolPct": 53.6,
-          "transfersRated": 20,
-          "transfersTotal": 22,
-          "officialEngine": "nuxt-sidearm",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "illinois-fighting-illini",
-      "label": "Illinois Fighting Illini",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 112,
-        "offenseSlots": 39,
-        "defenseSlots": 33,
-        "recruitingPct": 84.8,
+        "defenseSlots": 17,
+        "recruitingPct": 70,
         "productionPct": 50.9,
-        "hometownPct": 99.1,
+        "hometownPct": 100,
         "master": {
           "spineCount": 100,
-          "masterCount": 135,
-          "matchedByIdPct": 87,
-          "headshotPct": 72.6,
-          "highSchoolPct": 40,
-          "transfersRated": 22,
-          "transfersTotal": 24,
+          "masterCount": 118,
+          "matchedByIdPct": 87.9,
+          "headshotPct": 83.1,
+          "highSchoolPct": 50,
+          "transfersRated": 24,
+          "transfersTotal": 26,
           "officialEngine": "nuxt-sidearm",
           "officialDegraded": false,
           "on3Degraded": true
@@ -108,26 +54,26 @@
       }
     },
     {
-      "id": "purdue-boilermakers",
-      "label": "Purdue Boilermakers",
+      "id": "arizona-state-sun-devils",
+      "label": "Arizona State Sun Devils",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
-        "rosterPlayers": 114,
-        "offenseSlots": 30,
-        "defenseSlots": 25,
-        "recruitingPct": 75.4,
-        "productionPct": 50,
-        "hometownPct": 99.1,
+        "rosterPlayers": 101,
+        "offenseSlots": 33,
+        "defenseSlots": 30,
+        "recruitingPct": 90.1,
+        "productionPct": 51.5,
+        "hometownPct": 100,
         "master": {
           "spineCount": 100,
-          "masterCount": 130,
-          "matchedByIdPct": 82.6,
-          "headshotPct": 75.4,
-          "highSchoolPct": 26.9,
-          "transfersRated": 44,
-          "transfersTotal": 49,
+          "masterCount": 127,
+          "matchedByIdPct": 85.3,
+          "headshotPct": 77.2,
+          "highSchoolPct": 45.7,
+          "transfersRated": 43,
+          "transfersTotal": 44,
           "officialEngine": "sidearm-json",
           "officialDegraded": false,
           "on3Degraded": true
@@ -135,58 +81,55 @@
       }
     },
     {
-      "id": "northwestern-wildcats",
-      "label": "Northwestern Wildcats",
+      "id": "texas-tech-red-raiders",
+      "label": "Texas Tech Red Raiders",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
         "rosterPlayers": 106,
-        "offenseSlots": 30,
-        "defenseSlots": 19,
-        "recruitingPct": 81.1,
-        "productionPct": 50,
-        "hometownPct": 99.1,
+        "offenseSlots": 33,
+        "defenseSlots": 29,
+        "recruitingPct": 80.2,
+        "productionPct": 66,
+        "hometownPct": 100,
         "master": {
           "spineCount": 100,
-          "masterCount": 119,
-          "matchedByIdPct": 88.8,
-          "headshotPct": 82.4,
-          "highSchoolPct": 62.2,
-          "transfersRated": 16,
-          "transfersTotal": 16,
-          "officialEngine": "sidearm-json",
+          "masterCount": 120,
+          "matchedByIdPct": 85.5,
+          "headshotPct": 82.5,
+          "highSchoolPct": 51.7,
+          "transfersRated": 24,
+          "transfersTotal": 26,
+          "officialEngine": "nuxt-sidearm",
           "officialDegraded": false,
           "on3Degraded": true
         }
       }
     },
     {
-      "id": "ucla-bruins",
-      "label": "UCLA Bruins",
-      "ok": true,
-      "error": null,
+      "id": "byu-cougars",
+      "label": "BYU Cougars",
+      "ok": false,
+      "error": "CFBD request failed (429): https://api.collegefootballdata.com/recruiting/players?year=2023&team=BYU :: {\"message\":\"Monthly call quota exceeded.\"}",
       "warnings": [],
-      "stats": {
-        "rosterPlayers": 100,
-        "offenseSlots": 31,
-        "defenseSlots": 24,
-        "recruitingPct": 77,
-        "productionPct": 51,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 135,
-          "matchedByIdPct": 77.1,
-          "headshotPct": 71.9,
-          "highSchoolPct": 39.3,
-          "transfersRated": 35,
-          "transfersTotal": 37,
-          "officialEngine": "sidearm-json",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
+      "stats": null
+    },
+    {
+      "id": "baylor-bears",
+      "label": "Baylor Bears",
+      "ok": false,
+      "error": "CFBD request failed (429): https://api.collegefootballdata.com/roster?year=2025&team=Baylor :: {\"message\":\"Monthly call quota exceeded.\"}",
+      "warnings": [],
+      "stats": null
+    },
+    {
+      "id": "tcu-horned-frogs",
+      "label": "TCU Horned Frogs",
+      "ok": false,
+      "error": "CFBD request failed (429): https://api.collegefootballdata.com/stats/player/season?year=2025&team=TCU :: {\"message\":\"Monthly call quota exceeded.\"}",
+      "warnings": [],
+      "stats": null
     }
   ]
 }
