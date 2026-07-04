@@ -237,6 +237,15 @@ export default function PlayerModal({ player, onClose, returnFocusEl }: PlayerMo
                 <span className="text-gray-400 text-sm font-semibold">
                   #{player.number} • {player.pos}
                 </span>
+                {player.posRank != null && player.posGroupSize > 1 && (
+                  <span
+                    className="text-[10px] font-black text-white px-2 py-0.5 rounded-full team-accent-bg"
+                    title={`${player.pos} #${player.posRank} of ${player.posGroupSize} on the team by OVR`}
+                  >
+                    {player.pos}
+                    {player.posRank}
+                  </span>
+                )}
                 <span
                   className={`text-xs font-bold ${classYear === 'FR' ? 'text-green-400' : classYear === 'SO' ? 'text-blue-400' : classYear === 'JR' ? 'text-amber-400' : classYear ? 'text-red-400' : 'text-gray-400'}`}
                 >

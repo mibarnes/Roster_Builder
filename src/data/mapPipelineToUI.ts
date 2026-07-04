@@ -75,6 +75,8 @@ const toUiStats = (stats: Record<string, number> = {}): Record<string, number> =
 const toUiPlayer = (player: PipelinePlayer, id: number): UIPlayer => ({
   id,
   playerId: player.playerId,
+  posRank: null,
+  posGroupSize: 0,
   name: player.bio.name,
   number: player.bio.number,
   pos: player.bio.position,
@@ -203,6 +205,23 @@ export const mapPipelineToUI = (pipeline: PlayerPipeline): UIDataset => {
       player.bio.side === 'OFF' ? 'OFF' : player.bio.side === 'DEF' ? 'DEF' : 'ST'
     return { ...ui, side }
   })
+
+  // U7: within-team position rank — rank rated players by OVR inside their pos group.
+  const byPos = new Map<string, UIPlayer[]>()
+  for (const p of allPlayers) {
+    const arr = byPos.get(p.pos)
+    if (arr) arr.push(p)
+    else byPos.set(p.pos, [p])
+  }
+  for (const group of byPos.values()) {
+    group
+      .filter((p) => p.isRated)
+      .sort((a, b) => b.ovr - a.ovr)
+      .forEach((p, i) => {
+        p.posRank = i + 1
+      })
+    for (const p of group) p.posGroupSize = group.length
+  }
 
   return {
     offensiveStarters,

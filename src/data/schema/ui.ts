@@ -62,6 +62,10 @@ export interface UIPlayer {
   ovr: number
   /** False when the player is NR (overall === null upstream). Render "NR"/"—". */
   isRated: boolean
+  /** Rank by OVR within this team's position group (1 = best); null if unrated (U7). */
+  posRank: number | null
+  /** Number of players in this position group on the team (U7). */
+  posGroupSize: number
   /** Which model path produced the OVR ('blended' | 'recruiting-projection' | …). */
   ratingMethod: RatingMethod
   /** Sub-score breakdown for the modal. */
