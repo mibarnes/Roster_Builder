@@ -10,7 +10,7 @@ interface OffenseFormationProps {
 
 export default function OffenseFormation({ offensiveStarters, onPlayerClick }: OffenseFormationProps) {
   return (
-    <div className="h-full flex flex-col justify-start gap-5 py-3 px-4">
+    <div className="w-max mx-auto flex flex-col justify-start gap-5 py-3 px-4">
       <div className="flex justify-center gap-3">
         {offensiveLineSlots.map((slot, i) => (
           <PositionGroup key={slot} players={offensiveStarters[slot]} onClick={onPlayerClick} baseDelay={i * 80} />

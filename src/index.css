@@ -23,9 +23,8 @@ body {
 }
 
 #root {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  width: 100%;
+  min-height: 100%;
 }
 
 /* ── Per-team accent helpers (driven by the --team-accent CSS var) ── */

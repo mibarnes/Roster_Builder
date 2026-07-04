@@ -179,7 +179,7 @@ export default function App() {
 
   return (
     <div
-      className="h-screen w-screen flex flex-col overflow-hidden select-none font-sans bg-card-bg"
+      className="min-h-screen w-full flex flex-col select-none font-sans bg-card-bg"
       style={
         {
           '--team-accent': teamAccentColor,
@@ -412,7 +412,7 @@ export default function App() {
       })()}
 
       {/* ── Main Content ── */}
-      <main className="flex-1 overflow-hidden relative">
+      <main className="flex-1 relative">
         {isFormationTab && (
           <div className="absolute inset-0">
             {[...Array(11)].map((_, i) => (
@@ -420,13 +420,13 @@ export default function App() {
             ))}
           </div>
         )}
-        <div className="relative h-full">
+        <div className="relative">
           {tab === 'offense' && depthTeam === 'all' && (
             <PositionDepthView allPlayers={allPlayers} onPlayerClick={onPlayerClick} side="ALL_OFFENSE" />
           )}
           {tab === 'offense' && depthTeam !== 'all' && (
-            <div className="h-full overflow-y-auto py-3">
-              <div className="mx-auto max-w-6xl h-full rounded-2xl border border-gray-900 bg-black px-3">
+            <div className="py-3">
+              <div className="mx-auto max-w-6xl rounded-2xl border border-gray-900 bg-black px-3 overflow-x-auto">
                 <OffenseFormation offensiveStarters={visibleOffense} onPlayerClick={onPlayerClick} />
               </div>
             </div>
@@ -435,8 +435,8 @@ export default function App() {
             <PositionDepthView allPlayers={allPlayers} onPlayerClick={onPlayerClick} side="ALL_DEFENSE" />
           )}
           {tab === 'defense' && depthTeam !== 'all' && (
-            <div className="h-full overflow-y-auto py-3">
-              <div className="mx-auto max-w-6xl h-full rounded-2xl border border-gray-900 bg-black px-3">
+            <div className="py-3">
+              <div className="mx-auto max-w-6xl rounded-2xl border border-gray-900 bg-black px-3 overflow-x-auto">
                 <DefenseFormation defensiveStarters={visibleDefense} onPlayerClick={onPlayerClick} />
               </div>
             </div>

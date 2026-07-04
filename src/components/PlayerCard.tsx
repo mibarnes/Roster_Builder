@@ -109,14 +109,14 @@ export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: Pl
 
           <div className="flex justify-center gap-1 min-h-[12px] flex-wrap">
             {isRS && (
-              <span className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-rs-purple">RS</span>
+              <span className="text-[8px] font-black text-white px-1.5 py-0.5 rounded-full bg-rs-purple">RS</span>
             )}
             {player.isTransfer && (
-              <span className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-portal-orange">PTL</span>
+              <span className="text-[8px] font-black text-white px-1.5 py-0.5 rounded-full bg-portal-orange">PTL</span>
             )}
             {player.newIn2026 && (
               <span
-                className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-sky-600"
+                className="text-[8px] font-black text-white px-1.5 py-0.5 rounded-full bg-sky-600"
                 title="New on the 2026 roster — no 2025 production"
               >
                 NEW
@@ -124,7 +124,7 @@ export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: Pl
             )}
             {player.isWalkOn && (
               <span
-                className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-gray-500"
+                className="text-[8px] font-black text-white px-1.5 py-0.5 rounded-full bg-gray-500"
                 title="Walk-on — on the roster, no recruiting record"
               >
                 WO
@@ -132,7 +132,7 @@ export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: Pl
             )}
             {player.isStub && (
               <span
-                className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-gray-600"
+                className="text-[8px] font-black text-white px-1.5 py-0.5 rounded-full bg-gray-600"
                 title="Depth-chart only — no roster/recruiting/production data"
               >
                 DEPTH
@@ -140,7 +140,7 @@ export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: Pl
             )}
             {!player.isStub && isFuzzy && (
               <span
-                className="text-[6px] font-black text-white px-1.5 py-0.5 rounded-full bg-yellow-700"
+                className="text-[8px] font-black text-white px-1.5 py-0.5 rounded-full bg-yellow-700"
                 title="Recruiting matched by fuzzy name — review"
               >
                 ~MATCH
@@ -154,7 +154,7 @@ export default function PlayerCard({ player, isStarter, onClick, delay = 0 }: Pl
 
       {!isStarter && (
         <div className="text-center mt-1">
-          <span className="text-[7px] font-bold text-gray-500 bg-gray-900 px-2 py-0.5 rounded-full">BACKUP</span>
+          <span className="text-[8px] font-bold text-gray-400 bg-gray-900 px-2 py-0.5 rounded-full">BACKUP</span>
         </div>
       )}
     </div>

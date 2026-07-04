@@ -10,7 +10,7 @@ interface DefenseFormationProps {
 
 export default function DefenseFormation({ defensiveStarters, onPlayerClick }: DefenseFormationProps) {
   return (
-    <div className="h-full flex flex-col justify-start gap-5 py-3 px-4">
+    <div className="w-max mx-auto flex flex-col justify-start gap-5 py-3 px-4">
       <div className="flex justify-center gap-3">
         {defensiveFrontSlots.map((slot, i) => (
           <PositionGroup key={slot} players={defensiveStarters[slot]} onClick={onPlayerClick} baseDelay={i * 80} />
