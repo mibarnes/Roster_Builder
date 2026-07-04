@@ -19,11 +19,16 @@ plan-of-record; (2) the **33-team golden expansion (F3) is the spine** — cross
 per wave); (3) F0 executes immediately.
 
 **Progress:** F0 (hygiene) ✅ · F1 (collector industrialization) ✅ · F2 (routing/UX) ✅ —
-**F0–F2 PUSHED LIVE 2026-07-04** (deploy verified; live bundle serves the F2 hash-router). F3 is
-**in flight**: **P5 (registry backfill) ✅ · P6 (official-site engine framework + sidearm-json) ✅ ·
-Wave 1 ✅** (5 teams collected golden). **7 of 33 teams are now golden** (2 pilots + Clemson, Auburn,
-Texas A&M, Georgia, Tennessee); **26 remain across ~5 more waves** (user-gated per wave). Wave 1 data
-committed **local-only** (F3 data push is a separate later gate). 307 tests; tsc strict clean.
+**F0–F2 PUSHED LIVE 2026-07-04** (deploy verified; live bundle serves the F2 hash-router). F3
+collection is **COMPLETE**: **P5 (registry backfill) ✅ · P6 (official-site engine framework +
+sidearm-json) ✅ · Waves 1–5 ✅ — ALL 33 TEAMS GOLDEN** (2026-07-04). Every team ships a golden
+`player-master.json` (100% spine→master coverage); the collector ran clean across all 5 waves
+(**0 failed / 0 retries / no CFBD rate-limit hit** — ~950 requests total). 24 teams got the full
+official HS overlay (16 nuxt-sidearm + 8 sidearm-json); 9 degrade to hometown+recruiting only (Notre
+Dame presto + the 7 non-Sidearm sites) — all still fully golden via ESPN + CFBD. 359 tests; tsc
+strict clean. **All F3 collection committed local-only** (data push is a separate later gate).
+**Next: D1 — app-side path unification** (the legacy 3-file path is now dead for every team; delete it
++ introduce `tier:'gold'` / retire `isPilot`), then D4/D5/S8.
 
 > **P6 anchor-drift finding (2026-07-04):** the blueprint assumed `sidearm-json` was a distinct
 > `/api/roster`-endpoint CMS. Empirical probe of all 31 non-pilot official sites showed the reality:
@@ -93,14 +98,14 @@ Pure frontend, no quota. (Blueprint 3.3: U1–U5, U7, U11.) Each slice pixel-ver
 
 ### ── DECISION GATE (locked: PROCEED) — 33-team golden expansion ──
 
-### F3 — Golden expansion waves  ·  status: IN PROGRESS (P5+P6+Wave1 done; ~5 waves remain, user-gated)
+### F3 — Golden expansion waves  ·  status: COLLECTION COMPLETE (all 33 golden; D1/D4/D5/S8 remain)
 The tier collapse — collapses the two-path debt. (Blueprint 5.2, P5–P8, D1/D4/D5, S8–S10.)
 - [x] **P5 Registry backfill** ✅ (2026-07-04) — `espnId` for all 33 (ESPN team API) + verified `officialRosterUrl` + `officialEngine` hint (empirically probed across all 30 resolving sites). Preflight validator (`scripts/collect/preflight.ts`): espnId/cfbdQuery/ourlads = errors (load-bearing); official URL/engine = degrade-warnings. Wired into `collect.ts` (fails fast, no network) + a `--teams=` wave selector.
 - [x] **P6 Official-site engine framework** ✅ (2026-07-04) — added `sidearm-json` (snake_case Sidearm island; `parseSidearmJsonRoster`) routed from `parseOfficialHtml`; kept `nuxt-sidearm`/`wmt-presto`; unknown → degrade+telemetry, never throws. Engine map: **15 nuxt-sidearm / 8 sidearm-json / 1 wmt-presto / 7 unknown-degrade**. (See the P6 anchor-drift note above — "sidearm-json" turned out to be a snake_case variant of the *same* Nuxt island, not a separate endpoint CMS.)
-- [~] **Wave rollout** — waves of ~5 (quota-safe via F1 limiter), verify `_runReport` + data-QA gate, **commit per wave, user-approved.**
-  - [x] **Wave 1** ✅ (2026-07-04) — Clemson, Auburn, Texas A&M (sidearm-json) + Georgia, Tennessee (nuxt-sidearm). 136 requests / 0 retries, 100% spine→master coverage, report 0 warnings; pixel-verified Clemson + Auburn render golden. **Committed local-only.**
-  - [ ] **Waves 2–6** — the remaining 26 teams (incl. the 7 degrade-expected schools). Each wave: `--teams=…,… --force-nonpilot`, verify report, commit.
-  - Note: `loadTeamData` auto-serves any team with `player-master.json`, so collecting == flipping to gold (masterPipeline test derives the golden set from disk). A formal registry `tier` field + `isPilot` retirement is folded into **D1** (final wave), not per-wave.
+- [x] **Wave rollout — ALL 33 GOLDEN** ✅ (2026-07-04) — 5 waves, all clean (0 failed / 0 retries / no rate-limit; ~950 CFBD requests total):
+  - Wave 1: Clemson, Auburn, Texas A&M, Georgia, Tennessee · Wave 2: Oklahoma, Ole Miss, Texas, Missouri, Vanderbilt, Miss State · Wave 3: UNC, NC State, Duke, Wake, Louisville, Pitt · Wave 4: FSU, Virginia, VT, Syracuse, BC, Stanford, Notre Dame · Wave 5: Arkansas, Kentucky, LSU, South Carolina, Cal, Georgia Tech, SMU.
+  - Official overlay: 24 full (16 nuxt-sidearm + 8 sidearm-json); 9 degraded to hometown+recruiting (Notre Dame presto + the 7 non-Sidearm sites — HS field only, non-load-bearing). Every team 100% spine→master. Pixel-verified golden (incl. a degraded team, LSU). **Committed local-only.**
+  - Note: `loadTeamData` auto-serves any team with `player-master.json`, so collecting == flipping to gold (masterPipeline test derives the golden set from disk — now all 33). A formal registry `tier` field + `isPilot` retirement is folded into **D1** below.
 - [ ] **D1 App-side unification** — delete the legacy 3-file path the milestone the last wave lands; `masterToDataset` becomes the only adapter. The `isTransfer`-always-false legacy bug (S10) dies with the path. Introduce `tier:'gold'` + retire `isPilot` here.
 - [ ] **D4/D5 cleanup** — remove mock mode + `VITE_DATA_MODE` + legacy `STAT_ABBREVIATIONS` (S7); type the join engine against `z.infer`, drop runtime `.passthrough()`. **+ S1 On3 removal + naked-fetch guard land here** (deferred from F1).
 - [ ] **S8 Signee source** — CFBD recruiting-commits synthetic spine → signed HS players get real records flagged `notYetEnrolled` instead of `ourlads-stub-*`.
@@ -173,12 +178,15 @@ Display → scouting tool. (Blueprint 6.2/6.3, U6/U9/U10, S12.)
 
 ## Completed work (history — condensed)
 
-- **F0–F2 pushed live + F3 P5/P6 + Wave 1 (2026-07-04)** — pushed the 22 local F0–F2 commits to
-  `main`; Pages deploy verified (live bundle serves the F2 hash-router). Backfilled the registry for
-  all 33 (espnId + officialRosterUrl + officialEngine) with a preflight validator; added the
-  `sidearm-json` official-site engine (unlocks 8 snake_case-Sidearm schools). Ran F3 Wave 1 — 5 teams
-  (Clemson/Auburn/Texas A&M/Georgia/Tennessee) collected golden (0 failures/retries, 100% coverage),
-  pixel-verified. **7 of 33 teams now golden.** 307 tests; tsc strict clean. Wave 1 data local-only.
+- **F0–F2 pushed live + F3 collection complete — all 33 golden (2026-07-04)** — pushed the 22 local
+  F0–F2 commits to `main` (Pages deploy verified). Backfilled the registry for all 33 (espnId +
+  officialRosterUrl + officialEngine) with a preflight validator + `--teams=` wave selector; added
+  the `sidearm-json` official-site engine (unlocks 8 snake_case-Sidearm schools). Ran **F3 Waves 1–5
+  → every team golden**: 5 clean runs (0 failed / 0 retries / no CFBD rate-limit; ~950 requests),
+  100% spine→master coverage each; 24 full official overlays (16 nuxt-sidearm + 8 sidearm-json), 9
+  degraded to hometown+recruiting (Notre Dame presto + 7 non-Sidearm — HS-only gap, non-load-bearing).
+  Pixel-verified golden incl. a degraded team (LSU). masterPipeline test generalized to a disk-derived
+  golden set (now all 33). **359 tests; tsc strict clean.** All F3 data committed local-only.
 
 - **M1–M6 rebuild (2026-06-12)** — hardened-TS scaffold on pnpm; typed contracts + 33-team
   `teamRegistry.ts`; TS collector (pilots-only, fail-loud); data layer (lazy per-team JSON,
