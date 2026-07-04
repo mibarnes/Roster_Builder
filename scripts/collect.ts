@@ -16,7 +16,7 @@
  * _history.json (collectedAt timeline) — no silent clobber.
  */
 import { execFileSync } from 'node:child_process'
-import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { mkdir, readdir, readFile, rename, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { z } from 'zod'
@@ -204,13 +204,12 @@ interface HistoryEntry { file: string; collectedAt: string; collectorVersion: st
  * single serialized read-modify-write so the timeline can't be corrupted by
  * concurrent updates. Fail-soft: a missing/corrupt prior file = no entry.
  */
-async function recordHistory(teamDir: string, files: string[]): Promise<void> {
-  const historyPath = path.join(teamDir, '_history.json')
+async function recordHistory(readDir: string, writeDir: string, files: string[]): Promise<void> {
   const supersededAt = nowIso()
   const newEntries: HistoryEntry[] = []
   for (const file of files) {
     try {
-      const raw = JSON.parse(await readFile(path.join(teamDir, file), 'utf8')) as {
+      const raw = JSON.parse(await readFile(path.join(readDir, file), 'utf8')) as {
         provenance?: { collectedAt?: string; collectorVersion?: string }
       }
       const collectedAt = raw.provenance?.collectedAt
@@ -223,15 +222,39 @@ async function recordHistory(teamDir: string, files: string[]): Promise<void> {
   }
   if (newEntries.length === 0) return
 
+  // Read the prior _history from the OLD dir, append, write the merged log to the
+  // staging dir so it commits atomically with the rest of the team's outputs.
   let history: HistoryEntry[] = []
   try {
-    const parsed = JSON.parse(await readFile(historyPath, 'utf8')) as unknown
+    const parsed = JSON.parse(await readFile(path.join(readDir, '_history.json'), 'utf8')) as unknown
     if (Array.isArray(parsed)) history = parsed as HistoryEntry[]
   } catch {
     history = []
   }
   history.push(...newEntries)
-  await writeFile(historyPath, `${JSON.stringify(history, null, 2)}\n`, 'utf8')
+  await writeFile(path.join(writeDir, '_history.json'), `${JSON.stringify(history, null, 2)}\n`, 'utf8')
+}
+
+/**
+ * Atomic commit for a team's staged outputs: rename every file from the sibling
+ * `.staging` dir into the real team dir (one directory level deep — the flat
+ * layer-1/master files + the `sources/` subdir). Rename is atomic per file on the
+ * same filesystem; called only after every output staged successfully.
+ */
+async function commitStaging(stagingDir: string, teamDir: string): Promise<void> {
+  const entries = await readdir(stagingDir, { withFileTypes: true })
+  for (const entry of entries) {
+    const from = path.join(stagingDir, entry.name)
+    const to = path.join(teamDir, entry.name)
+    if (entry.isDirectory()) {
+      await mkdir(to, { recursive: true })
+      for (const child of await readdir(from, { withFileTypes: true })) {
+        await rename(path.join(from, child.name), path.join(to, child.name))
+      }
+    } else {
+      await rename(from, to)
+    }
+  }
 }
 
 /** Run-wide CFBD-native recruiting closure, fetched ONCE and shared by pilots. */
@@ -448,77 +471,93 @@ async function collectTeam(team: Team, closure: RecruitingClosure): Promise<Team
   const teamDir = path.join(COLLECTED, team.id)
   await mkdir(teamDir, { recursive: true })
 
-  // Preserve prior vintage before overwriting (no silent clobber).
-  await recordHistory(teamDir, ['roster.json', 'recruiting.json', 'production.json', 'advanced.json', 'context.json'])
-
-  const write = (file: string, data: unknown) =>
-    writeFile(path.join(teamDir, file), `${JSON.stringify(data, null, 2)}\n`, 'utf8')
-  await write('roster.json', validRoster)
-  await write('recruiting.json', validRecruiting)
-  await write('production.json', validProduction)
-  await write('advanced.json', validAdvanced)
-  await write('context.json', validContext)
-
-  // ════════════════════════════════════════════════════════════════════════════
-  //  PILOT-DEEPENING: ESPN 2026 spine → reconciled golden player-master.json
-  //  Only wired for pilots that carry an espnId. The CFBD-2025 enrichment above
-  //  (recruiting/production/advanced) is keyed CFBD-<athleteId> === CFBD-<espnId>,
-  //  so it joins DIRECTLY to the ESPN spine. Official/On3 are best-effort overlays.
-  // ════════════════════════════════════════════════════════════════════════════
-  // ── C2: the team's incoming CFBD transfer-portal entries (cross-school) ──
-  // Filtered from the run-wide portal fetch by destination === team.cfbdQuery.
-  // Persisted small (provenance/audit) — the raw national portal is NOT.
-  const portalIncoming: PortalIncoming[] = closure.portal
-    ? incomingTransfers(closure.portal.rows, team.cfbdQuery)
-    : []
-  if (closure.portal) {
-    const sourcesDir = path.join(teamDir, 'sources')
-    await mkdir(sourcesDir, { recursive: true })
-    const portalSource = validate(
-      PortalSourceSchema,
-      {
-        sourceId: 'cfbd-portal-v1' as const,
-        sourceType: 'cfbd-portal' as const,
-        team: team.label,
-        years: closure.portal.years,
-        provenance: makeProvenance(
-          PORTAL_YEARS.map((y) => ({ name: `CFBD player/portal ${y}`, endpoint: `/player/portal?year=${y}` })),
-          ROSTER_SEASON,
-        ),
-        entries: portalIncoming.map((t) => ({
-          name: t.name,
-          position: t.position,
-          origin: t.origin,
-          destination: t.destination,
-          rating: t.rating,
-          stars: t.stars,
-          eligibility: t.eligibility,
-          transferDate: t.transferDate,
-          season: t.season,
-        })),
-      },
-      `${team.id}/sources/cfbd-portal.json`,
-    )
-    await writeFile(path.join(sourcesDir, 'cfbd-portal.json'), `${JSON.stringify(portalSource, null, 2)}\n`, 'utf8')
-  }
+  // ── Atomic per-team write (P3): stage ALL outputs (layer-1 + sources + master)
+  //    in a sibling `.staging` dir, then rename-in only on full success. Fixes the
+  //    old ordering gap where layer-1 files landed on disk BEFORE the master build,
+  //    so an ESPN/master failure left fresh layer-1 over a stale/absent master. On
+  //    any failure the real teamDir is left untouched (last-good preserved).
+  const writeDir = `${teamDir}.staging`
+  await rm(writeDir, { recursive: true, force: true })
+  await mkdir(path.join(writeDir, 'sources'), { recursive: true })
 
   let masterStats: NonNullable<TeamResult['stats']>['master']
-  if (team.espnId) {
-    masterStats = await buildAndWriteMaster({
-      team,
-      teamDir,
-      write,
-      recruitingProfiles: validRecruiting.playerRecruitProfiles,
-      incomingRecruits,
-      transferOverlay,
-      nationalIndex: closure.nationalIndex,
-      portalIncoming,
-      productionEntries: validProduction.playerProduction,
-      advancedEntries: validAdvanced.playerAdvanced,
-      cfbdRosterIds: new Set(eligiblePlayers.map((p) => p.playerId)),
-      ourladsHtml: ourlads.html,
-      returningProduction: validContext.returningProduction,
-    })
+  try {
+    // Preserve prior vintage: read OLD files from teamDir, write merged history to staging.
+    await recordHistory(teamDir, writeDir, ['roster.json', 'recruiting.json', 'production.json', 'advanced.json', 'context.json'])
+
+    const write = (file: string, data: unknown) =>
+      writeFile(path.join(writeDir, file), `${JSON.stringify(data, null, 2)}\n`, 'utf8')
+    await write('roster.json', validRoster)
+    await write('recruiting.json', validRecruiting)
+    await write('production.json', validProduction)
+    await write('advanced.json', validAdvanced)
+    await write('context.json', validContext)
+
+    // ══════════════════════════════════════════════════════════════════════════
+    //  PILOT-DEEPENING: ESPN 2026 spine → reconciled golden player-master.json
+    //  Only wired for pilots that carry an espnId. The CFBD-2025 enrichment above
+    //  (recruiting/production/advanced) is keyed CFBD-<athleteId> === CFBD-<espnId>,
+    //  so it joins DIRECTLY to the ESPN spine. Official/On3 are best-effort overlays.
+    // ══════════════════════════════════════════════════════════════════════════
+    // ── C2: the team's incoming CFBD transfer-portal entries (cross-school) ──
+    // Filtered from the run-wide portal fetch by destination === team.cfbdQuery.
+    // Persisted small (provenance/audit) — the raw national portal is NOT.
+    const portalIncoming: PortalIncoming[] = closure.portal
+      ? incomingTransfers(closure.portal.rows, team.cfbdQuery)
+      : []
+    if (closure.portal) {
+      const sourcesDir = path.join(writeDir, 'sources')
+      await mkdir(sourcesDir, { recursive: true })
+      const portalSource = validate(
+        PortalSourceSchema,
+        {
+          sourceId: 'cfbd-portal-v1' as const,
+          sourceType: 'cfbd-portal' as const,
+          team: team.label,
+          years: closure.portal.years,
+          provenance: makeProvenance(
+            PORTAL_YEARS.map((y) => ({ name: `CFBD player/portal ${y}`, endpoint: `/player/portal?year=${y}` })),
+            ROSTER_SEASON,
+          ),
+          entries: portalIncoming.map((t) => ({
+            name: t.name,
+            position: t.position,
+            origin: t.origin,
+            destination: t.destination,
+            rating: t.rating,
+            stars: t.stars,
+            eligibility: t.eligibility,
+            transferDate: t.transferDate,
+            season: t.season,
+          })),
+        },
+        `${team.id}/sources/cfbd-portal.json`,
+      )
+      await writeFile(path.join(sourcesDir, 'cfbd-portal.json'), `${JSON.stringify(portalSource, null, 2)}\n`, 'utf8')
+    }
+
+    if (team.espnId) {
+      masterStats = await buildAndWriteMaster({
+        team,
+        teamDir: writeDir,
+        write,
+        recruitingProfiles: validRecruiting.playerRecruitProfiles,
+        incomingRecruits,
+        transferOverlay,
+        nationalIndex: closure.nationalIndex,
+        portalIncoming,
+        productionEntries: validProduction.playerProduction,
+        advancedEntries: validAdvanced.playerAdvanced,
+        cfbdRosterIds: new Set(eligiblePlayers.map((p) => p.playerId)),
+        ourladsHtml: ourlads.html,
+        returningProduction: validContext.returningProduction,
+      })
+    }
+
+    // Everything staged OK → atomically rename the whole set into the real team dir.
+    await commitStaging(writeDir, teamDir)
+  } finally {
+    await rm(writeDir, { recursive: true, force: true })
   }
 
   // ── Compute status stats ────────────────────────────────────────────────────
