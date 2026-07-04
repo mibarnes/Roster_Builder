@@ -6,45 +6,14 @@
  */
 import type { DepthChartEntry, PipelinePlayer, PlayerPipeline } from './schema/pipeline.ts'
 import type { Formation, UIDataset, UIPlayer, UISide } from './schema/ui.ts'
-
-const OFFENSE_SLOT_ORDER = ['LT', 'LG', 'C', 'RG', 'RT', 'WRX', 'SLOT', 'QB', 'RB', 'TE', 'WRZ']
-const DEFENSE_SLOT_ORDER = ['LDE', 'NT', 'DT', 'RDE', 'LCB', 'SS', 'WLB', 'MLB', 'NB', 'FS', 'RCB']
+import {
+  DEFENSE_SLOT_ORDER,
+  OFFENSE_SLOT_ORDER,
+  SLOT_ALIASES,
+  SLOT_POS_OVERRIDE,
+} from './positions.ts'
 
 const EMPTY_FORMATION: DepthChartEntry[] = []
-
-const SLOT_ALIASES: Record<string, string> = {
-  WR1: 'WRX',
-  WR2: 'WRZ',
-  WR3: 'SLOT',
-  DE1: 'LDE',
-  DE2: 'RDE',
-  DT1: 'NT',
-  DT2: 'DT',
-  LB1: 'WLB',
-  LB2: 'MLB',
-  LB3: 'NB',
-  CB1: 'LCB',
-  CB2: 'RCB',
-  S1: 'SS',
-  S2: 'FS',
-}
-
-// Override display position based on the depth-chart slot a player occupies.
-// Resolves the CFBD broad-code problem (all DBs stored as 'DB') using slot as
-// ground truth.
-const SLOT_POS_OVERRIDE: Record<string, string> = {
-  SS: 'S',
-  FS: 'S',
-  LCB: 'CB',
-  RCB: 'CB',
-  NB: 'NB',
-  LDE: 'DE',
-  RDE: 'DE',
-  NT: 'NT',
-  DT: 'DT',
-  WLB: 'LB',
-  MLB: 'LB',
-}
 
 export const STAT_ABBREVIATIONS: Record<string, string> = {
   // Legacy flattened keys (kept for backward-compat / mock data).

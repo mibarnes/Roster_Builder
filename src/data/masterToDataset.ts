@@ -16,6 +16,7 @@ import type {
   RosterPlayer,
   RosterSource,
 } from './schema/index.ts'
+import { safePosition } from './positions.ts'
 
 /** A DatasetBySource carrying the original master for golden-field access. */
 export interface MasterDataset extends DatasetBySource {
@@ -24,22 +25,6 @@ export interface MasterDataset extends DatasetBySource {
 
 const sideOf = (s: string | null): 'OFF' | 'DEF' | 'ST' =>
   s === 'DEF' ? 'DEF' : s === 'ST' ? 'ST' : 'OFF'
-
-/** Coerce the master's free-form position string to the roster allowlist set. */
-const POSITION_ALLOWLIST = new Set([
-  'QB', 'RB', 'FB', 'WR', 'TE', 'OL', 'OT', 'OG', 'C', 'T', 'G',
-  'DE', 'DT', 'NT', 'DL', 'LB', 'MLB', 'WLB', 'SLB', 'CB', 'NB', 'S', 'FS', 'SS', 'DB',
-  'PK', 'PT', 'LS', 'ATH',
-])
-/** ESPN special-teams abbreviations → roster allowlist positions. */
-const ST_POSITION_ALIAS: Record<string, string> = {
-  K: 'PK', PK: 'PK', P: 'PT', PT: 'PT', LS: 'LS', SN: 'LS', H: 'PT', KO: 'PK',
-}
-const safePosition = (p: string | null): RosterPlayer['position'] => {
-  if (!p) return 'ATH'
-  const aliased = ST_POSITION_ALIAS[p] ?? p
-  return (POSITION_ALLOWLIST.has(aliased) ? aliased : 'ATH') as RosterPlayer['position']
-}
 
 const CLASS = new Set(['FR', 'SO', 'JR', 'SR'])
 const safeClass = (c: string | null): string | null => (c && CLASS.has(c) ? c : null)

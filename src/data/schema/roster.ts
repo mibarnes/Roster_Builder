@@ -1,24 +1,13 @@
 import { z } from 'zod'
 import { SideSchema, SourceMetaSchema } from './common.ts'
+import { PositionSchema } from '../positions.ts'
 
 /**
- * Documented allowlist of broad positions the collector is permitted to emit.
- * Kept PERMISSIVE-but-NAMED: it must cover every real football position the
- * normalizer produces (incl. special teams 'PK'/'PT'/'LS' and 'ATH'). A
- * position outside this set is a normalizer regression and should fail loud
- * in validation rather than be silently accepted. Add new positions here
- * deliberately, with intent.
+ * The position allowlist + schema + type are the canonical source of truth in
+ * ../positions.ts (D6). Re-exported here for backward compatibility with the
+ * existing importers of schema/roster.ts.
  */
-export const POSITION_ALLOWLIST = [
-  // offense
-  'QB', 'RB', 'FB', 'WR', 'TE', 'OL', 'OT', 'OG', 'C', 'T', 'G',
-  // defense
-  'DE', 'DT', 'NT', 'DL', 'LB', 'MLB', 'WLB', 'SLB', 'CB', 'NB', 'S', 'FS', 'SS', 'DB',
-  // special teams / flex
-  'PK', 'PT', 'LS', 'ATH',
-] as const
-export const PositionSchema = z.enum(POSITION_ALLOWLIST)
-export type Position = z.infer<typeof PositionSchema>
+export { POSITION_ALLOWLIST, PositionSchema, type Position } from '../positions.ts'
 
 export const RosterPlayerSchema = z.object({
   playerId: z.string(),

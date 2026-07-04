@@ -4,28 +4,13 @@
  * (already slot-overridden by mapPipelineToUI) is in the group's position list.
  */
 import type { UIPlayer } from '../../data/schema/ui.ts'
+import type { DepthGroupDef } from '../../data/positions.ts'
+import { DEFENSE_GROUPS, OFFENSE_GROUPS } from '../../data/positions.ts'
 
-export interface DepthGroupDef {
-  label: string
-  positions: string[]
-}
-
-export const OFFENSE_GROUPS: readonly DepthGroupDef[] = [
-  { label: 'QB', positions: ['QB'] },
-  { label: 'RB', positions: ['RB'] },
-  { label: 'WR', positions: ['WR'] },
-  { label: 'TE', positions: ['TE'] },
-  { label: 'OL', positions: ['LT', 'LG', 'C', 'RG', 'RT', 'OL', 'OT', 'OG'] },
-]
-
-export const DEFENSE_GROUPS: readonly DepthGroupDef[] = [
-  { label: 'DL', positions: ['DE', 'DT', 'NT', 'DL'] },
-  { label: 'LB', positions: ['LB'] },
-  { label: 'CB', positions: ['CB'] },
-  { label: 'S', positions: ['S'] },
-  { label: 'NB', positions: ['NB'] },
-  { label: 'DB', positions: ['DB'] },
-]
+// The group taxonomy (DepthGroupDef/OFFENSE_GROUPS/DEFENSE_GROUPS) is the
+// canonical SoT in src/data/positions.ts (D6). Re-exported here so this module's
+// existing importers are unchanged; the UIPlayer-dependent helpers stay local.
+export { type DepthGroupDef, OFFENSE_GROUPS, DEFENSE_GROUPS }
 
 /** Players in a group, OVR-descending. */
 export const playersInGroup = (group: DepthGroupDef, players: UIPlayer[]): UIPlayer[] =>

@@ -1,69 +1,18 @@
 /**
  * Shared, pure normalization helpers for the CFB data collector.
  * Ported from the recovered collector (collect-cfbd-roster-stats.mjs) +
- * src/data/normalize/positionMapping.js. No I/O, no network — safe to unit-test.
+ * src/data/positions.ts. No I/O, no network — safe to unit-test.
  */
+import { canonicalizePositionGroup } from '../../src/data/positions.ts'
+
+// Position-group canonicalization is the canonical SoT in src/data/positions.ts
+// (D6). Re-exported here so the OurLads parser + other collector modules keep
+// importing it from ../normalize.ts.
+export { canonicalizePositionGroup }
 
 export const OFFENSE_POSITIONS = new Set(['QB', 'RB', 'WR', 'TE', 'LT', 'LG', 'C', 'RG', 'RT', 'OL', 'OT', 'OG'])
 export const DEFENSE_POSITIONS = new Set(['DE', 'DT', 'NT', 'DL', 'LB', 'CB', 'S', 'DB', 'JACK', 'WOLF', 'STING', 'HUSKY'])
 const NAME_SUFFIXES = new Set(['jr', 'sr', 'ii', 'iii', 'iv', 'v'])
-
-// ── Position canonicalization (from positionMapping.js) ───────────────────────
-const POSITION_CLEANING_MAP = {
-  offense: {
-    QB: ['QB'],
-    RB: ['RB', 'HB', 'TB', 'FB'],
-    WR: ['WR-X', 'WR-Y', 'WR-Z', 'WR-SL', 'WR-H', 'SLOT'],
-    TE: ['TE', 'H-BACK'],
-    OL: { OL: ['OL'], T: ['LT', 'RT'], G: ['LG', 'RG'], C: ['C'] },
-  },
-  defense: {
-    DE: ['DE', 'LDE', 'RDE'],
-    DT: ['DT', 'NT'],
-    LB: {
-      LB: ['LB'],
-      MLB: ['MLB', 'MIKE', 'MONEY'],
-      WLB: ['WLB', 'WILL', 'JACK', 'BUCK', 'STING'],
-      SLB: ['SLB', 'SAM', 'WOLF', 'MAC', 'DOG'],
-    },
-    DB: {
-      CB: ['CB', 'LCB', 'RCB'],
-      NB: ['NB', 'NICKEL', 'STAR', 'HUSKY'],
-      S: { FS: ['FS'], SS: ['SS'] },
-    },
-  },
-} as const
-
-const normalizeToken = (value = ''): string =>
-  String(value).toUpperCase().trim().replace(/\s+/g, '').replace(/_/g, '-')
-
-const aliasEntries: [string, string][] = [
-  ...POSITION_CLEANING_MAP.offense.QB.map((a) => [a, 'QB'] as [string, string]),
-  ...POSITION_CLEANING_MAP.offense.RB.map((a) => [a, 'RB'] as [string, string]),
-  ...POSITION_CLEANING_MAP.offense.WR.map((a) => [a, 'WR'] as [string, string]),
-  ...POSITION_CLEANING_MAP.offense.TE.map((a) => [a, 'TE'] as [string, string]),
-  ...POSITION_CLEANING_MAP.offense.OL.OL.map((a) => [a, 'OL'] as [string, string]),
-  ...POSITION_CLEANING_MAP.offense.OL.T.map((a) => [a, 'T'] as [string, string]),
-  ...POSITION_CLEANING_MAP.offense.OL.G.map((a) => [a, 'G'] as [string, string]),
-  ...POSITION_CLEANING_MAP.offense.OL.C.map((a) => [a, 'C'] as [string, string]),
-  ...POSITION_CLEANING_MAP.defense.DE.map((a) => [a, 'DE'] as [string, string]),
-  ...POSITION_CLEANING_MAP.defense.DT.map((a) => [a, 'DT'] as [string, string]),
-  ...POSITION_CLEANING_MAP.defense.LB.LB.map((a) => [a, 'LB'] as [string, string]),
-  ...POSITION_CLEANING_MAP.defense.LB.MLB.map((a) => [a, 'MLB'] as [string, string]),
-  ...POSITION_CLEANING_MAP.defense.LB.WLB.map((a) => [a, 'WLB'] as [string, string]),
-  ...POSITION_CLEANING_MAP.defense.LB.SLB.map((a) => [a, 'SLB'] as [string, string]),
-  ...POSITION_CLEANING_MAP.defense.DB.CB.map((a) => [a, 'CB'] as [string, string]),
-  ...POSITION_CLEANING_MAP.defense.DB.NB.map((a) => [a, 'NB'] as [string, string]),
-  ...POSITION_CLEANING_MAP.defense.DB.S.FS.map((a) => [a, 'FS'] as [string, string]),
-  ...POSITION_CLEANING_MAP.defense.DB.S.SS.map((a) => [a, 'SS'] as [string, string]),
-]
-
-const ALIAS_TO_CANONICAL_GROUP = new Map(aliasEntries.map(([alias, canonical]) => [normalizeToken(alias), canonical]))
-
-export const canonicalizePositionGroup = (value = ''): string => {
-  const posTag = normalizeToken(value)
-  return ALIAS_TO_CANONICAL_GROUP.get(posTag) ?? posTag
-}
 
 /** CFBD/247 position string → the broad roster position we store. */
 /**

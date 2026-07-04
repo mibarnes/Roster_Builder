@@ -27,7 +27,7 @@ import type {
   TeamMetrics,
 } from '../schema/pipeline.ts'
 import type { RosterPlayer } from '../schema/roster.ts'
-import { canonicalizePositionGroup } from '../normalize/positionMapping.ts'
+import { canonicalizePositionGroup } from '../positions.ts'
 import { computeTeamRatings, type RatingInput } from '../rating/overall.ts'
 
 interface IdItem {
