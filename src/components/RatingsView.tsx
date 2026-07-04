@@ -88,6 +88,13 @@ export default function RatingsView({ allPlayers, filters, setFilters, onPlayerC
       </div>
 
       <div className="flex-1 overflow-y-auto">
+        {filtered.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-16 px-4 text-center">
+            <div className="text-3xl mb-2 opacity-40" aria-hidden="true">🔍</div>
+            <p className="text-sm font-bold text-gray-300">No players match these filters</p>
+            <p className="text-xs text-gray-500 mt-1">Try clearing the side, position, or star filters.</p>
+          </div>
+        )}
         {filtered.map((p, i) => {
           const stars = getEffectiveStars(p)
           return (

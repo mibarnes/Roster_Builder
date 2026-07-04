@@ -13,25 +13,25 @@ export default function OffenseFormation({ offensiveStarters, onPlayerClick }: O
     <div className="w-max mx-auto flex flex-col justify-start gap-5 py-3 px-4">
       <div className="flex justify-center gap-3">
         {offensiveLineSlots.map((slot, i) => (
-          <PositionGroup key={slot} players={offensiveStarters[slot]} onClick={onPlayerClick} baseDelay={i * 80} />
+          <PositionGroup key={slot} players={offensiveStarters[slot]} onClick={onPlayerClick} baseDelay={i * 80} label={slot} />
         ))}
-        <PositionGroup players={offensiveStarters.TE} onClick={onPlayerClick} baseDelay={400} />
+        <PositionGroup players={offensiveStarters.TE} onClick={onPlayerClick} baseDelay={400} label="TE" />
       </div>
 
       <div className="grid grid-cols-6 items-start gap-3">
         <div className="flex justify-center">
-          <PositionGroup players={offensiveStarters.WRX} onClick={onPlayerClick} baseDelay={480} />
+          <PositionGroup players={offensiveStarters.WRX} onClick={onPlayerClick} baseDelay={480} label="WR" />
         </div>
         <div />
         <div className="flex justify-center">
-          <PositionGroup players={offensiveStarters.QB} onClick={onPlayerClick} baseDelay={560} />
+          <PositionGroup players={offensiveStarters.QB} onClick={onPlayerClick} baseDelay={560} label="QB" />
         </div>
         <div />
         <div className="flex justify-center">
-          <PositionGroup players={offensiveStarters.SLOT} onClick={onPlayerClick} baseDelay={640} />
+          <PositionGroup players={offensiveStarters.SLOT} onClick={onPlayerClick} baseDelay={640} label="WR" />
         </div>
         <div className="flex justify-center">
-          <PositionGroup players={offensiveStarters.WRZ} onClick={onPlayerClick} baseDelay={720} />
+          <PositionGroup players={offensiveStarters.WRZ} onClick={onPlayerClick} baseDelay={720} label="WR" />
         </div>
       </div>
 
@@ -39,7 +39,7 @@ export default function OffenseFormation({ offensiveStarters, onPlayerClick }: O
         <div />
         <div />
         <div className="flex justify-center">
-          <PositionGroup players={offensiveStarters.RB} onClick={onPlayerClick} baseDelay={800} />
+          <PositionGroup players={offensiveStarters.RB} onClick={onPlayerClick} baseDelay={800} label="RB" />
         </div>
         <div />
         <div />
