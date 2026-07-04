@@ -1,0 +1,5128 @@
+{
+  "sourceId": "cfbd-247-recruiting-v2",
+  "sourceType": "recruiting",
+  "asOf": "2026-07-04",
+  "version": "recruiting-2026.2",
+  "team": "Illinois Fighting Illini",
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD recruiting/players 2027",
+        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2027&team=Illinois"
+      },
+      {
+        "name": "CFBD recruiting/players 2026",
+        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2026&team=Illinois"
+      },
+      {
+        "name": "CFBD recruiting/players 2025",
+        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2025&team=Illinois"
+      },
+      {
+        "name": "CFBD recruiting/players 2024",
+        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2024&team=Illinois"
+      },
+      {
+        "name": "CFBD recruiting/players 2023",
+        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2023&team=Illinois"
+      },
+      {
+        "name": "CFBD recruiting/players 2022",
+        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2022&team=Illinois"
+      },
+      {
+        "name": "CFBD recruiting/players 2021",
+        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2021&team=Illinois"
+      },
+      {
+        "name": "CFBD recruiting/players 2020",
+        "endpoint": "https://api.collegefootballdata.com/recruiting/players?year=2020&team=Illinois"
+      },
+      {
+        "name": "247Sports commits scrape",
+        "endpoint": "https://247sports.com/college/illinois/season/<year>-football/commits/"
+      }
+    ],
+    "collectedAt": "2026-07-04T13:00:12.869Z",
+    "collectorVersion": "14b7848",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "playerRecruitProfiles": [
+    {
+      "playerId": "CFBD-5148652",
+      "name": "Grant Beerman",
+      "stars": 4,
+      "compositeRating": 0.8933,
+      "nationalRank": 424,
+      "positionRank": 41,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "106618"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46140289"
+        }
+      ],
+      "homeCity": "West Chester",
+      "homeState": "OH",
+      "homeLat": 39.3303357,
+      "homeLon": -84.408275,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5211769",
+      "name": "Brayden Trimble",
+      "stars": 3,
+      "compositeRating": 0.8878,
+      "nationalRank": 513,
+      "positionRank": 78,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "106706"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46142486"
+        }
+      ],
+      "homeCity": "Mt. Zion",
+      "homeState": "IL",
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5294099",
+      "name": "Logan Farrell",
+      "stars": 3,
+      "compositeRating": 0.8778,
+      "nationalRank": 700,
+      "positionRank": 59,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "106894"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46138503"
+        }
+      ],
+      "homeCity": "Arlington Heights",
+      "homeState": "IL",
+      "homeLat": 42.0811563,
+      "homeLon": -87.9802164,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5164653",
+      "name": "Andre Lovett Jr.",
+      "stars": 3,
+      "compositeRating": 0.8728,
+      "nationalRank": 851,
+      "positionRank": 70,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "107033"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46132979"
+        }
+      ],
+      "homeCity": "Blue Island",
+      "homeState": "IL",
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5215243",
+      "name": "Isaiah White",
+      "stars": 3,
+      "compositeRating": 0.8728,
+      "nationalRank": 851,
+      "positionRank": 85,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "107037"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46143418"
+        }
+      ],
+      "homeCity": "Indianapolis",
+      "homeState": "IN",
+      "homeLat": 39.7683331,
+      "homeLon": -86.1583502,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5209796",
+      "name": "Erik Gayle",
+      "stars": 3,
+      "compositeRating": 0.8689,
+      "nationalRank": 971,
+      "positionRank": 95,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "107157"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46141842"
+        }
+      ],
+      "homeCity": "Cincinnati",
+      "homeState": "OH",
+      "homeLat": 39.1014537,
+      "homeLon": -84.5124602,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5294101",
+      "name": "RJ Jones III",
+      "stars": 3,
+      "compositeRating": 0.8617,
+      "nationalRank": 1261,
+      "positionRank": 109,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "107431"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46139632"
+        }
+      ],
+      "homeCity": "Vero Beach",
+      "homeState": "FL",
+      "homeLat": 27.6387163,
+      "homeLon": -80.3975399,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5205456",
+      "name": "Xanai Scott",
+      "stars": 3,
+      "compositeRating": 0.8492,
+      "nationalRank": 1715,
+      "positionRank": 112,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "107884"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46143777"
+        }
+      ],
+      "homeCity": "West Palm Beach",
+      "homeState": "FL",
+      "homeLat": 26.715364,
+      "homeLon": -80.0532942,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5237342",
+      "name": "Grant Smith",
+      "stars": 3,
+      "compositeRating": 0.8492,
+      "nationalRank": 1715,
+      "positionRank": 88,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "107886"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46149915"
+        }
+      ],
+      "homeCity": "Maroa",
+      "homeState": "IL",
+      "homeLat": 40.0364257,
+      "homeLon": -88.957026,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5203718",
+      "name": "Dylan Frechette",
+      "stars": 3,
+      "compositeRating": 0.8442,
+      "nationalRank": 1867,
+      "positionRank": 124,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "108035"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46148107"
+        }
+      ],
+      "homeCity": "West Palm Beach",
+      "homeState": "FL",
+      "homeLat": 26.715364,
+      "homeLon": -80.0532942,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5215424",
+      "name": "JJ Hirdes",
+      "stars": 3,
+      "compositeRating": 0.8431,
+      "nationalRank": 1888,
+      "positionRank": 78,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "108052"
+        },
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46143914"
+        }
+      ],
+      "homeCity": "Coopersville",
+      "homeState": "MI",
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5106299",
+      "name": "Ca'Lil Valentine",
+      "stars": 4,
+      "compositeRating": 0.895,
+      "nationalRank": 407,
+      "positionRank": 45,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "109114"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46134087"
+        }
+      ],
+      "homeCity": "Chandler",
+      "homeState": "AZ",
+      "homeLat": 33.3062223,
+      "homeLon": -111.8413317,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5079448",
+      "name": "Tysean Griffin",
+      "stars": 3,
+      "compositeRating": 0.8867,
+      "nationalRank": 528,
+      "positionRank": 50,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "109225"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46115899"
+        }
+      ],
+      "homeCity": "Chicago",
+      "homeState": "IL",
+      "homeLat": 41.8755616,
+      "homeLon": -87.6244212,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5126475",
+      "name": "Trey Petty",
+      "stars": 3,
+      "compositeRating": 0.8744,
+      "nationalRank": 779,
+      "positionRank": 60,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "109475"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46116941"
+        }
+      ],
+      "homeCity": "Starkville",
+      "homeState": "MS",
+      "homeLat": 33.4503998,
+      "homeLon": -88.8183872,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5146852",
+      "name": "Zafir Stewart",
+      "stars": 3,
+      "compositeRating": 0.8639,
+      "nationalRank": 1101,
+      "positionRank": 112,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "109784"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46136976"
+        }
+      ],
+      "homeCity": "Philadelphia",
+      "homeState": "PA",
+      "homeLat": 39.9527237,
+      "homeLon": -75.1635262,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5142705",
+      "name": "Angelo McCullom",
+      "stars": 3,
+      "compositeRating": 0.8575,
+      "nationalRank": 1306,
+      "positionRank": 139,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "109986"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46131105"
+        }
+      ],
+      "homeCity": "Lewis Center",
+      "homeState": "OH",
+      "homeLat": 40.1983958,
+      "homeLon": -83.0101843,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5141799",
+      "name": "Easton Baker",
+      "stars": 3,
+      "compositeRating": 0.8567,
+      "nationalRank": 1336,
+      "positionRank": 161,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "110010"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46111898"
+        }
+      ],
+      "homeCity": "Tooele",
+      "homeState": "UT",
+      "homeLat": 40.5307776,
+      "homeLon": -112.29828,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5146980",
+      "name": "Joe Barna",
+      "stars": 3,
+      "compositeRating": 0.8567,
+      "nationalRank": 1336,
+      "positionRank": 151,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "110020"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46138540"
+        }
+      ],
+      "homeCity": "Wheaton",
+      "homeState": "IL",
+      "homeLat": 41.8646959,
+      "homeLon": -88.1101709,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5196972",
+      "name": "Tanner Heckel",
+      "stars": 3,
+      "compositeRating": 0.8506,
+      "nationalRank": 1550,
+      "positionRank": 74,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "110228"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46147459"
+        }
+      ],
+      "homeCity": "Lyndon",
+      "homeState": "KS",
+      "homeLat": 38.6100099,
+      "homeLon": -95.684429,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5148944",
+      "name": "Amar Reynolds",
+      "stars": 3,
+      "compositeRating": 0.8483,
+      "nationalRank": 1613,
+      "positionRank": 136,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "110303"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46137143"
+        }
+      ],
+      "homeCity": "Vero Beach",
+      "homeState": "FL",
+      "homeLat": 27.6387163,
+      "homeLon": -80.3975399,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5079433",
+      "name": "Brandon Hansen",
+      "stars": 3,
+      "compositeRating": 0.8483,
+      "nationalRank": 1613,
+      "positionRank": 109,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "110293"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46129940"
+        }
+      ],
+      "homeCity": "Mundelein",
+      "homeState": "IL",
+      "homeLat": 42.263079,
+      "homeLon": -88.0039653,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5149909",
+      "name": "Tanner Hollinger",
+      "stars": 3,
+      "compositeRating": 0.8372,
+      "nationalRank": 1909,
+      "positionRank": 73,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "110584"
+        },
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46140000"
+        }
+      ],
+      "homeCity": "Stromsburg",
+      "homeState": "NE",
+      "homeLat": 41.1135884,
+      "homeLon": -97.5977434,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4870696",
+      "name": "Malik Elzy",
+      "stars": 4,
+      "compositeRating": 0.9167,
+      "nationalRank": 229,
+      "positionRank": 48,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "111475"
+        },
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46098800"
+        }
+      ],
+      "homeCity": "Chicago",
+      "homeState": "IL",
+      "homeLat": 41.8755616,
+      "homeLon": -87.6244212,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4924137",
+      "name": "Saboor Karriem",
+      "stars": 4,
+      "compositeRating": 0.8987,
+      "nationalRank": 348,
+      "positionRank": 103,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "111594"
+        },
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46128685"
+        }
+      ],
+      "homeCity": "West Orange",
+      "homeState": "NJ",
+      "homeLat": 40.7987113,
+      "homeLon": -74.2390353,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4870728",
+      "name": "Kaden Feagin",
+      "stars": 4,
+      "compositeRating": 0.8958,
+      "nationalRank": 380,
+      "positionRank": 27,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "111626"
+        },
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46114835"
+        }
+      ],
+      "homeCity": "Arthur",
+      "homeState": "IL",
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5191859",
+      "name": "Carter Smith",
+      "stars": 3,
+      "compositeRating": 0.8658,
+      "nationalRank": 944,
+      "positionRank": 52,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "112185"
+        },
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46109864"
+        }
+      ],
+      "homeCity": "Ocoee",
+      "homeState": "FL",
+      "homeLat": 28.5695186,
+      "homeLon": -81.544117,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5154324",
+      "name": "Jojo Hayden",
+      "stars": 3,
+      "compositeRating": 0.8633,
+      "nationalRank": 1024,
+      "positionRank": 74,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "112264"
+        },
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46108966"
+        }
+      ],
+      "homeCity": "East St. Louis",
+      "homeState": "IL",
+      "homeLat": 38.6244952,
+      "homeLon": -90.1509429,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5077504",
+      "name": "Mason Muragin",
+      "stars": 3,
+      "compositeRating": 0.8542,
+      "nationalRank": 1286,
+      "positionRank": 118,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "112522"
+        },
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46122934"
+        }
+      ],
+      "homeCity": "Warren",
+      "homeState": "MI",
+      "homeLat": 42.4932575,
+      "homeLon": -83.0062746,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5077284",
+      "name": "Jaheim Clarke",
+      "stars": 3,
+      "compositeRating": 0.8517,
+      "nationalRank": 1340,
+      "positionRank": 87,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "112582"
+        },
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46129540"
+        }
+      ],
+      "homeCity": "Fort Myers",
+      "homeState": "FL",
+      "homeLat": 26.640628,
+      "homeLon": -81.8723084,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5121617",
+      "name": "Jeremiah Warren",
+      "stars": 3,
+      "compositeRating": 0.8517,
+      "nationalRank": 1340,
+      "positionRank": 123,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "112576"
+        },
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46117073"
+        }
+      ],
+      "homeCity": "Belleville",
+      "homeState": "MI",
+      "homeLat": 42.2048414,
+      "homeLon": -83.4852106,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4826636",
+      "name": "Jordan Anderson",
+      "stars": 3,
+      "compositeRating": 0.8533,
+      "nationalRank": 1161,
+      "positionRank": 62,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "114678"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46096709"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46114040"
+        }
+      ],
+      "homeCity": "Skillman",
+      "homeState": "NJ",
+      "homeLat": 40.4201055,
+      "homeLon": -74.7146049,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4869962",
+      "name": "Ashton Hollins",
+      "stars": 3,
+      "compositeRating": 0.8511,
+      "nationalRank": 1231,
+      "positionRank": 129,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "114756"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46116449"
+        }
+      ],
+      "homeCity": "Lucedale",
+      "homeState": "MS",
+      "homeLat": 30.9251869,
+      "homeLon": -88.5900235,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4912143",
+      "name": "Tyson Rooks",
+      "stars": 3,
+      "compositeRating": 0.85,
+      "nationalRank": 1254,
+      "positionRank": 181,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "114776"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46128614"
+        }
+      ],
+      "homeCity": "Brunswick",
+      "homeState": "GA",
+      "homeLat": 31.1499528,
+      "homeLon": -81.4914894,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4837244",
+      "name": "Gabe Jacas",
+      "stars": 3,
+      "compositeRating": 0.85,
+      "nationalRank": 1254,
+      "positionRank": 69,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "114770"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46114918"
+        }
+      ],
+      "homeCity": "Fort Pierce",
+      "homeState": "FL",
+      "homeLat": 27.4467056,
+      "homeLon": -80.3256056,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4917004",
+      "name": "Xavier Scott",
+      "stars": 3,
+      "compositeRating": 0.8467,
+      "nationalRank": 1357,
+      "positionRank": 138,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "114873"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46113009"
+        }
+      ],
+      "homeCity": "Palm Beach Gardens",
+      "homeState": "FL",
+      "homeLat": 26.8418256,
+      "homeLon": -80.13590694666684,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4814930",
+      "name": "Hank Beatty",
+      "stars": 3,
+      "compositeRating": 0.8459,
+      "nationalRank": 1380,
+      "positionRank": 132,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "114894"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46098938"
+        }
+      ],
+      "homeCity": "Rochester",
+      "homeState": "IL",
+      "homeLat": 39.7494943,
+      "homeLon": -89.5317603,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5084934",
+      "name": "TJ Griffin",
+      "stars": 3,
+      "compositeRating": 0.837,
+      "nationalRank": 1561,
+      "positionRank": 112,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "115078"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46128299"
+        }
+      ],
+      "homeCity": "Palos Hills",
+      "homeState": "IL",
+      "homeLat": 41.6966992,
+      "homeLon": -87.8169984,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4816072",
+      "name": "Clayton Leonard",
+      "stars": 3,
+      "compositeRating": 0.8311,
+      "nationalRank": 1700,
+      "positionRank": 133,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "115215"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46104112"
+        }
+      ],
+      "homeCity": "Danforth",
+      "homeState": "IL",
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4912120",
+      "name": "James Kreutz",
+      "stars": 3,
+      "compositeRating": 0.8304,
+      "nationalRank": 1713,
+      "positionRank": 187,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "115230"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46127647"
+        }
+      ],
+      "homeCity": "Wilmette",
+      "homeState": "IL",
+      "homeLat": 42.0757315,
+      "homeLon": -87.7193768,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4915710",
+      "name": "Matthew Bailey",
+      "stars": 3,
+      "compositeRating": 0.8304,
+      "nationalRank": 1713,
+      "positionRank": 133,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "115232"
+        },
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46116828"
+        }
+      ],
+      "homeCity": "Moline",
+      "homeState": "IL",
+      "homeLat": 41.5067003,
+      "homeLon": -90.5151342,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4686564",
+      "name": "Tyler Strain",
+      "stars": 3,
+      "compositeRating": 0.837,
+      "nationalRank": 1535,
+      "positionRank": 123,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2021
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2021,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "117236"
+        },
+        {
+          "year": 2021,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46101588"
+        }
+      ],
+      "homeCity": "Milton",
+      "homeState": "FL",
+      "homeLat": 30.6324149,
+      "homeLon": -87.0396881,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4684004",
+      "name": "Dylan Rosiek",
+      "stars": 3,
+      "compositeRating": 0.8348,
+      "nationalRank": 1608,
+      "positionRank": 160,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2021
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2021,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "117302"
+        },
+        {
+          "year": 2021,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46098259"
+        }
+      ],
+      "homeCity": "Tarpon Springs",
+      "homeState": "FL",
+      "homeLat": 28.148082950000003,
+      "homeLon": -82.74380159717906,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4687706",
+      "name": "Josh Gesky",
+      "stars": 3,
+      "compositeRating": 0.8244,
+      "nationalRank": 1906,
+      "positionRank": 203,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2021
+      ],
+      "matchMethod": "cfbd-id",
+      "matches": [
+        {
+          "year": 2021,
+          "method": "cfbd-athleteId",
+          "player247Id": null,
+          "cfbdRecruitId": "117598"
+        },
+        {
+          "year": 2021,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46101783"
+        }
+      ],
+      "homeCity": "Manteno",
+      "homeState": "IL",
+      "homeLat": 41.2506759,
+      "homeLon": -87.8314299,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5082353",
+      "name": "J.C. Davis",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": 20,
+      "positionRank": 7,
+      "transferPortalStars": 4,
+      "transferRating": 0.9,
+      "fromSchool": "New Mexico",
+      "isTransfer": true,
+      "years": [
+        2026,
+        2020
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2026,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46165625"
+        },
+        {
+          "year": 2020,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46078826"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5214493",
+      "name": "Cameron Brooks",
+      "stars": 3,
+      "compositeRating": 0.88,
+      "nationalRank": null,
+      "positionRank": 69,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46142120"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5294100",
+      "name": "John Forster",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": null,
+      "positionRank": 61,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46128433"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5214494",
+      "name": "Tywan Cox",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": null,
+      "positionRank": 73,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46146291"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5217444",
+      "name": "Jershaun Newton",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": null,
+      "positionRank": 61,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46133332"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5196352",
+      "name": "Carson Boyd",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": null,
+      "positionRank": 48,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46114452"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5195736",
+      "name": "Michael McDonough",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": null,
+      "positionRank": 76,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46141059"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5294102",
+      "name": "Ismael Kante",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": 22,
+      "positionRank": 1,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46153671"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5294103",
+      "name": "Des Straughton",
+      "stars": 3,
+      "compositeRating": 0.86,
+      "nationalRank": null,
+      "positionRank": 111,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46133011"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5203609",
+      "name": "Cedric Wyche II",
+      "stars": 3,
+      "compositeRating": 0.86,
+      "nationalRank": null,
+      "positionRank": 102,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46147104"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5196419",
+      "name": "Griffin Rousseau",
+      "stars": 3,
+      "compositeRating": 0.86,
+      "nationalRank": null,
+      "positionRank": 107,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46112078"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5265272",
+      "name": "Jack Paris",
+      "stars": 3,
+      "compositeRating": 0.85,
+      "nationalRank": null,
+      "positionRank": 172,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46146774"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5306775",
+      "name": "Donovan Turner",
+      "stars": null,
+      "compositeRating": 0,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2025
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2025,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46113240"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5297778",
+      "name": "Eli Coenen",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.86,
+      "fromSchool": "Illinois",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5076651",
+      "name": "Christian Abney",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.85,
+      "fromSchool": "Ball State",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4878849",
+      "name": "Carter Hewitt",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.85,
+      "fromSchool": "Northern Iowa",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5146787",
+      "name": "Nathan Knapik",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.85,
+      "fromSchool": "Idaho",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4896022",
+      "name": "Tyler McMillan",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.86,
+      "fromSchool": "Southeast Missouri State",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5228203",
+      "name": "Murphy Clement",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.82,
+      "fromSchool": "West Virginia",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5154729",
+      "name": "Davin Stoffel",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.85,
+      "fromSchool": "South Dakota State",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5083192",
+      "name": "Ayden Knapik",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.89,
+      "fromSchool": "Idaho",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5100582",
+      "name": "Hudson Clement",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.86,
+      "fromSchool": "West Virginia",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4693371",
+      "name": "James Thompson Jr.",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 4,
+      "transferRating": 0.92,
+      "fromSchool": "Wisconsin",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4878232",
+      "name": "Tomiwa Durojaiye",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.88,
+      "fromSchool": "Florida State",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4685478",
+      "name": "Curt Neal",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.84,
+      "fromSchool": "Wisconsin",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5083747",
+      "name": "Justin Bowick",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.88,
+      "fromSchool": "Ball State",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4618083",
+      "name": "Ethan Hampton",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.86,
+      "fromSchool": "Northern Illinois",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4432357",
+      "name": "Leon Lowery Jr.",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.88,
+      "fromSchool": "Wisconsin",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5079746",
+      "name": "Eddie Tuerk",
+      "stars": 3,
+      "compositeRating": 0.88,
+      "nationalRank": null,
+      "positionRank": 82,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46117147"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5146952",
+      "name": "Demetrius John",
+      "stars": 3,
+      "compositeRating": 0.88,
+      "nationalRank": null,
+      "positionRank": 87,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46133412"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5218892",
+      "name": "Daniel Brown",
+      "stars": 3,
+      "compositeRating": 0.88,
+      "nationalRank": 26,
+      "positionRank": 1,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46144688"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5146579",
+      "name": "Vernon Woodward III",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": null,
+      "positionRank": 71,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46139640"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5218891",
+      "name": "Mario Sanders II",
+      "stars": 3,
+      "compositeRating": 0.86,
+      "nationalRank": 45,
+      "positionRank": 8,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46101223"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5218896",
+      "name": "Kellen Francis",
+      "stars": null,
+      "compositeRating": 0,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2024
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2024,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46149693"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4429960",
+      "name": "Gentle Hunt",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.84,
+      "fromSchool": "Florida A&M",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4709783",
+      "name": "Torrie Cox Jr.",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.85,
+      "fromSchool": "Ohio",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4917235",
+      "name": "Melvin Priestly",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.85,
+      "fromSchool": "Grambling State",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4709804",
+      "name": "Cole Rusk",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 4,
+      "transferRating": 0.9,
+      "fromSchool": "Murray State",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4921407",
+      "name": "Brandon Henderson",
+      "stars": 3,
+      "compositeRating": 0.89,
+      "nationalRank": null,
+      "positionRank": 30,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46117383"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4923226",
+      "name": "Collin Dixon",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": null,
+      "positionRank": 124,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46125692"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5154332",
+      "name": "Dezmond Schuster",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": 37,
+      "positionRank": 2,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46136532"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5154323",
+      "name": "Kaleb Patterson",
+      "stars": 3,
+      "compositeRating": 0.87,
+      "nationalRank": 38,
+      "positionRank": 7,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46111838"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4921262",
+      "name": "TJ McMillen",
+      "stars": 3,
+      "compositeRating": 0.86,
+      "nationalRank": null,
+      "positionRank": 82,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46096756"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4923255",
+      "name": "Pat Farrell",
+      "stars": 3,
+      "compositeRating": 0.86,
+      "nationalRank": null,
+      "positionRank": 115,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46128947"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5125740",
+      "name": "Mac Resetich",
+      "stars": 3,
+      "compositeRating": 0.85,
+      "nationalRank": null,
+      "positionRank": 148,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46139151"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5154321",
+      "name": "Alexander Capka-Jones",
+      "stars": 3,
+      "compositeRating": 0.85,
+      "nationalRank": 105,
+      "positionRank": 14,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2023
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2023,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46142730"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4597679",
+      "name": "Luke Altmyer",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 4,
+      "transferRating": 0.91,
+      "fromSchool": "Ole Miss",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4683308",
+      "name": "Tanner Arkin",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": 3,
+      "transferRating": 0.86,
+      "fromSchool": "Colorado State",
+      "isTransfer": true,
+      "years": [],
+      "matchMethod": "247-id",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4827047",
+      "name": "Aidan Laughery",
+      "stars": 3,
+      "compositeRating": 0.89,
+      "nationalRank": null,
+      "positionRank": 28,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46103029"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4868405",
+      "name": "Malachi Hood",
+      "stars": 3,
+      "compositeRating": 0.85,
+      "nationalRank": null,
+      "positionRank": 121,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2022
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2022,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46108991"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4709386",
+      "name": "Josh Kreutz",
+      "stars": 3,
+      "compositeRating": 0.86,
+      "nationalRank": null,
+      "positionRank": 54,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2021
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2021,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46098875"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4873319",
+      "name": "Kenenna Odeluga",
+      "stars": 2,
+      "compositeRating": 0.77,
+      "nationalRank": null,
+      "positionRank": 317,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [
+        2021
+      ],
+      "matchMethod": "247-id",
+      "matches": [
+        {
+          "year": 2021,
+          "method": "247-commit",
+          "similarity": 1,
+          "player247Id": "46083684"
+        }
+      ],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4696753",
+      "name": "Alec Bryant",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4873322",
+      "name": "Luke Zardzin",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-4880014",
+      "name": "Miles Scott",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5084935",
+      "name": "Grayson Griffin",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5092451",
+      "name": "Ben Clawson",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5154334",
+      "name": "Tyler McClure",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5154335",
+      "name": "Henry Engel",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5161909",
+      "name": "Corey Rashad",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5218893",
+      "name": "Michael Bartolotta",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5218894",
+      "name": "Petey Olaleye",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5221304",
+      "name": "Aaron Ball",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5221305",
+      "name": "Zach Barrett",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5221306",
+      "name": "Jake Furtney",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5221307",
+      "name": "Guillermo Gallardo",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5221310",
+      "name": "Harrysson Ngassa",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5229357",
+      "name": "Karson Kaiser",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    },
+    {
+      "playerId": "CFBD-5297777",
+      "name": "Trey Peters",
+      "stars": null,
+      "compositeRating": null,
+      "nationalRank": null,
+      "positionRank": null,
+      "transferPortalStars": null,
+      "transferRating": null,
+      "fromSchool": null,
+      "isTransfer": false,
+      "years": [],
+      "matchMethod": "none",
+      "matches": [],
+      "homeCity": null,
+      "homeState": null,
+      "homeLat": null,
+      "homeLon": null,
+      "source": null,
+      "recruitedSchool": null,
+      "recruitYear": null,
+      "origin": null,
+      "eligibility": null
+    }
+  ],
+  "teamClassRankings": [
+    {
+      "year": 2027,
+      "team": "Illinois Fighting Illini",
+      "source": "247sports",
+      "overallRank": 61,
+      "transferRank": 0
+    },
+    {
+      "year": 2026,
+      "team": "Illinois Fighting Illini",
+      "source": "247sports",
+      "overallRank": 31,
+      "compositeRank": 24,
+      "transferRank": 43
+    },
+    {
+      "year": 2025,
+      "team": "Illinois Fighting Illini",
+      "source": "247sports",
+      "overallRank": 49,
+      "compositeRank": 46,
+      "transferRank": 43
+    },
+    {
+      "year": 2024,
+      "team": "Illinois Fighting Illini",
+      "source": "247sports",
+      "overallRank": 45,
+      "compositeRank": 49,
+      "transferRank": 46
+    },
+    {
+      "year": 2023,
+      "team": "Illinois Fighting Illini",
+      "source": "247sports",
+      "overallRank": 54,
+      "compositeRank": 37,
+      "transferRank": 65
+    },
+    {
+      "year": 2022,
+      "team": "Illinois Fighting Illini",
+      "source": "247sports",
+      "overallRank": 63,
+      "compositeRank": 46,
+      "transferRank": 98
+    },
+    {
+      "year": 2021,
+      "team": "Illinois Fighting Illini",
+      "source": "247sports",
+      "overallRank": 70,
+      "compositeRank": 73,
+      "transferRank": 42
+    },
+    {
+      "year": 2020,
+      "team": "Illinois Fighting Illini",
+      "source": "247sports",
+      "overallRank": 67,
+      "compositeRank": 82,
+      "transferRank": 17
+    }
+  ],
+  "years": [
+    2027,
+    2026,
+    2025,
+    2024,
+    2023,
+    2022,
+    2021,
+    2020
+  ],
+  "unmatchedRecruits": [
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Nick Hankins",
+      "athleteId": null,
+      "cfbdRecruitId": "104190"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Micah Smith",
+      "athleteId": null,
+      "cfbdRecruitId": "104000"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Nasir Rankin",
+      "athleteId": null,
+      "cfbdRecruitId": "104027"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Kai Pritchard",
+      "athleteId": null,
+      "cfbdRecruitId": "104151"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Jacob Eberhart",
+      "athleteId": null,
+      "cfbdRecruitId": "104165"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Javari Barnett",
+      "athleteId": null,
+      "cfbdRecruitId": "104321"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Parker Crim",
+      "athleteId": null,
+      "cfbdRecruitId": "104619"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Isaiah Williams",
+      "athleteId": null,
+      "cfbdRecruitId": "104389"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "King Liggins",
+      "athleteId": null,
+      "cfbdRecruitId": "104778"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Kingston Shaw",
+      "athleteId": null,
+      "cfbdRecruitId": "104862"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Kaedyn Cobbs",
+      "athleteId": null,
+      "cfbdRecruitId": "104937"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Jacob Alexander",
+      "athleteId": null,
+      "cfbdRecruitId": "191455"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Will Vala",
+      "athleteId": null,
+      "cfbdRecruitId": "104946"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Nelsyn Wheeler",
+      "athleteId": null,
+      "cfbdRecruitId": "105024"
+    },
+    {
+      "year": 2026,
+      "source": "cfbd",
+      "name": "Jack Gray",
+      "athleteId": null,
+      "cfbdRecruitId": "213053"
+    },
+    {
+      "year": 2024,
+      "source": "cfbd",
+      "name": "Andrew Dennis",
+      "athleteId": null,
+      "cfbdRecruitId": "108965"
+    },
+    {
+      "year": 2024,
+      "source": "cfbd",
+      "name": "Carlos Orr-Gillespie",
+      "athleteId": "5218897",
+      "cfbdRecruitId": "109548"
+    },
+    {
+      "year": 2023,
+      "source": "cfbd",
+      "name": "Kenari Wilcher",
+      "athleteId": "5078909",
+      "cfbdRecruitId": "111964"
+    },
+    {
+      "year": 2023,
+      "source": "cfbd",
+      "name": "Cal Swanson",
+      "athleteId": "5075592",
+      "cfbdRecruitId": "112096"
+    },
+    {
+      "year": 2023,
+      "source": "cfbd",
+      "name": "Zach Aamland",
+      "athleteId": "4921396",
+      "cfbdRecruitId": "112581"
+    },
+    {
+      "year": 2023,
+      "source": "cfbd",
+      "name": "Nate Guinn",
+      "athleteId": "5078186",
+      "cfbdRecruitId": "113121"
+    },
+    {
+      "year": 2023,
+      "source": "cfbd",
+      "name": "David Olano",
+      "athleteId": "5077223",
+      "cfbdRecruitId": "113238"
+    },
+    {
+      "year": 2023,
+      "source": "cfbd",
+      "name": "Declan Duley",
+      "athleteId": "5092240",
+      "cfbdRecruitId": "113350"
+    },
+    {
+      "year": 2022,
+      "source": "cfbd",
+      "name": "Joey Okla",
+      "athleteId": "4714773",
+      "cfbdRecruitId": "114420"
+    },
+    {
+      "year": 2022,
+      "source": "cfbd",
+      "name": "Donovan Leary",
+      "athleteId": "4790965",
+      "cfbdRecruitId": "114760"
+    },
+    {
+      "year": 2022,
+      "source": "cfbd",
+      "name": "Henry Boyer",
+      "athleteId": "4826637",
+      "cfbdRecruitId": "114871"
+    },
+    {
+      "year": 2022,
+      "source": "cfbd",
+      "name": "Naivyan Cargill",
+      "athleteId": "4916955",
+      "cfbdRecruitId": "114982"
+    },
+    {
+      "year": 2021,
+      "source": "cfbd",
+      "name": "Brody Wisecarver",
+      "athleteId": "4432788",
+      "cfbdRecruitId": "116221"
+    },
+    {
+      "year": 2021,
+      "source": "cfbd",
+      "name": "Josh McCray",
+      "athleteId": "4682640",
+      "cfbdRecruitId": "117079"
+    },
+    {
+      "year": 2021,
+      "source": "cfbd",
+      "name": "DJ Johnson",
+      "athleteId": "4880012",
+      "cfbdRecruitId": "117162"
+    },
+    {
+      "year": 2021,
+      "source": "cfbd",
+      "name": "Kionte Curry",
+      "athleteId": "4708098",
+      "cfbdRecruitId": "117377"
+    },
+    {
+      "year": 2021,
+      "source": "cfbd",
+      "name": "Zach Barlev",
+      "athleteId": "4684533",
+      "cfbdRecruitId": "117466"
+    },
+    {
+      "year": 2021,
+      "source": "cfbd",
+      "name": "Kalen Villanueva",
+      "athleteId": "4684964",
+      "cfbdRecruitId": "117599"
+    },
+    {
+      "year": 2020,
+      "source": "cfbd",
+      "name": "Reggie Love III",
+      "athleteId": "4696690",
+      "cfbdRecruitId": "118831"
+    },
+    {
+      "year": 2020,
+      "source": "cfbd",
+      "name": "James Frenchie",
+      "athleteId": "4429116",
+      "cfbdRecruitId": "118851"
+    },
+    {
+      "year": 2020,
+      "source": "cfbd",
+      "name": "Tre'von Riggins",
+      "athleteId": "4696693",
+      "cfbdRecruitId": "119222"
+    },
+    {
+      "year": 2020,
+      "source": "cfbd",
+      "name": "Quinton McCoy",
+      "athleteId": "4430399",
+      "cfbdRecruitId": "120005"
+    },
+    {
+      "year": 2020,
+      "source": "cfbd",
+      "name": "Blaise Sparks",
+      "athleteId": "4570632",
+      "cfbdRecruitId": "120291"
+    },
+    {
+      "year": 2020,
+      "source": "cfbd",
+      "name": "Fabrizio Pinton",
+      "athleteId": null,
+      "cfbdRecruitId": "121072"
+    },
+    {
+      "year": 2020,
+      "source": "cfbd",
+      "name": "Jean Marc Etienne",
+      "athleteId": null,
+      "cfbdRecruitId": "121945"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Bennett Konkey",
+      "cleanedName": "bennett konkey",
+      "player247Id": "46156227"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Justin Johnson",
+      "cleanedName": "justin johnson",
+      "player247Id": "46157797"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Mason Halliman",
+      "cleanedName": "mason halliman",
+      "player247Id": "46155221"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Soren Fifer",
+      "cleanedName": "soren fifer",
+      "player247Id": "46158399"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Brody Knowles",
+      "cleanedName": "brody knowles",
+      "player247Id": "46153338"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Ryan Paulsen",
+      "cleanedName": "ryan paulsen",
+      "player247Id": "46165229"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Sladen Shack",
+      "cleanedName": "sladen shack",
+      "player247Id": "46143882"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Sean Rice",
+      "cleanedName": "sean rice",
+      "player247Id": "46162165"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Cade Newman",
+      "cleanedName": "cade newman",
+      "player247Id": "46167249"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Gavin Ericson-Staton",
+      "cleanedName": "gavin ericson staton",
+      "player247Id": "46159091"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Steven Alexis",
+      "cleanedName": "steven alexis",
+      "player247Id": "46164408"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Tyrone Howard Jr.",
+      "cleanedName": "tyrone howard",
+      "player247Id": "46167261"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Anthony James",
+      "cleanedName": "anthony james",
+      "player247Id": "46164067"
+    },
+    {
+      "year": 2027,
+      "source": "247",
+      "name": "Ulysses Morales",
+      "cleanedName": "ulysses morales",
+      "player247Id": "46168220"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Nick Hankins Jr.",
+      "cleanedName": "nick hankins",
+      "player247Id": "46152608"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Kai Pritchard",
+      "cleanedName": "kai pritchard",
+      "player247Id": "46145769"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Nas Rankin",
+      "cleanedName": "nas rankin",
+      "player247Id": "46146160"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Kenyon Alston",
+      "cleanedName": "kenyon alston",
+      "player247Id": "46141006"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Almirian Thomas",
+      "cleanedName": "almirian thomas",
+      "player247Id": "46154513"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Champ Smith",
+      "cleanedName": "champ smith",
+      "player247Id": "46134934"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Tony Balanganayi",
+      "cleanedName": "tony balanganayi",
+      "player247Id": "46144374"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Jacob Eberhart",
+      "cleanedName": "jacob eberhart",
+      "player247Id": "46139707"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "BJ Thurman",
+      "cleanedName": "bj thurman",
+      "player247Id": "46141311"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Javari Barnett",
+      "cleanedName": "javari barnett",
+      "player247Id": "46144426"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Cameron Thomas",
+      "cleanedName": "cameron thomas",
+      "player247Id": "46133506"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Parker Crim",
+      "cleanedName": "parker crim",
+      "player247Id": "46149814"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Davon Grant",
+      "cleanedName": "davon grant",
+      "player247Id": "46144138"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Jaylen Stewart",
+      "cleanedName": "jaylen stewart",
+      "player247Id": "46146949"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Isaiah Williams",
+      "cleanedName": "isaiah williams",
+      "player247Id": "46137654"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "TJ Taylor",
+      "cleanedName": "tj taylor",
+      "player247Id": "46157898"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Jakwon Morris",
+      "cleanedName": "jakwon morris",
+      "player247Id": "46139239"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Jacob Alexander",
+      "cleanedName": "jacob alexander",
+      "player247Id": "46144343"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "King Liggins",
+      "cleanedName": "king liggins",
+      "player247Id": "46142161"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Casey Thomann",
+      "cleanedName": "casey thomann",
+      "player247Id": "46147958"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Maika Matelau",
+      "cleanedName": "maika matelau",
+      "player247Id": "46099565"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Tony Williams",
+      "cleanedName": "tony williams",
+      "player247Id": "46143694"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Kingston Shaw",
+      "cleanedName": "kingston shaw",
+      "player247Id": "46150296"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Kaedyn Cobbs",
+      "cleanedName": "kaedyn cobbs",
+      "player247Id": "46140631"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Michael Clayton II",
+      "cleanedName": "michael clayton",
+      "player247Id": "46141419"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Kayden Bennett",
+      "cleanedName": "kayden bennett",
+      "player247Id": "46153435"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Leslie Mosley Jr.",
+      "cleanedName": "leslie mosley",
+      "player247Id": "46164236"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Landen Von Seggern",
+      "cleanedName": "landen von seggern",
+      "player247Id": "46150487"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Will Vala",
+      "cleanedName": "will vala",
+      "player247Id": "46155274"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Alfred Washington",
+      "cleanedName": "alfred washington",
+      "player247Id": "46160641"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Nelsyn Wheeler",
+      "cleanedName": "nelsyn wheeler",
+      "player247Id": "46156625"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Caden Considine",
+      "cleanedName": "caden considine",
+      "player247Id": "46159188"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Jacob Harvey",
+      "cleanedName": "jacob harvey",
+      "player247Id": "46164843"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Jack Gray",
+      "cleanedName": "jack gray",
+      "player247Id": "46160814"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Deon Williams",
+      "cleanedName": "deon williams",
+      "player247Id": "46147415"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Nate Cichy",
+      "cleanedName": "nate cichy",
+      "player247Id": "46154630"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Dane Eisenmenger",
+      "cleanedName": "dane eisenmenger",
+      "player247Id": "46150833"
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "James Finley",
+      "cleanedName": "james finley",
+      "player247Id": "46141038",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Eddie Kasper",
+      "cleanedName": "eddie kasper",
+      "player247Id": "46114222",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Darrell Prater",
+      "cleanedName": "darrell prater",
+      "player247Id": "46163517",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Isaiah Thomison",
+      "cleanedName": "isaiah thomison",
+      "player247Id": "46131579",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Ethan Moczulski",
+      "cleanedName": "ethan moczulski",
+      "player247Id": "46117769",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Connor Sullivan",
+      "cleanedName": "connor sullivan",
+      "player247Id": "46147237",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Robert Edmonson",
+      "cleanedName": "robert edmonson",
+      "player247Id": "46129390",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Deuce Fillmore",
+      "cleanedName": "deuce fillmore",
+      "player247Id": "46118287",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Alex Perry",
+      "cleanedName": "alex perry",
+      "player247Id": "46118403",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Will Holmes",
+      "cleanedName": "will holmes",
+      "player247Id": "46163568",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Ty Robinson",
+      "cleanedName": "ty robinson",
+      "player247Id": "46081401",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Zach Haber",
+      "cleanedName": "zach haber",
+      "player247Id": "46163540",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Jayshon Platt",
+      "cleanedName": "jayshon platt",
+      "player247Id": "46129958",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Christian Martin",
+      "cleanedName": "christian martin",
+      "player247Id": "46130437",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Maurice Smith Jr.",
+      "cleanedName": "maurice smith",
+      "player247Id": "46101748",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Jake Renfro",
+      "cleanedName": "jake renfro",
+      "player247Id": "46079709",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Katin Houser",
+      "cleanedName": "katin houser",
+      "player247Id": "46083377",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Carter Janki",
+      "cleanedName": "carter janki",
+      "player247Id": "46162770",
+      "isTransfer": true
+    },
+    {
+      "year": 2026,
+      "source": "247",
+      "name": "Lavon Williams",
+      "cleanedName": "lavon williams",
+      "player247Id": "46163470",
+      "isTransfer": true
+    },
+    {
+      "year": 2024,
+      "source": "247",
+      "name": "Andrew Dennis",
+      "cleanedName": "andrew dennis",
+      "player247Id": "46115807"
+    },
+    {
+      "year": 2024,
+      "source": "247",
+      "name": "Carlos Orr-Gillespie",
+      "cleanedName": "carlos orr gillespie",
+      "player247Id": "46138885"
+    },
+    {
+      "year": 2024,
+      "source": "247",
+      "name": "Chase Canada",
+      "cleanedName": "chase canada",
+      "player247Id": "46134290"
+    },
+    {
+      "year": 2024,
+      "source": "247",
+      "name": "Zakhari Franklin",
+      "cleanedName": "zakhari franklin",
+      "player247Id": "46036235",
+      "isTransfer": true
+    },
+    {
+      "year": 2024,
+      "source": "247",
+      "name": "Carson Goda",
+      "cleanedName": "carson goda",
+      "player247Id": "46150129",
+      "isTransfer": true
+    },
+    {
+      "year": 2024,
+      "source": "247",
+      "name": "Terrance Brooks",
+      "cleanedName": "terrance brooks",
+      "player247Id": "46099495",
+      "isTransfer": true
+    },
+    {
+      "year": 2024,
+      "source": "247",
+      "name": "Dennis Briggs Jr.",
+      "cleanedName": "dennis briggs",
+      "player247Id": "83237",
+      "isTransfer": true
+    },
+    {
+      "year": 2024,
+      "source": "247",
+      "name": "Kevin Wigenton II",
+      "cleanedName": "kevin wigenton",
+      "player247Id": "46086970",
+      "isTransfer": true
+    },
+    {
+      "year": 2024,
+      "source": "247",
+      "name": "Anthony Johnson",
+      "cleanedName": "anthony johnson",
+      "player247Id": "46053059",
+      "isTransfer": true
+    },
+    {
+      "year": 2024,
+      "source": "247",
+      "name": "Enyce Sledge",
+      "cleanedName": "enyce sledge",
+      "player247Id": "46103916",
+      "isTransfer": true
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Kenari Wilcher",
+      "cleanedName": "kenari wilcher",
+      "player247Id": "46130998"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Alex Bray",
+      "cleanedName": "alex bray",
+      "player247Id": "46115786"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Laine Jenkins",
+      "cleanedName": "laine jenkins",
+      "player247Id": "46141347"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Zachary Tobe",
+      "cleanedName": "zachary tobe",
+      "player247Id": "46125342"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Nate Guinn",
+      "cleanedName": "nate guinn",
+      "player247Id": "46134682"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Cal Swanson",
+      "cleanedName": "cal swanson",
+      "player247Id": "46114005"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Zach Aamland",
+      "cleanedName": "zach aamland",
+      "player247Id": "46129346"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Will Leys",
+      "cleanedName": "will leys",
+      "player247Id": "46141794"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Prince Ford",
+      "cleanedName": "prince ford",
+      "player247Id": "46142070"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "David Olano",
+      "cleanedName": "david olano",
+      "player247Id": "46130539"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Declan Duley",
+      "cleanedName": "declan duley",
+      "player247Id": "46133047"
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "John Paddock",
+      "cleanedName": "john paddock",
+      "player247Id": "89650",
+      "isTransfer": true
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Denzel Daxon",
+      "cleanedName": "denzel daxon",
+      "player247Id": "46049404",
+      "isTransfer": true
+    },
+    {
+      "year": 2023,
+      "source": "247",
+      "name": "Nicario Harper",
+      "cleanedName": "nicario harper",
+      "player247Id": "46040971",
+      "isTransfer": true
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Magnus Moller",
+      "cleanedName": "magnus moller",
+      "player247Id": "46128073"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Jared Badie",
+      "cleanedName": "jared badie",
+      "player247Id": "46102238"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Shawn Miller",
+      "cleanedName": "shawn miller",
+      "player247Id": "46058655"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Eian Pugh",
+      "cleanedName": "eian pugh",
+      "player247Id": "46102203"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Henry Boyer",
+      "cleanedName": "henry boyer",
+      "player247Id": "46114180"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Hunter Whitenack",
+      "cleanedName": "hunter whitenack",
+      "player247Id": "46094194"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Matt Fries",
+      "cleanedName": "matt fries",
+      "player247Id": "46103691"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Donovan Leary",
+      "cleanedName": "donovan leary",
+      "player247Id": "46082569"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Elijah Mc-Cantos",
+      "cleanedName": "elijah mc cantos",
+      "player247Id": "46098947"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Joey Okla",
+      "cleanedName": "joey okla",
+      "player247Id": "46104108"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Zylon Crisler",
+      "cleanedName": "zylon crisler",
+      "player247Id": "46129183"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Naivyan Cargill",
+      "cleanedName": "naivyan cargill",
+      "player247Id": "46117564"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Isaiah Adams",
+      "cleanedName": "isaiah adams",
+      "player247Id": "46125346"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Kirkland Michaux",
+      "cleanedName": "kirkland michaux",
+      "player247Id": "46050097"
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Raashaan Wilkins",
+      "cleanedName": "raashaan wilkins",
+      "player247Id": "46099382",
+      "isTransfer": true
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Terah Edwards",
+      "cleanedName": "terah edwards",
+      "player247Id": "46059470",
+      "isTransfer": true
+    },
+    {
+      "year": 2022,
+      "source": "247",
+      "name": "Tommy DeVito",
+      "cleanedName": "tommy devito",
+      "player247Id": "56654",
+      "isTransfer": true
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Brody Wisecarver",
+      "cleanedName": "brody wisecarver",
+      "player247Id": "46050568"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Samari Collier",
+      "cleanedName": "samari collier",
+      "player247Id": "46085439"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Pat Bryant",
+      "cleanedName": "pat bryant",
+      "player247Id": "46049780"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Prince Green",
+      "cleanedName": "prince green",
+      "player247Id": "46084619"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Kalen Villanueva",
+      "cleanedName": "kalen villanueva",
+      "player247Id": "46084567"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Sedarius McConnell",
+      "cleanedName": "sedarius mcconnell",
+      "player247Id": "46084372"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Daniel Edwards Jr.",
+      "cleanedName": "daniel edwards",
+      "player247Id": "46082031"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Joriell Washington",
+      "cleanedName": "joriell washington",
+      "player247Id": "46098741"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "DJ Johnson",
+      "cleanedName": "dj johnson",
+      "player247Id": "46085873"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Kionte Curry",
+      "cleanedName": "kionte curry",
+      "player247Id": "46080758"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Zach Barlev",
+      "cleanedName": "zach barlev",
+      "player247Id": "46093797"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "DD Snyder",
+      "cleanedName": "dd snyder",
+      "player247Id": "46085443"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Josh McCray",
+      "cleanedName": "josh mccray",
+      "player247Id": "46055782"
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Chase Hayden",
+      "cleanedName": "chase hayden",
+      "player247Id": "77191",
+      "isTransfer": true
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Jafar Armstrong",
+      "cleanedName": "jafar armstrong",
+      "player247Id": "77841",
+      "isTransfer": true
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Calvin Hart",
+      "cleanedName": "calvin hart",
+      "player247Id": "46037161",
+      "isTransfer": true
+    },
+    {
+      "year": 2021,
+      "source": "247",
+      "name": "Eddie Smith",
+      "cleanedName": "eddie smith",
+      "player247Id": "46038981",
+      "isTransfer": true
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "James Frenchie",
+      "cleanedName": "james frenchie",
+      "player247Id": "46040705"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Reggie Love III",
+      "cleanedName": "reggie love",
+      "player247Id": "46040706"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Phifer Griffin",
+      "cleanedName": "phifer griffin",
+      "player247Id": "46083531"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Jer'Zhan Newton",
+      "cleanedName": "jer zhan newton",
+      "player247Id": "46046954"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Kevin Tyler",
+      "cleanedName": "kevin tyler",
+      "player247Id": "46058209"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Tre'von Riggins",
+      "cleanedName": "tre von riggins",
+      "player247Id": "46040444"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Quinton McCoy",
+      "cleanedName": "quinton mccoy",
+      "player247Id": "46078797"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Anthony Shipton",
+      "cleanedName": "anthony shipton",
+      "player247Id": "46095002"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Deuce Spann",
+      "cleanedName": "deuce spann",
+      "player247Id": "46054225"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Blaise Sparks",
+      "cleanedName": "blaise sparks",
+      "player247Id": "46056108"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Tahveon Nicholson",
+      "cleanedName": "tahveon nicholson",
+      "player247Id": "46057683"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Jean Marc Etienne",
+      "cleanedName": "jean marc etienne",
+      "player247Id": "46080150"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Fabrizio Pinton",
+      "cleanedName": "fabrizio pinton",
+      "player247Id": "46080655"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Hugh Robertson",
+      "cleanedName": "hugh robertson",
+      "player247Id": "46103498"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Lavar Gardner",
+      "cleanedName": "lavar gardner",
+      "player247Id": "46039414"
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Brevyn Jones",
+      "cleanedName": "brevyn jones",
+      "player247Id": "46051839",
+      "isTransfer": true
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Chinedu Udeogu",
+      "cleanedName": "chinedu udeogu",
+      "player247Id": "75629",
+      "isTransfer": true
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Brian Hightower",
+      "cleanedName": "brian hightower",
+      "player247Id": "83804",
+      "isTransfer": true
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Blake Jeresaty",
+      "cleanedName": "blake jeresaty",
+      "player247Id": "46101090",
+      "isTransfer": true
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Desmond Dan",
+      "cleanedName": "desmond dan",
+      "player247Id": "80087",
+      "isTransfer": true
+    },
+    {
+      "year": 2020,
+      "source": "247",
+      "name": "Derrick Smith",
+      "cleanedName": "derrick smith",
+      "player247Id": "76669",
+      "isTransfer": true
+    }
+  ],
+  "failedYears": [],
+  "partial": false,
+  "matchSummary": {
+    "cfbd-id": 43,
+    "247-id": 52,
+    "name-fuzzy": 0,
+    "none": 17
+  }
+}

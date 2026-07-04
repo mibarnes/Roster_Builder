@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-04T12:58:34.493Z",
-  "collectorVersion": "693c517",
+  "generatedAt": "2026-07-04T13:01:46.359Z",
+  "collectorVersion": "14b7848",
   "season": 2025,
   "rosterSeason": 2026,
-  "durationMs": 170881,
+  "durationMs": 175001,
   "targets": [
-    "wisconsin-badgers",
-    "iowa-hawkeyes",
-    "minnesota-golden-gophers",
-    "michigan-state-spartans",
-    "nebraska-cornhuskers",
-    "maryland-terrapins"
+    "rutgers-scarlet-knights",
+    "indiana-hoosiers",
+    "illinois-fighting-illini",
+    "purdue-boilermakers",
+    "northwestern-wildcats",
+    "ucla-bruins"
   ],
   "teamsOk": 6,
   "teamsFailed": 0,
@@ -27,80 +27,26 @@
   },
   "teams": [
     {
-      "id": "wisconsin-badgers",
-      "label": "Wisconsin Badgers",
+      "id": "rutgers-scarlet-knights",
+      "label": "Rutgers Scarlet Knights",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
-        "rosterPlayers": 108,
-        "offenseSlots": 27,
-        "defenseSlots": 23,
-        "recruitingPct": 82.4,
-        "productionPct": 51.9,
-        "hometownPct": 99.1,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 128,
-          "matchedByIdPct": 78.6,
-          "headshotPct": 77.3,
-          "highSchoolPct": 46.1,
-          "transfersRated": 26,
-          "transfersTotal": 27,
-          "officialEngine": "nuxt-sidearm",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "iowa-hawkeyes",
-      "label": "Iowa Hawkeyes",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 103,
-        "offenseSlots": 25,
-        "defenseSlots": 19,
-        "recruitingPct": 77.7,
-        "productionPct": 57.3,
+        "rosterPlayers": 125,
+        "offenseSlots": 28,
+        "defenseSlots": 28,
+        "recruitingPct": 79.2,
+        "productionPct": 44.8,
         "hometownPct": 100,
         "master": {
-          "spineCount": 96,
-          "masterCount": 106,
-          "matchedByIdPct": 90.1,
-          "headshotPct": 90.6,
-          "highSchoolPct": 67,
+          "spineCount": 100,
+          "masterCount": 126,
+          "matchedByIdPct": 83.8,
+          "headshotPct": 76.2,
+          "highSchoolPct": 59.5,
           "transfersRated": 13,
-          "transfersTotal": 15,
-          "officialEngine": "sidearm-json",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "minnesota-golden-gophers",
-      "label": "Minnesota Golden Gophers",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 100,
-        "offenseSlots": 26,
-        "defenseSlots": 27,
-        "recruitingPct": 90,
-        "productionPct": 56,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 117,
-          "matchedByIdPct": 85.8,
-          "headshotPct": 84.6,
-          "highSchoolPct": 51.3,
-          "transfersRated": 25,
-          "transfersTotal": 26,
+          "transfersTotal": 13,
           "officialEngine": "nuxt-sidearm",
           "officialDegraded": false,
           "on3Degraded": true
@@ -108,81 +54,135 @@
       }
     },
     {
-      "id": "michigan-state-spartans",
-      "label": "Michigan State Spartans",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 112,
-        "offenseSlots": 21,
-        "defenseSlots": 22,
-        "recruitingPct": 83,
-        "productionPct": 55.4,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 100,
-          "masterCount": 120,
-          "matchedByIdPct": 88.8,
-          "headshotPct": 82.5,
-          "highSchoolPct": 40.8,
-          "transfersRated": 34,
-          "transfersTotal": 36,
-          "officialEngine": "nuxt-sidearm",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "nebraska-cornhuskers",
-      "label": "Nebraska Cornhuskers",
-      "ok": true,
-      "error": null,
-      "warnings": [],
-      "stats": {
-        "rosterPlayers": 118,
-        "offenseSlots": 36,
-        "defenseSlots": 39,
-        "recruitingPct": 77.1,
-        "productionPct": 59.3,
-        "hometownPct": 100,
-        "master": {
-          "spineCount": 99,
-          "masterCount": 124,
-          "matchedByIdPct": 84.5,
-          "headshotPct": 79,
-          "highSchoolPct": 59.7,
-          "transfersRated": 16,
-          "transfersTotal": 17,
-          "officialEngine": "sidearm-json",
-          "officialDegraded": false,
-          "on3Degraded": true
-        }
-      }
-    },
-    {
-      "id": "maryland-terrapins",
-      "label": "Maryland Terrapins",
+      "id": "indiana-hoosiers",
+      "label": "Indiana Hoosiers",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
         "rosterPlayers": 97,
         "offenseSlots": 29,
-        "defenseSlots": 21,
-        "recruitingPct": 80.4,
+        "defenseSlots": 31,
+        "recruitingPct": 79.4,
         "productionPct": 55.7,
         "hometownPct": 100,
         "master": {
-          "spineCount": 100,
-          "masterCount": 109,
-          "matchedByIdPct": 87.6,
-          "headshotPct": 88.1,
-          "highSchoolPct": 61.5,
+          "spineCount": 90,
+          "masterCount": 110,
+          "matchedByIdPct": 82.8,
+          "headshotPct": 80.9,
+          "highSchoolPct": 53.6,
           "transfersRated": 20,
           "transfersTotal": 22,
           "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "illinois-fighting-illini",
+      "label": "Illinois Fighting Illini",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 112,
+        "offenseSlots": 39,
+        "defenseSlots": 33,
+        "recruitingPct": 84.8,
+        "productionPct": 50.9,
+        "hometownPct": 99.1,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 135,
+          "matchedByIdPct": 87,
+          "headshotPct": 72.6,
+          "highSchoolPct": 40,
+          "transfersRated": 22,
+          "transfersTotal": 24,
+          "officialEngine": "nuxt-sidearm",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "purdue-boilermakers",
+      "label": "Purdue Boilermakers",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 114,
+        "offenseSlots": 30,
+        "defenseSlots": 25,
+        "recruitingPct": 75.4,
+        "productionPct": 50,
+        "hometownPct": 99.1,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 130,
+          "matchedByIdPct": 82.6,
+          "headshotPct": 75.4,
+          "highSchoolPct": 26.9,
+          "transfersRated": 44,
+          "transfersTotal": 49,
+          "officialEngine": "sidearm-json",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "northwestern-wildcats",
+      "label": "Northwestern Wildcats",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 106,
+        "offenseSlots": 30,
+        "defenseSlots": 19,
+        "recruitingPct": 81.1,
+        "productionPct": 50,
+        "hometownPct": 99.1,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 119,
+          "matchedByIdPct": 88.8,
+          "headshotPct": 82.4,
+          "highSchoolPct": 62.2,
+          "transfersRated": 16,
+          "transfersTotal": 16,
+          "officialEngine": "sidearm-json",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "ucla-bruins",
+      "label": "UCLA Bruins",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 100,
+        "offenseSlots": 31,
+        "defenseSlots": 24,
+        "recruitingPct": 77,
+        "productionPct": 51,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 135,
+          "matchedByIdPct": 77.1,
+          "headshotPct": 71.9,
+          "highSchoolPct": 39.3,
+          "transfersRated": 35,
+          "transfersTotal": 37,
+          "officialEngine": "sidearm-json",
           "officialDegraded": false,
           "on3Degraded": true
         }

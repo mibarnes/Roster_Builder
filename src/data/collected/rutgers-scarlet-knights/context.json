@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Rutgers Scarlet Knights",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Rutgers"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:58:56.715Z",
+    "collectorVersion": "14b7848",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 260,
+    "totalPassingPPA": 89.8,
+    "totalReceivingPPA": 140.5,
+    "totalRushingPPA": 29.8,
+    "percentPPA": 0.674,
+    "percentPassingPPA": 1,
+    "percentReceivingPPA": 0.587,
+    "percentRushingPPA": 0.528,
+    "usage": 0.664,
+    "passingUsage": 1,
+    "receivingUsage": 0.524,
+    "rushingUsage": 0.426
+  }
+}
