@@ -1,11 +1,16 @@
 /**
  * Official-team-site roster overlay — BEST-EFFORT, non-load-bearing.
  *
- * Two engines are supported:
+ * Engines supported (detected by content, not by registry hint — a site that
+ * silently swaps CMS still resolves):
  *  - nuxt-sidearm (Florida): the roster lives in a `__NUXT_DATA__` serialized
- *    flat array (devalue-style refs). We resolve those refs to pull highSchool /
- *    previousSchool / hometown / jersey / class per player.
- *  - wmt-presto (Miami): a client-rendered SPA whose LANDING page server-renders
+ *    flat array (devalue-style refs) with camelCase player objects. We resolve
+ *    those refs to pull highSchool / previousSchool / hometown / jersey / class.
+ *  - sidearm-json (Clemson/Auburn/Texas A&M …): the same `__NUXT_DATA__` array
+ *    but snake_case player objects (`first_name`/`high_school`/…). Bio overlay
+ *    only (position/class arrive as non-load-bearing `*_id` refs). See
+ *    `parseSidearmJsonRoster`.
+ *  - wmt-presto (Miami/Notre Dame): a client-rendered SPA whose LANDING page server-renders
  *    per-player profile LINKS, and whose PROFILE pages server-render the bio in
  *    `<div class="item"><span>Label</span><p>Value</p></div>` blocks (Hometown /
  *    High School / Previous School / Class / position). We extract the profile
@@ -87,6 +92,55 @@ export const parseNuxtRoster = (arr: unknown[]): OfficialPlayer[] => {
         hometown: clean(res(rec.hometown)),
         highSchool: clean(res(rec.highSchool)),
         previousSchool: clean(res(rec.previousSchool)),
+      })
+    }
+  }
+  return players
+}
+
+/**
+ * Sidearm "JSON data-model" variant (snake_case). Newer Sidearm sites serialize
+ * the roster into the same `__NUXT_DATA__` devalue array, but the player objects
+ * use snake_case keys (`first_name`/`last_name`/`full_name`/`high_school`/
+ * `hometown`/`previous_school`/`jersey_number`) and a richer schema than the
+ * camelCase Florida/Georgia variant that `parseNuxtRoster` handles.
+ *
+ * Same devalue-ref resolution (numeric value === index into the array). We guard
+ * every text field to a resolved STRING (a ref that lands on `null`/an object
+ * yields null, not the literal `"null"`). Position/class arrive as numeric
+ * `*_id` refs into lookup tables and are NON-load-bearing for the overlay (ESPN
+ * and CFBD supply position/class), so we extract the bio fields only. Pure.
+ */
+export const parseSidearmJsonRoster = (arr: unknown[]): OfficialPlayer[] => {
+  const resStr = (idx: unknown): string | null => {
+    const v = typeof idx === 'number' && idx >= 0 && idx < arr.length ? arr[idx] : idx
+    return typeof v === 'string' ? v : null
+  }
+  const players: OfficialPlayer[] = []
+  for (const o of arr) {
+    if (
+      o &&
+      typeof o === 'object' &&
+      !Array.isArray(o) &&
+      'first_name' in o &&
+      'last_name' in o &&
+      'high_school' in o &&
+      'hometown' in o
+    ) {
+      const rec = o as Record<string, unknown>
+      const full = clean(resStr(rec.full_name))
+      const first = clean(resStr(rec.first_name))
+      const last = clean(resStr(rec.last_name))
+      const name = full ?? [first, last].filter(Boolean).join(' ').trim()
+      if (!name) continue
+      players.push({
+        name,
+        jersey: numOrNull(resStr(rec.jersey_number) ?? resStr(rec.jersey_number_label)),
+        position: null,
+        classYear: null,
+        hometown: clean(resStr(rec.hometown)),
+        highSchool: clean(resStr(rec.high_school)),
+        previousSchool: clean(resStr(rec.previous_school)),
       })
     }
   }
@@ -176,14 +230,20 @@ export interface OfficialParseResult {
 export const parseOfficialHtml = (html: string): OfficialParseResult => {
   const nuxt = extractNuxtArray(html)
   if (nuxt) {
+    // camelCase Sidearm (Florida/Georgia) …
     const players = parseNuxtRoster(nuxt)
     if (players.length > 0) {
       return { engine: 'nuxt-sidearm', degraded: false, degradeReason: null, players }
     }
+    // … then the snake_case Sidearm JSON data-model (Clemson/Auburn/Texas A&M …).
+    const snake = parseSidearmJsonRoster(nuxt)
+    if (snake.length > 0) {
+      return { engine: 'sidearm-json', degraded: false, degradeReason: null, players: snake }
+    }
     return {
       engine: 'nuxt-sidearm',
       degraded: true,
-      degradeReason: 'Nuxt data island present but no player objects matched the expected shape',
+      degradeReason: 'Nuxt data island present but no player objects matched a known shape',
       players: [],
     }
   }

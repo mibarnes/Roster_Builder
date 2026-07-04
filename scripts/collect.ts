@@ -30,6 +30,7 @@ import {
 } from '../src/data/schema/index.ts'
 import { TEAMS, getTeamById } from '../src/data/teamRegistry.ts'
 import type { Team } from '../src/data/schema/index.ts'
+import { preflightTeams, formatIssue } from './collect/preflight.ts'
 import {
   buildProduction,
   fetchGamesPlayers,
@@ -163,14 +164,17 @@ interface TeamResult {
   }
 }
 
-function parseArgs(argv: string[]): { teamId: string | null; forceNonPilot: boolean } {
-  let teamId: string | null = null
+function parseArgs(argv: string[]): { teamIds: string[] | null; forceNonPilot: boolean } {
+  const ids: string[] = []
   let forceNonPilot = false
   for (const arg of argv) {
     if (arg === '--force-nonpilot') forceNonPilot = true
-    else if (arg.startsWith('--team=')) teamId = arg.slice('--team='.length).trim()
+    else if (arg.startsWith('--team=')) ids.push(arg.slice('--team='.length).trim())
+    // Wave collection: --teams=clemson-tigers,auburn-tigers,… (F3 rollout).
+    else if (arg.startsWith('--teams='))
+      ids.push(...arg.slice('--teams='.length).split(',').map((s) => s.trim()).filter(Boolean))
   }
-  return { teamId, forceNonPilot }
+  return { teamIds: ids.length > 0 ? ids : null, forceNonPilot }
 }
 
 function validate<T>(schema: z.ZodType<T>, value: unknown, label: string): T {
@@ -872,29 +876,45 @@ async function writeRunReport(
 
 async function main(): Promise<void> {
   const runStart = Date.now()
-  const { teamId, forceNonPilot } = parseArgs(process.argv.slice(2))
+  const { teamIds, forceNonPilot } = parseArgs(process.argv.slice(2))
 
   let targets: Team[]
-  if (teamId) {
-    const team = getTeamById(teamId)
-    if (!team) {
-      console.error(`Unknown team id: ${teamId}`)
-      process.exit(1)
+  if (teamIds) {
+    const resolved: Team[] = []
+    for (const id of teamIds) {
+      const team = getTeamById(id)
+      if (!team) {
+        console.error(`Unknown team id: ${id}`)
+        process.exit(1)
+      }
+      if (!team.isPilot && !forceNonPilot) {
+        console.error(
+          `REFUSING to collect non-pilot team "${id}". Pilots only (florida-gators, miami-hurricanes).\n` +
+            `Pass --force-nonpilot to override (F3 wave collection — user-gated per AGENTS.md).`,
+        )
+        process.exit(2)
+      }
+      resolved.push(team)
     }
-    if (!team.isPilot && !forceNonPilot) {
-      console.error(
-        `REFUSING to collect non-pilot team "${teamId}". Pilots only (florida-gators, miami-hurricanes).\n` +
-          `Pass --force-nonpilot to override (you almost certainly should not).`,
-      )
-      process.exit(2)
-    }
-    targets = [team]
+    targets = resolved
   } else {
     targets = TEAMS.filter((t) => t.isPilot)
     if (targets.length === 0) {
       console.error('No pilot teams found in registry.')
       process.exit(1)
     }
+  }
+
+  // ── Preflight: fail fast on missing load-bearing registry fields (no network) ──
+  const pf = preflightTeams(targets)
+  if (pf.issues.length > 0) {
+    console.log('Preflight:')
+    for (const i of pf.issues) console.log(formatIssue(i))
+    console.log('')
+  }
+  if (!pf.ok) {
+    console.error('Preflight FAILED — fix the registry errors above before collecting.')
+    process.exit(3)
   }
 
   console.log(`CFB collector — season ${SEASON}, recruiting years ${RECRUITING_YEARS.join(', ')}, collectorVersion ${collectorVersion}`)
