@@ -52,14 +52,16 @@ Same-day, safe, reversible, no quota. Fixes standing violations + shrinks surfac
 - **Scoping finding (anchor drift):** the blueprint's other F0 dead-code targets are **not** safe pure deletes and were re-routed to **F1**: **S5** (ratings-join) is runtime-dead but *woven into the live `ratings.overall` output* in the core `buildPlayerPipeline` join engine — core-engine surgery, overlaps D5/D7, needs full test validation; **S1** (On3) needs a merge-fill change + re-collection; **S2** (stars-conflict tally) is *un-void wiring*, a behavioral change; **S3** (`jerseyMatch`) is a wire-or-delete decision; **S4** (unused collector exports) is collector-side. All belong with F1's collector pass. *(Mock mode S7 waits for D1 in F3.)*
 - **Gate:** ✅ 259 tests green; tsc strict clean.
 
-### F1 — Collector industrialization + canonical positions  ·  status: IN PROGRESS
+### F1 — Collector industrialization + canonical positions  ·  status: DONE (2026-07-04, one item deferred)
 Correctness + makes every future refresh cheap/safe. (Blueprint 5.1, P1–P4, P9–P10, + D6 pulled forward, + S5 re-routed from F0.)
-- [ ] **Fetch substrate** `scripts/collect/net.ts` — `fetchWithPolicy(url,{host,ttl,hard})`: retry/backoff/429-aware (P1), per-host token-bucket rate limit + bounded concurrency (P2), on-disk raw cache + conditional GET (P4). Migrate all sources; ban naked `fetch` via grep gate.
-- [ ] **Atomic per-team writes** (P3) — stage in `collected/<team>/.staging/`, rename-in only on full success. Fixes the layer-1/master ordering gap.
-- [ ] **Run telemetry artifact** `src/data/collected/_runReport.json` (per-source status, row-count floors P9, quota, duration) — UI banner + ops docs read from it.
-- [x] **D6 — one canonical `src/data/positions.ts`** ✅ **(2026-07-04)** — allowlist + PositionSchema/Position + ST alias/safePosition + POSITION_CLEANING_MAP/canonicalizePositionGroup + slot orders/aliases/overrides + group taxonomy (incl. new `ST_GROUPS` ready for U6/F6), unit-tested (6 tests). All 6 scattered/duplicated sites repointed (app + collector); dead `normalize/positionMapping.ts` deleted. Behavior-preserving; tsc + 265 tests + collector runtime smoke + build all green. *(Note: `scripts/collect/parsers/ourlads.ts` keeps its source-specific `OURLADS_POS_TO_BROAD` + local allowlist — parser-domain, intentionally not centralized.)*
-- [ ] **Dead-path cleanup (P10 + S5, re-routed from F0):** **S1** delete On3 source + merge fill; **S2** un-void stars-conflict tally into `perFieldConflictCounts`; **S3** wire-or-delete `jerseyMatch`; **S4** delete unused `playerId.ts`/`cfbd.ts` exports; **S5** excise the dead ratings-join branch (`ratingsLookup`/`ratingsResolved`/`schema/ratings.ts` + `dataset.ts` `ratings` field + `ratings:undefined` load sites) while **preserving the live derived `ratings.overall` output** — full test validation required (overlaps D5/D7). Re-collect pilots to confirm.
-- **Gate:** re-collect pilots byte-comparable ± vintage; tests green. ✅ **D6 gate CLOSED (2026-07-04):** live pilot re-collection (FL + MIA) produced **byte-identical master position distributions** before/after; vintage-only + portal-refresh data delta; 265 tests green. Data committed (`048642f`, 2026-07-04 vintage). *(Remaining F1 slices — fetch substrate / atomic writes / run report / dead-path cleanup — will re-collect again on completion.)*
+- [x] **Fetch substrate** `scripts/collect/net.ts` ✅ — `fetchWithPolicy(url,{host,ttlMs})`: retry/backoff/429-aware + Retry-After (P1), per-host min-interval rate limiter (P2), on-disk cache (`scripts/.cache`, gitignored) + conditional GET, revalidate-by-default so manual runs stay fresh; opt-in `ttlMs` for scheduled F5 (P4). Migrated cfbd/espn/ourlads/247/official; injectable seams; 7 net tests. *(on3's naked fetch remains — dies with S1.)*
+- [x] **Atomic per-team writes** (P3) ✅ — stage all outputs in `<team>.staging`, `commitStaging()` rename-in only on full success, `finally` cleanup. Fixes the layer-1/master ordering gap; failure leaves teamDir last-good.
+- [x] **Run telemetry artifact** `src/data/collected/_runReport.json` ✅ — run-level + net stats (`getNetStats`) + per-team coverage + P9-lite floor warnings. First canonical 2-team report committed (`1a36b7e`).
+- [x] **D6 — one canonical `src/data/positions.ts`** ✅ — allowlist + PositionSchema/Position + ST alias/safePosition + POSITION_CLEANING_MAP/canonicalizePositionGroup + slot orders/aliases/overrides + group taxonomy (incl. new `ST_GROUPS` ready for U6/F6), unit-tested. All 6 scattered/duplicated sites repointed (app + collector); dead `normalize/positionMapping.ts` deleted. *(Note: `ourlads.ts` keeps its source-specific `OURLADS_POS_TO_BROAD` — parser-domain, intentionally not centralized.)*
+- [x] **Dead-path cleanup (partial):** ✅ **S3** deleted `jerseyMatch`; ✅ **S4** deleted `matchesRosterName` (⚠ anchor drift: the blueprint's other S4 targets — `id247`/`fetchRecruitingNational`/`fetchPortalYear`/`reconcile` — are all LIVE); ✅ **S5** excised the dead ratings-join branch (removed source lookup/resolve + `schema/ratings.ts` + `DatasetBySource.ratings` while preserving the live derived `ratings.overall`). **S2** (stars-conflict tally) is inert-vs-On3 and dies with S1 — folded into the S1 deferral.
+- **Gate:** ✅ **CLOSED (2026-07-04):** full pilot re-collect (FL + MIA) through the hardened collector — substrate 174 requests / 0 retries, atomic writes clean, canonical run report 0 warnings, master position distributions byte-identical (D6 holds); numbers track baseline; 272 tests + build green. Data + report committed (`1a36b7e`).
+
+> **Deferred — S1 (On3 removal) + naked-fetch guard** *(dated 2026-07-04)*: fully removing the always-degraded On3 source is a **schema-boundary + 34-data-file + multi-test** change (threads through `schema/on3.ts` + `playerMaster.ts` enums/`on3Degraded`, 8 collector files, `masterToDataset`, 4 test files, and every `sources/on3.json`). It's inert at runtime (contributes nothing) and pairs naturally with **F3's D4/D5 schema cleanup** — deferred to that focused pass rather than started mid-slice. The naked-`fetch` grep gate waits with it (on3.ts holds the last naked fetch; all keepers are on the substrate). S2 dies with it.
 
 ### F2 — Routing + UX hardening  ·  status: PLANNED (parallel to F1)
 Pure frontend, no quota. (Blueprint 3.3: U1–U5, U7, U11.)
@@ -128,11 +130,11 @@ Display → scouting tool. (Blueprint 6.2/6.3, U6/U9/U10, S12.)
 
 | # | Stub | Resolved in |
 |---|---|---|
-| S1 | On3 source permanently degraded | F1 (delete + merge fill — behavioral) |
-| S2 | Voided stars-conflict tally | F1 (un-void wiring — behavioral) |
-| S3 | `jerseyMatch` defined-then-voided | F1 (wire-or-delete) |
-| S4 | Unused `playerId.ts`/`cfbd.ts` exports | F1 (collector-side) |
-| S5 | Dead ratings-join branch + `schema/ratings.ts` | F1 (core-engine excision; preserve live `ratings.overall`) |
+| S1 | On3 source permanently degraded | **Deferred → F3/D4-D5** (schema + 34-file + tests; dated 2026-07-04) |
+| S2 | Voided stars-conflict tally | Deferred with S1 (inert vs On3; dies on On3 removal) |
+| S3 | `jerseyMatch` defined-then-voided | ✅ **F1 done (2026-07-04)** — deleted |
+| S4 | Unused exports | ✅ **F1 done (2026-07-04)** — `matchesRosterName` deleted (rest were live) |
+| S5 | Dead ratings-join branch + `schema/ratings.ts` | ✅ **F1 done (2026-07-04)** — excised, `ratings.overall` preserved |
 | S6 | Dead `normalize/depthChart.ts` | ✅ **F0 done (2026-07-04)** |
 | S7 | Mock mode + `VITE_DATA_MODE` + legacy `STAT_ABBREVIATIONS` | F3 (after D1) |
 | S8 | `ourlads-stub-*` placeholder players | F3 (signee source) |
@@ -178,6 +180,7 @@ Display → scouting tool. (Blueprint 6.2/6.3, U6/U9/U10, S12.)
 - **2026-06-13** Injury/measurables feeds (no reliable free source; pass through only what rosters expose — blueprint 6.6).
 - **2026-06-13** Not-yet-enrolled 2026 signees — machinery built; F3's S8 signee source is the real fix.
 - **2026-07-04** `_recovered/` deletion (S18) — gated on 33-team golden superseding every recovered asset + explicit sign-off.
+- **2026-07-04** On3 source removal (S1 + S2 + naked-fetch guard) — deferred to F3's D4/D5 schema-cleanup pass (schema-boundary + 34 data files + tests; inert at runtime). See F1 note.
 - ESLint config (add if/when desired). API-key rotation (user chose to keep the existing key).
 
 ## Decisions log
