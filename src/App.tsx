@@ -171,7 +171,6 @@ export default function App() {
         leftMetrics={metrics}
         rightTeamId={route.rightId}
         onRightTeamChange={(rightId) => navigate({ kind: 'compare', leftId: route.leftId, rightId })}
-        onPlayerClick={onPlayerClick}
         dataMode={dataMode}
         onBack={backToTeam}
       />

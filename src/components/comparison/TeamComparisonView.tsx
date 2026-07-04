@@ -14,6 +14,7 @@ import { loadPlayerPipeline } from '../../data/pipeline/loadPlayerPipeline.ts'
 import { mapPipelineToUI } from '../../data/mapPipelineToUI.ts'
 import { TEAMS, getTeamById, teamLogoUrl } from '../../data/teamRegistry.ts'
 import { getOvrColor } from '../../utils/playerHelpers.ts'
+import PlayerModal from '../PlayerModal.tsx'
 import RadarChart, { type SpokeMeta } from './RadarChart.tsx'
 import {
   DEF_ALL,
@@ -194,8 +195,6 @@ export interface TeamComparisonViewProps {
   rightTeamId?: string
   /** Called when the user picks a different right team (updates the URL). */
   onRightTeamChange?: (rightId: string) => void
-  /** Open a player modal (U3); optional so the view still works standalone. */
-  onPlayerClick?: (player: UIPlayer) => void
 }
 
 export default function TeamComparisonView({
@@ -225,6 +224,15 @@ export default function TeamComparisonView({
   const [expandedRoster, setExpandedRoster] = useState<string | null>(null)
   const [pinnedSpotlight, setPinnedSpotlight] = useState<string | null>(null)
   const [isSwapped, setIsSwapped] = useState(false)
+
+  // U3: an in-place player modal — the comparison view has BOTH teams' datasets
+  // loaded, so a routed modal (which only knows the left team) won't do here.
+  const [modalPlayer, setModalPlayer] = useState<UIPlayer | null>(null)
+  const [modalReturnEl, setModalReturnEl] = useState<HTMLElement | null>(null)
+  const openPlayer = (player: UIPlayer) => {
+    setModalReturnEl(document.activeElement instanceof HTMLElement ? document.activeElement : null)
+    setModalPlayer(player)
+  }
 
   const rightTeam = getTeamById(rightTeamId)
   const rightColor = rightTeam?.accentColor ?? '#7a1d2e'
@@ -874,13 +882,19 @@ export default function TeamComparisonView({
                             </div>
                             <div className="space-y-0.5">
                               {players.map((p) => (
-                                <div key={p.id} className="flex items-center gap-2 text-[9px]">
+                                <button
+                                  key={p.id}
+                                  type="button"
+                                  onClick={() => openPlayer(p)}
+                                  title={`Open ${p.name}`}
+                                  className="w-full flex items-center gap-2 text-[9px] text-left rounded px-1 -mx-1 py-0.5 hover:bg-white/5 focus:outline-none focus:ring-1 focus:ring-white/40 transition-colors"
+                                >
                                   <span className="font-semibold text-white truncate flex-1">{p.name}</span>
                                   <span className="text-gray-500 flex-shrink-0">{p.year ?? '—'}</span>
                                   <span className="font-black flex-shrink-0" style={{ color: getOvrColor(p.ovr) }}>
                                     {p.ovr}
                                   </span>
-                                </div>
+                                </button>
                               ))}
                             </div>
                           </div>
@@ -946,6 +960,8 @@ export default function TeamComparisonView({
           <div className="h-4" />
         </div>
       </main>
+
+      <PlayerModal player={modalPlayer} onClose={() => setModalPlayer(null)} returnFocusEl={modalReturnEl} />
     </div>
   )
 }
