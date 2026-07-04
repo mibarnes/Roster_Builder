@@ -19,6 +19,7 @@
  */
 import type { OfficialPlayer } from '../../../src/data/schema/officialRoster.ts'
 import { stripTags } from '../normalize.ts'
+import { fetchWithPolicy } from '../net.ts'
 
 const BROWSER_UA =
   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36'
@@ -205,9 +206,8 @@ export const parseOfficialHtml = (html: string): OfficialParseResult => {
 /** Fetch one URL → text, or null on any non-OK / error (best-effort, no throw). */
 const fetchText = async (url: string): Promise<string | null> => {
   try {
-    const r = await fetch(url, { headers: { 'User-Agent': BROWSER_UA }, redirect: 'follow' })
-    if (!r.ok) return null
-    return await r.text()
+    const r = await fetchWithPolicy(url, { host: 'official', headers: { 'User-Agent': BROWSER_UA } })
+    return r.ok ? r.text : null
   } catch {
     return null
   }

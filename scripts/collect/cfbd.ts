@@ -12,6 +12,7 @@ import {
   type RosterPlayerLike,
 } from './normalize.ts'
 import { cfbdId } from './playerId.ts'
+import { fetchWithPolicy } from './net.ts'
 
 const API_BASE = 'https://api.collegefootballdata.com'
 const BROWSER_UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36'
@@ -60,12 +61,11 @@ export interface RosterPlayer extends RosterPlayerLike {
 }
 
 export const fetchJson = async <T>(url: string, apiKey: string): Promise<T> => {
-  const response = await fetch(url, { headers: { Authorization: `Bearer ${apiKey}` } })
-  if (!response.ok) {
-    const text = await response.text()
-    throw new Error(`CFBD request failed (${response.status}): ${url} :: ${text.slice(0, 200)}`)
+  const r = await fetchWithPolicy(url, { host: 'cfbd', headers: { Authorization: `Bearer ${apiKey}` } })
+  if (!r.ok) {
+    throw new Error(`CFBD request failed (${r.status}): ${url} :: ${r.text.slice(0, 200)}`)
   }
-  return response.json() as Promise<T>
+  return r.json<T>()
 }
 
 const toPlayerId = (id: unknown, firstName?: string, lastName?: string): string => {
@@ -405,30 +405,19 @@ export const fetchReturning = (cfbdQuery: string, season: number, apiKey: string
 /** Fetch the OurLads depth chart page (follows 301 → /depth-chart/<slug>/<id>). */
 export const fetchOurladsHtml = async (slug: string, id: string): Promise<{ url: string; html: string }> => {
   const url = `https://www.ourlads.com/ncaa-football-depth-charts/depth-chart/${slug}/${id}`
-  let lastError: unknown = null
-  for (let attempt = 1; attempt <= 4; attempt += 1) {
-    try {
-      const response = await fetch(url, { headers: { 'User-Agent': BROWSER_UA }, redirect: 'follow' })
-      if (!response.ok) {
-        const text = await response.text()
-        throw new Error(`Ourlads request failed (${response.status}): ${url} :: ${text.slice(0, 200)}`)
-      }
-      return { url: response.url, html: await response.text() }
-    } catch (error) {
-      lastError = error
-      if (attempt < 4) await new Promise((r) => setTimeout(r, attempt * 400))
-    }
+  const r = await fetchWithPolicy(url, { host: 'ourlads', headers: { 'User-Agent': BROWSER_UA } })
+  if (!r.ok) {
+    throw new Error(`Ourlads request failed (${r.status}): ${url} :: ${r.text.slice(0, 200)}`)
   }
-  throw lastError ?? new Error(`Ourlads request failed for ${slug}/${id}`)
+  return { url: r.url, html: r.text }
 }
 
 /** Fetch one 247Sports commits page for a given team slug + year. */
 export const fetch247Html = async (teamSlug: string, year: number): Promise<string> => {
   const url = `https://247sports.com/college/${teamSlug}/season/${year}-football/commits/`
-  const response = await fetch(url, { headers: { 'User-Agent': BROWSER_UA }, redirect: 'follow' })
-  if (!response.ok) {
-    const text = await response.text()
-    throw new Error(`247 request failed (${response.status}): ${url} :: ${text.slice(0, 200)}`)
+  const r = await fetchWithPolicy(url, { host: '247', headers: { 'User-Agent': BROWSER_UA } })
+  if (!r.ok) {
+    throw new Error(`247 request failed (${r.status}): ${url} :: ${r.text.slice(0, 200)}`)
   }
-  return response.text()
+  return r.text
 }

@@ -10,6 +10,7 @@
  * fetch/empty failure surfaces to the orchestrator as a hard error.
  */
 import type { EspnPlayer } from '../../../src/data/schema/espnRoster.ts'
+import { fetchWithPolicy } from '../net.ts'
 
 const BROWSER_UA =
   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36'
@@ -116,24 +117,16 @@ export const fetchEspnRoster = async (
   espnId: string,
 ): Promise<{ url: string; season: number; players: EspnPlayer[] }> => {
   const url = espnRosterUrl(espnId)
-  let lastError: unknown = null
-  for (let attempt = 1; attempt <= 4; attempt += 1) {
-    try {
-      const response = await fetch(url, { headers: { 'User-Agent': BROWSER_UA } })
-      if (!response.ok) {
-        const text = await response.text()
-        throw new Error(`ESPN request failed (${response.status}): ${url} :: ${text.slice(0, 200)}`)
-      }
-      const json = (await response.json()) as EspnRosterResponse
-      const players = mapEspnAthletes(json)
-      if (players.length === 0) {
-        throw new Error(`ESPN returned an empty roster for espnId ${espnId}`)
-      }
-      return { url, season: json.season?.year ?? 0, players }
-    } catch (error) {
-      lastError = error
-      if (attempt < 4) await new Promise((r) => setTimeout(r, attempt * 500))
-    }
+  const r = await fetchWithPolicy(url, { host: 'espn', headers: { 'User-Agent': BROWSER_UA } })
+  if (!r.ok) {
+    throw new Error(`ESPN request failed (${r.status}): ${url} :: ${r.text.slice(0, 200)}`)
   }
-  throw lastError ?? new Error(`ESPN roster fetch failed for ${espnId}`)
+  const json = r.json<EspnRosterResponse>()
+  const players = mapEspnAthletes(json)
+  if (players.length === 0) {
+    // HARD: the spine must be real, never fabricated. An empty roster is not a
+    // transient condition to retry — surface it.
+    throw new Error(`ESPN returned an empty roster for espnId ${espnId}`)
+  }
+  return { url, season: json.season?.year ?? 0, players }
 }

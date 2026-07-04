@@ -6,6 +6,9 @@ dist-ssr/
 coverage/
 .vite/
 
+# --- collector on-disk HTTP cache (regenerable; conditional-GET store) ---
+scripts/.cache/
+
 # --- env / secrets (NEVER commit) ---
 .env
 .env.*
