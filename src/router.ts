@@ -2,9 +2,10 @@
  * router.ts — a tiny dependency-free hash router (U1). Hash routing needs no
  * server rewrites, so it works on GitHub Pages / Netlify as-is. Three routes:
  *
- *   #/team/:teamId/:tab            offense | defense | ratings
+ *   #/team/:teamId/:tab            offense | defense | ratings | hq
  *   #/compare/:leftId/:rightId     two-team comparison
  *   #/player/:teamId/:playerId     a player modal, deep-linked + shareable
+ *   #/league                       cross-team League view (F6)
  *
  * The route is the source of truth for which VIEW is shown; depth-toggle +
  * ratings filters stay local UI state (persisted via localStorage, U4).
@@ -12,14 +13,15 @@
 import { useEffect, useState } from 'react'
 import { DEFAULT_TEAM_ID } from './data/teamRegistry.ts'
 
-export type RouteTab = 'offense' | 'defense' | 'ratings'
+export type RouteTab = 'offense' | 'defense' | 'ratings' | 'hq'
 
 export type Route =
   | { kind: 'team'; teamId: string; tab: RouteTab }
   | { kind: 'compare'; leftId: string; rightId: string }
   | { kind: 'player'; teamId: string; playerId: string }
+  | { kind: 'league' }
 
-const TABS: readonly RouteTab[] = ['offense', 'defense', 'ratings']
+const TABS: readonly RouteTab[] = ['offense', 'defense', 'ratings', 'hq']
 const isTab = (s: string | undefined): s is RouteTab => s != null && (TABS as readonly string[]).includes(s)
 
 export const defaultRoute = (): Route => ({ kind: 'team', teamId: DEFAULT_TEAM_ID, tab: 'offense' })
@@ -48,6 +50,9 @@ export function parseHash(hash: string): Route {
   if (parts[0] === 'player' && parts[1] && parts[2]) {
     return { kind: 'player', teamId: parts[1], playerId: parts[2] }
   }
+  if (parts[0] === 'league') {
+    return { kind: 'league' }
+  }
   return defaultRoute()
 }
 
@@ -61,12 +66,22 @@ export function buildHash(route: Route): string {
       return `#/compare/${enc(route.leftId)}/${enc(route.rightId)}`
     case 'player':
       return `#/player/${enc(route.teamId)}/${enc(route.playerId)}`
+    case 'league':
+      return `#/league`
   }
 }
 
 /** The current team in context for data loading (compare uses the left team). */
-export const routeTeamId = (route: Route): string =>
-  route.kind === 'compare' ? route.leftId : route.teamId
+export const routeTeamId = (route: Route): string => {
+  switch (route.kind) {
+    case 'compare':
+      return route.leftId
+    case 'league':
+      return DEFAULT_TEAM_ID // league view loads no single team
+    default:
+      return route.teamId
+  }
+}
 
 /** Subscribe to the hash route + get a navigate() that updates it. */
 export function useHashRoute(): { route: Route; navigate: (route: Route) => void } {
