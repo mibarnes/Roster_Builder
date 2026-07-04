@@ -558,6 +558,7 @@ export default function App() {
         onTeamClick={(id) => navigate({ kind: 'team', teamId: id, tab: 'offense' })}
         teamId={teamId}
         teamLabel={selectedTeam.label}
+        onPlayerNav={(tid, pid) => navigate({ kind: 'player', teamId: tid, playerId: pid })}
       />
     </div>
   )

@@ -171,6 +171,7 @@ interface SearchRow {
   t: string // teamId
   tl: string // team label
   p: string // position
+  sd: 'OFF' | 'DEF' | 'ST' // side (for position-group bucketing)
   o: number | null // league-calibrated OVR (null = NR)
   s: number // recruit stars
 }
@@ -199,6 +200,7 @@ for (const [teamId, ds] of datasets) {
       t: teamId,
       tl: t.label,
       p: p.bio.position,
+      sd: p.bio.side === 'OFF' ? 'OFF' : p.bio.side === 'DEF' ? 'DEF' : 'ST',
       o: p.ratings.overall,
       s: p.recruiting.stars ?? 0,
     })

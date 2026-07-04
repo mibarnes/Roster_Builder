@@ -14,26 +14,14 @@ import type { UIDataset, UIPlayer } from '../../data/schema/ui.ts'
 import type { PipelineMetrics } from '../../data/schema/pipeline.ts'
 import { IDENTITY } from '../../data/leagueArtifacts.ts'
 import { SUBSCORE_MEAN } from '../../data/rating/ratingConfig.ts'
+import { COARSE_GROUPS, coarseGroup, type CoarseGroup } from '../../utils/positionGroup.ts'
 
-const GROUPS = ['QB', 'RB', 'WR', 'TE', 'OL', 'DL', 'LB', 'DB', 'ST'] as const
-type Group = (typeof GROUPS)[number]
+const GROUPS = COARSE_GROUPS
+type Group = CoarseGroup
 const CLASSES = ['FR', 'SO', 'JR', 'SR'] as const
 type ClassYr = (typeof CLASSES)[number]
 
-/** Coarse HQ position group from a display position. */
-const groupOf = (pos: string, side: UIPlayer['side']): Group => {
-  const p = pos.toUpperCase()
-  if (/(^|\b)(QB)/.test(p)) return 'QB'
-  if (/(RB|HB|FB|TB)/.test(p)) return 'RB'
-  if (/(WR|WLR|SLOT)/.test(p)) return 'WR'
-  if (/\bTE\b/.test(p)) return 'TE'
-  if (/(OL|OT|OG|LT|RT|LG|RG|^C$|CENTER|TACKLE|GUARD)/.test(p)) return 'OL'
-  if (/(DL|DE|DT|NT|EDGE|NG)/.test(p)) return 'DL'
-  if (/(LB|MLB|WLB|SLB|ILB|OLB)/.test(p)) return 'LB'
-  if (/(CB|DB|S$|SS|FS|NB|SAF|CORNER)/.test(p)) return 'DB'
-  if (/(K|P|LS|KR|PR|ST)/.test(p)) return 'ST'
-  return side === 'OFF' ? 'WR' : 'LB'
-}
+const groupOf = (pos: string, side: UIPlayer['side']): Group => coarseGroup(pos, side)
 const classOf = (year: string | null): ClassYr | null => {
   if (!year) return null
   const y = year.toUpperCase().slice(0, 2)

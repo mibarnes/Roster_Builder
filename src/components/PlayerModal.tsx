@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Star from './Star.tsx'
 import Headshot from './Headshot.tsx'
 import {
@@ -12,7 +12,13 @@ import {
 import { STAT_ABBREVIATIONS } from '../data/mapPipelineToUI.ts'
 import { teamIdForSchool } from '../data/teamRegistry.ts'
 import { useWatchlist, watchlist } from '../hooks/useWatchlist.ts'
+import { coarseGroup } from '../utils/positionGroup.ts'
+import { getOvrColor, NR_COLOR } from '../utils/playerHelpers.ts'
 import type { UIPlayer } from '../data/schema/ui.ts'
+
+// Lazy-loaded shared search index (F7) — also powers "similar players".
+interface IndexRow { id: string; n: string; t: string; tl: string; p: string; sd: 'OFF' | 'DEF' | 'ST'; o: number | null }
+let indexCache: IndexRow[] | null = null
 
 /** Per-game column header label — reuse the season abbreviation map, else upper-case. */
 const perGameColLabel = (key: string): string => STAT_ABBREVIATIONS[key] ?? key.toUpperCase()
@@ -75,10 +81,32 @@ interface PlayerModalProps {
   /** Team context for the watchlist entry (the player belongs to this team). */
   teamId?: string
   teamLabel?: string
+  /** Navigate to another player's modal (F7 similar-players). */
+  onPlayerNav?: (teamId: string, playerId: string) => void
 }
 
-export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClick, teamId, teamLabel }: PlayerModalProps) {
+export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClick, teamId, teamLabel, onPlayerNav }: PlayerModalProps) {
   const watched = useWatchlist()
+  const [index, setIndex] = useState<IndexRow[] | null>(indexCache)
+
+  // Lazy-load the shared search index once (only when a modal is first opened).
+  useEffect(() => {
+    if (indexCache) return
+    void import('../data/collected/_searchIndex.json').then((m) => {
+      indexCache = (m.default as { players: IndexRow[] }).players
+      setIndex(indexCache)
+    })
+  }, [])
+
+  // Similar players: same coarse position group, nearest league-calibrated OVR.
+  const similar = useMemo<IndexRow[]>(() => {
+    if (!player || !player.isRated || !index) return []
+    const grp = coarseGroup(player.pos, player.side)
+    return index
+      .filter((r) => r.o != null && r.id !== player.playerId && coarseGroup(r.p, r.sd) === grp)
+      .sort((a, b) => Math.abs((a.o ?? 0) - player.ovr) - Math.abs((b.o ?? 0) - player.ovr))
+      .slice(0, 5)
+  }, [player, index])
   const modalRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -479,6 +507,28 @@ export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClic
               </div>
             )
           })()}
+
+          {similar.length > 0 && (
+            <div className="bg-gray-900/60 rounded-xl p-3">
+              <p className="mb-2 text-[10px] font-black uppercase tracking-widest text-gray-500">Similar players (league-wide)</p>
+              <div className="space-y-0.5">
+                {similar.map((r) => (
+                  <button
+                    key={`${r.t}:${r.id}`}
+                    onClick={() => onPlayerNav?.(r.t, r.id)}
+                    disabled={!onPlayerNav}
+                    className="flex w-full items-center gap-2 rounded px-1.5 py-1 text-left hover:bg-gray-800 disabled:hover:bg-transparent"
+                  >
+                    <span className="w-7 shrink-0 text-center text-xs font-bold tabular-nums" style={{ color: r.o != null ? getOvrColor(r.o) : NR_COLOR }}>
+                      {r.o ?? 'NR'}
+                    </span>
+                    <span className="flex-1 truncate text-sm text-white">{r.n}</span>
+                    <span className="shrink-0 text-[10px] text-gray-500">{r.p} · {r.tl.split(' ').slice(-1)[0]}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="bg-gray-900 rounded-xl p-3 space-y-2">
             <div className="flex items-center justify-between gap-2">
