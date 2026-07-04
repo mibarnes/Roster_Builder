@@ -38,7 +38,6 @@ const dataset = {
       { playerId: 'CFBD-1', name: 'Alex One', YDS: 2500, TD: 20 },
     ],
   },
-  ratings: undefined,
 } as unknown as DatasetBySource
 
 describe('buildPlayerPipeline', () => {

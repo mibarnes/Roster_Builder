@@ -282,15 +282,11 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
   const recruitingLookup = buildSourceLookup(
     datasetBySource?.recruiting?.playerRecruitProfiles as IdItem[] | undefined,
   )
-  const ratingsLookup = buildSourceLookup(
-    datasetBySource?.ratings?.playerRatings as IdItem[] | undefined,
-  )
   const productionLookup = buildSourceLookup(
     datasetBySource?.production?.playerProduction as IdItem[] | undefined,
   )
 
   const recruitingMap = recruitingLookup.byId
-  const ratingsMap = ratingsLookup.byId
   const productionMap = productionLookup.byId
 
   // Advanced (usage/PPA) is id-keyed by CFBD athlete id. Absent for partial teams.
@@ -302,7 +298,6 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
   interface Draft {
     rosterPlayer: (typeof rosterPlayers)[number]
     recruiting: Record<string, unknown>
-    ratings: Record<string, unknown>
     advanced: PlayerAdvanced | undefined
     compositeRating: number | null
     recruitingIsTransfer: boolean
@@ -317,17 +312,14 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
     isStub: boolean
     recruitMatchMethod: MatchMethod | null
     recruitingResolved: ReturnType<typeof resolveSourceRecord>
-    ratingsResolved: ReturnType<typeof resolveSourceRecord>
     productionResolved: ReturnType<typeof resolveSourceRecord>
   }
 
   const drafts: Draft[] = rosterPlayers.map((rosterPlayer) => {
     const recruitingResolved = resolveSourceRecord(rosterPlayer, recruitingLookup)
-    const ratingsResolved = resolveSourceRecord(rosterPlayer, ratingsLookup)
     const productionResolved = resolveSourceRecord(rosterPlayer, productionLookup)
 
     const recruiting = (recruitingResolved.record ?? {}) as Record<string, unknown>
-    const ratings = (ratingsResolved.record ?? {}) as Record<string, unknown>
     const production = (productionResolved.record ?? {}) as Record<string, unknown>
     const advanced = advancedById.get(rosterPlayer.playerId)
 
@@ -353,7 +345,6 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
     return {
       rosterPlayer,
       recruiting,
-      ratings,
       advanced,
       compositeRating,
       recruitingIsTransfer,
@@ -370,7 +361,6 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
         (recruiting.matchMethod as MatchMethod | null | undefined) ??
         (recruitingResolved.record ? 'name-fuzzy' : null),
       recruitingResolved,
-      ratingsResolved,
       productionResolved,
     }
   })
@@ -395,14 +385,13 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
 
   // ── Phase 3: assemble the final PipelinePlayer list. ──
   const players: PipelinePlayer[] = drafts.map((d, i) => {
-    const { recruiting, ratings, recruitingResolved, ratingsResolved, productionResolved } = d
+    const { recruiting, recruitingResolved, productionResolved } = d
     const rating = ratingResults[i]!
 
-    const attributes = Object.fromEntries(
-      Object.entries(ratings).filter(
-        ([key]) => !['playerId', 'overall', 'archetype'].includes(key),
-      ),
-    )
+    // No independent ratings source exists (OVR is derived below), so there are
+    // never per-player scouted attributes to carry — always empty. (Was a filter
+    // over the now-removed dead `ratings` source record.)
+    const attributes: Record<string, unknown> = {}
 
     const homeCity =
       (d.rosterPlayer.homeCity as string | null | undefined) ??
@@ -450,7 +439,8 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
       },
       ratings: {
         overall: rating.overall,
-        archetype: (ratings.archetype as string | null | undefined) ?? null,
+        // No independent ratings source → no archetype provider.
+        archetype: null,
         // OVR has no independent provider — it's computed (blended) here.
         derived: true,
         method: rating.method,
@@ -475,10 +465,11 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
       golden: buildGolden(d.rosterPlayer),
       dataCompleteness: {
         hasRecruiting: Boolean(recruitingResolved.record),
-        hasRatings: Boolean(ratingsResolved.record),
+        // No ratings source is ever loaded (OVR is derived) → always absent.
+        hasRatings: false,
         hasProduction: Boolean(productionResolved.record),
         recruitingMatchedBy: recruitingResolved.matchedBy,
-        ratingsMatchedBy: ratingsResolved.matchedBy,
+        ratingsMatchedBy: null,
         productionMatchedBy: productionResolved.matchedBy,
       },
     }
@@ -506,7 +497,8 @@ export const buildPlayerPipeline = (datasetBySource: DatasetBySource): PlayerPip
     advancedMatched: players.filter((p) => p.advanced.usageOverall != null || p.advanced.ppaAll != null).length,
     rated: players.filter((p) => p.ratings.overall != null).length,
     unmatchedRecruitingIds: [...recruitingMap.keys()].filter((id) => !playerMap.has(id)),
-    unmatchedRatingsIds: [...ratingsMap.keys()].filter((id) => !playerMap.has(id)),
+    // No ratings source is loaded → never any unmatched ratings ids.
+    unmatchedRatingsIds: [],
     unmatchedProductionIds: [...productionMap.keys()].filter((id) => !playerMap.has(id)),
   }
 

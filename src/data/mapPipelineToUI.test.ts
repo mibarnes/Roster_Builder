@@ -58,7 +58,6 @@ const dataset = {
     sourceType: 'context',
     returningProduction: { percentPPA: 0.55, percentPassingPPA: 0.73 },
   },
-  ratings: undefined,
 } as unknown as DatasetBySource
 
 describe('mapPipelineToUI', () => {

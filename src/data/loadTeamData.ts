@@ -1,8 +1,8 @@
 /**
  * Lazy per-team JSON loader (M4). Dynamic-imports the three collected source
  * files for a team, zod-validates each against the source schemas, and
- * assembles a DatasetBySource (ratings is always undefined — OVR is derived
- * downstream; real CFBD captures ship no ratings.json).
+ * assembles a DatasetBySource (OVR is derived downstream — there is no ratings
+ * source; real CFBD captures ship no ratings.json).
  *
  * There is intentionally NO monolithic cfbdScaffoldData import — that path was
  * dropped in the hardened rebuild.
@@ -81,5 +81,5 @@ export async function loadTeamData(teamId: string): Promise<DatasetBySource> {
   const advanced = advancedRaw != null ? AdvancedSourceSchema.parse(advancedRaw) : undefined
   const context = contextRaw != null ? ContextSourceSchema.parse(contextRaw) : undefined
 
-  return { roster, recruiting, production, ratings: undefined, advanced, context }
+  return { roster, recruiting, production, advanced, context }
 }

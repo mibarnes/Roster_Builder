@@ -143,5 +143,5 @@ export function masterToDatasetBySource(master: PlayerMasterSource): MasterDatas
     returningProduction: master.returningProduction,
   }
 
-  return { roster, recruiting, production, advanced, ratings: undefined, context, master }
+  return { roster, recruiting, production, advanced, context, master }
 }
