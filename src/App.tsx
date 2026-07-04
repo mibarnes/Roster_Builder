@@ -20,6 +20,7 @@ import LeagueView from './components/league/LeagueView.tsx'
 import TeamHQ from './components/hq/TeamHQ.tsx'
 import SearchOmnibox from './components/search/SearchOmnibox.tsx'
 import WatchlistButton from './components/watchlist/WatchlistButton.tsx'
+import AboutDataModal from './components/about/AboutDataModal.tsx'
 import { EMPTY_COVERAGE, type PipelineMetrics } from './data/schema/pipeline.ts'
 import type { Formation, UIDataset, UIPlayer } from './data/schema/ui.ts'
 
@@ -65,6 +66,7 @@ export default function App() {
   const [depthTeam, setDepthTeam] = useState<DepthMode>('starters')
   const [filters, setFilters] = usePersistentState<RatingsFilters>('rb:filters', { side: 'ALL', pos: 'ALL', stars: 0, sort: 'composite' })
   const [returnFocusEl, setReturnFocusEl] = useState<HTMLElement | null>(null)
+  const [showAbout, setShowAbout] = useState(false)
   const [rosterData, setRosterData] = useState<UIDataset>(EMPTY_ROSTER)
   const [metrics, setMetrics] = useState<PipelineMetrics>(EMPTY_METRICS)
   const [isLoading, setIsLoading] = useState(true)
@@ -219,6 +221,7 @@ export default function App() {
       }
     >
       {searchBox}
+      {showAbout && <AboutDataModal vintage={rosterData.vintage} onClose={() => setShowAbout(false)} />}
       {/* ── Header ── */}
       <header className="flex-shrink-0 px-4 py-3 bg-surface border-b border-surface-border">
         <div className="flex items-center justify-between">
@@ -250,7 +253,9 @@ export default function App() {
                   return (
                     <>
                       <span className="text-gray-600">·</span>
-                      <span className="text-gray-500">as of {asOf.label}</span>
+                      <button onClick={() => setShowAbout(true)} className="text-gray-500 underline decoration-dotted underline-offset-2 hover:text-gray-300" title="About the data">
+                        as of {asOf.label} ⓘ
+                      </button>
                       {asOf.ageDays > DATA_AGING_DAYS && (
                         <span
                           className="rounded bg-amber-500/20 px-1.5 py-0.5 text-[9px] font-bold text-amber-400"
