@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest'
 import { computeTeamRatings, RATING_WEIGHTS, type RatingInput } from './overall.ts'
+import {
+  PRODUCTION_ONLY_WEIGHTS,
+  PROJECTION_CLASS_PENALTY,
+  PROJECTION_WEIGHTS,
+  SUBSCORE_MEAN,
+  type LeagueBaselines,
+} from './ratingConfig.ts'
 
 /** Convenience builder for a RatingInput with sane defaults. */
 const mk = (over: Partial<RatingInput> = {}): RatingInput => ({
@@ -132,5 +139,67 @@ describe('computeTeamRatings', () => {
     expect(rated.length).toBeGreaterThanOrEqual(4)
     expect(new Set(rated).size).toBeGreaterThan(1) // not all identical
     expect(overalls.some((o) => o === null)).toBe(true) // the unsignaled CB is NR
+  })
+
+  it('assigns confidence: blended+played→high, projection→low, stub→low', () => {
+    const [played, projection, stub] = computeTeamRatings([
+      mk({ compositeRating: 0.9, production: { games: 12, ppaAll: 0.4, usageOverall: 0.5, stats: { recYds: 800, rec: 60 } } }),
+      mk({ compositeRating: 0.9, production: null }),
+      mk({ isStub: true }),
+    ])
+    expect(played!.confidence).toBe('high')
+    expect(projection!.confidence).toBe('low')
+    expect(stub!.confidence).toBe('low')
+  })
+})
+
+// ── F4/D7 — config surface + league calibration ──────────────────────────────
+describe('ratingConfig (documented single source)', () => {
+  it('exposes the canonical weight sets + projection penalty', () => {
+    expect(RATING_WEIGHTS).toEqual({ recruiting: 0.45, production: 0.45, class: 0.1 })
+    expect(PROJECTION_WEIGHTS).toEqual({ recruiting: 0.82, production: 0, class: 0.18 })
+    expect(PRODUCTION_ONLY_WEIGHTS).toEqual({ recruiting: 0, production: 0.82, class: 0.18 })
+    expect(PROJECTION_CLASS_PENALTY).toEqual({ FR: 0, SO: 4, JR: 9, SR: 14 })
+  })
+})
+
+describe('OVR monotonicity (recruiting)', () => {
+  it('higher composite never yields a lower OVR within one group', () => {
+    // Projection players (no production) so only recruiting drives OVR.
+    const team = [0.75, 0.8, 0.85, 0.9, 0.95, 1.0].map((c) =>
+      mk({ positionGroup: 'WR', sideBucket: 'OFF', classYear: 'FR', compositeRating: c }),
+    )
+    const ovr = computeTeamRatings(team).map((r) => r.overall!)
+    for (let i = 1; i < ovr.length; i++) expect(ovr[i]!).toBeGreaterThanOrEqual(ovr[i - 1]!)
+  })
+})
+
+describe('league calibration', () => {
+  // A single WR with a league-average composite. With league baselines whose WR
+  // mean equals his composite, he should score right at SUBSCORE_MEAN-driven OVR;
+  // a HIGHER league mean must push his (recruiting) sub-score DOWN vs a lower mean.
+  const soloWr = (): RatingInput[] => [
+    mk({ positionGroup: 'WR', sideBucket: 'OFF', classYear: 'FR', compositeRating: 0.88, production: null }),
+  ]
+  const baselines = (wrMean: number): LeagueBaselines => ({
+    generatedAt: null,
+    teamsIncluded: 54,
+    recByGroup: { WR: { mean: wrMean, sd: 0.1, n: 400 } },
+    prodByGroup: {},
+    recBySide: { OFF: { mean: wrMean, sd: 0.1, n: 1000 } },
+    prodBySide: {},
+  })
+
+  it('z-scores against the LEAGUE distribution, not the (single-player) team', () => {
+    // Team-relative would be undefined (n<3 → absolute fallback); the league
+    // baseline gives a real distribution → a real z-score at the mean ≈ SUBSCORE_MEAN.
+    const atMean = computeTeamRatings(soloWr(), baselines(0.88))[0]!
+    expect(atMean.components.recruiting).toBe(SUBSCORE_MEAN) // z=0 → 73
+  })
+
+  it('a stronger league (higher mean) lowers a fixed player vs a weaker league', () => {
+    const strong = computeTeamRatings(soloWr(), baselines(0.95))[0]!.components.recruiting!
+    const weak = computeTeamRatings(soloWr(), baselines(0.80))[0]!.components.recruiting!
+    expect(weak).toBeGreaterThan(strong) // same player looks better in a weaker league
   })
 })
