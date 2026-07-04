@@ -1,19 +1,31 @@
 /**
- * Pipeline-from-master integration: pilots load the golden player-master.json
- * (ESPN 2026 spine) and the new golden fields surface all the way to the UIPlayer.
- * Asserts 100% spine coverage end-to-end + no dropped flagged players.
+ * Pipeline-from-master integration: every GOLDEN team (any team with a golden
+ * player-master.json on disk — the pilots plus each landed F3 wave) loads the
+ * ESPN-2026-spine master and the golden fields surface all the way to UIPlayer.
+ * Asserts 100% spine coverage end-to-end + no dropped flagged players. The golden
+ * set is derived from disk so each new collection wave is guarded automatically.
  */
 import { loadTeamData } from './loadTeamData.ts'
 import { loadPlayerPipeline } from './pipeline/loadPlayerPipeline.ts'
 import { mapPipelineToUI } from './mapPipelineToUI.ts'
 import { PlayerMasterSourceSchema } from './schema/index.ts'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
-const PILOTS = ['florida-gators', 'miami-hurricanes']
+const COLLECTED = join(process.cwd(), 'src/data/collected')
+// A team is "golden" iff it ships a player-master.json (pilots + landed waves).
+const GOLDEN = readdirSync(COLLECTED, { withFileTypes: true })
+  .filter((d) => d.isDirectory() && existsSync(join(COLLECTED, d.name, 'player-master.json')))
+  .map((d) => d.name)
+  .sort()
 
-describe('master-backed pipeline (pilots)', () => {
-  it.each(PILOTS)('%s: on-disk player-master.json validates + has 100% spine coverage', (teamId) => {
+describe('master-backed pipeline (all golden teams)', () => {
+  it('golden set is non-empty and includes both pilots', () => {
+    expect(GOLDEN).toContain('florida-gators')
+    expect(GOLDEN).toContain('miami-hurricanes')
+  })
+
+  it.each(GOLDEN)('%s: on-disk player-master.json validates + has 100% spine coverage', (teamId) => {
     const raw = JSON.parse(
       readFileSync(join(process.cwd(), 'src/data/collected', teamId, 'player-master.json'), 'utf8'),
     )
@@ -29,7 +41,7 @@ describe('master-backed pipeline (pilots)', () => {
     expect(JSON.stringify(master)).not.toMatch(/CFBD_API_KEY|Bearer /)
   })
 
-  it.each(PILOTS)('%s: loadTeamData adapts the master into the legacy DatasetBySource', async (teamId) => {
+  it.each(GOLDEN)('%s: loadTeamData adapts the master into the legacy DatasetBySource', async (teamId) => {
     const ds = await loadTeamData(teamId)
     expect(ds.master).toBeDefined()
     expect(ds.roster.season).toBe(2026)

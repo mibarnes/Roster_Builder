@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Auburn Tigers",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Auburn"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:10:48.890Z",
+    "collectorVersion": "e243f65",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 97.6,
+    "totalPassingPPA": 0,
+    "totalReceivingPPA": 95,
+    "totalRushingPPA": 2.6,
+    "percentPPA": 0.218,
+    "percentPassingPPA": 0,
+    "percentReceivingPPA": 0.383,
+    "percentRushingPPA": 0.037,
+    "usage": 0.19,
+    "passingUsage": 0,
+    "receivingUsage": 0.426,
+    "rushingUsage": 0.232
+  }
+}

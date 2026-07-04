@@ -1,15 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-04T03:11:00.244Z",
-  "collectorVersion": "49805db",
+  "generatedAt": "2026-07-04T12:12:38.001Z",
+  "collectorVersion": "e243f65",
   "season": 2025,
   "rosterSeason": 2026,
-  "durationMs": 159873,
+  "durationMs": 139363,
   "targets": [
-    "florida-gators",
-    "miami-hurricanes"
+    "clemson-tigers",
+    "auburn-tigers",
+    "texas-am-aggies",
+    "georgia-bulldogs",
+    "tennessee-volunteers"
   ],
-  "teamsOk": 2,
+  "teamsOk": 5,
   "teamsFailed": 0,
   "closure": {
     "nationalRows": 23185,
@@ -17,32 +20,113 @@
     "portalRows": 12304
   },
   "net": {
-    "requests": 174,
+    "requests": 136,
     "cacheHits": 0,
     "retries": 0
   },
   "teams": [
     {
-      "id": "florida-gators",
-      "label": "Florida Gators",
+      "id": "clemson-tigers",
+      "label": "Clemson Tigers",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
-        "rosterPlayers": 112,
-        "offenseSlots": 30,
-        "defenseSlots": 30,
-        "recruitingPct": 75,
-        "productionPct": 56.3,
+        "rosterPlayers": 117,
+        "offenseSlots": 33,
+        "defenseSlots": 24,
+        "recruitingPct": 71.8,
+        "productionPct": 55.6,
         "hometownPct": 100,
         "master": {
           "spineCount": 100,
-          "masterCount": 130,
-          "matchedByIdPct": 82.5,
-          "headshotPct": 73.8,
-          "highSchoolPct": 41.5,
-          "transfersRated": 17,
-          "transfersTotal": 19,
+          "masterCount": 118,
+          "matchedByIdPct": 82.9,
+          "headshotPct": 82.2,
+          "highSchoolPct": 57.6,
+          "transfersRated": 3,
+          "transfersTotal": 4,
+          "officialEngine": "sidearm-json",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "auburn-tigers",
+      "label": "Auburn Tigers",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 103,
+        "offenseSlots": 39,
+        "defenseSlots": 38,
+        "recruitingPct": 78.6,
+        "productionPct": 55.3,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 147,
+          "matchedByIdPct": 73.3,
+          "headshotPct": 67.3,
+          "highSchoolPct": 33.3,
+          "transfersRated": 26,
+          "transfersTotal": 27,
+          "officialEngine": "sidearm-json",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "texas-am-aggies",
+      "label": "Texas A&M Aggies",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 120,
+        "offenseSlots": 32,
+        "defenseSlots": 26,
+        "recruitingPct": 72.5,
+        "productionPct": 57.5,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 122,
+          "matchedByIdPct": 79.8,
+          "headshotPct": 81.1,
+          "highSchoolPct": 51.6,
+          "transfersRated": 11,
+          "transfersTotal": 12,
+          "officialEngine": "sidearm-json",
+          "officialDegraded": false,
+          "on3Degraded": true
+        }
+      }
+    },
+    {
+      "id": "georgia-bulldogs",
+      "label": "Georgia Bulldogs",
+      "ok": true,
+      "error": null,
+      "warnings": [],
+      "stats": {
+        "rosterPlayers": 123,
+        "offenseSlots": 38,
+        "defenseSlots": 27,
+        "recruitingPct": 73.2,
+        "productionPct": 56.1,
+        "hometownPct": 100,
+        "master": {
+          "spineCount": 100,
+          "masterCount": 123,
+          "matchedByIdPct": 85.5,
+          "headshotPct": 79.7,
+          "highSchoolPct": 59.3,
+          "transfersRated": 10,
+          "transfersTotal": 11,
           "officialEngine": "nuxt-sidearm",
           "officialDegraded": false,
           "on3Degraded": true
@@ -50,27 +134,27 @@
       }
     },
     {
-      "id": "miami-hurricanes",
-      "label": "Miami Hurricanes",
+      "id": "tennessee-volunteers",
+      "label": "Tennessee Volunteers",
       "ok": true,
       "error": null,
       "warnings": [],
       "stats": {
-        "rosterPlayers": 113,
-        "offenseSlots": 24,
-        "defenseSlots": 29,
-        "recruitingPct": 77.9,
-        "productionPct": 51.3,
-        "hometownPct": 99.1,
+        "rosterPlayers": 104,
+        "offenseSlots": 31,
+        "defenseSlots": 36,
+        "recruitingPct": 76.9,
+        "productionPct": 70.2,
+        "hometownPct": 100,
         "master": {
-          "spineCount": 100,
-          "masterCount": 115,
-          "matchedByIdPct": 82.9,
-          "headshotPct": 85.2,
-          "highSchoolPct": 57.4,
-          "transfersRated": 17,
-          "transfersTotal": 21,
-          "officialEngine": "wmt-presto",
+          "spineCount": 99,
+          "masterCount": 124,
+          "matchedByIdPct": 86,
+          "headshotPct": 79,
+          "highSchoolPct": 49.2,
+          "transfersRated": 10,
+          "transfersTotal": 13,
+          "officialEngine": "nuxt-sidearm",
           "officialDegraded": false,
           "on3Degraded": true
         }

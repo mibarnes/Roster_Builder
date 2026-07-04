@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Clemson Tigers",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/clemson/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:clemson"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:10:45.889Z",
+    "collectorVersion": "e243f65",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}
