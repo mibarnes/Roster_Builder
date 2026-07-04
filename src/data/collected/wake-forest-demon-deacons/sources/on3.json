@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "Wake Forest Demon Deacons",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/wake-forest/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:wake-forest"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:26:01.993Z",
+    "collectorVersion": "2ba6b68",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

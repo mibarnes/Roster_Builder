@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "NC State Wolfpack",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/nc-state/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:nc-state"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:25:11.066Z",
+    "collectorVersion": "2ba6b68",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

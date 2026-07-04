@@ -1,0 +1,20 @@
+{
+  "sourceId": "on3-v1",
+  "sourceType": "on3",
+  "team": "North Carolina Tar Heels",
+  "degraded": true,
+  "degradeReason": "HTTP 404 from https://www.on3.com/college/north-carolina/football/roster/",
+  "provenance": {
+    "sources": [
+      {
+        "name": "On3/Rivals roster",
+        "endpoint": "on3:north-carolina"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:24:46.128Z",
+    "collectorVersion": "2ba6b68",
+    "dataSeason": 2026,
+    "dataCutoff": null
+  },
+  "players": []
+}

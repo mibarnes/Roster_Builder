@@ -1,0 +1,34 @@
+{
+  "sourceId": "cfbd-context-v1",
+  "sourceType": "context",
+  "asOf": "2026-07-04",
+  "version": "cfbd-2026.1",
+  "team": "Wake Forest Demon Deacons",
+  "season": 2025,
+  "provenance": {
+    "sources": [
+      {
+        "name": "CFBD player/returning",
+        "endpoint": "https://api.collegefootballdata.com/player/returning?year=2025&team=Wake%20Forest"
+      }
+    ],
+    "collectedAt": "2026-07-04T12:25:43.155Z",
+    "collectorVersion": "2ba6b68",
+    "dataSeason": 2025,
+    "dataCutoff": null
+  },
+  "returningProduction": {
+    "totalPPA": 97.5,
+    "totalPassingPPA": 0,
+    "totalReceivingPPA": 62,
+    "totalRushingPPA": 35.5,
+    "percentPPA": 0.262,
+    "percentPassingPPA": 0,
+    "percentReceivingPPA": 0.268,
+    "percentRushingPPA": 0.575,
+    "usage": 0.359,
+    "passingUsage": 0,
+    "receivingUsage": 0.245,
+    "rushingUsage": 0.834
+  }
+}
