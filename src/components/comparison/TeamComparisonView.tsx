@@ -413,7 +413,7 @@ export default function TeamComparisonView({
   return (
     <div className="h-screen w-screen flex flex-col overflow-hidden select-none font-sans bg-card-bg">
       {/* Header */}
-      <header className="flex-shrink-0 px-4 py-3 bg-surface border-b border-surface-border">
+      <header className="no-print flex-shrink-0 px-4 py-3 bg-surface border-b border-surface-border">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 flex-1 min-w-0">
             {dLeftLogo && (
@@ -467,7 +467,7 @@ export default function TeamComparisonView({
       </header>
 
       {/* U10: comparison-metric selector — OVR / recruiting / usage / PPA. */}
-      <div className="flex-shrink-0 px-4 py-2 bg-surface border-b border-surface-border flex items-center gap-2 overflow-x-auto">
+      <div className="no-print flex-shrink-0 px-4 py-2 bg-surface border-b border-surface-border flex items-center gap-2 overflow-x-auto">
         <span className="text-[9px] font-black text-gray-500 uppercase tracking-widest flex-shrink-0">Compare by</span>
         {METRIC_KEYS.map((k) => {
           const cfg = METRICS[k]
@@ -489,6 +489,14 @@ export default function TeamComparisonView({
           )
         })}
         <span className="text-[8px] text-gray-600 flex-shrink-0 ml-1 whitespace-nowrap">{mc.subtitle}</span>
+        <button
+          type="button"
+          onClick={() => window.print()}
+          title="Print this comparison as a scouting sheet"
+          className="ml-auto flex-shrink-0 px-2.5 py-1 rounded-md text-[10px] font-bold border border-surface-border text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
+        >
+          Print
+        </button>
       </div>
 
       {rightLoading && (

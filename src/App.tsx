@@ -157,7 +157,9 @@ export default function App() {
 
   // Global player search (F7) — one instance; mounts in whichever branch renders.
   const searchBox = (
-    <SearchOmnibox onSelect={(tid, pid) => navigate({ kind: 'player', teamId: tid, playerId: pid })} />
+    <div className="no-print">
+      <SearchOmnibox onSelect={(tid, pid) => navigate({ kind: 'player', teamId: tid, playerId: pid })} />
+    </div>
   )
 
   // ── League view (F6) — cross-team, needs no single team loaded (#/league) ──
@@ -169,6 +171,43 @@ export default function App() {
           onBack={() => navigate({ kind: 'team', teamId, tab: 'offense' })}
           onTeamClick={(id) => navigate({ kind: 'team', teamId: id, tab: 'offense' })}
         />
+      </>
+    )
+  }
+
+  // ── Dedicated player page (F7) — the #/player/:team/:id route is a full,
+  // shareable page (not a modal over the team view). Reuses PlayerModal's content. ──
+  if (route.kind === 'player') {
+    return (
+      <>
+        {searchBox}
+        {isLoading ? (
+          <div className="min-h-screen w-full bg-card-bg flex items-center justify-center">
+            <p className="text-sm font-semibold text-emerald-300">Loading…</p>
+          </div>
+        ) : selected ? (
+          <PlayerModal
+            variant="page"
+            player={selected}
+            onClose={backToTeam}
+            returnFocusEl={returnFocusEl}
+            onTeamClick={(id) => navigate({ kind: 'team', teamId: id, tab: 'offense' })}
+            teamId={teamId}
+            teamLabel={selectedTeam.label}
+            onPlayerNav={(tid, pid) => navigate({ kind: 'player', teamId: tid, playerId: pid })}
+          />
+        ) : (
+          <div className="min-h-screen w-full bg-card-bg flex flex-col items-center justify-center gap-3">
+            <p className="text-sm font-semibold text-gray-300">Player not found.</p>
+            <button
+              type="button"
+              onClick={backToTeam}
+              className="px-3 py-1.5 rounded-lg border border-surface-border text-xs font-bold text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
+            >
+              ← Back to team
+            </button>
+          </div>
+        )}
       </>
     )
   }

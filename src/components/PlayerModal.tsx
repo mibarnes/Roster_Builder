@@ -83,9 +83,16 @@ interface PlayerModalProps {
   teamLabel?: string
   /** Navigate to another player's modal (F7 similar-players). */
   onPlayerNav?: (teamId: string, playerId: string) => void
+  /**
+   * Presentation mode. 'modal' (default) = focus-trapped dialog over a backdrop.
+   * 'page' = a full-screen, shareable player page (no backdrop / focus trap) — the
+   * #/player/:team/:id route renders this so the URL is a standalone page.
+   */
+  variant?: 'modal' | 'page'
 }
 
-export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClick, teamId, teamLabel, onPlayerNav }: PlayerModalProps) {
+export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClick, teamId, teamLabel, onPlayerNav, variant = 'modal' }: PlayerModalProps) {
+  const isPage = variant === 'page'
   const watched = useWatchlist()
   const [index, setIndex] = useState<IndexRow[] | null>(indexCache)
 
@@ -112,9 +119,13 @@ export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClic
   useEffect(() => {
     if (!player || !modalRef.current) return
 
-    const focusables = modalRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
-    const firstFocusable = focusables[0] ?? modalRef.current
-    firstFocusable.focus()
+    // A full page is not a modal: no autofocus-steal, no focus trap, no
+    // focus-restore. Escape still returns (mirrors the "← Back" affordance).
+    if (!isPage) {
+      const focusables = modalRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+      const firstFocusable = focusables[0] ?? modalRef.current
+      firstFocusable.focus()
+    }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -122,6 +133,7 @@ export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClic
         onClose()
         return
       }
+      if (isPage) return
       if (event.key !== 'Tab') return
       const current = modalRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR) ?? []
       if (!current.length) {
@@ -143,9 +155,9 @@ export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClic
     document.addEventListener('keydown', handleKeyDown)
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
-      returnFocusEl?.focus?.()
+      if (!isPage) returnFocusEl?.focus?.()
     }
-  }, [player, onClose, returnFocusEl])
+  }, [player, onClose, returnFocusEl, isPage])
 
   if (!player) return null
 
@@ -234,16 +246,23 @@ export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClic
   const isRS = player.year?.includes('RS') ?? false
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
-      <div className="absolute inset-0 bg-black/90 backdrop-blur-md animate-[fadeIn_0.2s_ease-out]" />
+    <div
+      className={isPage ? 'min-h-screen w-full bg-card-bg overflow-y-auto p-4 sm:py-6' : 'fixed inset-0 z-50 flex items-center justify-center p-4'}
+      onClick={isPage ? undefined : onClose}
+    >
+      {!isPage && <div className="absolute inset-0 bg-black/90 backdrop-blur-md animate-[fadeIn_0.2s_ease-out]" />}
       <div
         ref={modalRef}
-        role="dialog"
-        aria-modal="true"
+        role={isPage ? 'region' : 'dialog'}
+        aria-modal={isPage ? undefined : true}
         aria-labelledby="player-modal-title"
         tabIndex={-1}
-        className="relative w-full max-w-md rounded-2xl bg-card-bg border-2 team-accent-border shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-[modalSlideUp_0.3s_cubic-bezier(0.34,1.56,0.64,1)] max-h-[90vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
+        className={
+          isPage
+            ? 'relative w-full max-w-2xl mx-auto rounded-2xl bg-card-bg border-2 team-accent-border'
+            : 'relative w-full max-w-md rounded-2xl bg-card-bg border-2 team-accent-border shadow-[0_30px_60px_rgba(0,0,0,0.8)] animate-[modalSlideUp_0.3s_cubic-bezier(0.34,1.56,0.64,1)] max-h-[90vh] overflow-y-auto'
+        }
+        onClick={isPage ? undefined : (e) => e.stopPropagation()}
       >
         <div className="sticky top-0 z-10 p-5 bg-surface border-b border-surface-border">
           {teamId && (
@@ -262,7 +281,8 @@ export default function PlayerModal({ player, onClose, returnFocusEl, onTeamClic
           )}
           <button
             onClick={onClose}
-            aria-label="Close player details"
+            aria-label={isPage ? 'Back to team' : 'Close player details'}
+            title={isPage ? 'Back to team' : 'Close'}
             className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-900 flex items-center justify-center text-white/80 hover:text-white hover:bg-gray-800 transition-all"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

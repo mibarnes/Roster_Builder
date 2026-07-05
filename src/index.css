@@ -93,3 +93,50 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ── Print / compact mode (F8). The app is a fixed-viewport, dark, overflow-hidden
+   surface; for paper we (a) let it flow onto multiple pages, (b) go ink-light,
+   (c) hide interactive chrome tagged `.no-print` (players stay — they are buttons,
+   so we opt OUT rather than blanket-hide), and (d) keep cards whole across breaks.
+   The comparison view is the natural scouting-sheet print target. ── */
+@media print {
+  /* Anything explicitly marked as chrome (nav/selectors/print button/search). */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Keep the dark theme faithful (the tier/edge colors are meaningful); just let
+     it paginate and preserve backgrounds so the scouting sheet reads as designed. */
+  html,
+  body,
+  #root {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Release the fixed-viewport containers so content paginates instead of clipping. */
+  .h-screen,
+  .h-dvh {
+    height: auto !important;
+  }
+  .overflow-hidden,
+  .overflow-y-auto,
+  .overflow-x-auto {
+    overflow: visible !important;
+  }
+  [class*='max-h-'] {
+    max-height: none !important;
+  }
+
+  /* Keep each card/section intact on a single page where possible. */
+  .rounded-2xl,
+  .rounded-xl {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
