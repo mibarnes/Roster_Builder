@@ -10,16 +10,24 @@
 
 **The app is live and hardened** at https://mibarnes.github.io/Roster_Builder/ (publishes from
 `main`). The M1–M6 rebuild + Round-2 enrichment + golden-record reconciliation are complete (see
-*Completed work* below). **494 tests; tsc strict clean.**
+*Completed work* below). **401 tests (28→29 files); tsc strict clean; build green.** *(Note: earlier
+"494/485" test counts in this ledger were stale — `vitest run` reports 401 as of 2026-07-05.)*
 
 > **Deepening arc + hardening + delight DONE (2026-07-04):** D1+D1b (master is the ONLY data path;
 > 270 legacy files retired) · F4 (league-calibrated ratings + `_baselines`/`_identity`/`_league`
 > artifacts) · F6 (League view + Team HQ) · F5 (as-of framing + snapshots + scheduled workflow) ·
 > **F7** (⌘K global search + watchlist + similar-players) · **F8** (About-the-data) · **D2** (transfer
-> deep-links). **F0–F6 + D1 are LIVE**; D1b/F5/F7/F8/D2 committed local (push at will). **Remaining:**
+> deep-links). **F0–F8 + D1b/D2 are LIVE** (pushed + deploy-verified 2026-07-05, incl. the prior
+> 10-commit batch). **Offline-polish round DONE (2026-07-05, LIVE):** **U10** comparison-metric
+> selector (OVR / recruiting / usage / PPA — data-driven `MetricConfig`, shareable via the 4th
+> compare-route segment) · **F7 player page** (`#/player/:t/:id` is now a full shareable page) ·
+> **F8 print/compact mode** (`@media print` — paginates, strips chrome, honors the selected metric) ·
+> **U9 formation alignment** (data-driven scheme registry — Spread/Pro offense, Nickel/Base defense;
+> honest alignment of the SAME depth-chart players, not fabricated personnel). **Remaining:**
 > **all quota-gated** — finish Big 12 (13 teams); P7 origin-production; F5 change-feed + Roster Moves
-> ticker (need ≥2 snapshots). **Offline polish (deferred):** U6 special-teams tab, U9 formations, U10
-> comparison-metric selector, F7 player-pages/geo, F8 what-if/print/perf-budget/zero-stub-attestation.
+> ticker (need ≥2 snapshots). **Offline polish still deferred:** U6 special-teams tab, F7 geo map,
+> F8 what-if/perf-budget/zero-stub-attestation, U9 true multi-**personnel** schemes (needs a deeper
+> positional depth chart — a data change, not layout).
 
 We are executing the **F0–F8 finalization plan** — evolving the working demo into a polished,
 zero-stub CFB intelligence tool. **Decisions locked 2026-07-04:** (1) full F0–F8 is the committed
@@ -142,28 +150,32 @@ Makes cross-team comparison honest — the payoff of the 54-team data. (Blueprin
 - [ ] **Change feed** `collected/_changes.json` + **7.2 Roster Moves ticker** — **deferred: need ≥2 snapshots** (chicken-egg; unblocks after the next collection).
 - **Gate:** one automated refresh PR merged end-to-end — pending CFBD quota reset.
 
-### F6 — Intelligence surfaces  ·  status: DONE (core; U6/U9/U10 deferred) (2026-07-04)
+### F6 — Intelligence surfaces  ·  status: DONE (core + U9/U10 shipped; U6 deferred) (2026-07-05)
 Display → scouting tool. (Blueprint 6.2/6.3.)
 - [x] **Team HQ** (`#/team/:id/hq`) ✅ — strength-vs-league bars (group avg OVR vs league mean 73), returning-production gauges, roster-construction class×position grid, incoming/outgoing portal ledger (`_identity.json`). New `hq` team tab.
 - [x] **League view** (`#/league`) ✅ — conference-filterable, sortable board of all 54 teams (league-calibrated OVR + OFF/DEF/returning/portal-net) + a transfer-portal **flow panel** (net gainers/losers + top in-league moves), from the single small `_league.json` + `_identity.json`. "League" nav button. *(Design note: the portal "Sankey" is a ranked net-flow panel — a 54-node node-link diagram is unreadable; this is clearer.)*
-- [ ] **U6 Special teams / U9 formations / U10 metric selector** — deferred polish (not needed for the League/HQ payoff). Recruiting-class trajectory (`classHistory.json`) also deferred.
-- **Gate:** ✅ both routes live + pixel-verified; 494 tests; tsc clean. (CI data-QA gate for artifacts → future.)
+- [x] **U9 formation alignment** ✅ (2026-07-05) — data-driven scheme registry (`src/data/formations.ts`) + generic `FormationField`; Spread/Pro offense + Nickel/Base defense toggle (per-side, persisted). Honest **alignment** of the SAME 11 depth-chart slots (nickel NB ↔ base SAM; slot WR ↔ pro H-back), NOT fabricated personnel. True multi-personnel schemes (4-3/3-4/11/12) need a deeper positional depth chart — deferred (data change).
+- [x] **U10 metric selector** ✅ (2026-07-05) — see the U10 entry below (DONE).
+- [ ] **U6 Special teams** — deferred polish (not needed for the League/HQ payoff). Recruiting-class trajectory (`classHistory.json`) also deferred.
+- **Gate:** ✅ routes + U9/U10 live + pixel-verified; 401 tests; tsc clean. (CI data-QA gate for artifacts → future.)
 
-### F7 — Player depth + delight  ·  status: PARTIAL (search/watchlist/similar done; player-pages/geo deferred) (2026-07-04)
+### F7 — Player depth + delight  ·  status: PARTIAL (search/watchlist/similar + player page done; geo deferred) (2026-07-05)
 (Blueprint 6.1/6.4/6.5, U12, 7.3/7.4.)
 - [x] **Global player search omnibox** (⌘K, `_searchIndex.json`, U12) ✅ — 5,945 players across 54 teams, lazy-loaded, name-prefix-ranked, cross-team deep-link.
 - [x] **Similar-players** ✅ — modal shows the 5 nearest league-calibrated OVRs in the same coarse position group, league-wide, clickable (computed client-side from `_searchIndex`; no precomputed artifact).
 - [x] **Watchlist** (localStorage, `playerId`-keyed, 7.4) ✅ — ★ toggle in the modal + a "★ N" header dropdown (deep-link + remove), `useSyncExternalStore`.
-- [ ] Full player *pages* (career timeline, trajectory sparkline, percentile bars) + template scouting blurb — deferred (modal is rich; a full route is polish). Geo recruiting-footprint SVG map — deferred (needs geocoding). Depth-chart PNG export (7.3) — deferred.
+- [x] **Player page** ✅ (2026-07-05) — `#/player/:t/:id` now renders a full, shareable page (PlayerModal `variant='page'`: no backdrop/focus-trap, wider layout, "Back to team") reusing every modal content section; App renders it as an early-return branch with loading + not-found states. Career timeline / trajectory sparkline / percentile bars remain a further enhancement (the page already shows rating breakdown + advanced usage/PPA + per-game log).
+- [ ] Geo recruiting-footprint SVG map — deferred (needs `homeLat`/`homeLon` threaded to `UIPlayer` + a map approach). Depth-chart PNG export (7.3) — deferred.
 
-### F8 — Final polish  ·  status: PARTIAL (About-the-data done; rest deferred) (2026-07-04)
+### F8 — Final polish  ·  status: PARTIAL (About-the-data + print done; rest deferred) (2026-07-05)
 (Blueprint 7.5–7.8.)
 - [x] **"About the data"** ✅ — in-app provenance + methodology modal (opened from the header "as of <date> ⓘ"), replacing the blueprint's "auto-generated" note with a real panel.
-- [ ] What-if scenario mode · print/compact mode · onboarding coach-marks · perf budget (Lighthouse ≥90 in CI) — deferred polish.
+- [x] **Print / compact mode** ✅ (2026-07-05) — `@media print` in `index.css` releases the fixed-viewport/`overflow-hidden` containers so the app paginates onto paper, strips chrome tagged `.no-print` (comparison header + metric selector + floating search), keeps cards intact across breaks; a "Print" button in the comparison toolbar calls `window.print()`. Stays design-faithful dark (tier/edge colors are meaningful) and honors the selected metric via the deep-linked route. Players are `<button>`s, so chrome opts OUT via `.no-print` rather than blanket-hiding.
+- [ ] What-if scenario mode · onboarding coach-marks · perf budget (Lighthouse ≥90 in CI) — deferred polish.
 - [ ] **Zero-stub attestation** — full S1–S18 register swept; every item closed or explicitly dated-deferred in this PLAN.
 
-### U10 — Comparison metric selector  ·  status: DEFERRED (2026-07-04)
-OVR/recruiting/stars/returning selector in the comparison view — deferred: `p.ovr` is threaded through many `comparisonMath` functions + a 967-line component, so it's a deliberate refactor, not a quick add.
+### U10 — Comparison metric selector  ·  status: DONE (2026-07-05, LIVE)
+The hard-wired `p.ovr` assumption is lifted into a `MetricConfig` registry (`src/components/comparison/metricConfig.ts`): compare on **OVR / recruiting composite / usage / PPA**. Each metric owns its scale-dependent behavior — valid-value predicate (usage 0 and negative PPA are real; OVR/composite keep the `>0` unrated sentinel), aggregate rounding, radar-normalize window, color ramp, and depth/edge/advantage thresholds; the recruiting-vs-OVR divergence story is gated to OVR only. Every `comparisonMath` fn defaults `metric=OVR_METRIC`, so prior call sites + tests are unchanged. Metric is the 4th compare-route segment (`#/compare/a/b/usage` — shareable/deep-linkable) with a localStorage last-used fallback; `RadarChart` takes nullable values + a `normalize` prop. Pixel-verified OVR/Usage/PPA render distinctly; +6 unit cases.
 
 ---
 

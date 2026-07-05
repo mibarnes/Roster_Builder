@@ -5,6 +5,7 @@ import { TEAMS, requireTeam, teamLogoUrl } from './data/teamRegistry.ts'
 import { routeTeamId, useHashRoute, type RouteTab } from './router.ts'
 import { readStored, usePersistentState, writeStored } from './hooks/usePersistentState.ts'
 import { type MetricKey } from './components/comparison/metricConfig.ts'
+import { OFFENSE_SCHEMES, DEFENSE_SCHEMES, DEFAULT_OFFENSE_SCHEME, DEFAULT_DEFENSE_SCHEME } from './data/formations.ts'
 
 /** Was the URL free of an explicit route at first load? (→ resume last view, U4.) */
 const INITIAL_HASH_EMPTY =
@@ -65,6 +66,9 @@ export default function App() {
   const tab: Tab = route.kind === 'team' ? route.tab : lastTab
 
   const [depthTeam, setDepthTeam] = useState<DepthMode>('starters')
+  // U9: per-side formation alignment scheme (persisted).
+  const [offenseScheme, setOffenseScheme] = usePersistentState<string>('rb:ofmt', DEFAULT_OFFENSE_SCHEME)
+  const [defenseScheme, setDefenseScheme] = usePersistentState<string>('rb:dfmt', DEFAULT_DEFENSE_SCHEME)
   const [filters, setFilters] = usePersistentState<RatingsFilters>('rb:filters', { side: 'ALL', pos: 'ALL', stars: 0, sort: 'composite' })
   const [returnFocusEl, setReturnFocusEl] = useState<HTMLElement | null>(null)
   const [showAbout, setShowAbout] = useState(false)
@@ -236,6 +240,12 @@ export default function App() {
   const visibleOffense = filterFormationByDepth(offensiveStarters, depthIndex)
   const visibleDefense = filterFormationByDepth(defensiveStarters, depthIndex)
 
+  // U9: the alignment-scheme toggle for the active side (formation tabs, not "all").
+  const activeSchemes = tab === 'offense' ? OFFENSE_SCHEMES : DEFENSE_SCHEMES
+  const activeSchemeId = tab === 'offense' ? offenseScheme : defenseScheme
+  const setActiveScheme = tab === 'offense' ? setOffenseScheme : setDefenseScheme
+  const showSchemeToggle = isFormationTab && depthTeam !== 'all'
+
   // ── Full-screen two-team comparison (M5) — a deep-linkable route (#/compare/:a/:b) ──
   if (route.kind === 'compare') {
     // Metric source of truth = the URL (shareable/deep-linkable, U10); fall back to
@@ -386,31 +396,53 @@ export default function App() {
         ))}
       </nav>
 
-      {/* ── Depth toggle (formation tabs only) ── */}
+      {/* ── Depth + formation-alignment toggles (formation tabs only) ── */}
       {isFormationTab && (
         <div className="flex-shrink-0 px-4 py-2.5 bg-surface border-b border-surface-border">
-          <div className="mx-auto w-fit rounded-xl border border-surface-border bg-black/40 p-1">
-            <div className="flex items-center gap-1" role="group" aria-label="Depth chart team">
-              {depthModes.map((mode) => (
-                <button
-                  key={mode.id}
-                  type="button"
-                  disabled={mode.disabled}
-                  onClick={() => !mode.disabled && setDepthTeam(mode.id)}
-                  title={mode.id === 'all' ? 'Full position-group depth' : undefined}
-                  className={`min-w-[92px] rounded-lg px-3 py-1.5 text-[11px] font-bold transition-colors ${
-                    mode.disabled
-                      ? 'text-gray-600 cursor-not-allowed'
-                      : depthTeam === mode.id
-                        ? 'team-accent-bg text-white'
-                        : 'text-gray-400 hover:text-white'
-                  }`}
-                  aria-pressed={depthTeam === mode.id}
-                >
-                  {mode.label}
-                </button>
-              ))}
+          <div className="mx-auto w-fit flex flex-wrap items-center justify-center gap-2">
+            <div className="rounded-xl border border-surface-border bg-black/40 p-1">
+              <div className="flex items-center gap-1" role="group" aria-label="Depth chart team">
+                {depthModes.map((mode) => (
+                  <button
+                    key={mode.id}
+                    type="button"
+                    disabled={mode.disabled}
+                    onClick={() => !mode.disabled && setDepthTeam(mode.id)}
+                    title={mode.id === 'all' ? 'Full position-group depth' : undefined}
+                    className={`min-w-[92px] rounded-lg px-3 py-1.5 text-[11px] font-bold transition-colors ${
+                      mode.disabled
+                        ? 'text-gray-600 cursor-not-allowed'
+                        : depthTeam === mode.id
+                          ? 'team-accent-bg text-white'
+                          : 'text-gray-400 hover:text-white'
+                    }`}
+                    aria-pressed={depthTeam === mode.id}
+                  >
+                    {mode.label}
+                  </button>
+                ))}
+              </div>
             </div>
+            {showSchemeToggle && (
+              <div className="rounded-xl border border-surface-border bg-black/40 p-1">
+                <div className="flex items-center gap-1" role="group" aria-label="Formation alignment">
+                  {activeSchemes.map((s) => (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => setActiveScheme(s.id)}
+                      title={s.hint}
+                      className={`min-w-[76px] rounded-lg px-3 py-1.5 text-[11px] font-bold transition-colors ${
+                        activeSchemeId === s.id ? 'team-accent-bg text-white' : 'text-gray-400 hover:text-white'
+                      }`}
+                      aria-pressed={activeSchemeId === s.id}
+                    >
+                      {s.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -552,7 +584,7 @@ export default function App() {
           {tab === 'offense' && depthTeam !== 'all' && (
             <div className="py-3">
               <div className="mx-auto max-w-6xl rounded-2xl border border-gray-900 bg-black px-3 overflow-x-auto">
-                <OffenseFormation offensiveStarters={visibleOffense} onPlayerClick={onPlayerClick} />
+                <OffenseFormation offensiveStarters={visibleOffense} onPlayerClick={onPlayerClick} schemeId={offenseScheme} />
               </div>
             </div>
           )}
@@ -562,7 +594,7 @@ export default function App() {
           {tab === 'defense' && depthTeam !== 'all' && (
             <div className="py-3">
               <div className="mx-auto max-w-6xl rounded-2xl border border-gray-900 bg-black px-3 overflow-x-auto">
-                <DefenseFormation defensiveStarters={visibleDefense} onPlayerClick={onPlayerClick} />
+                <DefenseFormation defensiveStarters={visibleDefense} onPlayerClick={onPlayerClick} schemeId={defenseScheme} />
               </div>
             </div>
           )}
