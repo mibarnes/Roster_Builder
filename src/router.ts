@@ -12,12 +12,13 @@
  */
 import { useEffect, useState } from 'react'
 import { DEFAULT_TEAM_ID } from './data/teamRegistry.ts'
+import { isMetricKey, type MetricKey } from './components/comparison/metricConfig.ts'
 
 export type RouteTab = 'offense' | 'defense' | 'ratings' | 'hq'
 
 export type Route =
   | { kind: 'team'; teamId: string; tab: RouteTab }
-  | { kind: 'compare'; leftId: string; rightId: string }
+  | { kind: 'compare'; leftId: string; rightId: string; metric?: MetricKey }
   | { kind: 'player'; teamId: string; playerId: string }
   | { kind: 'league' }
 
@@ -45,7 +46,8 @@ export function parseHash(hash: string): Route {
     return { kind: 'team', teamId: parts[1], tab: isTab(parts[2]) ? parts[2] : 'offense' }
   }
   if (parts[0] === 'compare' && parts[1] && parts[2]) {
-    return { kind: 'compare', leftId: parts[1], rightId: parts[2] }
+    // Optional 4th segment carries the comparison metric (U10); omit ⇒ OVR default.
+    return { kind: 'compare', leftId: parts[1], rightId: parts[2], metric: isMetricKey(parts[3]) ? parts[3] : undefined }
   }
   if (parts[0] === 'player' && parts[1] && parts[2]) {
     return { kind: 'player', teamId: parts[1], playerId: parts[2] }
@@ -63,7 +65,10 @@ export function buildHash(route: Route): string {
     case 'team':
       return `#/team/${enc(route.teamId)}/${route.tab}`
     case 'compare':
-      return `#/compare/${enc(route.leftId)}/${enc(route.rightId)}`
+      // Keep default (OVR) URLs clean; only append the metric segment when set.
+      return `#/compare/${enc(route.leftId)}/${enc(route.rightId)}${
+        route.metric && route.metric !== 'ovr' ? `/${route.metric}` : ''
+      }`
     case 'player':
       return `#/player/${enc(route.teamId)}/${enc(route.playerId)}`
     case 'league':

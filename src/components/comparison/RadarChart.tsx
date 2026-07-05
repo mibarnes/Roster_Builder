@@ -20,9 +20,7 @@ const polarPt = (i: number, r: number): [number, number] => [
 ]
 const toPoints = (pts: Array<[number, number]>): string =>
   pts.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ')
-// OVR 65 → 0, OVR 93 → 1 (28-pt span). 0/negative ⇒ no value (collapse to center).
-const normalize = (ovr: number): number =>
-  ovr == null || ovr <= 0 ? 0 : Math.max(0, Math.min(1, (ovr - 65) / 28))
+const clamp01 = (n: number): number => Math.max(0, Math.min(1, n))
 
 export interface SpokeMeta {
   groupId: string
@@ -34,13 +32,16 @@ export interface SpokeMeta {
 }
 
 export interface RadarChartProps {
-  leftValues: number[]
-  rightValues: number[]
+  /** Per-spoke metric aggregates; null = no value (collapses to center). */
+  leftValues: Array<number | null>
+  rightValues: Array<number | null>
   leftColor: string
   rightColor: string
   spokeMeta: SpokeMeta[]
   leftLabel: string
   rightLabel: string
+  /** Metric-specific value→0..1 mapping (defaults to the OVR 65–93 window). */
+  normalize?: (v: number) => number
 }
 
 export default function RadarChart({
@@ -51,11 +52,13 @@ export default function RadarChart({
   spokeMeta,
   leftLabel,
   rightLabel,
+  normalize = (ovr: number) => clamp01((ovr - 65) / 28),
 }: RadarChartProps) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null)
 
-  const leftPts = leftValues.map((v, i) => polarPt(i, normalize(v) * R))
-  const rightPts = rightValues.map((v, i) => polarPt(i, normalize(v) * R))
+  const radius = (v: number | null): number => (v == null ? 0 : clamp01(normalize(v)) * R)
+  const leftPts = leftValues.map((v, i) => polarPt(i, radius(v)))
+  const rightPts = rightValues.map((v, i) => polarPt(i, radius(v)))
   const ringPts = (r: number): Array<[number, number]> => LABELS.map((_, i) => polarPt(i, r))
 
   const handleSpoke = (i: number): void => setActiveIdx(activeIdx === i ? null : i)
@@ -79,7 +82,7 @@ export default function RadarChart({
           return <line key={label} x1={CX} y1={CY} x2={x} y2={y} stroke="#1e293b" strokeWidth="1" />
         })}
 
-        {rightValues.some((v) => v > 0) && (
+        {rightValues.some((v) => v != null) && (
           <polygon
             points={toPoints(rightPts)}
             fill={rightColor}
@@ -91,7 +94,7 @@ export default function RadarChart({
           />
         )}
 
-        {leftValues.some((v) => v > 0) && (
+        {leftValues.some((v) => v != null) && (
           <polygon
             points={toPoints(leftPts)}
             fill={leftColor}
@@ -104,7 +107,7 @@ export default function RadarChart({
         )}
 
         {leftPts.map(([x, y], i) =>
-          (leftValues[i] ?? 0) > 0 ? (
+          leftValues[i] != null ? (
             <circle
               key={`ld${i}`}
               cx={x}
@@ -117,7 +120,7 @@ export default function RadarChart({
           ) : null,
         )}
         {rightPts.map(([x, y], i) =>
-          (rightValues[i] ?? 0) > 0 ? (
+          rightValues[i] != null ? (
             <circle
               key={`rd${i}`}
               cx={x}

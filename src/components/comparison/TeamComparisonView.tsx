@@ -13,7 +13,6 @@ import { useEffect, useMemo, useState } from 'react'
 import { loadPlayerPipeline } from '../../data/pipeline/loadPlayerPipeline.ts'
 import { mapPipelineToUI } from '../../data/mapPipelineToUI.ts'
 import { TEAMS, getTeamById, teamLogoUrl } from '../../data/teamRegistry.ts'
-import { getOvrColor } from '../../utils/playerHelpers.ts'
 import PlayerModal from '../PlayerModal.tsx'
 import RadarChart, { type SpokeMeta } from './RadarChart.tsx'
 import {
@@ -35,6 +34,7 @@ import {
   type DepthGrade,
   type PosGroupRow,
 } from './comparisonMath.ts'
+import { METRICS, METRIC_KEYS, getMetricConfig, type MetricConfig, type MetricKey } from './metricConfig.ts'
 import type { PipelineMetrics } from '../../data/schema/pipeline.ts'
 import type { UIDataset, UIPlayer } from '../../data/schema/ui.ts'
 
@@ -133,14 +133,18 @@ interface EdgeBarProps {
   rightOvr: number | null
   leftColor: string
   rightColor: string
+  metric: MetricConfig
 }
 
-function EdgeBar({ label, leftOvr, rightOvr, leftColor, rightColor }: EdgeBarProps) {
-  const l = leftOvr ?? 0
-  const r = rightOvr ?? 0
-  const total = l + r
-  const leftPct = total > 0 ? (l / total) * 100 : 50
-  const edge = l > r ? 'left' : l < r ? 'right' : 'even'
+function EdgeBar({ label, leftOvr, rightOvr, leftColor, rightColor, metric }: EdgeBarProps) {
+  // Bar widths use the metric's 0..1 normalize so usage/PPA scales (and negatives)
+  // render sanely; edge direction stays on the raw values.
+  const nl = leftOvr != null ? Math.max(0, metric.normalize(leftOvr)) : 0
+  const nr = rightOvr != null ? Math.max(0, metric.normalize(rightOvr)) : 0
+  const leftPct = nl + nr > 0 ? (nl / (nl + nr)) * 100 : 50
+  const l = leftOvr ?? -Infinity
+  const r = rightOvr ?? -Infinity
+  const edge = leftOvr == null && rightOvr == null ? 'even' : l > r ? 'left' : l < r ? 'right' : 'even'
   return (
     <div className="mb-3">
       <div className="text-[9px] text-gray-500 font-semibold mb-1">{label}</div>
@@ -193,6 +197,10 @@ export interface TeamComparisonViewProps {
   rightTeamId?: string
   /** Called when the user picks a different right team (updates the URL). */
   onRightTeamChange?: (rightId: string) => void
+  /** Active comparison metric (U10); defaults to OVR. */
+  metricKey?: MetricKey
+  /** Called when the user switches the comparison metric (updates the URL). */
+  onMetricChange?: (metric: MetricKey) => void
 }
 
 export default function TeamComparisonView({
@@ -202,7 +210,15 @@ export default function TeamComparisonView({
   onBack,
   rightTeamId: rightTeamIdProp,
   onRightTeamChange,
+  metricKey = 'ovr',
+  onMetricChange,
 }: TeamComparisonViewProps) {
+  const mc = getMetricConfig(metricKey)
+  /** Rounded metric value for a single player (or null when unrated for this metric). */
+  const pval = (p: UIPlayer): number | null => {
+    const v = mc.get(p)
+    return mc.isValid(v) ? mc.roundAgg(v) : null
+  }
   const leftTeam = getTeamById(leftTeamId)
   const leftColor = leftTeam?.accentColor ?? '#1a4d2e'
 
@@ -260,38 +276,40 @@ export default function TeamComparisonView({
     }
   }, [rightTeamId])
 
-  const leftOvr = leftMetrics?.team?.avgStarterOverall ?? computeTeamOvr(leftUiData)
-  const rightOvr = rightMetrics?.team?.avgStarterOverall ?? computeTeamOvr(rightUiData)
+  // The precomputed team.avgStarterOverall is an OVR figure — only use it for OVR;
+  // every other metric is derived on the fly from the loaded datasets.
+  const leftOvr = (metricKey === 'ovr' ? leftMetrics?.team?.avgStarterOverall : null) ?? computeTeamOvr(leftUiData, mc)
+  const rightOvr = (metricKey === 'ovr' ? rightMetrics?.team?.avgStarterOverall : null) ?? computeTeamOvr(rightUiData, mc)
 
-  const leftOffOvr = useMemo(() => avgOvr(slotPlayers(leftUiData?.offensiveStarters, OFF_ALL, 1)), [leftUiData])
-  const rightOffOvr = useMemo(() => avgOvr(slotPlayers(rightUiData?.offensiveStarters, OFF_ALL, 1)), [rightUiData])
-  const leftDefOvr = useMemo(() => avgOvr(slotPlayers(leftUiData?.defensiveStarters, DEF_ALL, 1)), [leftUiData])
-  const rightDefOvr = useMemo(() => avgOvr(slotPlayers(rightUiData?.defensiveStarters, DEF_ALL, 1)), [rightUiData])
+  const leftOffOvr = useMemo(() => avgOvr(slotPlayers(leftUiData?.offensiveStarters, OFF_ALL, 1, mc), mc), [leftUiData, mc])
+  const rightOffOvr = useMemo(() => avgOvr(slotPlayers(rightUiData?.offensiveStarters, OFF_ALL, 1, mc), mc), [rightUiData, mc])
+  const leftDefOvr = useMemo(() => avgOvr(slotPlayers(leftUiData?.defensiveStarters, DEF_ALL, 1, mc), mc), [leftUiData, mc])
+  const rightDefOvr = useMemo(() => avgOvr(slotPlayers(rightUiData?.defensiveStarters, DEF_ALL, 1, mc), mc), [rightUiData, mc])
 
-  const leftOvrGrade = useMemo(() => overallDepthGrade(leftUiData), [leftUiData])
-  const rightOvrGrade = useMemo(() => overallDepthGrade(rightUiData), [rightUiData])
-  const leftOffGrade = useMemo(() => depthGradeFor(leftUiData, 'OFF', OFF_ALL), [leftUiData])
-  const rightOffGrade = useMemo(() => depthGradeFor(rightUiData, 'OFF', OFF_ALL), [rightUiData])
-  const leftDefGrade = useMemo(() => depthGradeFor(leftUiData, 'DEF', DEF_ALL), [leftUiData])
-  const rightDefGrade = useMemo(() => depthGradeFor(rightUiData, 'DEF', DEF_ALL), [rightUiData])
+  const leftOvrGrade = useMemo(() => overallDepthGrade(leftUiData, mc), [leftUiData, mc])
+  const rightOvrGrade = useMemo(() => overallDepthGrade(rightUiData, mc), [rightUiData, mc])
+  const leftOffGrade = useMemo(() => depthGradeFor(leftUiData, 'OFF', OFF_ALL, mc), [leftUiData, mc])
+  const rightOffGrade = useMemo(() => depthGradeFor(rightUiData, 'OFF', OFF_ALL, mc), [rightUiData, mc])
+  const leftDefGrade = useMemo(() => depthGradeFor(leftUiData, 'DEF', DEF_ALL, mc), [leftUiData, mc])
+  const rightDefGrade = useMemo(() => depthGradeFor(rightUiData, 'DEF', DEF_ALL, mc), [rightUiData, mc])
 
   const leftOvrStarters = useMemo(
-    () => slotPlayers(leftUiData?.offensiveStarters, OFF_ALL, 1).length + slotPlayers(leftUiData?.defensiveStarters, DEF_ALL, 1).length,
-    [leftUiData],
+    () => slotPlayers(leftUiData?.offensiveStarters, OFF_ALL, 1, mc).length + slotPlayers(leftUiData?.defensiveStarters, DEF_ALL, 1, mc).length,
+    [leftUiData, mc],
   )
   const rightOvrStarters = useMemo(
-    () => slotPlayers(rightUiData?.offensiveStarters, OFF_ALL, 1).length + slotPlayers(rightUiData?.defensiveStarters, DEF_ALL, 1).length,
-    [rightUiData],
+    () => slotPlayers(rightUiData?.offensiveStarters, OFF_ALL, 1, mc).length + slotPlayers(rightUiData?.defensiveStarters, DEF_ALL, 1, mc).length,
+    [rightUiData, mc],
   )
-  const leftOffStarters = useMemo(() => slotPlayers(leftUiData?.offensiveStarters, OFF_ALL, 1).length, [leftUiData])
-  const rightOffStarters = useMemo(() => slotPlayers(rightUiData?.offensiveStarters, OFF_ALL, 1).length, [rightUiData])
-  const leftDefStarters = useMemo(() => slotPlayers(leftUiData?.defensiveStarters, DEF_ALL, 1).length, [leftUiData])
-  const rightDefStarters = useMemo(() => slotPlayers(rightUiData?.defensiveStarters, DEF_ALL, 1).length, [rightUiData])
+  const leftOffStarters = useMemo(() => slotPlayers(leftUiData?.offensiveStarters, OFF_ALL, 1, mc).length, [leftUiData, mc])
+  const rightOffStarters = useMemo(() => slotPlayers(rightUiData?.offensiveStarters, OFF_ALL, 1, mc).length, [rightUiData, mc])
+  const leftDefStarters = useMemo(() => slotPlayers(leftUiData?.defensiveStarters, DEF_ALL, 1, mc).length, [leftUiData, mc])
+  const rightDefStarters = useMemo(() => slotPlayers(rightUiData?.defensiveStarters, DEF_ALL, 1, mc).length, [rightUiData, mc])
 
-  const posGroupRows = useMemo<PosGroupRow[]>(() => buildPosGroupRows(leftUiData, rightUiData), [leftUiData, rightUiData])
+  const posGroupRows = useMemo<PosGroupRow[]>(() => buildPosGroupRows(leftUiData, rightUiData, mc), [leftUiData, rightUiData, mc])
 
-  const leftRadar = useMemo(() => posGroupRows.map((r) => r.lStarterOvr ?? 0), [posGroupRows])
-  const rightRadar = useMemo(() => posGroupRows.map((r) => r.rStarterOvr ?? 0), [posGroupRows])
+  const leftRadar = useMemo(() => posGroupRows.map((r) => r.lStarterOvr), [posGroupRows])
+  const rightRadar = useMemo(() => posGroupRows.map((r) => r.rStarterOvr), [posGroupRows])
   const spokeMeta = useMemo<SpokeMeta[]>(
     () =>
       posGroupRows.map(({ group, lOvr, rOvr, edge, lTopName, rTopName }) => ({
@@ -326,31 +344,31 @@ export default function TeamComparisonView({
     return [
       {
         label: 'Passing Game',
-        leftAtk: multiGroupAvg(leftUiData, ['QB', 'WR', 'TE']),
-        rightDef: multiGroupAvg(rightUiData, ['CB', 'S', 'LB']),
-        rightAtk: multiGroupAvg(rightUiData, ['QB', 'WR', 'TE']),
-        leftDef: multiGroupAvg(leftUiData, ['CB', 'S', 'LB']),
+        leftAtk: multiGroupAvg(leftUiData, ['QB', 'WR', 'TE'], 1, mc),
+        rightDef: multiGroupAvg(rightUiData, ['CB', 'S', 'LB'], 1, mc),
+        rightAtk: multiGroupAvg(rightUiData, ['QB', 'WR', 'TE'], 1, mc),
+        leftDef: multiGroupAvg(leftUiData, ['CB', 'S', 'LB'], 1, mc),
       },
       {
         label: 'Run Game',
-        leftAtk: multiGroupAvg(leftUiData, ['RB', 'OL']),
-        rightDef: multiGroupAvg(rightUiData, ['DL', 'LB']),
-        rightAtk: multiGroupAvg(rightUiData, ['RB', 'OL']),
-        leftDef: multiGroupAvg(leftUiData, ['DL', 'LB']),
+        leftAtk: multiGroupAvg(leftUiData, ['RB', 'OL'], 1, mc),
+        rightDef: multiGroupAvg(rightUiData, ['DL', 'LB'], 1, mc),
+        rightAtk: multiGroupAvg(rightUiData, ['RB', 'OL'], 1, mc),
+        leftDef: multiGroupAvg(leftUiData, ['DL', 'LB'], 1, mc),
       },
     ]
-  }, [leftUiData, rightUiData])
+  }, [leftUiData, rightUiData, mc])
 
   const groupWins = useMemo(() => computeGroupWins(posGroupRows), [posGroupRows])
 
-  const leftQuality = useMemo(() => assessDataQuality(leftUiData), [leftUiData])
-  const rightQuality = useMemo(() => assessDataQuality(rightUiData), [rightUiData])
+  const leftQuality = useMemo(() => assessDataQuality(leftUiData, mc), [leftUiData, mc])
+  const rightQuality = useMemo(() => assessDataQuality(rightUiData, mc), [rightUiData, mc])
 
   const summaryBanner = useMemo(() => {
     if (leftOvr == null || rightOvr == null) return null
     const diff = leftOvr - rightOvr
     const absDiff = Math.abs(diff)
-    if (absDiff >= 5) {
+    if (absDiff >= mc.advantage) {
       return {
         type: 'advantage' as const,
         team: diff > 0 ? leftTeam : rightTeam,
@@ -367,7 +385,7 @@ export default function TeamComparisonView({
       closestLeftOvr: battles[0]?.lOvr ?? null,
       closestRightOvr: battles[0]?.rOvr ?? null,
     }
-  }, [leftOvr, rightOvr, leftTeam, rightTeam, leftColor, rightColor, posGroupRows])
+  }, [leftOvr, rightOvr, leftTeam, rightTeam, leftColor, rightColor, posGroupRows, mc])
 
   const leftLogoSrc = teamLogoUrl(leftTeamId)
   const rightLogoSrc = teamLogoUrl(rightTeamId)
@@ -448,6 +466,31 @@ export default function TeamComparisonView({
         </div>
       </header>
 
+      {/* U10: comparison-metric selector — OVR / recruiting / usage / PPA. */}
+      <div className="flex-shrink-0 px-4 py-2 bg-surface border-b border-surface-border flex items-center gap-2 overflow-x-auto">
+        <span className="text-[9px] font-black text-gray-500 uppercase tracking-widest flex-shrink-0">Compare by</span>
+        {METRIC_KEYS.map((k) => {
+          const cfg = METRICS[k]
+          const active = k === metricKey
+          return (
+            <button
+              key={k}
+              type="button"
+              onClick={() => onMetricChange?.(k)}
+              aria-pressed={active}
+              title={cfg.subtitle}
+              className={`flex-shrink-0 px-2.5 py-1 rounded-md text-[10px] font-bold border transition-colors ${
+                active ? 'text-white' : 'text-gray-400 border-surface-border hover:text-white hover:bg-gray-800'
+              }`}
+              style={active ? { background: `${leftColor}30`, borderColor: leftColor } : undefined}
+            >
+              {cfg.label}
+            </button>
+          )
+        })}
+        <span className="text-[8px] text-gray-600 flex-shrink-0 ml-1 whitespace-nowrap">{mc.subtitle}</span>
+      </div>
+
       {rightLoading && (
         <div className="flex-shrink-0 px-4 py-1.5 bg-surface border-b border-surface-border">
           <p className="text-[11px] font-semibold text-emerald-300">Loading {rightLabel}…</p>
@@ -481,7 +524,7 @@ export default function TeamComparisonView({
                   <div className="text-lg font-black" style={{ color: summaryBanner.color }}>
                     {(summaryBanner.team?.label ?? '').toUpperCase()}
                   </div>
-                  <div className="text-[10px] text-gray-400 mt-0.5">+{summaryBanner.margin} OVR overall rating edge</div>
+                  <div className="text-[10px] text-gray-400 mt-0.5">+{summaryBanner.margin} {mc.label} edge overall</div>
                 </>
               ) : (
                 <>
@@ -571,6 +614,7 @@ export default function TeamComparisonView({
               spokeMeta={spokeMeta}
               leftLabel={leftShort}
               rightLabel={rightShort}
+              normalize={mc.normalize}
             />
             <div className="mt-3 pt-3 border-t border-gray-800/60 flex items-center justify-center gap-5 flex-wrap">
               <span className="text-[8px] font-black text-gray-500 uppercase tracking-widest mr-1">Depth:</span>
@@ -607,11 +651,12 @@ export default function TeamComparisonView({
                         <div className="flex-1 space-y-1.5">
                           {lStarters.slice(0, 2).map((p) => {
                             const stats = formatSpotlightStats(p, group.groupId)
+                            const v = pval(p)
                             return (
                               <div key={p.id}>
                                 <div className="flex items-center gap-1.5">
-                                  <span className="text-[11px] font-black" style={{ color: getOvrColor(p.ovr) }}>
-                                    {p.ovr}
+                                  <span className="text-[11px] font-black" style={{ color: v != null ? mc.color(v) : '#6b7280' }}>
+                                    {v ?? '—'}
                                   </span>
                                   <span className="text-[10px] text-white font-semibold truncate">{p.name.split(' ').pop()}</span>
                                 </div>
@@ -638,12 +683,13 @@ export default function TeamComparisonView({
                         <div className="flex-1 space-y-1.5 text-right">
                           {rStarters.slice(0, 2).map((p) => {
                             const stats = formatSpotlightStats(p, group.groupId)
+                            const v = pval(p)
                             return (
                               <div key={p.id}>
                                 <div className="flex items-center gap-1.5 justify-end">
                                   <span className="text-[10px] text-white font-semibold truncate">{p.name.split(' ').pop()}</span>
-                                  <span className="text-[11px] font-black" style={{ color: getOvrColor(p.ovr) }}>
-                                    {p.ovr}
+                                  <span className="text-[11px] font-black" style={{ color: v != null ? mc.color(v) : '#6b7280' }}>
+                                    {v ?? '—'}
                                   </span>
                                 </div>
                                 {stats && <div className="text-[8px] text-gray-500 mr-0.5">{stats}</div>}
@@ -654,8 +700,8 @@ export default function TeamComparisonView({
                         </div>
                       </div>
                       {(() => {
-                        const lPill = computeBenchPill(lStarters, lBackups)
-                        const rPill = computeBenchPill(rStarters, rBackups)
+                        const lPill = computeBenchPill(lStarters, lBackups, mc)
+                        const rPill = computeBenchPill(rStarters, rBackups, mc)
                         if (!lPill && !rPill) return null
                         return (
                           <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-800/60">
@@ -687,16 +733,18 @@ export default function TeamComparisonView({
           <div className="bg-surface rounded-2xl border border-surface-border overflow-hidden">
             <div className="px-4 py-2.5 border-b border-surface-border flex items-center justify-between">
               <h2 className="text-[11px] font-black text-gray-400 uppercase tracking-widest">Position Groups</h2>
-              <div className="flex items-center gap-3 text-[9px] font-semibold text-gray-500">
-                <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full" style={{ background: '#34d399' }} />
-                  Hidden Gem
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full" style={{ background: '#fbbf24' }} />
-                  Not Living Up
-                </span>
-              </div>
+              {mc.supportsDivergence && (
+                <div className="flex items-center gap-3 text-[9px] font-semibold text-gray-500">
+                  <span className="flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full" style={{ background: '#34d399' }} />
+                    Hidden Gem
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full" style={{ background: '#fbbf24' }} />
+                    Not Living Up
+                  </span>
+                </div>
+              )}
             </div>
             <div className="divide-y divide-gray-900/60">
               {posGroupRows.map((row) => {
@@ -742,7 +790,7 @@ export default function TeamComparisonView({
                           <span
                             className="text-lg font-black leading-none"
                             style={{
-                              color: lOvr != null ? getOvrColor(lOvr) : '#6b7280',
+                              color: lOvr != null ? mc.color(lOvr) : '#6b7280',
                               outline: edge === 'left' ? `1px solid ${leftColor}44` : 'none',
                               borderRadius: '2px',
                               paddingLeft: edge === 'left' ? '2px' : undefined,
@@ -849,7 +897,7 @@ export default function TeamComparisonView({
                           <span
                             className="text-lg font-black leading-none"
                             style={{
-                              color: rOvr != null ? getOvrColor(rOvr) : '#6b7280',
+                              color: rOvr != null ? mc.color(rOvr) : '#6b7280',
                               outline: edge === 'right' ? `1px solid ${rightColor}44` : 'none',
                               borderRadius: '2px',
                               paddingRight: edge === 'right' ? '2px' : undefined,
@@ -878,21 +926,24 @@ export default function TeamComparisonView({
                               {badge === 'RELOADED' ? 'Reload Era — fresh talent' : 'Battle-Tested — proven veterans'}
                             </div>
                             <div className="space-y-0.5">
-                              {players.map((p) => (
-                                <button
-                                  key={p.id}
-                                  type="button"
-                                  onClick={() => openPlayer(p)}
-                                  title={`Open ${p.name}`}
-                                  className="w-full flex items-center gap-2 text-[9px] text-left rounded px-1 -mx-1 py-0.5 hover:bg-white/5 focus:outline-none focus:ring-1 focus:ring-white/40 transition-colors"
-                                >
-                                  <span className="font-semibold text-white truncate flex-1">{p.name}</span>
-                                  <span className="text-gray-500 flex-shrink-0">{p.year ?? '—'}</span>
-                                  <span className="font-black flex-shrink-0" style={{ color: getOvrColor(p.ovr) }}>
-                                    {p.ovr}
-                                  </span>
-                                </button>
-                              ))}
+                              {players.map((p) => {
+                                const v = pval(p)
+                                return (
+                                  <button
+                                    key={p.id}
+                                    type="button"
+                                    onClick={() => openPlayer(p)}
+                                    title={`Open ${p.name}`}
+                                    className="w-full flex items-center gap-2 text-[9px] text-left rounded px-1 -mx-1 py-0.5 hover:bg-white/5 focus:outline-none focus:ring-1 focus:ring-white/40 transition-colors"
+                                  >
+                                    <span className="font-semibold text-white truncate flex-1">{p.name}</span>
+                                    <span className="text-gray-500 flex-shrink-0">{p.year ?? '—'}</span>
+                                    <span className="font-black flex-shrink-0" style={{ color: v != null ? mc.color(v) : '#6b7280' }}>
+                                      {v ?? '—'}
+                                    </span>
+                                  </button>
+                                )
+                              })}
                             </div>
                           </div>
                         )
@@ -946,8 +997,8 @@ export default function TeamComparisonView({
                 {odMatchups.map(({ label, leftAtk, rightDef, rightAtk, leftDef }) => (
                   <div key={label}>
                     <div className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">{label}</div>
-                    <EdgeBar label={`${dLeftShort} Attack vs ${dRightShort} Defense`} leftOvr={leftAtk} rightOvr={rightDef} leftColor={leftColor} rightColor={rightColor} />
-                    <EdgeBar label={`${dRightShort} Attack vs ${dLeftShort} Defense`} leftOvr={rightAtk} rightOvr={leftDef} leftColor={rightColor} rightColor={leftColor} />
+                    <EdgeBar label={`${dLeftShort} Attack vs ${dRightShort} Defense`} leftOvr={leftAtk} rightOvr={rightDef} leftColor={leftColor} rightColor={rightColor} metric={mc} />
+                    <EdgeBar label={`${dRightShort} Attack vs ${dLeftShort} Defense`} leftOvr={rightAtk} rightOvr={leftDef} leftColor={rightColor} rightColor={leftColor} metric={mc} />
                   </div>
                 ))}
               </div>

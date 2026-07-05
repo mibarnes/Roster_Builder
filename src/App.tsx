@@ -3,7 +3,8 @@ import { loadPlayerPipeline } from './data/pipeline/loadPlayerPipeline.ts'
 import { mapPipelineToUI } from './data/mapPipelineToUI.ts'
 import { TEAMS, requireTeam, teamLogoUrl } from './data/teamRegistry.ts'
 import { routeTeamId, useHashRoute, type RouteTab } from './router.ts'
-import { readStored, usePersistentState } from './hooks/usePersistentState.ts'
+import { readStored, usePersistentState, writeStored } from './hooks/usePersistentState.ts'
+import { type MetricKey } from './components/comparison/metricConfig.ts'
 
 /** Was the URL free of an explicit route at first load? (→ resume last view, U4.) */
 const INITIAL_HASH_EMPTY =
@@ -198,13 +199,21 @@ export default function App() {
 
   // ── Full-screen two-team comparison (M5) — a deep-linkable route (#/compare/:a/:b) ──
   if (route.kind === 'compare') {
+    // Metric source of truth = the URL (shareable/deep-linkable, U10); fall back to
+    // the last-used metric (localStorage) when the route omits it, else OVR.
+    const cmpMetric: MetricKey = route.metric ?? readStored<MetricKey>('rb:cmpMetric') ?? 'ovr'
     return (
       <TeamComparisonView
         leftTeamId={route.leftId}
         leftUiData={rosterData}
         leftMetrics={metrics}
         rightTeamId={route.rightId}
-        onRightTeamChange={(rightId) => navigate({ kind: 'compare', leftId: route.leftId, rightId })}
+        metricKey={cmpMetric}
+        onRightTeamChange={(rightId) => navigate({ kind: 'compare', leftId: route.leftId, rightId, metric: route.metric })}
+        onMetricChange={(m) => {
+          writeStored('rb:cmpMetric', m)
+          navigate({ kind: 'compare', leftId: route.leftId, rightId: route.rightId, metric: m })
+        }}
         onBack={backToTeam}
       />
     )

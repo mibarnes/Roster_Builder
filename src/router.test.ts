@@ -46,6 +46,7 @@ describe('router — buildHash is the inverse of parseHash', () => {
     { kind: 'team', teamId: 'florida-gators', tab: 'offense' },
     { kind: 'team', teamId: 'georgia-bulldogs', tab: 'defense' },
     { kind: 'compare', leftId: 'florida-gators', rightId: 'miami-hurricanes' },
+    { kind: 'compare', leftId: 'florida-gators', rightId: 'miami-hurricanes', metric: 'usage' },
     { kind: 'player', teamId: 'florida-gators', playerId: 'ourlads-stub-dj-lagway' },
   ]
   it.each(routes)('round-trips %o', (route) => {

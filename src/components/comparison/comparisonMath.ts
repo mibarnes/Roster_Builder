@@ -12,6 +12,7 @@
  * the underlying players are missing rather than fabricating values.
  */
 import type { Formation, UIDataset, UIPlayer } from '../../data/schema/ui.ts'
+import { OVR_METRIC, type MetricConfig } from './metricConfig.ts'
 
 export type Side = 'OFF' | 'DEF'
 export type DepthGrade = 'DEEP' | 'SOLID' | 'THIN'
@@ -47,60 +48,81 @@ export const DEPTH_DESC: Record<DepthGrade, string> = {
 }
 
 const DEPTH_RANK: Record<DepthGrade, number> = { THIN: 0, SOLID: 1, DEEP: 2 }
-const DEEP_BENCH_GAP = 15
 
 export const getFormation = (uiData: UIDataset | null, side: Side): Formation | undefined =>
   side === 'OFF' ? uiData?.offensiveStarters : uiData?.defensiveStarters
 
-/** Players occupying the given slots, depth-limited, with a real (>0) OVR. */
+/** Players occupying the given slots, depth-limited, carrying a real metric value. */
 export const slotPlayers = (
   formation: Formation | undefined,
   slots: string[],
   maxDepth = 2,
+  metric: MetricConfig = OVR_METRIC,
 ): UIPlayer[] =>
-  slots.flatMap((s) => (formation?.[s] ?? []).slice(0, maxDepth)).filter((p) => p != null && p.ovr > 0)
+  slots
+    .flatMap((s) => (formation?.[s] ?? []).slice(0, maxDepth))
+    .filter((p) => p != null && metric.isValid(metric.get(p)))
 
-export const avgOvr = (players: UIPlayer[]): number | null =>
-  players.length ? Math.round(players.reduce((acc, p) => acc + p.ovr, 0) / players.length) : null
+/** Aggregate (display-rounded) average of the metric across players; null when none valid. */
+export const avgOvr = (players: UIPlayer[], metric: MetricConfig = OVR_METRIC): number | null => {
+  const vals = players.map((p) => metric.get(p)).filter((v): v is number => metric.isValid(v))
+  return vals.length ? metric.roundAgg(vals.reduce((acc, v) => acc + v, 0) / vals.length) : null
+}
 
 export const multiGroupAvg = (
   uiData: UIDataset | null,
   groupIds: string[],
   maxDepth = 1,
+  metric: MetricConfig = OVR_METRIC,
 ): number | null => {
   if (!uiData) return null
   const groups = POS_GROUPS.filter((g) => groupIds.includes(g.groupId))
-  const players = groups.flatMap((g) => slotPlayers(getFormation(uiData, g.side), g.slots, maxDepth))
-  return avgOvr(players)
+  const players = groups.flatMap((g) => slotPlayers(getFormation(uiData, g.side), g.slots, maxDepth, metric))
+  return avgOvr(players, metric)
 }
 
-export const computeDepthGrade = (formation: Formation | undefined, slots: string[]): DepthGrade => {
-  const starters = slots.map((s) => formation?.[s]?.[0]).filter((p): p is UIPlayer => !!p && p.ovr > 0)
-  const backups = slots.map((s) => formation?.[s]?.[1]).filter((p): p is UIPlayer => !!p && p.ovr > 0)
+export const computeDepthGrade = (
+  formation: Formation | undefined,
+  slots: string[],
+  metric: MetricConfig = OVR_METRIC,
+): DepthGrade => {
+  const val = (p: UIPlayer | undefined): number | null => {
+    const v = p ? metric.get(p) : null
+    return metric.isValid(v) ? v : null
+  }
+  const starters = slots.map((s) => val(formation?.[s]?.[0])).filter((v): v is number => v != null)
+  const backups = slots.map((s) => val(formation?.[s]?.[1])).filter((v): v is number => v != null)
   if (!starters.length) return 'THIN'
-  const avgS = starters.reduce((acc, p) => acc + p.ovr, 0) / starters.length
-  const avgB = backups.length ? backups.reduce((acc, p) => acc + p.ovr, 0) / backups.length : 0
-  if (!backups.length || avgS - avgB > 12) return 'THIN'
-  if (avgS - avgB > 5) return 'SOLID'
+  const avgS = starters.reduce((acc, v) => acc + v, 0) / starters.length
+  const avgB = backups.length ? backups.reduce((acc, v) => acc + v, 0) / backups.length : 0
+  if (!backups.length || avgS - avgB > metric.depthGaps.thin) return 'THIN'
+  if (avgS - avgB > metric.depthGaps.solid) return 'SOLID'
   return 'DEEP'
 }
 
-export const depthGradeFor = (uiData: UIDataset | null, side: Side, slots: string[]): DepthGrade =>
-  uiData ? computeDepthGrade(getFormation(uiData, side), slots) : 'THIN'
+export const depthGradeFor = (
+  uiData: UIDataset | null,
+  side: Side,
+  slots: string[],
+  metric: MetricConfig = OVR_METRIC,
+): DepthGrade => (uiData ? computeDepthGrade(getFormation(uiData, side), slots, metric) : 'THIN')
 
-export const overallDepthGrade = (uiData: UIDataset | null): DepthGrade => {
+export const overallDepthGrade = (uiData: UIDataset | null, metric: MetricConfig = OVR_METRIC): DepthGrade => {
   if (!uiData) return 'THIN'
-  const off = computeDepthGrade(uiData.offensiveStarters, OFF_ALL)
-  const def = computeDepthGrade(uiData.defensiveStarters, DEF_ALL)
+  const off = computeDepthGrade(uiData.offensiveStarters, OFF_ALL, metric)
+  const def = computeDepthGrade(uiData.defensiveStarters, DEF_ALL, metric)
   return DEPTH_RANK[off] <= DEPTH_RANK[def] ? off : def
 }
 
-export const computeTeamOvr = (uiData: UIDataset | null): number | null => {
+export const computeTeamOvr = (uiData: UIDataset | null, metric: MetricConfig = OVR_METRIC): number | null => {
   if (!uiData) return null
-  return avgOvr([
-    ...slotPlayers(uiData.offensiveStarters, OFF_ALL, 1),
-    ...slotPlayers(uiData.defensiveStarters, DEF_ALL, 1),
-  ])
+  return avgOvr(
+    [
+      ...slotPlayers(uiData.offensiveStarters, OFF_ALL, 1, metric),
+      ...slotPlayers(uiData.defensiveStarters, DEF_ALL, 1, metric),
+    ],
+    metric,
+  )
 }
 
 export interface DivBadge {
@@ -144,11 +166,18 @@ export interface BenchPill {
   bg: string
 }
 
-export const computeBenchPill = (starters: UIPlayer[], backups: UIPlayer[]): BenchPill | null => {
+export const computeBenchPill = (
+  starters: UIPlayer[],
+  backups: UIPlayer[],
+  metric: MetricConfig = OVR_METRIC,
+): BenchPill | null => {
   if (!starters.length || !backups.length) return null
-  const avgS = avgOvr(starters)
+  const avgS = avgOvr(starters, metric)
   if (avgS == null) return null
-  const hasDeep = backups.some((b) => b.ovr > 0 && avgS - b.ovr <= DEEP_BENCH_GAP)
+  const hasDeep = backups.some((b) => {
+    const v = metric.get(b)
+    return metric.isValid(v) && avgS - v <= metric.benchGap
+  })
   return hasDeep
     ? { label: 'Deep Bench', color: '#22c55e', bg: '#022c22' }
     : { label: 'One Injury Away', color: '#ef4444', bg: '#450a0a' }
@@ -197,36 +226,40 @@ const lastName = (name: string | undefined): string | null => name?.split(' ').p
 export const buildPosGroupRows = (
   leftUiData: UIDataset | null,
   rightUiData: UIDataset | null,
+  metric: MetricConfig = OVR_METRIC,
 ): PosGroupRow[] =>
   POS_GROUPS.map((g) => {
     const lForm = getFormation(leftUiData, g.side)
     const rForm = getFormation(rightUiData, g.side)
 
-    const lStarters = slotPlayers(lForm, g.slots, 1)
-    const rStarters = slotPlayers(rForm, g.slots, 1)
-    const lBackups = g.slots.map((s) => lForm?.[s]?.[1]).filter((p): p is UIPlayer => !!p && p.ovr > 0)
-    const rBackups = g.slots.map((s) => rForm?.[s]?.[1]).filter((p): p is UIPlayer => !!p && p.ovr > 0)
+    const lStarters = slotPlayers(lForm, g.slots, 1, metric)
+    const rStarters = slotPlayers(rForm, g.slots, 1, metric)
+    const lBackups = g.slots.map((s) => lForm?.[s]?.[1]).filter((p): p is UIPlayer => !!p && metric.isValid(metric.get(p)))
+    const rBackups = g.slots.map((s) => rForm?.[s]?.[1]).filter((p): p is UIPlayer => !!p && metric.isValid(metric.get(p)))
 
-    const lStarterOvr = avgOvr(lStarters)
-    const rStarterOvr = avgOvr(rStarters)
-    const lBackupOvr = lBackups.length ? avgOvr(lBackups) : null
-    const rBackupOvr = rBackups.length ? avgOvr(rBackups) : null
+    const lStarterOvr = avgOvr(lStarters, metric)
+    const rStarterOvr = avgOvr(rStarters, metric)
+    const lBackupOvr = lBackups.length ? avgOvr(lBackups, metric) : null
+    const rBackupOvr = rBackups.length ? avgOvr(rBackups, metric) : null
 
-    const lOvr = avgOvr(slotPlayers(lForm, g.slots, 2))
-    const rOvr = avgOvr(slotPlayers(rForm, g.slots, 2))
+    const lOvr = avgOvr(slotPlayers(lForm, g.slots, 2, metric), metric)
+    const rOvr = avgOvr(slotPlayers(rForm, g.slots, 2, metric), metric)
 
-    const lComp = avgComposite(lStarters)
-    const rComp = avgComposite(rStarters)
+    // The recruiting-vs-metric divergence story is OVR-anchored; only surface it
+    // for a metric that opts in (OVR). Other metrics carry null comp/badges.
+    const div = metric.supportsDivergence
+    const lComp = div ? avgComposite(lStarters) : null
+    const rComp = div ? avgComposite(rStarters) : null
 
-    const lBadge = divBadge(lComp, lStarterOvr)
-    const rBadge = divBadge(rComp, rStarterOvr)
+    const lBadge = div ? divBadge(lComp, lStarterOvr) : null
+    const rBadge = div ? divBadge(rComp, rStarterOvr) : null
 
     const lDivPlayer = lBadge ? findDivPlayer(lStarters) : null
     const rDivPlayer = rBadge ? findDivPlayer(rStarters) : null
 
     const edge: EdgeSide =
       lOvr != null && rOvr != null
-        ? Math.abs(lOvr - rOvr) < 2
+        ? Math.abs(lOvr - rOvr) < metric.edgeEven
           ? 'even'
           : lOvr > rOvr
             ? 'left'
@@ -313,8 +346,8 @@ export interface DataQuality {
   isLimited: boolean
 }
 
-export const assessDataQuality = (uiData: UIDataset | null): DataQuality => {
-  const rows = buildPosGroupRows(uiData, null)
+export const assessDataQuality = (uiData: UIDataset | null, metric: MetricConfig = OVR_METRIC): DataQuality => {
+  const rows = buildPosGroupRows(uiData, null, metric)
   const ratedGroups = rows.filter((r) => r.lStarterOvr != null).length
   const ratedStarters = rows.reduce((acc, r) => acc + r.lStarters.length, 0)
   return {

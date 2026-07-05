@@ -7,6 +7,7 @@ import {
   divBadge,
   overallDepthGrade,
 } from './comparisonMath.ts'
+import { METRICS } from './metricConfig.ts'
 import type { Formation, UIDataset, UIPlayer } from '../../data/schema/ui.ts'
 import { EMPTY_COVERAGE } from '../../data/schema/pipeline.ts'
 
@@ -171,5 +172,50 @@ describe('computeGroupWins / computeTeamOvr / overallDepthGrade', () => {
   it('overallDepthGrade returns the weaker side grade', () => {
     expect(overallDepthGrade(null)).toBe('THIN')
     expect(overallDepthGrade(dataset({}))).toBe('THIN')
+  })
+})
+
+describe('U10 — metric-parameterized comparison', () => {
+  const USAGE = METRICS.usage
+  const PPA = METRICS.ppa
+
+  it('keeps a real 0 usage value but drops a null-usage (absent) player', () => {
+    const left = dataset({
+      QB: [mk({ usageOverall: 0.8 })],
+      RB: [mk({ usageOverall: 0 })], // 0 snaps is a REAL value under usage
+      WRX: [mk({ usageOverall: null })], // no advanced row → excluded
+    })
+    const rows = buildPosGroupRows(left, dataset({}), USAGE)
+    expect(rows.find((r) => r.group.groupId === 'QB')!.lStarterOvr).toBe(0.8)
+    expect(rows.find((r) => r.group.groupId === 'RB')!.lStarterOvr).toBe(0)
+    expect(rows.find((r) => r.group.groupId === 'WR')!.lStarterOvr).toBeNull()
+  })
+
+  it('handles a legitimately negative PPA value', () => {
+    const left = dataset({ QB: [mk({ ppaAll: 0.3 })], RB: [mk({ ppaAll: -0.1 })] })
+    const rows = buildPosGroupRows(left, dataset({}), PPA)
+    expect(rows.find((r) => r.group.groupId === 'QB')!.lStarterOvr).toBe(0.3)
+    expect(rows.find((r) => r.group.groupId === 'RB')!.lStarterOvr).toBe(-0.1)
+  })
+
+  it('suppresses the recruiting-divergence story for non-OVR metrics', () => {
+    const left = dataset({ QB: [mk({ ovr: 70, composite: 92, usageOverall: 0.9 })] })
+    const rows = buildPosGroupRows(left, dataset({}), USAGE)
+    const qb = rows.find((r) => r.group.groupId === 'QB')!
+    expect(qb.lBadge).toBeNull()
+    expect(qb.lComp).toBeNull()
+    expect(qb.lDivPlayer).toBeNull()
+  })
+
+  it('applies the metric-specific EVEN threshold to the edge', () => {
+    // usage edgeEven is 0.03; a 0.05 gap is decisive, a 0.02 gap is EVEN.
+    const decisive = buildPosGroupRows(dataset({ QB: [mk({ usageOverall: 0.8 })] }), dataset({ QB: [mk({ usageOverall: 0.75 })] }), USAGE)
+    expect(decisive.find((r) => r.group.groupId === 'QB')!.edge).toBe('left')
+    const even = buildPosGroupRows(dataset({ QB: [mk({ usageOverall: 0.8 })] }), dataset({ QB: [mk({ usageOverall: 0.78 })] }), USAGE)
+    expect(even.find((r) => r.group.groupId === 'QB')!.edge).toBe('even')
+  })
+
+  it('computeTeamOvr averages the selected metric', () => {
+    expect(computeTeamOvr(dataset({ QB: [mk({ usageOverall: 0.6 })], RB: [mk({ usageOverall: 0.4 })] }), USAGE)).toBe(0.5)
   })
 })
